@@ -240,7 +240,7 @@ public class OTTween
 	/// <summary>
 	/// Stops all running and/or waiting tweens.
 	/// </summary>
-    public static void StopAll(bool running, bool waiting)
+    public static void StopAll(bool running = true, bool waiting = true)
     {
         if(controller != null && (running || waiting))
             controller.Clear(running,waiting);

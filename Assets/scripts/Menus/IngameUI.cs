@@ -6,10 +6,7 @@ public class IngameUI : MonoBehaviour {
 	public enum ListAction
 	{
 		LaunchScene,
-		DisplayTrombi,
-		DisplayNotebook,
 		MuteSound,
-		ChangeLanguage,
 		LowerSound,
 		RaiseSound,
 		FunStuff, // To do funny miscellaneous stuff in menus :)
@@ -43,19 +40,7 @@ public class IngameUI : MonoBehaviour {
 	{
 		switch (action)
 		{
-			case (ListAction.DisplayTrombi) :
-			{
 
-				break;
-			}
-			case (ListAction.DisplayNotebook) :
-			{
-				break;
-			}
-			case (ListAction.ChangeLanguage) :
-			{
-				break;
-			}
 		}
 	}
 	private void checkExistingMenu()

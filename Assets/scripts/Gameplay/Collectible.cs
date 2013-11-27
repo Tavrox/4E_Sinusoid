@@ -28,7 +28,6 @@ public class Collectible : MonoBehaviour {
 			{
 				case (Specs.HealthPotion) :
 				{
-					player.RegenHP(regenValue);
 					break;
 				}
 			}

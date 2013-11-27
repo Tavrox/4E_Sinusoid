@@ -58,7 +58,7 @@ public class Character : MonoBehaviour
 	[Range (0,30)] 	public float 	jumpVel = 16f;
 	[Range (0,30)] 	public float 	jump2Vel = 14f;
 	[Range (1,2)] 	public int 		maxJumps = 2;
-	[Range (15,25)] public float 	fallVel = 18f;
+	[Range (0,25)] public float 	fallVel = 18f;
 	
 	[SerializeField] private int jumps = 0;
 	[SerializeField] private float gravityY;
@@ -72,14 +72,13 @@ public class Character : MonoBehaviour
 	[SerializeField] private float absVel2Y;
 	
 	// layer masks
-	protected int groundMask = 1 << 8; // Ground, Block
+	protected int groundMask = 1 << 8 | 1 << 9; // Ground, Block
 	protected int platformMask = 1 << 9; //Block
 	private float pfPassSpeed = 2.8f;
 	
 	public virtual void Awake()
 	{
 		thisTransform = transform;
-	
 	}
 	
 	// Use this for initialization
@@ -103,6 +102,7 @@ public class Character : MonoBehaviour
 	// Update is called once per frame
 	public virtual void UpdateMovement() 
 	{
+
 		mypos = new Vector3(thisTransform.position.x,thisTransform.position.y,thisTransform.position.z);
 		
 		if(alive == false) return;
@@ -179,12 +179,20 @@ public class Character : MonoBehaviour
 		
 		absVel2X = Mathf.Abs(vectorFixed.x);
 		absVel2Y = Mathf.Abs(vectorFixed.y);
+
 		
+		Vector3 tst = new Vector3(mypos.x, mypos.y,0f);
+		Debug.DrawLine( tst , tst+Vector3.down, Color.green);
+		Debug.DrawLine( mypos , Vector3.down, Color.blue);
+		print (mypos);
+
+		print (halfMyY);
 		
 		//BLOCKED TO DOWN
-		if (Physics.Raycast(mypos, Vector3.down, out hitInfo, halfMyY, platformMask))
+		if (Physics.Raycast(mypos, mypos+Vector3.down, out hitInfo, halfMyY, platformMask))
 		{
-			Debug.DrawLine (thisTransform.position, hitInfo.point, Color.black);
+			print ("entered blocker");
+			Debug.DrawLine(thisTransform.position, hitInfo.point, Color.black);
 			if (isCrounch == true)
 			{
 				passingPlatform = true;
@@ -197,6 +205,7 @@ public class Character : MonoBehaviour
 		}
 		if (Physics.Raycast(mypos, Vector3.down, out hitInfo, halfMyY, groundMask))
 		{
+			print ("blocked down");
 			BlockedDown();
 		}
 		
@@ -274,10 +283,5 @@ public class Character : MonoBehaviour
 	void ThroughPlatform()
 	{
 		vectorMove.y -= pfPassSpeed;
-	}
-	
-	void OnGUI()
-	{
-		moveVel = GUI.HorizontalSlider (new Rect (25, 25, 100, 30), moveVel, 0f, 10f);
 	}
 }

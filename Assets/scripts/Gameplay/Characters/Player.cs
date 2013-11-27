@@ -10,109 +10,37 @@ public class Player : Character {
 	public Skills skill_axe;
 	public Skills skill_shield;
 	public OTSprite menu;
-	public OTAnimatingSprite currSprite;
 	
 	[SerializeField] private Rect hp_display;
 	[SerializeField] private SoundSprite soundMan;
 	[SerializeField] private ModulatedSound mdSound;
-	
-	public bool shootingKnife;
+
 	[HideInInspector] public bool paused = false;
 	
 	// Use this for initialization
 	public override void Start () 
 	{
 		base.Start();
+
 		
 		GameEventManager.GameStart += GameStart;
 		GameEventManager.GameOver += GameOver;
 		GameEventManager.GamePause += GamePause;
 		GameEventManager.GameUnpause += GameUnpause;
-		
-		enabled = false;
-		hasShield = false;
+
 		spawnPos = thisTransform.position;
-		soundMan = GetComponent<SoundSprite>();
-		mdSound = GetComponent<ModulatedSound>();
 	}
 	
 	// Update is called once per frame
 	public void Update () 
 	{
-		// these are false unless one of keys is pressed
-		isLeft = false;
-		isRight = false;
-		isJump = false;
-		isGoDown = false;
-		isPass = false;
-		isCrounch = false;
-		
-		shootingKnife = false;
-		movingDir = moving.None;
-		
-		// keyboard input
-		if(Input.GetKey("left")) 
-		{ 
-			soundMan.OnWalking(getCurrentFrameIndex());
-			isLeft = true;
-			shootLeft = true;
-			facingDir = facing.Left;
-		}
-		if (Input.GetKey("right") && isLeft == false) 
-		{ 
-			soundMan.OnWalking(getCurrentFrameIndex());
-			isRight = true; 
-			facingDir = facing.Right;
-			shootLeft = false;
-		}
-		if (Input.GetKey(KeyCode.DownArrow))
-		{
-			isCrounch = true;
-			facingDir = facing.Down;
-		}
-		if (Input.GetKeyDown("up")) 
-		{ 
-			isJump = true; 
-		}
-		if(Input.GetKeyDown("space"))
-		{
-			isPass = true;
-		}
-		if(Input.GetKeyDown(KeyCode.A))
-		{
-			isShot = true;
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha1))
-		{
-			skill_knife.useSkill(Skills.SkillList.Knife);
-			shootingKnife = true;
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha2))
-		{
-			skill_axe.useSkill(Skills.SkillList.Axe);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha3))
-		{
-			skill_shield.useSkill(Skills.SkillList.Shield);
-			hasShield = true;
-		}
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			if (GameEventManager.gamePaused == false)
-			{
-				GameEventManager.TriggerGamePause();
-			}
-			else if (GameEventManager.gamePaused == true)
-			{
-				GameEventManager.TriggerGameUnpause();
-			}
-		}
-		mdSound.PercentSound(this);
-		Debug.Log ("Player_Shield" + hasShield);
+		checkInput();
+		print ("ok");
 		UpdateMovement();
 	}
 	
-	private void GameStart () {
+	private void GameStart () 
+	{
 		if(FindObjectOfType(typeof(Player)) && this != null) {
 			transform.localPosition = spawnPos;
 			enabled = true;
@@ -144,32 +72,67 @@ public class Player : Character {
 		paused = false;
 		enabled = true;	
 	}
-	
-	////////// HP MANAGING ////////////////
-	public void RegenHP(int _val)
+
+	private void checkInput()
 	{
-		HP += _val;
-	}
-	public void DiminishHP(int _val)
-	{
-		HP -= _val;
-	}
-	private void DisplayHP()
-	{
+		// these are false unless one of keys is pressed
+		isLeft = false;
+		isRight = false;
+		isJump = false;
+		isGoDown = false;
+		isPass = false;
+		isCrounch = false;
+
+		movingDir = moving.None;
 		
-	}
-	////////////////////////////////////////
-	
-	public OTAnimatingSprite getSprite()
-	{
-		return currSprite;
-	}
-	public int getCurrentFrameIndex()
-	{
-		return currSprite.CurrentFrame().index;
-	}
-	private void manageLifeSound()
-	{
-		
+		// keyboard input
+		if(Input.GetKey("left")) 
+		{ 
+			isLeft = true;
+			shootLeft = true;
+			facingDir = facing.Left;
+		}
+		if (Input.GetKey("right") && isLeft == false) 
+		{ 
+			isRight = true; 
+			facingDir = facing.Right;
+			shootLeft = false;
+		}
+		if (Input.GetKey(KeyCode.DownArrow))
+		{
+			isCrounch = true;
+			facingDir = facing.Down;
+		}
+		if (Input.GetKeyDown("up")) 
+		{ 
+			isJump = true; 
+		}
+		if(Input.GetKeyDown("space"))
+		{
+			isPass = true;
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha1))
+		{
+
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha2))
+		{
+
+		}
+		if (Input.GetKeyDown(KeyCode.Alpha3))
+		{
+
+		}
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			if (GameEventManager.gamePaused == false)
+			{
+				GameEventManager.TriggerGamePause();
+			}
+			else if (GameEventManager.gamePaused == true)
+			{
+				GameEventManager.TriggerGameUnpause();
+			}
+		}
 	}
 }

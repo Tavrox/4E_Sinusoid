@@ -105,6 +105,7 @@ public class CharacterAnims : MonoBehaviour
 	}
 	private void Attack()
 	{
+		/*
 		if (_player.shootingKnife == true  && _character.facingDir == Character.facing.Left)
 		{
 			animPlaying = true;
@@ -121,6 +122,7 @@ public class CharacterAnims : MonoBehaviour
 			NormalScaleSprite();
 			StartCoroutine( WaitAndCallback( anim.GetDuration(anim.framesets[3]) ) );
 		}
+		*/
 	}
 	private void Hurt()
 	{
