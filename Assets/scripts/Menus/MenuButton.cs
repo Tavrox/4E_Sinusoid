@@ -14,17 +14,7 @@ public class MenuButton : MonoBehaviour {
 		FunStuff, // To do funny miscellaneous stuff in menus :)
 	}
 	public ListAction action;
-	// Use this for initialization
-	void Start () 
-	{
 
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		
-	}
 	void OnMouseOver()
 	{
 		if(Input.GetMouseButtonDown(0))

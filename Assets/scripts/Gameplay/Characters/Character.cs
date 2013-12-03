@@ -68,8 +68,8 @@ public class Character : MonoBehaviour
 	[SerializeField] private float halfMyX;
 	[SerializeField] private float halfMyY;
 	
-	[SerializeField] private float absVel2X;
-	[SerializeField] private float absVel2Y;
+//	[SerializeField] private float absVel2X;
+//	[SerializeField] private float absVel2Y;
 	
 	// layer masks
 	protected int groundMask = 1 << 8 | 1 << 9; // Ground, Block
@@ -177,21 +177,21 @@ public class Character : MonoBehaviour
 		blockedDown = false;
 		grounded = false;		
 		
-		absVel2X = Mathf.Abs(vectorFixed.x);
-		absVel2Y = Mathf.Abs(vectorFixed.y);
+//		absVel2X = Mathf.Abs(vectorFixed.x);
+//		absVel2Y = Mathf.Abs(vectorFixed.y);
 
 		
 		Vector3 tst = new Vector3(mypos.x, mypos.y,0f);
 		Debug.DrawLine( tst , tst+Vector3.down, Color.green);
 		Debug.DrawLine( mypos , Vector3.down, Color.blue);
-		print (mypos);
-
-		print (halfMyY);
+//		print (mypos);
+//
+//		print (halfMyY);
 		
 		//BLOCKED TO DOWN
 		if (Physics.Raycast(mypos, mypos+Vector3.down, out hitInfo, halfMyY, platformMask))
 		{
-			print ("entered blocker");
+//			print ("entered blocker");
 			Debug.DrawLine(thisTransform.position, hitInfo.point, Color.black);
 			if (isCrounch == true)
 			{
@@ -205,7 +205,7 @@ public class Character : MonoBehaviour
 		}
 		if (Physics.Raycast(mypos, Vector3.down, out hitInfo, halfMyY, groundMask))
 		{
-			print ("blocked down");
+//			print ("blocked down");
 			BlockedDown();
 		}
 		

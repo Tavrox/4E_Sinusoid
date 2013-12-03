@@ -12,11 +12,6 @@ public class AnimatedBtn : MonoBehaviour {
 	
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	
 	void OnMouseOver()
 	{
 		OTAnimatingSprite anim = GetComponent<OTAnimatingSprite>();

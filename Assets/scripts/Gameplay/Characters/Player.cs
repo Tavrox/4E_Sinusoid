@@ -14,6 +14,7 @@ public class Player : Character {
 	[SerializeField] private Rect hp_display;
 	[SerializeField] private SoundSprite soundMan;
 	[SerializeField] private ModulatedSound mdSound;
+	private BlockThrower soundEmitt;
 
 	[HideInInspector] public bool paused = false;
 	
@@ -29,13 +30,14 @@ public class Player : Character {
 		GameEventManager.GameUnpause += GameUnpause;
 
 		spawnPos = thisTransform.position;
+
+		soundEmitt = GameObject.Find("SoundWavesEmitter").GetComponent<BlockThrower>();
 	}
 	
 	// Update is called once per frame
 	public void Update () 
 	{
 		checkInput();
-		print ("ok");
 		UpdateMovement();
 	}
 	
@@ -85,6 +87,10 @@ public class Player : Character {
 
 		movingDir = moving.None;
 		
+		if(Input.GetKeyDown(KeyCode.R))
+		{
+			soundEmitt.createCircle();
+		}
 		// keyboard input
 		if(Input.GetKey("left")) 
 		{ 

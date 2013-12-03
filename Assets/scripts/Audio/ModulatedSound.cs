@@ -14,17 +14,6 @@ public class ModulatedSound : MonoBehaviour {
 	public int cond2;
 	public int cond3;
 	public int cond4;
-
-	// Use this for initialization
-	void Start () 
-	{
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 	
 	public void PercentSound(Character charac)
 	{

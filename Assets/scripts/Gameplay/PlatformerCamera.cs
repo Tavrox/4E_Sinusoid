@@ -15,7 +15,7 @@ public class PlatformerCamera : MonoBehaviour {
 
 	private void dirCamera()
 	{
-		GameObject player = GameObject.FindGameObjectWithTag("Player");
+		//GameObject player = GameObject.FindGameObjectWithTag("Player");
 		GetComponent<Camera>().transform.position = new Vector3(0f,0f,0f);
 	}
 }

@@ -25,15 +25,10 @@ public class Skills : MonoBehaviour {
 	private specialEffectsTypes specialEffects;
 	
 	// Use this for initialization
-	void Start ()
-	{
-		canCast = true;
-	}
-	// Update is called once per frame
-	void Update ()
-	{
-
-	}
+//	void Start ()
+//	{
+//		canCast = true;
+//	}
 	
 	public void useSkill(SkillList sk)
 	{

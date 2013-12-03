@@ -23,12 +23,6 @@ public class MenuUI : MonoBehaviour {
 		exists = true;
 	
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		
-	}
 	private void OnMouseDown()
 	{
 		switch (menu)

@@ -21,22 +21,17 @@ public class PlayerAnims : MonoBehaviour {
 	private Transform spriteParent;
 	private OTAnimatingSprite animSprite;
 	private OTAnimation anim;
-	private Player _player;
+//	private Player _player;
 
 	// Use this for initialization
-	void Start () {
-	
-		setup();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
-	private void setup()
-	{
-		_player = this.GetComponent<Player>();
-//		spriteParent = _player.GetComponentInChildren<Transform>
-	}
+//	void Start () {
+//	
+//		setup();
+//	}
+//
+//	private void setup()
+//	{
+////		_player = this.GetComponent<Player>();
+////		spriteParent = _player.GetComponentInChildren<Transform>
+//	}
 }

@@ -6,16 +6,6 @@ public class TriggeredDoor : MonoBehaviour {
 	public OTAnimatingSprite animSprite;
 	private bool isLocked = true ;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-	
 	public bool Unlock()
 	{
 		if (isLocked == true)

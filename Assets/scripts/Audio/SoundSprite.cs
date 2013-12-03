@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SoundSprite : MonoBehaviour {
 	
-	private Player Owner;
+//	private Player Owner;
 	
 	public MasterAudioGroup FooleySound;
 	public MasterAudioGroup StepSound;
@@ -23,7 +23,7 @@ public class SoundSprite : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		Owner = GetComponent<Player>();
+//		Owner = GetComponent<Player>();
 	}
 	
 	// Update is called once per frame
@@ -45,10 +45,10 @@ public class SoundSprite : MonoBehaviour {
 	        {
 				if (currFrameIndex == frameWantedRun[0] || currFrameIndex == frameWantedRun[1] )
 				{
-					string nameSd = onWalkingSound.name;
+					//string nameSd = onWalkingSound.name;
 					onWalkingSound.limitPolyphony = true;
 					MasterAudio.PlaySound("Player_run_1_v2");
-					print ("OMG");
+					//print ("OMG");
 				}
 				else
 				{

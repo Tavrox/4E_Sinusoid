@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Thief : Enemy {
 	private Transform target; //the enemy's target
-	private Player player;
+//	private Player player;
    // public float movevectorMove = 1f; //move speed
   //  public int rotationSpeed = 3; //speed of turning
 	private bool chasingPlayer;
@@ -21,7 +21,7 @@ public class Thief : Enemy {
 	public Transform[] waypoints;
 	
 	
-	private bool endOfPlatform = true;
+	//private bool endOfPlatform = true;
     
     public override void Start () 
 	{
@@ -38,7 +38,7 @@ public class Thief : Enemy {
 		
 		spawnPos = thisTransform.position;
     	target = GameObject.FindWithTag("Player").transform; //target the player
-		player = GameObject.FindWithTag("Player").GetComponent<Player>();
+		//player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
      
     void Update () {
@@ -106,7 +106,7 @@ public class Thief : Enemy {
 			if (Physics.Raycast(endPlatformLeft, out hitInfo,0.7f)) {
 				if (hitInfo.collider.tag == null) {
 					isLeft = false;/*follow2 = false; */
-					endOfPlatform = true;
+//					endOfPlatform = true;
 				}
 				else {
 					if(follow) {UpdateMovement();/*follow2=true;*/}
@@ -124,7 +124,7 @@ public class Thief : Enemy {
 			if (Physics.Raycast(endPlatformRight, out hitInfo,0.7f)) {
 				if (hitInfo.collider.tag == null) {
 					isRight = false;/*follow2 = false; */
-					endOfPlatform = true;
+//					endOfPlatform = true;
 				}
 				else {
 					if(follow) {UpdateMovement();/*follow2=true;*/}	

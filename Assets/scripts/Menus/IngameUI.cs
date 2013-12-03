@@ -13,7 +13,7 @@ public class IngameUI : MonoBehaviour {
 	}
 	public ListAction action;
 	private Object prefabSprite;
-	private OTSprite childSpr;
+//	private OTSprite childSpr;
 	public static bool exists;
 	
 	void Start () 
@@ -22,7 +22,7 @@ public class IngameUI : MonoBehaviour {
 		GameEventManager.GameOver += GameOver;
 		GameEventManager.GamePause += GamePause;
 		GameEventManager.GameUnpause += GameUnpause;
-		childSpr = GetComponentInChildren<OTSprite>();
+//		childSpr = GetComponentInChildren<OTSprite>();
 		
 		exists = true;
 	}
@@ -38,10 +38,10 @@ public class IngameUI : MonoBehaviour {
 	
 	private void OnMouseDown()
 	{
-		switch (action)
-		{
-
-		}
+//		switch (action)
+//		{
+//
+//		}
 	}
 	private void checkExistingMenu()
 	{

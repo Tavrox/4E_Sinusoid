@@ -5,7 +5,7 @@ public class LevelManager : MonoBehaviour {
 	
 	public OTSprite background;
 	[SerializeField] private Player player;
-	[SerializeField] private Camera camera;
+	[SerializeField] private Camera myCamera;
 	
 	public int ID;
 	public int nextLvlID;
@@ -15,14 +15,14 @@ public class LevelManager : MonoBehaviour {
 	void Start () 
 	{
 		player = GameObject.FindWithTag("Player").GetComponent<Player>();
-//		camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+		//myCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
 		
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		camera.transform.position = new Vector3 (player.transform.position.x, 0, player.transform.position.z);
-		camera.nearClipPlane = -1000;
+		myCamera.transform.position = new Vector3 (player.transform.position.x, 0, player.transform.position.z);
+		myCamera.nearClipPlane = -1000;
 	}
 }

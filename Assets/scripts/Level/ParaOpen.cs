@@ -8,11 +8,6 @@ public class ParaOpen : MonoBehaviour {
 	public float deployHeight;
 	private bool deployed;
 	
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		RaycastHit hitInfo;
