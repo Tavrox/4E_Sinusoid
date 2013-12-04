@@ -1,10 +1,10 @@
-﻿Shader "custom/MyBlendedAlpha" {
+﻿Shader "custom/MyBlendedAlphaBG" {
 Properties {
 	_MainTex ("Particle Texture", 2D) = "white" {}
 }
 
 Category {
-	Tags { "Queue"="Geometry+1" } //"IgnoreProjector"="True" "RenderType"="Transparent" }
+	Tags { "Queue"="Geometry-1" } //"IgnoreProjector"="True" "RenderType"="Transparent" }
 	Blend SrcAlpha OneMinusSrcAlpha
 	Cull Off Lighting Off ZWrite Off Fog { Color (0,0,0,0) }
 	
