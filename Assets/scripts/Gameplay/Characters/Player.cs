@@ -34,7 +34,7 @@ public class Player : Character {
 		spawnPos = thisTransform.position;
 
 		soundEmitt1 = GameObject.Find("SoundWavesEmitter1").GetComponent<WavesCreator>();
-		soundEmitt2 = GameObject.Find("SoundWavesEmitter1").GetComponent<WavesCreator>();
+		soundEmitt2 = GameObject.Find("SoundWavesEmitter2").GetComponent<WavesCreator>();
 		soundInstru1 = GameObject.Find("SoundWavesInstru1").GetComponent<WavesCreator>();
 		soundInstru2 = GameObject.Find("SoundWavesInstru2").GetComponent<WavesCreator>();
 		soundEmitt1.createCircle();
