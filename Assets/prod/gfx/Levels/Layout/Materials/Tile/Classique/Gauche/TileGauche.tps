@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>Tile/TileGauche.png</filename>
+        <filename>TileGauche.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -127,7 +127,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>Tile/TileGauche.plist</filename>
+                <filename>TileGauche.xml</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -166,13 +166,13 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Verticale/MurGauche/tileVertical_Gauche_01.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Verticale/MurGauche/tileVertical_Gauche_02.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Verticale/MurGauche/tileVertical_Gauche_03.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Verticale/MurGauche/tileVertical_Gauche_04.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Verticale/MurGauche/tileVertical_Gauche_05.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Verticale/MurGauche/tileVertical_Gauche_06.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Verticale/MurGauche/tileVertical_Gauche_07.gif</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileVertical_Gauche_01.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileVertical_Gauche_02.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileVertical_Gauche_03.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileVertical_Gauche_04.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileVertical_Gauche_05.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileVertical_Gauche_06.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileVertical_Gauche_07.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

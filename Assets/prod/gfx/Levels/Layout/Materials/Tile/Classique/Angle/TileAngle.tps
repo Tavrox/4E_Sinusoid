@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../TileDroit.png</filename>
+        <filename>TileAngle.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -127,7 +127,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../TileDroit.xml</filename>
+                <filename>TileAngle.xml</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -166,44 +166,30 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_BDroite_01.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_BDroite_02.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_BDroite_03.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_BDroite_04.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_BDroite_05.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_BDroite_05-52.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_BDroite_06.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_BDroite_07.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_BGauche_01.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_BGauche_02.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_BGauche_03.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_BGauche_04.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_BGauche_05.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_HDroite_01.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_HDroite_02.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_HDroite_03.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_HDroite_04.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_HDroite_05.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_HGauche_01.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_HGauche_02.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_HGauche_03.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_HGauche_04.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_HGauche_05.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileAngle_HGauche_05-31.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileLien_BGauche_01.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileLien_HDroit_01.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileLien_HDroit_02.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileLien_HDroit_02-53.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileLien_HDroit_03.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileLien_HDroit_03-66.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileLien_HDroit_04.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileLien_HDroit_05.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileLien_HGauche_01.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileLien_HGauche_02.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileLien_HGauche_03.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileLien_HGauche_04.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileLien_HGauche_04-77.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Angle/tileLien_HGauche_05.gif</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_BDroite_01.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_BDroite_02.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_BDroite_03.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_BDroite_04.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_BDroite_05.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_BDroite_05-45.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_BDroite_06.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_BDroite_07.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_BGauche_01.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_BGauche_02.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_BGauche_03.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_BGauche_04.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_BGauche_05.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_HDroite_01.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_HDroite_02.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_HDroite_03.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_HDroite_04.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_HDroite_05.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_HGauche_01.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_HGauche_02.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_HGauche_03.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_HGauche_04.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_HGauche_05.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileAngle_HGauche_05-25.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

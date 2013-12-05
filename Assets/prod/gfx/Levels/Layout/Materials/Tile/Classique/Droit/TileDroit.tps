@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>Tile/TileDroit.png</filename>
+        <filename>TileDroit.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -127,7 +127,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>Tile/TileDroit.xml</filename>
+                <filename>TileDroit.xml</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -166,14 +166,14 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Verticale/MurDroite/tileVertical_Droite_03.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Verticale/MurDroite/tileVertical_Droite_04.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Verticale/MurDroite/tileVertical_Droite_05.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Verticale/MurDroite/tileVertical_Droite_06.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Verticale/MurDroite/tileVertical_Droite_07.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Verticale/MurDroite/tileVertical_Droite_08.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Verticale/MurDroite/tileVertical_Droite_01.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Verticale/MurDroite/tileVertical_Droite_02.gif</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileVertical_Droite_01.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileVertical_Droite_02.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileVertical_Droite_03.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileVertical_Droite_04.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileVertical_Droite_05.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileVertical_Droite_06.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileVertical_Droite_07.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileVertical_Droite_08.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

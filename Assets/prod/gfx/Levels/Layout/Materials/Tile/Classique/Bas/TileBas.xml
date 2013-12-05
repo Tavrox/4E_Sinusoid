@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>tileHorizontal_Bas_01.gif</key>
+            <key>tileHorizontal_Bas_01.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1,1},{100,50}}</string>
@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Bas_02.gif</key>
+            <key>tileHorizontal_Bas_02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1,52},{100,50}}</string>
@@ -30,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Bas_03.gif</key>
+            <key>tileHorizontal_Bas_03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1,103},{100,50}}</string>
@@ -43,7 +43,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Bas_04.gif</key>
+            <key>tileHorizontal_Bas_04.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1,154},{100,50}}</string>
@@ -56,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Bas_05.gif</key>
+            <key>tileHorizontal_Bas_05.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{102,154},{25,50}}</string>
@@ -69,7 +69,7 @@
                 <key>sourceSize</key>
                 <string>{25,50}</string>
             </dict>
-            <key>tileHorizontal_Bas_06.gif</key>
+            <key>tileHorizontal_Bas_06.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1,205},{25,50}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{25,50}</string>
             </dict>
-            <key>tileHorizontal_Bas_07.gif</key>
+            <key>tileHorizontal_Bas_07.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{27,205},{25,50}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{25,50}</string>
             </dict>
-            <key>tileHorizontal_Bas_08.gif</key>
+            <key>tileHorizontal_Bas_08.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{53,205},{25,50}}</string>
@@ -108,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{25,50}</string>
             </dict>
-            <key>tileHorizontal_Bas_09.gif</key>
+            <key>tileHorizontal_Bas_09.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{79,205},{25,50}}</string>
@@ -131,7 +131,7 @@
             <key>size</key>
             <string>{128,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:8eb90817e84fe62918ab94f676c5ff01:176338a6200670799d0096d7d9db6f19:2e46c50536a04ce84a02610421e1883f$</string>
+            <string>$TexturePacker:SmartUpdate:3dd122563af1d4358d1afb84efbea30a:e3529a5925ddad5573212a5005d31014:2e46c50536a04ce84a02610421e1883f$</string>
             <key>textureFileName</key>
             <string>TileBas.png</string>
         </dict>

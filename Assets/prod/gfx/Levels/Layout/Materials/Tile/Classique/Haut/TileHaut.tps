@@ -166,25 +166,19 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_01.png</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_02.png</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_03.png</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_04.png</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_05.png</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_06.png</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_09.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_10.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_11.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_12.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_13.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_14.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_17.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_18.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_19.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_20.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_21.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_22.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Plafond/tileHorizontal_Haut_23.gif</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Haut_09.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Haut_10.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Haut_11.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Haut_12.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Haut_13.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Haut_14.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Haut_17.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Haut_18.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Haut_19.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Haut_20.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Haut_21.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Haut_22.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Haut_23.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

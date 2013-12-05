@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>tileVertical_Gauche_01.gif</key>
+            <key>tileVertical_Gauche_01.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1,1},{50,100}}</string>
@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Gauche_02.gif</key>
+            <key>tileVertical_Gauche_02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{52,1},{50,100}}</string>
@@ -30,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Gauche_03.gif</key>
+            <key>tileVertical_Gauche_03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{103,1},{50,100}}</string>
@@ -43,7 +43,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Gauche_04.gif</key>
+            <key>tileVertical_Gauche_04.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{154,1},{50,100}}</string>
@@ -56,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Gauche_05.gif</key>
+            <key>tileVertical_Gauche_05.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{205,1},{50,100}}</string>
@@ -69,7 +69,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Gauche_06.gif</key>
+            <key>tileVertical_Gauche_06.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1,102},{50,25}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{50,25}</string>
             </dict>
-            <key>tileVertical_Gauche_07.gif</key>
+            <key>tileVertical_Gauche_07.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{52,102},{50,25}}</string>
@@ -105,7 +105,7 @@
             <key>size</key>
             <string>{256,128}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:b03b90b855bedbf4953b540074d33487:121027b26e31152e618c83654b9db805:9293b40bb51ac1d3590f74190d0cc112$</string>
+            <string>$TexturePacker:SmartUpdate:dd6f68d67bef6573f7d6ca02c727d90b:89e7375137d2733d22fe6f4528d7168b:9293b40bb51ac1d3590f74190d0cc112$</string>
             <key>textureFileName</key>
             <string>TileGauche.png</string>
         </dict>

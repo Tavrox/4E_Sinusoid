@@ -166,15 +166,15 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Sol/tileHorizontal_Bas_01.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Sol/tileHorizontal_Bas_02.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Sol/tileHorizontal_Bas_03.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Sol/tileHorizontal_Bas_04.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Sol/tileHorizontal_Bas_05.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Sol/tileHorizontal_Bas_06.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Sol/tileHorizontal_Bas_07.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Sol/tileHorizontal_Bas_08.gif</filename>
-            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Plateformes/Taile7 Classique/Horrizontal/Sol/tileHorizontal_Bas_09.gif</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Bas_01.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Bas_02.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Bas_03.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Bas_04.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Bas_05.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Bas_06.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Bas_07.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Bas_08.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/images/tileHorizontal_Bas_09.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

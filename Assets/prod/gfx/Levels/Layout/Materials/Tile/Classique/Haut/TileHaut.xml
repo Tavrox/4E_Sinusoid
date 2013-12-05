@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>tileHorizontal_Haut_01.png</key>
+            <key>tileHorizontal_Haut_09.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1,1},{100,50}}</string>
@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_02.png</key>
+            <key>tileHorizontal_Haut_10.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{102,1},{100,50}}</string>
@@ -30,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_03.png</key>
+            <key>tileHorizontal_Haut_11.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1,52},{100,50}}</string>
@@ -43,7 +43,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_04.png</key>
+            <key>tileHorizontal_Haut_12.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{102,52},{100,50}}</string>
@@ -56,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_05.png</key>
+            <key>tileHorizontal_Haut_13.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1,103},{100,50}}</string>
@@ -69,7 +69,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_06.png</key>
+            <key>tileHorizontal_Haut_14.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{102,103},{100,50}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_09.gif</key>
+            <key>tileHorizontal_Haut_17.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1,154},{100,50}}</string>
@@ -95,88 +95,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_10.gif</key>
+            <key>tileHorizontal_Haut_18.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{102,154},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>tileHorizontal_Haut_11.gif</key>
-            <dict>
-                <key>frame</key>
-                <string>{{1,205},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>tileHorizontal_Haut_12.gif</key>
-            <dict>
-                <key>frame</key>
-                <string>{{102,205},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>tileHorizontal_Haut_13.gif</key>
-            <dict>
-                <key>frame</key>
-                <string>{{1,256},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>tileHorizontal_Haut_14.gif</key>
-            <dict>
-                <key>frame</key>
-                <string>{{102,256},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>tileHorizontal_Haut_17.gif</key>
-            <dict>
-                <key>frame</key>
-                <string>{{1,307},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>tileHorizontal_Haut_18.gif</key>
-            <dict>
-                <key>frame</key>
-                <string>{{102,307},{25,50}}</string>
+                <string>{{102,154},{25,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -186,10 +108,10 @@
                 <key>sourceSize</key>
                 <string>{25,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_19.gif</key>
+            <key>tileHorizontal_Haut_19.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{128,307},{25,50}}</string>
+                <string>{{128,154},{25,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -199,10 +121,10 @@
                 <key>sourceSize</key>
                 <string>{25,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_20.gif</key>
+            <key>tileHorizontal_Haut_20.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{154,307},{25,50}}</string>
+                <string>{{154,154},{25,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -212,10 +134,10 @@
                 <key>sourceSize</key>
                 <string>{25,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_21.gif</key>
+            <key>tileHorizontal_Haut_21.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{180,307},{25,50}}</string>
+                <string>{{180,154},{25,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -225,10 +147,10 @@
                 <key>sourceSize</key>
                 <string>{25,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_22.gif</key>
+            <key>tileHorizontal_Haut_22.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{206,307},{25,50}}</string>
+                <string>{{206,154},{25,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -238,10 +160,10 @@
                 <key>sourceSize</key>
                 <string>{25,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_23.gif</key>
+            <key>tileHorizontal_Haut_23.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,358},{25,50}}</string>
+                <string>{{1,205},{25,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -259,9 +181,9 @@
             <key>realTextureFileName</key>
             <string>TileHaut.png</string>
             <key>size</key>
-            <string>{256,512}</string>
+            <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0a0b93b63937e7631c2b1e8adf93abe7:3f14eb1711d1d1c9d150d3cc5bb301c6:b16b97a16ad6f16f21e45ce4f2623f3e$</string>
+            <string>$TexturePacker:SmartUpdate:56786f04ba97f589b94642e54133c946:ac3813efcd3dc82f13743acd1e5da6f9:b16b97a16ad6f16f21e45ce4f2623f3e$</string>
             <key>textureFileName</key>
             <string>TileHaut.png</string>
         </dict>
