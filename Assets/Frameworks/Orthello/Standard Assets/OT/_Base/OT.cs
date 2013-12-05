@@ -1837,6 +1837,7 @@ public class OT : MonoBehaviour
     {
         for (int i = 0; i < materials.Length; i++)
         {
+			if(name.ToLower() == "transparen") name = "transparent";
             OTMatRef mref = materials[i];
             if (mref.name.ToLower() == name.ToLower())
                 return mref;

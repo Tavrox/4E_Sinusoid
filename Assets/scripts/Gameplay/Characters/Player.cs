@@ -10,11 +10,13 @@ public class Player : Character {
 	public Skills skill_axe;
 	public Skills skill_shield;
 	public OTSprite menu;
+	public float footStepDelay = 0.6f;
 	
 	[SerializeField] private Rect hp_display;
 	[SerializeField] private SoundSprite soundMan;
 	[SerializeField] private ModulatedSound mdSound;
-	private BlockThrower soundEmitt;
+	private WavesCreator soundEmitt1, soundEmitt2, soundInstru1, soundInstru2;
+	private bool blockCoroutine, first, toSprint, toWalk, specialCast;
 
 	[HideInInspector] public bool paused = false;
 	
@@ -31,7 +33,14 @@ public class Player : Character {
 
 		spawnPos = thisTransform.position;
 
-		soundEmitt = GameObject.Find("SoundWavesEmitter").GetComponent<BlockThrower>();
+		soundEmitt1 = GameObject.Find("SoundWavesEmitter1").GetComponent<WavesCreator>();
+		soundEmitt2 = GameObject.Find("SoundWavesEmitter1").GetComponent<WavesCreator>();
+		soundInstru1 = GameObject.Find("SoundWavesInstru1").GetComponent<WavesCreator>();
+		soundInstru2 = GameObject.Find("SoundWavesInstru2").GetComponent<WavesCreator>();
+		soundEmitt1.createCircle();
+		soundEmitt2.createCircle();
+		soundInstru1.createCircle();soundInstru1.specialCircle();
+		soundInstru2.createCircle();soundInstru2.specialCircle();
 	}
 	
 	// Update is called once per frame
@@ -86,23 +95,43 @@ public class Player : Character {
 		isCrounch = false;
 
 		movingDir = moving.None;
-		
-		if(Input.GetKeyDown(KeyCode.R))
-		{
-			soundEmitt.createCircle();
-		}
+
 		// keyboard input
-		if(Input.GetKey("left")) 
+		if (Input.GetKeyDown(KeyCode.R)  && !isJump && !specialCast)
+		{
+			StartCoroutine("specialCircleCast");
+		}
+		if(Input.GetKeyDown("left shift")) {
+			moveVel = 2 * moveVel;
+			footStepDelay = footStepDelay / 2;
+			toSprint=true;
+		}
+		if(Input.GetKeyUp("left shift")) {
+			moveVel = moveVel / 2;
+			footStepDelay = footStepDelay * 2;
+			toWalk=true;
+		}
+		if(!blockCoroutine) {
+			if(toSprint) {soundEmitt1.circleWalkToSprint();soundEmitt2.circleWalkToSprint();toSprint=false;}
+			else if (toWalk) {soundEmitt1.circleSprintToWalk();soundEmitt2.circleSprintToWalk();toWalk=false;}
+		}
+		if(Input.GetKey("left") && !specialCast) 
 		{ 
 			isLeft = true;
 			shootLeft = true;
 			facingDir = facing.Left;
+			if(!blockCoroutine && !isJump) StartCoroutine("footStep");
 		}
-		if (Input.GetKey("right") && isLeft == false) 
+		if((Input.GetKeyUp("left") && !specialCast) || (Input.GetKeyUp("right") && !isLeft && !specialCast)) {
+			StopCoroutine("footStep");
+			blockCoroutine = false;
+		}
+		if (Input.GetKey("right") && !isLeft && !specialCast) 
 		{ 
 			isRight = true; 
 			facingDir = facing.Right;
 			shootLeft = false;
+			if(!blockCoroutine && !isJump) StartCoroutine("footStep");
 		}
 		if (Input.GetKey(KeyCode.DownArrow))
 		{
@@ -140,5 +169,38 @@ public class Player : Character {
 				GameEventManager.TriggerGameUnpause();
 			}
 		}
+	}
+	
+	IEnumerator footStep()
+	{
+		blockCoroutine =true;
+		
+		/*if(Input.GetKeyDown("left shift")) {
+//			moveVel = 2 * moveVel;
+//			footStepDelay = footStepDelay / 2;
+			soundEmitt1.circleWalkToSprint();
+			soundEmitt2.circleWalkToSprint();
+		}
+		if(Input.GetKeyUp("left shift")) {
+//			moveVel = moveVel / 2;
+//			footStepDelay = footStepDelay * 2;
+			soundEmitt1.circleSprintToWalk();
+			soundEmitt2.circleSprintToWalk();
+		}*/
+		if(first) {first=!first;soundEmitt1.resetCircle();}
+		else {first=!first;soundEmitt2.resetCircle();}
+		yield return new WaitForSeconds(footStepDelay);
+
+		blockCoroutine = false;
+	}
+	IEnumerator specialCircleCast()
+	{
+		specialCast = true;
+		yield return new WaitForSeconds(1f);
+		
+		if(first) {first=!first;soundInstru1.resetCircle();}
+		else {first=!first;soundInstru2.resetCircle();}
+		//yield return new WaitForSeconds(soundInstru1.getLifeTime());
+		specialCast = false;
 	}
 }
