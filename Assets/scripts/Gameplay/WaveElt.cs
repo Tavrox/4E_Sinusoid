@@ -112,7 +112,7 @@ public class WaveElt : MonoBehaviour {
 	void updateWaveElt() {
 		float offset = 0f;
 		if(!specialCircle) offset = player.vectorFixed.x;
-		vectorDir.x = (getCosX() * Time.deltaTime * speedSound)+offset;
+		vectorDir.x = (getCosX() * Time.deltaTime * speedSound)+offset/2;
 		vectorDir.y = getSinX() * Time.deltaTime * speedSound;
 		myTransform.position += new Vector3(vectorDir.x,vectorDir.y,0f);
 		instanceProj.transform.position = new Vector3(myTransform.position.x,myTransform.position.y,-15f);
