@@ -54,7 +54,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>0</uint>
+        <uint>5</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -64,7 +64,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-        <uint>0</uint>
+        <uint>5</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -166,95 +166,91 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_BDroite_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_BDroite_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_BDroite_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_BDroite_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_BDroite_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_BDroite_05-55.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_BDroite_06.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_BDroite_07.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_BGauche_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_BGauche_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_BGauche_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_BGauche_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_BGauche_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_HDroite_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_HDroite_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_HDroite_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_HDroite_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_HDroite_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_HGauche_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_HGauche_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_HGauche_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_HGauche_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_HGauche_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Angle/tileAngle_HGauche_05-35.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_06.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_07.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_08.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_09.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_10.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_11.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_12.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_13.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_14.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_15.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_16.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_17.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_18.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_19.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_20.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_21.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_22.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Plafond/tileHorizontal_Haut_23.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Sol/tileHorizontal_Bas_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Sol/tileHorizontal_Bas_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Sol/tileHorizontal_Bas_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Sol/tileHorizontal_Bas_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Sol/tileHorizontal_Bas_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Sol/tileHorizontal_Bas_06.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Sol/tileHorizontal_Bas_07.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Sol/tileHorizontal_Bas_08.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Horrizontal/Sol/tileHorizontal_Bas_09.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Intermédiaire/Aura_Intermed_Bas.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Intermédiaire/Aura_Intermed_Droite.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Intermédiaire/Aura_Intermed_gauche.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Intermédiaire/Aura_Intermed_Haut.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Lien/tileLien_BGauche_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Lien/tileLien_HDroit_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Lien/tileLien_HDroit_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Lien/tileLien_HDroit_02-56.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Lien/tileLien_HDroit_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Lien/tileLien_HDroit_03-69.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Lien/tileLien_HDroit_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Lien/tileLien_HDroit_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Lien/tileLien_HGauche_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Lien/tileLien_HGauche_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Lien/tileLien_HGauche_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Lien/tileLien_HGauche_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Lien/tileLien_HGauche_04-80.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Lien/tileLien_HGauche_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Verticale/MurDroite/tileVertical_Droite_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Verticale/MurDroite/tileVertical_Droite_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Verticale/MurDroite/tileVertical_Droite_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Verticale/MurDroite/tileVertical_Droite_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Verticale/MurDroite/tileVertical_Droite_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Verticale/MurDroite/tileVertical_Droite_06.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Verticale/MurDroite/tileVertical_Droite_07.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Verticale/MurDroite/tileVertical_Droite_08.gif</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Verticale/MurGauche/tileVertical_Gauche_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Verticale/MurGauche/tileVertical_Gauche_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Verticale/MurGauche/tileVertical_Gauche_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Verticale/MurGauche/tileVertical_Gauche_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Verticale/MurGauche/tileVertical_Gauche_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Verticale/MurGauche/tileVertical_Gauche_06.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Verticale/MurGauche/tileVertical_Gauche_07.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_BDroite_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_BDroite_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_BDroite_03.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_BDroite_04.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_BDroite_05.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_BDroite_05-55.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_BDroite_06.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_BDroite_07.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_BGauche_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_BGauche_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_BGauche_03.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_BGauche_04.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_BGauche_05.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_HDroite_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_HDroite_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_HDroite_03.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_HDroite_04.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_HDroite_05.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_HGauche_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_HGauche_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_HGauche_03.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_HGauche_04.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_HGauche_05.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileAngle_HGauche_05-35.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Bas_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Bas_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Bas_03.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Bas_04.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Bas_05.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Bas_06.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Bas_07.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Bas_08.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Bas_09.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_03.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_04.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_05.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_06.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_07.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_08.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_09.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_10.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_11.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_12.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_13.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_14.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_15.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_16.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_17.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_18.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_19.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_20.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_21.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_22.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileHorizontal_Haut_23.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileLien_BGauche_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileLien_HDroit_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileLien_HDroit_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileLien_HDroit_02-56.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileLien_HDroit_03.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileLien_HDroit_03-69.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileLien_HDroit_04.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileLien_HDroit_05.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileLien_HGauche_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileLien_HGauche_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileLien_HGauche_03.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileLien_HGauche_04.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileLien_HGauche_04-80.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileLien_HGauche_05.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileVertical_Droite_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileVertical_Droite_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileVertical_Droite_03.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileVertical_Droite_04.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileVertical_Droite_05.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileVertical_Droite_06.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileVertical_Droite_07.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileVertical_Droite_08.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileVertical_Gauche_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileVertical_Gauche_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileVertical_Gauche_03.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileVertical_Gauche_04.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileVertical_Gauche_05.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileVertical_Gauche_06.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/images/tileVertical_Gauche_07.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
