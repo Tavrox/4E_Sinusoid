@@ -10,16 +10,16 @@ public class WaveElt : MonoBehaviour {
 	private Player player;
 	private Projector instanceProj;
 	private GameObject toDestroy;
-	private bool extendProj, lightened, rotated, reducingAlpha, ligthOffing;
+	private bool extendProj, lightened, rotated, reducingAlpha, ligthOffing, specialCircle;
 	private Material myProjMaterial;
-	private int speedSoundIni;
+	private float speedSoundIni;
 	
 	//public Projector prefabProj;
-	public int numberOfAlphaStates = 3;
+	public float numberOfAlphaStates = 3;
 	[Range(0.1f, 100)] public float lifeTime = 0.6f;
-	[Range(1, 100)] public int speedSound = 3;
-	public int projDiameterIni = 3;
-	[Range(1, 10)] public int enlargeDiameterSpeed = 2;
+	[Range(0.01f, 100)] public float speedSound = 3f;
+	public float projDiameterIni = 3f;
+	[Range(0.01f, 10)] public float enlargeDiameterSpeed = 2;
 	public float diameterMultiplier = 0f, fadeSpeed = 50f;
 	[Range(0.01f, 100)] public float enlargeRatioSpeed = 0.07f;
 	public float maximumRatio = 5f;
@@ -33,19 +33,19 @@ public class WaveElt : MonoBehaviour {
 		StartCoroutine("reduceAlpha");
 		
 		
-		setPosition(new Vector3(player.transform.position.x, (player.transform.position.y/*-player.transform.localScale.y/2*/), player.transform.position.z));
+		setPosition(new Vector3(player.transform.position.x, (player.transform.position.y-player.transform.localScale.y/2), player.transform.position.z));
 		instanceProj = this.GetComponent<Projector>();//Instantiate(prefabProj) as Projector;
 		instanceProj.fieldOfView=projDiameterIni;
 		myProjMaterial = new Material(instanceProj.material);
 		instanceProj.material = myProjMaterial;
 		_myProjAspectRatioIni = instanceProj.aspectRatio;
 		
-		//_initialAlpha = this.GetComponentInChildren<OTSprite>().alpha;
+		_initialAlpha = 0.6f;
 		_initialAlphaProj = new Color (0f,0f,0f,myProjMaterial.color.a);
 		speedSoundIni = speedSound;
 		lifeTimeIni = lifeTime;
 		
-		//this.GetComponentInChildren<OTSprite>().alpha = 0f;
+		this.GetComponentInChildren<OTSprite>().alpha = 0f;
 		myProjMaterial.color = new Color (0f,0f,0f,0f);
 		//instanceProj.transform.Rotate(new Vector3(0f,0f,90f));
 		//instanceProj.aspectRatio=1;
@@ -70,22 +70,16 @@ public class WaveElt : MonoBehaviour {
 		Debug.DrawRay(myTransform.position, Vector3.right*0.5f);
 		Debug.DrawRay(myTransform.position, Vector3.up*0.5f);
 		Debug.DrawRay(myTransform.position, Vector3.down*0.5f);
-		
-		//		if (!rotated && ((Physics.Raycast(detectBlockLeft, out hitInfo, 0.5f)) || (Physics.Raycast(detectBlockRight, out hitInfo, 0.5f)))) {
-		//			if(hitInfo.collider.tag == "soundStopper") {
-		//			instanceProj.transform.Rotate(new Vector3(0f,0f,90f));
-		//			rotated = true;
-		//			}
-		//		}
+
 	}
 	
 	IEnumerator reduceAlpha()
 	{
 		reducingAlpha =true;
 		//		print ("----beginREDUCEALPHA");
-		yield return new WaitForSeconds(lifeTime/numberOfAlphaStates);
-		//this.GetComponentInChildren<OTSprite>().alpha -= (float) 1/numberOfAlphaStates;
-		myProjMaterial.color = new Color (0f,0f,0f,myProjMaterial.color.a-((float) 1/numberOfAlphaStates));
+		yield return new WaitForSeconds((float) lifeTime/numberOfAlphaStates);
+		this.GetComponentInChildren<OTSprite>().alpha -= (float) 1/numberOfAlphaStates;
+		myProjMaterial.color = new Color (0f,0f,0f,myProjMaterial.color.a-((float) 1f/numberOfAlphaStates));
 		//		print ("endREDUCEALPHA-----");
 		StartCoroutine("reduceAlpha");
 		reducingAlpha = false;
@@ -93,7 +87,7 @@ public class WaveElt : MonoBehaviour {
 	public void endLife () {
 		StopCoroutine("reduceAlpha");
 		reducingAlpha = false;
-		//this.GetComponentInChildren<OTSprite>().alpha = 0f;
+		this.GetComponentInChildren<OTSprite>().alpha = 0f;
 		myProjMaterial.color = new Color (0f,0f,0f,0f);
 		//enabled = false;
 		//Destroy(instanceProj.gameObject);
@@ -102,11 +96,11 @@ public class WaveElt : MonoBehaviour {
 	public void startLife () {
 		enabled = true;
 		lightened = false;
-		if(player.isLeft) waveXOffset = -player.transform.localScale.x;
-		else waveXOffset = player.transform.localScale.x;
-		myTransform.position = new Vector3((player.transform.position.x+waveXOffset),player.transform.position.y,0f);
-		instanceProj.transform.position = new Vector3((player.transform.position.x+waveXOffset),player.transform.position.y,-15f);
-		//this.GetComponentInChildren<OTSprite>().alpha = _initialAlpha;
+		/*if(player.isLeft) waveXOffset = -player.transform.localScale.x/2;
+		else waveXOffset = player.transform.localScale.x/2;*/
+		myTransform.position = new Vector3((player.transform.position.x),player.transform.position.y,0f);
+		instanceProj.transform.position = new Vector3((player.transform.position.x/*+waveXOffset*/),(player.transform.position.y+player.transform.localScale.y/2),-15f);
+		this.GetComponentInChildren<OTSprite>().alpha = _initialAlpha;
 		myProjMaterial.color = _initialAlphaProj;
 		instanceProj.aspectRatio = _myProjAspectRatioIni;
 		instanceProj.fieldOfView = projDiameterIni;
@@ -116,7 +110,9 @@ public class WaveElt : MonoBehaviour {
 		if(!reducingAlpha) StartCoroutine("reduceAlpha");
 	}
 	void updateWaveElt() {
-		vectorDir.x = getCosX() * Time.deltaTime * speedSound;
+		float offset = 0f;
+		if(!specialCircle) offset = player.vectorFixed.x;
+		vectorDir.x = (getCosX() * Time.deltaTime * speedSound)+offset;
 		vectorDir.y = getSinX() * Time.deltaTime * speedSound;
 		myTransform.position += new Vector3(vectorDir.x,vectorDir.y,0f);
 		instanceProj.transform.position = new Vector3(myTransform.position.x,myTransform.position.y,-15f);
@@ -126,6 +122,7 @@ public class WaveElt : MonoBehaviour {
 		//print ("ça stoppe ?!");
 		_cos = 0;
 		_sin = 0;
+		this.GetComponentInChildren<OTSprite>().alpha = 0f;
 		extendProj = true;
 	}
 	IEnumerator lightsOff() {
@@ -141,7 +138,7 @@ public class WaveElt : MonoBehaviour {
 		else {
 			//instanceProj.aspectRatio-=0.05f;
 			//if(instanceProj.aspectRatio < 0f) endLife();
-			myProjMaterial.color = new Color (0f,0f,0f,myProjMaterial.color.a-(1/fadeSpeed));
+			myProjMaterial.color = new Color (0f,0f,0f,myProjMaterial.color.a-(1f/fadeSpeed));
 			//instanceProj.material.color = new Color (0f,0f,0f,instanceProj.material.color.a-0.005f);
 		}
 		if(myProjMaterial.color.a <= 0) {extendProj = false;ligthOffing=false;StopCoroutine("lightsOff");endLife();}
@@ -168,6 +165,13 @@ public class WaveElt : MonoBehaviour {
 	void OnTriggerEnter(Collider other) {
 		if(other.gameObject.CompareTag("soundStopper"))//if(other.gameObject.name == "Tiles")
 		{//print("BWAAAAAA");
+			
+			if (!rotated && ((Physics.Raycast(detectBlockLeft, out hitInfo, 0.5f)) || (Physics.Raycast(detectBlockRight, out hitInfo, 0.5f)))) {
+				if(hitInfo.collider.tag == "soundStopper") {
+					instanceProj.transform.Rotate(new Vector3(0f,0f,90f));
+					rotated = true;
+				}
+			}
 			stopWaveElt();
 		}
 	}
@@ -182,12 +186,13 @@ public class WaveElt : MonoBehaviour {
 	public void setSpecial () {
 		numberOfAlphaStates = 6;
 		lifeTime = lifeTimeIni = 8f;
-		speedSound = speedSoundIni = 8;
-		projDiameterIni = 14;
-		enlargeDiameterSpeed = 1;
+		speedSound = speedSoundIni = 8f;
+		projDiameterIni = 14f;
+		enlargeDiameterSpeed = 1f;
 		diameterMultiplier = 2f;
 		fadeSpeed = 500f;
 		enlargeRatioSpeed = 0.4f;
 		maximumRatio = 2f;
+		specialCircle = true;
 	}
 }

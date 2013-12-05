@@ -97,6 +97,14 @@ public class Player : Character {
 		movingDir = moving.None;
 
 		// keyboard input
+		if (Input.GetKeyDown(KeyCode.Y))
+		{
+			soundInstru2.destroyCircle();
+		}
+		if (Input.GetKeyDown(KeyCode.T))
+		{
+			soundInstru1.destroyCircle();
+		}
 		if (Input.GetKeyDown(KeyCode.R)  && !isJump && !specialCast)
 		{
 			StartCoroutine("specialCircleCast");

@@ -50,6 +50,12 @@ public class WavesCreator : MonoBehaviour {
 			light.startLife();
 		}
 	}
+	public void destroyCircle () {
+		foreach (WaveElt light in lights) {
+			Destroy(light.gameObject);
+		}
+		Destroy(gameObject);
+	}
 	
 	public void circleWalkToSprint () {
 		foreach (WaveElt light in lights) {
