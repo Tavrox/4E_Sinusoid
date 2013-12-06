@@ -251,6 +251,14 @@
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileVertical_Gauche_05.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileVertical_Gauche_06.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileVertical_Gauche_07.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Bas_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Bas_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Droite_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Droite_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Gauche_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Gauche_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Haut_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Haut_02.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
