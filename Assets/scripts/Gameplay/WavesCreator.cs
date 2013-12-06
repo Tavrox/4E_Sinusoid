@@ -70,4 +70,7 @@ public class WavesCreator : MonoBehaviour {
 	public float getLifeTime() {
 		return lights[0].lifeTime;
 	}
+	public float getAlpha() {
+		return lights[0].getAlpha();
+	}
 }

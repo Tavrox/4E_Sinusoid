@@ -15,7 +15,8 @@ public class Player : Character {
 	[SerializeField] private Rect hp_display;
 	[SerializeField] private SoundSprite soundMan;
 	[SerializeField] private ModulatedSound mdSound;
-	private WavesCreator soundEmitt1, soundEmitt2, soundInstru1, soundInstru2;
+	private WavesCreator soundEmitt1, soundEmitt2, soundInstru1, soundInstru2,soundEmitt3;
+	private int cptWave=1;
 	private bool blockCoroutine, first, toSprint, toWalk, specialCast;
 
 	[HideInInspector] public bool paused = false;
@@ -35,10 +36,12 @@ public class Player : Character {
 
 		soundEmitt1 = GameObject.Find("SoundWavesEmitter1").GetComponent<WavesCreator>();
 		soundEmitt2 = GameObject.Find("SoundWavesEmitter2").GetComponent<WavesCreator>();
+		soundEmitt3 = GameObject.Find("SoundWavesEmitter3").GetComponent<WavesCreator>();
 		soundInstru1 = GameObject.Find("SoundWavesInstru1").GetComponent<WavesCreator>();
 		soundInstru2 = GameObject.Find("SoundWavesInstru2").GetComponent<WavesCreator>();
 		soundEmitt1.createCircle();
 		soundEmitt2.createCircle();
+		soundEmitt3.createCircle();
 		soundInstru1.createCircle();soundInstru1.specialCircle();
 		soundInstru2.createCircle();soundInstru2.specialCircle();
 	}
@@ -120,8 +123,18 @@ public class Player : Character {
 			toWalk=true;
 		}
 		if(!blockCoroutine) {
-			if(toSprint) {soundEmitt1.circleWalkToSprint();soundEmitt2.circleWalkToSprint();toSprint=false;}
-			else if (toWalk) {soundEmitt1.circleSprintToWalk();soundEmitt2.circleSprintToWalk();toWalk=false;}
+			if(toSprint) 		{
+				if(soundEmitt1.getAlpha() <= 0f) soundEmitt1.circleWalkToSprint();
+				if(soundEmitt2.getAlpha() <= 0f) soundEmitt2.circleWalkToSprint();
+				if(soundEmitt3.getAlpha() <= 0f) soundEmitt3.circleWalkToSprint();
+				toSprint=false;
+			}
+			else if (toWalk) {
+				if(soundEmitt1.getAlpha() <= 0f) soundEmitt1.circleSprintToWalk();
+				if(soundEmitt1.getAlpha() <= 0f) soundEmitt2.circleSprintToWalk();
+				if(soundEmitt1.getAlpha() <= 0f) soundEmitt3.circleSprintToWalk();
+				toWalk=false;
+			}
 		}
 		if(Input.GetKey("left") && !specialCast) 
 		{ 
@@ -195,8 +208,9 @@ public class Player : Character {
 			soundEmitt1.circleSprintToWalk();
 			soundEmitt2.circleSprintToWalk();
 		}*/
-		if(first) {first=!first;soundEmitt1.resetCircle();}
-		else {first=!first;soundEmitt2.resetCircle();}
+		if(cptWave == 1) {cptWave++;soundEmitt1.resetCircle();}
+		else if (cptWave == 2) {cptWave++;soundEmitt2.resetCircle();}
+		else {cptWave=1;soundEmitt3.resetCircle();}
 		yield return new WaitForSeconds(footStepDelay);
 
 		blockCoroutine = false;

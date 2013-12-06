@@ -87,6 +87,8 @@ public class WaveElt : MonoBehaviour {
 	public void endLife () {
 		StopCoroutine("reduceAlpha");
 		reducingAlpha = false;
+//		myTransform.position = new Vector3(-100f,-100f,0f);
+//		instanceProj.transform.position = new Vector3(-100f,-100f,-15f);
 		this.GetComponentInChildren<OTSprite>().alpha = 0f;
 		myProjMaterial.color = new Color (0f,0f,0f,0f);
 		//enabled = false;
@@ -131,7 +133,7 @@ public class WaveElt : MonoBehaviour {
 		yield return new WaitForSeconds(0.1f);
 		//print(instanceProj.aspectRatio);
 		if(!lightened) {
-			if(instanceProj.aspectRatio <= maximumRatio) instanceProj.aspectRatio+=1f/enlargeRatioSpeed;
+			if(instanceProj.aspectRatio <= maximumRatio) instanceProj.aspectRatio+=enlargeRatioSpeed;
 			if(instanceProj.fieldOfView <= projDiameterIni*diameterMultiplier) instanceProj.fieldOfView+=enlargeDiameterSpeed;
 			else if (instanceProj.fieldOfView > projDiameterIni*diameterMultiplier && instanceProj.aspectRatio > maximumRatio) lightened = true;
 		}
@@ -161,17 +163,29 @@ public class WaveElt : MonoBehaviour {
 	public float getSinX() {
 		return _sin;
 	}
+	public float getAlpha() {
+		return myProjMaterial.color.a;
+	}
 	
 	void OnTriggerEnter(Collider other) {
 		if(other.gameObject.CompareTag("soundStopper"))//if(other.gameObject.name == "Tiles")
-		{//print("BWAAAAAA");
+		{
+			//print("BWAAAAAA");
 			
-			if (!rotated && ((Physics.Raycast(detectBlockLeft, out hitInfo, 0.5f)) || (Physics.Raycast(detectBlockRight, out hitInfo, 0.5f)))) {
-				if(hitInfo.collider.tag == "soundStopper") {
-					instanceProj.transform.Rotate(new Vector3(0f,0f,90f));
-					rotated = true;
-				}
-			}
+//			if (!rotated && Physics.Raycast(detectBlockLeft, out hitInfo, 0.5f)) {
+//				if(hitInfo.collider.tag == "soundStopper") {
+//					print("ROTATIOOOOOON LEEEFT");
+//					instanceProj.transform.Rotate(new Vector3(0f,0f,90f));
+//					rotated = true;
+//				}
+//			}
+//			if (!rotated && Physics.Raycast(detectBlockRight, out hitInfo, 0.5f)) {
+//				if(hitInfo.collider.tag == "soundStopper") {
+//					print("ROTATIOOOOOON RIIIGHT");
+//					instanceProj.transform.Rotate(new Vector3(0f,0f,45f));
+//					rotated = true;
+//				}
+//			}
 			stopWaveElt();
 		}
 	}
