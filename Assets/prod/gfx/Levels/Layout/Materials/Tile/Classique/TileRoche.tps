@@ -166,6 +166,8 @@
         </struct>
         <key>fileList</key>
         <array>
+            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Gauche_06.png</filename>
+            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Gauche_07.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BDroite_01.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BDroite_02.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BDroite_03.png</filename>
@@ -227,13 +229,14 @@
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HDroit_02.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HDroit_02-57.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HDroit_03.png</filename>
+            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HDroit_03-70.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HDroit_04.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HDroit_05.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HGauche_01.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HGauche_02.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HGauche_03.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HGauche_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HGauche_04-80.png</filename>
+            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HGauche_04-81.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HGauche_05.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Droite_01.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Droite_02.png</filename>
@@ -248,8 +251,6 @@
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Gauche_03.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Gauche_04.png</filename>
             <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Gauche_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Gauche_06.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Gauche_07.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
