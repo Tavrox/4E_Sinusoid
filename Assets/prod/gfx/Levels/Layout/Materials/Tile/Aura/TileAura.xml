@@ -56,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{50,125}</string>
             </dict>
-            <key>tileAngle_BDroite_05-55.png</key>
+            <key>tileAngle_BDroite_05-57.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{225,5},{50,50}}</string>
@@ -290,7 +290,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_HGauche_05-35.png</key>
+            <key>tileAngle_HGauche_05-37.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{225,191},{50,50}}</string>
@@ -758,7 +758,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileLien_HDroit_02-56.png</key>
+            <key>tileLien_HDroit_02-58.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{400,521},{50,50}}</string>
@@ -784,7 +784,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileLien_HDroit_03-69.png</key>
+            <key>tileLien_HDroit_03-71.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{5,576},{50,50}}</string>
@@ -875,7 +875,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileLien_HGauche_04-80.png</key>
+            <key>tileLien_HGauche_04-82.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{390,576},{50,50}}</string>
@@ -1119,7 +1119,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:6b09f084af25eef17b182562c06e3924:43db35faac7444ef098dc06a35a5367e:ac652c4db68c3e4ea17496d6fe4e72cb$</string>
+            <string>$TexturePacker:SmartUpdate:1e5c97c5bea757f822e561fb461f215c:d360b5e1535cb3dda81be093102d36b4:ac652c4db68c3e4ea17496d6fe4e72cb$</string>
             <key>textureFileName</key>
             <string>TileAura.png</string>
         </dict>
