@@ -166,12 +166,20 @@
         </struct>
         <key>fileList</key>
         <array>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Bas_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Bas_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Droite_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Droite_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Gauche_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Gauche_02.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Haut_01.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Haut_02.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_BDroite_01.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_BDroite_02.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_BDroite_03.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_BDroite_04.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_BDroite_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_BDroite_05-57.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_BDroite_05-55.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_BDroite_06.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_BDroite_07.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_BGauche_01.png</filename>
@@ -185,11 +193,10 @@
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_HDroite_04.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_HDroite_05.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_HGauche_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_HGauche_02.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_HGauche_03.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_HGauche_04.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_HGauche_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_HGauche_05-37.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileAngle_HGauche_05-36.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileHorizontal_Bas_01.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileHorizontal_Bas_02.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileHorizontal_Bas_03.png</filename>
@@ -225,16 +232,16 @@
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_BGauche_01.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HDroit_01.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HDroit_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HDroit_02-58.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HDroit_02-56.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HDroit_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HDroit_03-71.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HDroit_03-69.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HDroit_04.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HDroit_05.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HGauche_01.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HGauche_02.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HGauche_03.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HGauche_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HGauche_04-82.png</filename>
+            <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HGauche_04-80.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileLien_HGauche_05.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileVertical_Droite_01.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileVertical_Droite_02.png</filename>
@@ -251,14 +258,6 @@
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileVertical_Gauche_05.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileVertical_Gauche_06.png</filename>
             <filename>../../../Photophop/Plateformes/Aura/Ensemble/tileVertical_Gauche_07.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Bas_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Bas_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Droite_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Droite_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Gauche_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Gauche_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Haut_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Aura/Ensemble/Aura_Intermed_Haut_02.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

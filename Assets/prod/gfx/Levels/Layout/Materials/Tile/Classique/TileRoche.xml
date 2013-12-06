@@ -784,7 +784,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileLien_HDroit_03.png</key>
+            <key>tileLien_HDroit_03-70.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{5,576},{50,50}}</string>
@@ -797,7 +797,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileLien_HDroit_04.png</key>
+            <key>tileLien_HDroit_03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{60,576},{50,50}}</string>
@@ -810,7 +810,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileLien_HDroit_05.png</key>
+            <key>tileLien_HDroit_04.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{115,576},{50,50}}</string>
@@ -823,7 +823,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileLien_HGauche_01.png</key>
+            <key>tileLien_HDroit_05.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{170,576},{50,50}}</string>
@@ -836,7 +836,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileLien_HGauche_02.png</key>
+            <key>tileLien_HGauche_01.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{225,576},{50,50}}</string>
@@ -849,7 +849,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileLien_HGauche_03.png</key>
+            <key>tileLien_HGauche_02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{280,576},{50,50}}</string>
@@ -862,7 +862,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileLien_HGauche_04-80.png</key>
+            <key>tileLien_HGauche_03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{335,576},{50,50}}</string>
@@ -875,7 +875,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileLien_HGauche_04.png</key>
+            <key>tileLien_HGauche_04-81.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{390,576},{50,50}}</string>
@@ -888,7 +888,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileLien_HGauche_05.png</key>
+            <key>tileLien_HGauche_04.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{445,576},{50,50}}</string>
@@ -901,20 +901,20 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileVertical_Droite_01.png</key>
+            <key>tileLien_HGauche_05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{5,631},{50,100}}</string>
+                <string>{{5,631},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
+                <string>{{0,0},{50,50}}</string>
                 <key>sourceSize</key>
-                <string>{50,100}</string>
+                <string>{50,50}</string>
             </dict>
-            <key>tileVertical_Droite_02.png</key>
+            <key>tileVertical_Droite_01.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{60,631},{50,100}}</string>
@@ -927,7 +927,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Droite_03.png</key>
+            <key>tileVertical_Droite_02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{115,631},{50,100}}</string>
@@ -940,7 +940,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Droite_04.png</key>
+            <key>tileVertical_Droite_03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{170,631},{50,100}}</string>
@@ -953,7 +953,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Droite_05.png</key>
+            <key>tileVertical_Droite_04.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{225,631},{50,100}}</string>
@@ -966,20 +966,20 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Droite_06.png</key>
+            <key>tileVertical_Droite_05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{280,631},{50,25}}</string>
+                <string>{{280,631},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,25}}</string>
+                <string>{{0,0},{50,100}}</string>
                 <key>sourceSize</key>
-                <string>{50,25}</string>
+                <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Droite_07.png</key>
+            <key>tileVertical_Droite_06.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{335,631},{50,25}}</string>
@@ -992,7 +992,7 @@
                 <key>sourceSize</key>
                 <string>{50,25}</string>
             </dict>
-            <key>tileVertical_Droite_08.png</key>
+            <key>tileVertical_Droite_07.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{390,631},{50,25}}</string>
@@ -1005,20 +1005,20 @@
                 <key>sourceSize</key>
                 <string>{50,25}</string>
             </dict>
-            <key>tileVertical_Gauche_01.png</key>
+            <key>tileVertical_Droite_08.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{445,631},{50,100}}</string>
+                <string>{{445,631},{50,25}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
+                <string>{{0,0},{50,25}}</string>
                 <key>sourceSize</key>
-                <string>{50,100}</string>
+                <string>{50,25}</string>
             </dict>
-            <key>tileVertical_Gauche_02.png</key>
+            <key>tileVertical_Gauche_01.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{5,736},{50,100}}</string>
@@ -1031,7 +1031,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Gauche_03.png</key>
+            <key>tileVertical_Gauche_02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{60,736},{50,100}}</string>
@@ -1044,7 +1044,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Gauche_04.png</key>
+            <key>tileVertical_Gauche_03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{115,736},{50,100}}</string>
@@ -1057,7 +1057,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Gauche_05.png</key>
+            <key>tileVertical_Gauche_04.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{170,736},{50,100}}</string>
@@ -1070,10 +1070,23 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
+            <key>tileVertical_Gauche_05.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{225,736},{50,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,100}}</string>
+                <key>sourceSize</key>
+                <string>{50,100}</string>
+            </dict>
             <key>tileVertical_Gauche_06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{225,736},{50,25}}</string>
+                <string>{{280,736},{50,25}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -1086,7 +1099,7 @@
             <key>tileVertical_Gauche_07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{280,736},{50,25}}</string>
+                <string>{{335,736},{50,25}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -1106,7 +1119,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:38781ba60d19b68fc659fbf65d23e860:6a80500ff6ad0a3aa9225cf42ed464a0:fb5c248bbaca7257fdd145425496b1fb$</string>
+            <string>$TexturePacker:SmartUpdate:df7db9ac9dd09db9f21de16f71d30465:8e3ee224c0dede6eb4f8044159bc21e3:fb5c248bbaca7257fdd145425496b1fb$</string>
             <key>textureFileName</key>
             <string>TileRoche.png</string>
         </dict>
