@@ -98,11 +98,12 @@ public class WaveElt : MonoBehaviour {
 	public void startLife () {
 		enabled = true;
 		lightened = false;
-		/*if(player.isLeft) waveXOffset = -player.transform.localScale.x/2;
-		else waveXOffset = player.transform.localScale.x/2;*/
+		if(player.isLeft) waveXOffset = -player.transform.localScale.x/2;
+		else waveXOffset = player.transform.localScale.x/2;
 		myTransform.position = new Vector3((player.transform.position.x),player.transform.position.y,0f);
-		instanceProj.transform.position = new Vector3((player.transform.position.x/*+waveXOffset*/),(player.transform.position.y+player.transform.localScale.y/2),-15f);
+		instanceProj.transform.position = new Vector3((player.transform.position.x+waveXOffset),(player.transform.position.y-player.transform.localScale.y/2.3f),-15f);
 		this.GetComponentInChildren<OTSprite>().alpha = _initialAlpha;
+		//myProjMaterial.color = new Color (0f,0f,0f,0.001f);
 		myProjMaterial.color = _initialAlphaProj;
 		instanceProj.aspectRatio = _myProjAspectRatioIni;
 		instanceProj.fieldOfView = projDiameterIni;
@@ -112,9 +113,10 @@ public class WaveElt : MonoBehaviour {
 		if(!reducingAlpha) StartCoroutine("reduceAlpha");
 	}
 	void updateWaveElt() {
+		//if(myProjMaterial.color.a < _initialAlphaProj.a) myProjMaterial.color = new Color (0f,0f,0f,myProjMaterial.color.a+0.15f);
 		float offset = 0f;
 		if(!specialCircle) offset = player.vectorFixed.x;
-		vectorDir.x = (getCosX() * Time.deltaTime * speedSound)+offset/2;
+		vectorDir.x = (getCosX() * Time.deltaTime * speedSound)+offset/1.5f;
 		vectorDir.y = getSinX() * Time.deltaTime * speedSound;
 		myTransform.position += new Vector3(vectorDir.x,vectorDir.y,0f);
 		instanceProj.transform.position = new Vector3(myTransform.position.x,myTransform.position.y,-15f);
@@ -187,6 +189,13 @@ public class WaveElt : MonoBehaviour {
 //				}
 //			}
 			stopWaveElt();
+		}
+		if(other.gameObject.CompareTag("soundKiller"))//if(other.gameObject.name == "Tiles")
+		{
+			_cos = 0;
+			_sin = 0;
+			this.GetComponentInChildren<OTSprite>().alpha = 0f;
+			endLife();
 		}
 	}
 	public void setWalkState () {

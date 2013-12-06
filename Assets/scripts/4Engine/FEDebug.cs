@@ -17,7 +17,7 @@ public class FEDebug : MonoBehaviour {
 	void OnGUI()
 	{
 		// Object 1 //		
-		objToDebug.moveVel = GUI.HorizontalSlider (new Rect (25, 25, 100, 30), objToDebug.moveVel, 0f, 10f);
+		//objToDebug.moveVel = GUI.HorizontalSlider (new Rect (25, 25, 100, 30), objToDebug.moveVel, 0f, 10f);
 
 		// Object 2 //
 

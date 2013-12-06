@@ -108,18 +108,18 @@ public class Player : Character {
 		{
 			soundInstru1.destroyCircle();
 		}
-		if (Input.GetKeyDown(KeyCode.R)  && !isJump && !specialCast)
+		if (Input.GetKeyDown(KeyCode.R)  && grounded && !specialCast)
 		{
 			StartCoroutine("specialCircleCast");
 		}
 		if(Input.GetKeyDown("left shift")) {
-			moveVel = 2 * moveVel;
-			footStepDelay = footStepDelay / 2;
+			moveVel = 1.75f * moveVel;
+			footStepDelay = footStepDelay / 2f;
 			toSprint=true;
 		}
 		if(Input.GetKeyUp("left shift")) {
-			moveVel = moveVel / 2;
-			footStepDelay = footStepDelay * 2;
+			moveVel = moveVel / 1.75f;
+			footStepDelay = footStepDelay * 2f;
 			toWalk=true;
 		}
 		if(!blockCoroutine) {
@@ -141,7 +141,7 @@ public class Player : Character {
 			isLeft = true;
 			shootLeft = true;
 			facingDir = facing.Left;
-			if(!blockCoroutine && !isJump) StartCoroutine("footStep");
+			if(!blockCoroutine && grounded) StartCoroutine("footStep");
 		}
 		if((Input.GetKeyUp("left") && !specialCast) || (Input.GetKeyUp("right") && !isLeft && !specialCast)) {
 			StopCoroutine("footStep");
@@ -152,7 +152,7 @@ public class Player : Character {
 			isRight = true; 
 			facingDir = facing.Right;
 			shootLeft = false;
-			if(!blockCoroutine && !isJump) StartCoroutine("footStep");
+			if(!blockCoroutine && grounded) StartCoroutine("footStep");
 		}
 		if (Input.GetKey(KeyCode.DownArrow))
 		{
@@ -208,9 +208,10 @@ public class Player : Character {
 			soundEmitt1.circleSprintToWalk();
 			soundEmitt2.circleSprintToWalk();
 		}*/
+
 		if(cptWave == 1) {cptWave++;soundEmitt1.resetCircle();}
 		else if (cptWave == 2) {cptWave++;soundEmitt2.resetCircle();}
-		else {cptWave=1;soundEmitt3.resetCircle();}
+		else if (cptWave == 3) {cptWave=1;soundEmitt3.resetCircle();}
 		yield return new WaitForSeconds(footStepDelay);
 
 		blockCoroutine = false;
