@@ -115,14 +115,18 @@ public class Player : Character {
 		if(Input.GetKeyDown("left shift")) {
 			moveVel = 1.75f * moveVel;
 			footStepDelay = footStepDelay / 2f;
-			toSprint=true;
 		}
 		if(Input.GetKeyUp("left shift")) {
 			moveVel = moveVel / 1.75f;
 			footStepDelay = footStepDelay * 2f;
+		}
+		if(Input.GetKey("left shift")) {
+			toSprint=true;
+		}
+		else if(!Input.GetKey("left shift")) {
 			toWalk=true;
 		}
-		if(!blockCoroutine) {
+		/*if(!blockCoroutine) {*/
 			if(toSprint) 		{
 				if(soundEmitt1.getAlpha() <= 0f) soundEmitt1.circleWalkToSprint();
 				if(soundEmitt2.getAlpha() <= 0f) soundEmitt2.circleWalkToSprint();
@@ -131,11 +135,11 @@ public class Player : Character {
 			}
 			else if (toWalk) {
 				if(soundEmitt1.getAlpha() <= 0f) soundEmitt1.circleSprintToWalk();
-				if(soundEmitt1.getAlpha() <= 0f) soundEmitt2.circleSprintToWalk();
-				if(soundEmitt1.getAlpha() <= 0f) soundEmitt3.circleSprintToWalk();
+				if(soundEmitt2.getAlpha() <= 0f) soundEmitt2.circleSprintToWalk();
+				if(soundEmitt3.getAlpha() <= 0f) soundEmitt3.circleSprintToWalk();
 				toWalk=false;
 			}
-		}
+		/*}*/
 		if(Input.GetKey("left") && !specialCast) 
 		{ 
 			isLeft = true;
