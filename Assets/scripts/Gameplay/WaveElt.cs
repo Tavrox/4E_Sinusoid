@@ -30,7 +30,7 @@ public class WaveElt : MonoBehaviour {
 	void Start () {
 		myTransform = transform;
 		player = GameObject.FindWithTag("Player").GetComponent<Player>();
-		StartCoroutine("reduceAlpha");
+
 		
 		
 		setPosition(new Vector3(player.transform.position.x, (player.transform.position.y-player.transform.localScale.y/2), player.transform.position.z));
@@ -49,9 +49,12 @@ public class WaveElt : MonoBehaviour {
 		myProjMaterial.color = new Color (0f,0f,0f,0f);
 		//instanceProj.transform.Rotate(new Vector3(0f,0f,90f));
 		//instanceProj.aspectRatio=1;
+
+		StartCoroutine("reduceAlpha");
+		StartCoroutine("myUpdate");
 	}
 	// Update is called once per frame
-	void Update () {
+	IEnumerator myUpdate () {
 		if(extendProj && !ligthOffing) StartCoroutine("lightsOff");
 		else {
 			if(myProjMaterial.color.a <= 0) endLife();
@@ -70,7 +73,8 @@ public class WaveElt : MonoBehaviour {
 		Debug.DrawRay(myTransform.position, Vector3.right*0.5f);
 		Debug.DrawRay(myTransform.position, Vector3.up*0.5f);
 		Debug.DrawRay(myTransform.position, Vector3.down*0.5f);
-
+		yield return new WaitForSeconds(0.015f);
+		StartCoroutine("myUpdate");
 	}
 	
 	IEnumerator reduceAlpha()
@@ -98,8 +102,8 @@ public class WaveElt : MonoBehaviour {
 	public void startLife () {
 		enabled = true;
 		lightened = false;
-		if(player.isLeft) waveXOffset = -player.transform.localScale.x/2;
-		else waveXOffset = player.transform.localScale.x/2;
+		if(player.isLeft) waveXOffset = -player.transform.localScale.x/1.5f;
+		else waveXOffset = player.transform.localScale.x/1.5f;
 		myTransform.position = new Vector3((player.transform.position.x),player.transform.position.y,0f);
 		instanceProj.transform.position = new Vector3((player.transform.position.x+waveXOffset),(player.transform.position.y-player.transform.localScale.y/2.3f),-15f);
 		this.GetComponentInChildren<OTSprite>().alpha = _initialAlpha;
