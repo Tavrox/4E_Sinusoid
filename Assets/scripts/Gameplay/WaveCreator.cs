@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-public class WavesCreator : MonoBehaviour {
+public class WaveCreator : MonoBehaviour {
 	
 	
 	public float angleMax = 180, numberOfObjects=10;

@@ -7,7 +7,7 @@ public class WaveElt : MonoBehaviour {
 	private Color _initialAlphaProj;
 	private Vector3 vectorDir;
 	private Transform myTransform;
-	private Player player;
+	//private Player player;
 	private Projector instanceProj;
 	private GameObject toDestroy;
 	private bool extendProj, lightened, rotated, reducingAlpha, ligthOffing, specialCircle;
@@ -23,17 +23,20 @@ public class WaveElt : MonoBehaviour {
 	public float diameterMultiplier = 0f, fadeSpeed = 50f;
 	[Range(0.01f, 100)] public float enlargeRatioSpeed = 0.07f;
 	public float maximumRatio = 5f;
+	public Player callerObj;
+	public bool calledByCharacter;
 	
 	private RaycastHit hitInfo; //infos de collision
 	private Ray /*detectBlockTop, detectBlockBottom,*/ detectBlockLeft, detectBlockRight; //point de départ, direction
 	// Use this for initialization
 	void Start () {
 		myTransform = transform;
-		player = GameObject.FindWithTag("Player").GetComponent<Player>();
-
+		//player = GameObject.FindWithTag("Player").GetComponent<Player>();
+		
+		callerObj = GameObject.FindWithTag("Player").GetComponent<Player>();
 		
 		
-		setPosition(new Vector3(player.transform.position.x, (player.transform.position.y-player.transform.localScale.y/2), player.transform.position.z));
+		//setPosition(new Vector3(callerObj.transform.position.x, (callerObj.transform.position.y-callerObj.transform.localScale.y/2), callerObj.transform.position.z));
 		instanceProj = this.GetComponent<Projector>();//Instantiate(prefabProj) as Projector;
 		instanceProj.fieldOfView=projDiameterIni;
 		myProjMaterial = new Material(instanceProj.material);
@@ -60,8 +63,8 @@ public class WaveElt : MonoBehaviour {
 			if(myProjMaterial.color.a <= 0) endLife();
 			else updateWaveElt();
 		}
-		if(myTransform.position.x > (player.transform.position.x + 10f) || myTransform.position.x < (player.transform.position.x - 10f) ||
-		   myTransform.position.y > (player.transform.position.y + 10f) || myTransform.position.y < (player.transform.position.y - 10f)) {
+		if(myTransform.position.x > (callerObj.transform.position.x + 10f) || myTransform.position.x < (callerObj.transform.position.x - 10f) ||
+		   myTransform.position.y > (callerObj.transform.position.y + 10f) || myTransform.position.y < (callerObj.transform.position.y - 10f)) {
 			endLife();
 		}
 		
@@ -73,6 +76,7 @@ public class WaveElt : MonoBehaviour {
 		Debug.DrawRay(myTransform.position, Vector3.right*0.5f);
 		Debug.DrawRay(myTransform.position, Vector3.up*0.5f);
 		Debug.DrawRay(myTransform.position, Vector3.down*0.5f);
+	
 		yield return new WaitForSeconds(0.015f);
 		StartCoroutine("myUpdate");
 	}
@@ -102,10 +106,12 @@ public class WaveElt : MonoBehaviour {
 	public void startLife () {
 		enabled = true;
 		lightened = false;
-		if(player.isLeft) waveXOffset = -player.transform.localScale.x/1.5f;
-		else waveXOffset = player.transform.localScale.x/1.5f;
-		myTransform.position = new Vector3((player.transform.position.x),player.transform.position.y,0f);
-		instanceProj.transform.position = new Vector3((player.transform.position.x+waveXOffset),(player.transform.position.y-player.transform.localScale.y/2.3f),-15f);
+		if(calledByCharacter) {
+			if(callerObj.isLeft !=null) waveXOffset = -callerObj.transform.localScale.x/1.5f;
+			else waveXOffset = callerObj.transform.localScale.x/1.5f;
+		} else waveXOffset=0;
+		myTransform.position = new Vector3((callerObj.transform.position.x),callerObj.transform.position.y,0f);
+		instanceProj.transform.position = new Vector3((callerObj.transform.position.x+waveXOffset),(callerObj.transform.position.y-callerObj.transform.localScale.y/2.3f),-15f);
 		this.GetComponentInChildren<OTSprite>().alpha = _initialAlpha;
 		//myProjMaterial.color = new Color (0f,0f,0f,0.001f);
 		myProjMaterial.color = _initialAlphaProj;
@@ -119,7 +125,7 @@ public class WaveElt : MonoBehaviour {
 	void updateWaveElt() {
 		//if(myProjMaterial.color.a < _initialAlphaProj.a) myProjMaterial.color = new Color (0f,0f,0f,myProjMaterial.color.a+0.15f);
 		float offset = 0f;
-		if(!specialCircle) offset = player.vectorFixed.x;
+		if(!specialCircle && calledByCharacter) offset = callerObj.vectorFixed.x;
 		vectorDir.x = (getCosX() * Time.deltaTime * speedSound)+offset/1.5f;
 		vectorDir.y = getSinX() * Time.deltaTime * speedSound;
 		myTransform.position += new Vector3(vectorDir.x,vectorDir.y,0f);

@@ -9,15 +9,21 @@ public class Player : Character {
 	public Skills skill_knife;
 	public Skills skill_axe;
 	public Skills skill_shield;
+	public Pebble instPebble;
+	public WaveCreator instFootWave,instInstruWave;
+	public GameObject instPebbleBar;
 	public OTSprite menu;
 	public float footStepDelay = 0.6f;
 	
 	[SerializeField] private Rect hp_display;
 	[SerializeField] private SoundSprite soundMan;
 	[SerializeField] private ModulatedSound mdSound;
-	private WavesCreator soundEmitt1, soundEmitt2, soundInstru1, soundInstru2,soundEmitt3;
-	private int cptWave=1;
+	private WaveCreator soundEmitt1, soundEmitt2, soundInstru1, soundInstru2,soundEmitt3;
+	private int cptWave=1, pebbleDirection = 1;
 	private bool blockCoroutine, first, toSprint, toWalk, specialCast;
+	private Pebble pebble1;
+	private float powerPebble;
+	private GameObject pebbleBar;
 
 	[HideInInspector] public bool paused = false;
 	
@@ -34,16 +40,18 @@ public class Player : Character {
 
 		spawnPos = thisTransform.position;
 
-		soundEmitt1 = GameObject.Find("SoundWavesEmitter1").GetComponent<WavesCreator>();
-		soundEmitt2 = GameObject.Find("SoundWavesEmitter2").GetComponent<WavesCreator>();
-		soundEmitt3 = GameObject.Find("SoundWavesEmitter3").GetComponent<WavesCreator>();
-		soundInstru1 = GameObject.Find("SoundWavesInstru1").GetComponent<WavesCreator>();
-		soundInstru2 = GameObject.Find("SoundWavesInstru2").GetComponent<WavesCreator>();
+		soundEmitt1 = Instantiate(instFootWave) as WaveCreator;
+		soundEmitt2 = Instantiate(instFootWave) as WaveCreator;
+		soundEmitt3 = Instantiate(instFootWave) as WaveCreator;
+		soundInstru1 = Instantiate(instInstruWave) as WaveCreator;
+		soundInstru2 = Instantiate(instInstruWave) as WaveCreator;
 		soundEmitt1.createCircle();
 		soundEmitt2.createCircle();
 		soundEmitt3.createCircle();
 		soundInstru1.createCircle();soundInstru1.specialCircle();
 		soundInstru2.createCircle();soundInstru2.specialCircle();
+
+		pebbleBar = Instantiate(instPebbleBar) as GameObject;
 	}
 	
 	// Update is called once per frame
@@ -100,6 +108,33 @@ public class Player : Character {
 		movingDir = moving.None;
 
 		// keyboard input
+		if (Input.GetKeyDown(KeyCode.F))
+		{
+			if(!pebble1) {
+			powerPebble = 0f;
+			pebbleBar.transform.localScale = new Vector3(0f,1f,1f);
+			}
+		}
+		if (Input.GetKey(KeyCode.F))
+		{
+			if(powerPebble <=10 && !pebble1) {
+				powerPebble += 0.2f;
+				pebbleBar.transform.localScale = new Vector3(powerPebble,1f,1f);
+				pebbleBar.transform.position = new Vector3((powerPebble-12f)/2,5.5f,-30f);
+			}
+		}
+		if (Input.GetKeyUp(KeyCode.F))
+		{
+			if(!pebble1) {
+				pebble1 = Instantiate(instPebble) as Pebble;
+				pebble1.setPosition((transform.position.x-transform.localScale.x/2),transform.position.y, -6f);
+				pebbleDirection = (facingDir == facing.Right) ? 1 : -1;
+				pebble1.throwPebble(powerPebble, pebbleDirection);
+				powerPebble = 0f;
+				pebbleBar.transform.localScale = new Vector3(powerPebble,1f,1f);
+				pebbleBar.transform.position = new Vector3((powerPebble-12f)/2,5.5f,-30f);
+			}
+		}
 		if (Input.GetKeyDown(KeyCode.Y))
 		{
 			soundInstru2.destroyCircle();
@@ -145,7 +180,7 @@ public class Player : Character {
 			isLeft = true;
 			shootLeft = true;
 			facingDir = facing.Left;
-			if(!blockCoroutine && grounded) StartCoroutine("footStep");
+			if(!blockCoroutine && grounded) StartCoroutine("waitB4FootStep");
 		}
 		if((Input.GetKeyUp("left") && !specialCast) || (Input.GetKeyUp("right") && !isLeft && !specialCast)) {
 			StopCoroutine("footStep");
@@ -156,7 +191,7 @@ public class Player : Character {
 			isRight = true; 
 			facingDir = facing.Right;
 			shootLeft = false;
-			if(!blockCoroutine && grounded) StartCoroutine("footStep");
+			if(!blockCoroutine && grounded) StartCoroutine("waitB4FootStep");
 		}
 		if (Input.GetKey(KeyCode.DownArrow))
 		{
@@ -173,7 +208,7 @@ public class Player : Character {
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha1))
 		{
-
+			//skill_axe.useSkill(Skills.SkillList.Axe);
 		}
 		if (Input.GetKeyDown(KeyCode.Alpha2))
 		{
@@ -195,7 +230,12 @@ public class Player : Character {
 			}
 		}
 	}
-	
+
+	IEnumerator waitB4FootStep()
+	{
+		yield return new WaitForSeconds(0.1f);
+		if(!blockCoroutine && grounded) StartCoroutine("footStep");
+	}
 	IEnumerator footStep()
 	{
 		blockCoroutine =true;

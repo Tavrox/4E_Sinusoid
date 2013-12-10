@@ -39,6 +39,7 @@ public class CharacterAnims : MonoBehaviour
 		// Order of action matters, they need to have priorities. //
 		Run();
 		Walk();
+		Stand();
 		Crounch();
 		Jump();
 		Attack();
@@ -48,13 +49,13 @@ public class CharacterAnims : MonoBehaviour
 	}
 	private void Run()
 	{
-		if(_character.isRight && _character.grounded)
+		if(_character.isRight && _character.grounded && currentAnim!=animDef.WalkRight)
 		{
 			currentAnim = animDef.WalkRight;
 			animSprite.Play("run");
 			NormalScaleSprite();;
 		}
-		if(_character.isLeft && _character.grounded)
+		if(_character.isLeft && _character.grounded && currentAnim!=animDef.WalkLeft)
 		{
 			currentAnim = animDef.WalkLeft;
 			animSprite.Play("run");
