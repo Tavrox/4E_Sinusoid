@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WaveElt : MonoBehaviour {
 	
-	private float _cos, _cosIni, _sin, _sinIni, _alpha, _initialAlpha, waveXOffset, _myProjAspectRatioIni, lifeTimeIni;
+	private float _cos, _cosIni, _sin, _sinIni, _alpha, _initialAlpha, waveXOffset, _myProjAspectRatioIni, lifeTimeIni, offset, nextOffset;
 	private Color _initialAlphaProj;
 	private Vector3 vectorDir;
 	private Transform myTransform;
@@ -23,9 +23,9 @@ public class WaveElt : MonoBehaviour {
 	public float diameterMultiplier = 0f, fadeSpeed = 50f;
 	[Range(0.01f, 100)] public float enlargeRatioSpeed = 0.07f;
 	public float maximumRatio = 5f;
-	public Player callerObj;
-	public bool calledByCharacter;
-	
+	private Transform callerObj;
+	//public bool calledByCharacter;
+
 	private RaycastHit hitInfo; //infos de collision
 	private Ray /*detectBlockTop, detectBlockBottom,*/ detectBlockLeft, detectBlockRight; //point de départ, direction
 	// Use this for initialization
@@ -33,7 +33,7 @@ public class WaveElt : MonoBehaviour {
 		myTransform = transform;
 		//player = GameObject.FindWithTag("Player").GetComponent<Player>();
 		
-		callerObj = GameObject.FindWithTag("Player").GetComponent<Player>();
+		//callerObj = GameObject.FindWithTag("Player");
 		
 		
 		//setPosition(new Vector3(callerObj.transform.position.x, (callerObj.transform.position.y-callerObj.transform.localScale.y/2), callerObj.transform.position.z));
@@ -63,11 +63,10 @@ public class WaveElt : MonoBehaviour {
 			if(myProjMaterial.color.a <= 0) endLife();
 			else updateWaveElt();
 		}
-		if(myTransform.position.x > (callerObj.transform.position.x + 10f) || myTransform.position.x < (callerObj.transform.position.x - 10f) ||
-		   myTransform.position.y > (callerObj.transform.position.y + 10f) || myTransform.position.y < (callerObj.transform.position.y - 10f)) {
+		if(myTransform.position.x > (callerObj.position.x + 10f) || myTransform.position.x < (callerObj.position.x - 10f) ||
+		   myTransform.position.y > (callerObj.position.y + 10f) || myTransform.position.y < (callerObj.position.y - 10f)) {
 			endLife();
 		}
-		
 		detectBlockLeft = new Ray(myTransform.position, Vector3.left);
 		detectBlockRight = new Ray(myTransform.position, Vector3.right);
 		//		detectBlockTop = new Ray(myTransform.position, Vector3.up);
@@ -106,26 +105,33 @@ public class WaveElt : MonoBehaviour {
 	public void startLife () {
 		enabled = true;
 		lightened = false;
-		if(calledByCharacter) {
-			if(callerObj.isLeft !=null) waveXOffset = -callerObj.transform.localScale.x/1.5f;
-			else waveXOffset = callerObj.transform.localScale.x/1.5f;
-		} else waveXOffset=0;
-		myTransform.position = new Vector3((callerObj.transform.position.x),callerObj.transform.position.y,0f);
-		instanceProj.transform.position = new Vector3((callerObj.transform.position.x+waveXOffset),(callerObj.transform.position.y-callerObj.transform.localScale.y/2.3f),-15f);
+//		if(callerObj.isLeft) waveXOffset = -callerObj.localScale.x/1.5f;
+//		else waveXOffset = callerObj.localScale.x/1.5f;
+		//print(callerObj.name);
+		myTransform.position = new Vector3((callerObj.position.x),callerObj.position.y,0f);
+		instanceProj.transform.position = new Vector3((callerObj.position.x+waveXOffset),(callerObj.position.y/*-callerObj.localScale.y/2.3f*/),-15f);
 		this.GetComponentInChildren<OTSprite>().alpha = _initialAlpha;
 		//myProjMaterial.color = new Color (0f,0f,0f,0.001f);
 		myProjMaterial.color = _initialAlphaProj;
 		instanceProj.aspectRatio = _myProjAspectRatioIni;
 		instanceProj.fieldOfView = projDiameterIni;
 		_cos = _cosIni;
-		_sin = _sinIni;
+		_sin = _sinIni;//if(callerObj.name=="Pebble(Clone)") print("PEEEEEEBLE");
 		extendProj = false;ligthOffing=false;StopCoroutine("lightsOff");
 		if(!reducingAlpha) StartCoroutine("reduceAlpha");
 	}
+	public void setCharacterPositionOffset (float charScaleX, bool dirLeft) {
+		if(dirLeft) waveXOffset = -charScaleX/1.5f;
+		else waveXOffset = charScaleX/1.5f;
+	}
+	public void setCharacterMoveOffset (float offsetValue) {
+		nextOffset = offsetValue;
+	}
 	void updateWaveElt() {
 		//if(myProjMaterial.color.a < _initialAlphaProj.a) myProjMaterial.color = new Color (0f,0f,0f,myProjMaterial.color.a+0.15f);
-		float offset = 0f;
-		if(!specialCircle && calledByCharacter) offset = callerObj.vectorFixed.x;
+		offset = 0f;
+		//if(callerObj.name == "Pebble(Clone)") print(callerObj.name);
+		if(!specialCircle) offset = nextOffset;
 		vectorDir.x = (getCosX() * Time.deltaTime * speedSound)+offset/1.5f;
 		vectorDir.y = getSinX() * Time.deltaTime * speedSound;
 		myTransform.position += new Vector3(vectorDir.x,vectorDir.y,0f);
@@ -178,7 +184,16 @@ public class WaveElt : MonoBehaviour {
 	public float getAlpha() {
 		return myProjMaterial.color.a;
 	}
-	
+	public void setWaveXOffset (float value) {
+		waveXOffset = value;
+	}
+	public void setOffset (float value) {
+		offset = value;
+	}	
+	public void setCallerObject (Transform obj) {
+		callerObj = obj;
+	}
+
 	void OnTriggerEnter(Collider other) {
 		if(other.gameObject.CompareTag("soundStopper"))//if(other.gameObject.name == "Tiles")
 		{

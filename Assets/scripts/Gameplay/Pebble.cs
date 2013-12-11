@@ -6,16 +6,22 @@ public class Pebble : MonoBehaviour {
 	
 	private Transform thisTransform;
 	private Rigidbody thisRigidbody;
-	public WaveCreator instFootWave;
+	public WaveCreator instWave;
+	public WaveCreator soundEmitt;
+	private bool isSounding;
 
 	void Awake()
 	{
 		thisTransform = transform;
 		thisRigidbody = rigidbody;
+		soundEmitt = Instantiate(instWave) as WaveCreator;
+		soundEmitt.createCircle(thisTransform);
+		soundEmitt.setParent(thisTransform);
 	}
 	void Update () {
 		if(rigidbody.velocity == Vector3.zero && rigidbody.angularVelocity == Vector3.zero)
 		{
+			soundEmitt.destroyCircle();
 			Destroy(gameObject);
 		}
 	}
@@ -36,12 +42,15 @@ public class Pebble : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		if(/*other.gameObject.CompareTag("soundStopper") ||*/ other.gameObject.CompareTag("Player"))//if(other.gameObject.name == "Tiles")
+		if(/*other.gameObject.CompareTag("soundStopper") ||*/ other.gameObject.CompareTag("pebbleKiller"))//if(other.gameObject.name == "Tiles")
 		{
 //			thisRigidbody.isKinematic = true;
 //			thisRigidbody.useGravity = false;
 			//thisRigidbody.AddForce(new Vector3(10f,20f,0));
+			soundEmitt.circleWalkToSprint();
+			/*if(!isSounding) {*/isSounding=true;soundEmitt.resetCircle();/*}*/
 		}
+
 	}
 	public void setPosition (float x, float y, float z) {
 		thisTransform.position = new Vector3(x,y,z);

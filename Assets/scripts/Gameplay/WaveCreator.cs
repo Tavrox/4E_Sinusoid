@@ -16,9 +16,9 @@ public class WaveCreator : MonoBehaviour {
 	public List<WaveElt> lights = new List<WaveElt>();
 	//private Vector3 nextPosition;
 	
-	public void createCircle () {
+	public void createCircle (Transform caller) {
 		//nextPosition = startPosition;
-		//print ("AAAAAAAAAAAAA***///-*/-*/"+offset);
+		//print ("AAAAAAAAAAAAA***///-*/-*/"+offset); 
 		angleUnitaire = (angleMax / numberOfObjects);
 		nbObjectsToAdd = offset / Convert.ToInt32(angleUnitaire);
 		//print ("BBBBBBBBBBBBB***///-*/-*/"+offset);
@@ -32,11 +32,17 @@ public class WaveCreator : MonoBehaviour {
 			//			instanceWaveElt.setY(player.transform.position.y);
 			instanceWaveElt.setCos(Mathf.Cos((angleUnitaire*i)*Mathf.Deg2Rad));
 			instanceWaveElt.setSin(Mathf.Sin((angleUnitaire*i)*Mathf.Deg2Rad));
+			instanceWaveElt.setCallerObject(caller);
 			lights.Add(instanceWaveElt);
-			//instanceWaveElt.endLife();
+			//instanceWaveElt.endLife(); 
 		}
 		
 		if(angleMax != 360) numberOfObjects--;
+	}
+	public void setParent(Transform caller) {
+		foreach (WaveElt light in lights) {
+			light.setCallerObject(caller);
+		}
 	}
 	public void specialCircle () {
 		foreach (WaveElt light in lights) {
@@ -44,9 +50,9 @@ public class WaveCreator : MonoBehaviour {
 			light.setSpecial();
 		}
 	}
-	public void resetCircle () {
+	public void resetCircle (float parentScaleX = 0, bool parentDirLeft = false, bool isCharacter = false) {
 		foreach (WaveElt light in lights) {
-			//print ("a");
+			if(isCharacter)	light.setCharacterPositionOffset(parentScaleX,parentDirLeft);
 			light.startLife();
 		}
 	}
@@ -72,5 +78,10 @@ public class WaveCreator : MonoBehaviour {
 	}
 	public float getAlpha() {
 		return lights[0].getAlpha();
+	}
+	public void setCharacterMoveOffset (float offsetValue) {
+		foreach (WaveElt light in lights) {
+			light.setCharacterMoveOffset (offsetValue);
+		}
 	}
 }

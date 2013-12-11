@@ -20,7 +20,7 @@ public class Player : Character {
 	[SerializeField] private ModulatedSound mdSound;
 	private WaveCreator soundEmitt1, soundEmitt2, soundInstru1, soundInstru2,soundEmitt3;
 	private int cptWave=1, pebbleDirection = 1;
-	private bool blockCoroutine, first, toSprint, toWalk, specialCast;
+	private bool blockCoroutine, first, toSprint, toWalk, specialCast, playerDirLeft;
 	private Pebble pebble1;
 	private float powerPebble;
 	private GameObject pebbleBar;
@@ -45,11 +45,11 @@ public class Player : Character {
 		soundEmitt3 = Instantiate(instFootWave) as WaveCreator;
 		soundInstru1 = Instantiate(instInstruWave) as WaveCreator;
 		soundInstru2 = Instantiate(instInstruWave) as WaveCreator;
-		soundEmitt1.createCircle();
-		soundEmitt2.createCircle();
-		soundEmitt3.createCircle();
-		soundInstru1.createCircle();soundInstru1.specialCircle();
-		soundInstru2.createCircle();soundInstru2.specialCircle();
+		soundEmitt1.createCircle(thisTransform);
+		soundEmitt2.createCircle(thisTransform);
+		soundEmitt3.createCircle(thisTransform);
+		soundInstru1.createCircle(thisTransform);soundInstru1.specialCircle();
+		soundInstru2.createCircle(thisTransform);soundInstru2.specialCircle();
 
 		pebbleBar = Instantiate(instPebbleBar) as GameObject;
 	}
@@ -59,6 +59,7 @@ public class Player : Character {
 	{
 		checkInput();
 		UpdateMovement();
+		offsetCircles ();
 	}
 	
 	private void GameStart () 
@@ -230,7 +231,11 @@ public class Player : Character {
 			}
 		}
 	}
-
+	private void offsetCircles () {
+		soundEmitt1.setCharacterMoveOffset(vectorFixed.x);
+		soundEmitt2.setCharacterMoveOffset(vectorFixed.x);
+		soundEmitt3.setCharacterMoveOffset(vectorFixed.x);
+	}
 	IEnumerator waitB4FootStep()
 	{
 		yield return new WaitForSeconds(0.1f);
@@ -252,10 +257,10 @@ public class Player : Character {
 			soundEmitt1.circleSprintToWalk();
 			soundEmitt2.circleSprintToWalk();
 		}*/
-
-		if(cptWave == 1) {cptWave++;soundEmitt1.resetCircle();}
-		else if (cptWave == 2) {cptWave++;soundEmitt2.resetCircle();}
-		else if (cptWave == 3) {cptWave=1;soundEmitt3.resetCircle();}
+		playerDirLeft = (facingDir == facing.Right) ? false : true;
+		if(cptWave == 1) {cptWave++;soundEmitt1.resetCircle(transform.localScale.x/1.5f,playerDirLeft, true);}
+		else if (cptWave == 2) {cptWave++;soundEmitt2.resetCircle(transform.localScale.x/1.5f,playerDirLeft, true);}
+		else if (cptWave == 3) {cptWave=1;soundEmitt3.resetCircle(transform.localScale.x/1.5f,playerDirLeft, true);}
 		yield return new WaitForSeconds(footStepDelay);
 
 		blockCoroutine = false;
