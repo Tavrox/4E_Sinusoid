@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerAnims : MonoBehaviour 
+public class WalkerAnims : MonoBehaviour 
 {
 	public enum animDef
 	{
@@ -31,7 +31,7 @@ public class PlayerAnims : MonoBehaviour
 	void Start () 
 	{
 		_character 	= GetComponent<Character>();
-		_player 	= GetComponent<Player>();
+		_player 	= GameObject.FindObjectOfType<Player>();
 	}
 	void Update() 
 	{

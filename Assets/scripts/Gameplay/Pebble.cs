@@ -18,6 +18,7 @@ public class Pebble : MonoBehaviour {
 		soundEmitt.createCircle(thisTransform);
 		soundEmitt.setParent(thisTransform);
 	}
+
 	void Update () {
 		if(rigidbody.velocity == Vector3.zero && rigidbody.angularVelocity == Vector3.zero)
 		{

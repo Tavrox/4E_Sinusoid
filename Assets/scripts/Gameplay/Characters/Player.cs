@@ -53,7 +53,6 @@ public class Player : Character {
 
 		pebbleBar = Instantiate(instPebbleBar) as GameObject;
 	}
-	
 	// Update is called once per frame
 	public void Update () 
 	{
@@ -112,8 +111,9 @@ public class Player : Character {
 		if (Input.GetKeyDown(KeyCode.F))
 		{
 			if(!pebble1) {
-			powerPebble = 0f;
-			pebbleBar.transform.localScale = new Vector3(0f,1f,1f);
+				powerPebble = 0f;
+				setPebbleBarPos();
+				pebbleBar.transform.localScale = new Vector3(0f,1f,1f);
 			}
 		}
 		if (Input.GetKey(KeyCode.F))
@@ -235,6 +235,9 @@ public class Player : Character {
 		soundEmitt1.setCharacterMoveOffset(vectorFixed.x);
 		soundEmitt2.setCharacterMoveOffset(vectorFixed.x);
 		soundEmitt3.setCharacterMoveOffset(vectorFixed.x);
+	}
+	private void setPebbleBarPos() {
+		pebbleBar.transform.position = new Vector3(thisTransform.position.x, thisTransform.position.y,pebbleBar.transform.position.z);
 	}
 	IEnumerator waitB4FootStep()
 	{
