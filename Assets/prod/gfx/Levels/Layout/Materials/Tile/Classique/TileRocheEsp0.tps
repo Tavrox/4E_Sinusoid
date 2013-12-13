@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>TileRocher5.png</filename>
+        <filename>TileRocher0.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -127,7 +127,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>TileRocher5.xml</filename>
+                <filename>TileRocher0.xml</filename>
             </struct>
         </map>
         <key>multiPack</key>
