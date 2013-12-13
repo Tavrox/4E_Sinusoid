@@ -26,7 +26,7 @@
             </struct>
         </array>
         <key>allowRotation</key>
-        <false/>
+        <true/>
         <key>premultiplyAlpha</key>
         <false/>
         <key>shapeDebug</key>
@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>TileRoche.png</filename>
+        <filename>TileRocher.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -127,7 +127,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>TileRoche.xml</filename>
+                <filename>TileRocher.xml</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -146,7 +146,7 @@
         <key>trimSpriteNames</key>
         <false/>
         <key>cleanTransparentPixels</key>
-        <false/>
+        <true/>
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>
@@ -195,7 +195,11 @@
             <filename>Tile_Roche/tileHorizontal_Bas_01.png</filename>
             <filename>Tile_Roche/tileHorizontal_Bas_02.png</filename>
             <filename>Tile_Roche/tileHorizontal_Bas_03.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Bas_04.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Bas_05.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Bas_07.png</filename>
             <filename>Tile_Roche/tileHorizontal_Haut_01.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_02.png</filename>
             <filename>Tile_Roche/tileHorizontal_Haut_03.png</filename>
             <filename>Tile_Roche/tileHorizontal_Haut_04.png</filename>
             <filename>Tile_Roche/tileHorizontal_Haut_05.png</filename>
