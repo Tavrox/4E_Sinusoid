@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>TileRoche.png</filename>
+        <filename>TileRocher5.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -101,7 +101,7 @@
             <key>basic</key>
             <struct type="AlgorithmBasicSettings">
                 <key>sortBy</key>
-                <enum type="AlgorithmBasicSettings::SortBy">Width</enum>
+                <enum type="AlgorithmBasicSettings::SortBy">Best</enum>
                 <key>order</key>
                 <enum type="AlgorithmBasicSettings::Order">Ascending</enum>
             </struct>
@@ -127,7 +127,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>TileRoche.xml</filename>
+                <filename>TileRocher5.xml</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -171,20 +171,28 @@
             <filename>Tile_Roche/tileAngle_BDroite_03.png</filename>
             <filename>Tile_Roche/tileAngle_BDroite_04.png</filename>
             <filename>Tile_Roche/tileAngle_BDroite_05.png</filename>
+            <filename>Tile_Roche/tileAngle_BDroite_05-46.png</filename>
+            <filename>Tile_Roche/tileAngle_BDroite_05-48.png</filename>
             <filename>Tile_Roche/tileAngle_BDroite_06.png</filename>
             <filename>Tile_Roche/tileAngle_BDroite_07.png</filename>
+            <filename>Tile_Roche/tileAngle_BGauche_01.png</filename>
+            <filename>Tile_Roche/tileAngle_BGauche_02.png</filename>
+            <filename>Tile_Roche/tileAngle_BGauche_03.png</filename>
             <filename>Tile_Roche/tileAngle_BGauche_04.png</filename>
             <filename>Tile_Roche/tileAngle_BGauche_05.png</filename>
             <filename>Tile_Roche/tileAngle_HDroite_01.png</filename>
             <filename>Tile_Roche/tileAngle_HDroite_02.png</filename>
             <filename>Tile_Roche/tileAngle_HDroite_03.png</filename>
+            <filename>Tile_Roche/tileAngle_HDroite_04.png</filename>
             <filename>Tile_Roche/tileAngle_HDroite_05.png</filename>
             <filename>Tile_Roche/tileAngle_HGauche_01.png</filename>
             <filename>Tile_Roche/tileAngle_HGauche_02.png</filename>
             <filename>Tile_Roche/tileAngle_HGauche_03.png</filename>
             <filename>Tile_Roche/tileAngle_HGauche_04.png</filename>
             <filename>Tile_Roche/tileAngle_HGauche_05.png</filename>
+            <filename>Tile_Roche/tileAngle_HGauche_05-32.png</filename>
             <filename>Tile_Roche/tileAngle_HGauche_05-34.png</filename>
+            <filename>Tile_Roche/tileAngleInter_BasD_01.png</filename>
             <filename>Tile_Roche/tileAngleInter_BasG_01.png</filename>
             <filename>Tile_Roche/tileAngleInter_HautD_01.png</filename>
             <filename>Tile_Roche/tileAngleInter_HautG_01.png</filename>

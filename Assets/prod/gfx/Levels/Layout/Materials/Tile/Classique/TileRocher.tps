@@ -172,6 +172,7 @@
             <filename>Tile_Roche/tileAngle_BDroite_04.png</filename>
             <filename>Tile_Roche/tileAngle_BDroite_05.png</filename>
             <filename>Tile_Roche/tileAngle_BDroite_05-46.png</filename>
+            <filename>Tile_Roche/tileAngle_BDroite_05-48.png</filename>
             <filename>Tile_Roche/tileAngle_BDroite_06.png</filename>
             <filename>Tile_Roche/tileAngle_BDroite_07.png</filename>
             <filename>Tile_Roche/tileAngle_BGauche_01.png</filename>
@@ -186,8 +187,11 @@
             <filename>Tile_Roche/tileAngle_HDroite_05.png</filename>
             <filename>Tile_Roche/tileAngle_HGauche_01.png</filename>
             <filename>Tile_Roche/tileAngle_HGauche_02.png</filename>
+            <filename>Tile_Roche/tileAngle_HGauche_03.png</filename>
+            <filename>Tile_Roche/tileAngle_HGauche_04.png</filename>
             <filename>Tile_Roche/tileAngle_HGauche_05.png</filename>
             <filename>Tile_Roche/tileAngle_HGauche_05-32.png</filename>
+            <filename>Tile_Roche/tileAngle_HGauche_05-34.png</filename>
             <filename>Tile_Roche/tileAngleInter_BasD_01.png</filename>
             <filename>Tile_Roche/tileAngleInter_BasG_01.png</filename>
             <filename>Tile_Roche/tileAngleInter_HautD_01.png</filename>
