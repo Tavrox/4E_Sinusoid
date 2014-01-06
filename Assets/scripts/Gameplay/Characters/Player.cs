@@ -5,17 +5,11 @@ public class Player : Character {
 	
 	[HideInInspector] public Vector3 position;
 	[HideInInspector] public Transform trans;
-	
-	public Skills skill_knife;
-	public Skills skill_axe;
-	public Skills skill_shield;
+
 	private GameObject GOpebble, GOinstFootWave, GOinstInstruWave;
 	public OTSprite menu;
-	public float footStepDelay = 0.6f;
 	
 	[SerializeField] private Rect hp_display;
-	[SerializeField] private SoundSprite soundMan;
-	[SerializeField] private ModulatedSound mdSound;
 	private WaveCreator soundEmitt1, soundEmitt2, soundEmitt3, soundInstru1, soundInstru2; //waves footsteps 1, 2, 3 | intru 1, 2 so that the active wave is not destroyed when calling a another one 
 	private int cptWave=1, pebbleDirection = 1, pebbleMaxStrengh = 10;//cptWave = ID of the current displayed wave (from 1 to 3)| pebbleDirection = 1 or -1 -> right or left
 	private bool 	blockCoroutine, first, 		//block the footsteps coroutine|first instru wave or not
@@ -24,6 +18,9 @@ public class Player : Character {
 	private Pebble pebble; //Throwable pebble
 	private float powerPebble; //Throwing force added to the pebble after cast
 	private GameObject pebbleBar; //UI Bar to tell the player the power of his shoot
+	public float footStepDelay;
+
+	public FESound WalkSound;
 
 	[HideInInspector] public bool paused = false;
 	
@@ -38,6 +35,9 @@ public class Player : Character {
 		GameEventManager.GameUnpause += GameUnpause;
 
 		spawnPos = thisTransform.position;
+
+		if (WalkSound != null)
+		{ InvokeRepeating("playFootstep",0f,WalkSound.RepeatRate);}
 
 		//Creating waves game objects
 		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesEmitter")) as GameObject; //footsteps wave 1
@@ -68,6 +68,7 @@ public class Player : Character {
 		checkInput();
 		UpdateMovement();
 		offsetCircles (); //Replace waves at the center of the player (+/- offests)
+		WalkSound.RepeatRate = WalkSound.RepeatRate;
 	}
 
 	private void checkInput() {
@@ -243,6 +244,14 @@ public class Player : Character {
 		else {first=!first;soundInstru2.resetCircle();} //If it's the second time playing (2 waves so that player can display both on screen if spamming music)
 		//yield return new WaitForSeconds(soundInstru1.getLifeTime());
 		specialCast = false; //Not playing anymore, can move again
+	}
+
+	private void playFootstep()
+	{
+		if ((isLeft == true || isRight == true) && grounded )
+		{
+			WalkSound.playSound();
+		}
 	}
 
 	#region Game State Management - Events detection
