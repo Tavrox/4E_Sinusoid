@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WalkerAnims : MonoBehaviour 
+public class RusherAnims : MonoBehaviour 
 {
 	public enum animDef
 	{

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Pebble : MonoBehaviour {
@@ -6,15 +6,17 @@ public class Pebble : MonoBehaviour {
 	
 	private Transform thisTransform;
 	private Rigidbody thisRigidbody;
-	public WaveCreator instWave;
-	public WaveCreator soundEmitt;
+	[HideInInspector] public WaveCreator soundEmitt;
+	private GameObject GOsoundEmitt;
 	private bool isSounding;
 
 	void Awake()
 	{
 		thisTransform = transform;
 		thisRigidbody = rigidbody;
-		soundEmitt = Instantiate(instWave) as WaveCreator;
+		GOsoundEmitt = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesPeeble")) as GameObject;
+		soundEmitt = GOsoundEmitt.GetComponent<WaveCreator>();
+		//soundEmitt = Instantiate(instWave) as WaveCreator;
 		soundEmitt.createCircle(thisTransform);
 		soundEmitt.setParent(thisTransform);
 	}

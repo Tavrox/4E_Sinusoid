@@ -192,6 +192,8 @@ public class WaveElt : MonoBehaviour {
 	}	
 	public void setCallerObject (Transform obj) {
 		callerObj = obj;
+		//print (callerObj.name);
+		//gameObject.transform.parent = GameObject.Find("Level/TilesLayout").transform;
 	}
 
 	void OnTriggerEnter(Collider other) {

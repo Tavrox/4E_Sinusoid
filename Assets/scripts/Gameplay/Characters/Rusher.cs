@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Walker : Enemy {
+public class Rusher : Enemy {
 	
 	[HideInInspector] public Vector3 position;
 	[HideInInspector] public Transform trans;
@@ -60,14 +60,13 @@ public class Walker : Enemy {
 
 		
 		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesEmitter")) as GameObject;
-		soundEmitt1 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt1.gameObject.name = "_footWaveWalker1";//footsteps wave 1
+		soundEmitt1 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt1.gameObject.name = "_footWaveRusher1";//footsteps wave 1
 		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesEmitter")) as GameObject;
-		soundEmitt2 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt2.gameObject.name = "_footWaveWalker2";//footsteps wave 2
+		soundEmitt2 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt2.gameObject.name = "_footWaveRusher2";//footsteps wave 2
 		GOinstInstruWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesInstru")) as GameObject;
-		soundInstru1 = GOinstInstruWave.GetComponent<WaveCreator>();soundInstru1.gameObject.name = "_instruWaveWalker1"; //intru wave 1
-
+		soundInstru1 = GOinstInstruWave.GetComponent<WaveCreator>();soundInstru1.gameObject.name = "_instruWaveRusher1"; //intru wave 1
+		
 		soundEmitt1.gameObject.transform.parent = soundEmitt2.gameObject.transform.parent = soundInstru1.gameObject.transform.parent = GameObject.Find("Level/Waves/").transform;
-
 //		soundEmitt1 = Instantiate(instFootWave) as WaveCreator;
 //		soundEmitt2 = Instantiate(instFootWave) as WaveCreator;
 //		soundInstru1 = Instantiate(instInstruWave) as WaveCreator;
@@ -85,11 +84,9 @@ public class Walker : Enemy {
 		target = GameObject.FindWithTag("Player").transform; //target the player
 		patroling = true;
 		waypointDetectionWidth = transform.localScale.x;
-		StartCoroutine("goToWaypoint",waypointId);
 	}
 	private void setIniState() {
 		thisTransform.position = spawnPos;
-		StartCoroutine("goToWaypoint",waypointId);
 		cptWave = 1;
 		goLeft = true;
 		waypointId = 0;
@@ -106,18 +103,20 @@ public class Walker : Enemy {
 //		isPass = false;
 //		movingDir = moving.None;
 //
-		if(!endChasingPlayer) {
-			if(chasingPlayer) {ChasePlayer();}
-			else if(patroling) {Patrol();}
-		}
-		else {
-			goBackToPatrol();
-		}
+//		if(!endChasingPlayer) {
+//			if(chasingPlayer) {ChasePlayer();}
+//			else if(patroling) {Patrol();}
+//		}
+//		else {
+//			goBackToPatrol();
+//		}
 //		checkInput();
-//		UpdateMovement();
+		//GameObject _instance = Instantiate(Resources.Load(namePrefab)) as GameObject;
+		UpdateMovement();
 		offsetCircles ();
 		detectPlayer();
-		detectEndChaseArea();
+		if(chasingPlayer) {ChasePlayer();}
+		//detectEndChaseArea();
 		//detectEndPlatform();
 
 		if(isLeft || isRight) {
@@ -140,15 +139,6 @@ public class Walker : Enemy {
 		if (Physics.Raycast(detectTargetLeft, out hitInfo, targetDetectionArea, projectorMask) || Physics.Raycast(detectTargetRight, out hitInfo, targetDetectionArea, projectorMask)) {
 			if(hitInfo.collider.name == "Player" && !endChasingPlayer) {
 				chasingPlayer = true;
-				patroling = false;
-			}
-		}
-	}
-	private void detectEndChaseArea() {
-		foreach(Transform chaseAreaLimit in endChaseArea) {
-			if(Vector3.Distance(transform.position, chaseAreaLimit.position) < waypointDetectionWidth) {
-				chasingPlayer = false;
-				endChasingPlayer = true;
 			}
 		}
 	}
@@ -158,74 +148,7 @@ public class Walker : Enemy {
 	 *    IA MANAGEMENT		*
 	 *						*
 	 ***********************/
-	private void goBackToPatrol () {
-		isLeft = false;
-		isRight = false;
-		patroling = true;
-
-		if(facingDir == facing.Right) {
-			waypointId = waypoints.Count-1;
-		}
-		if(facingDir == facing.Left) {
-			waypointId = 0;
-		}
-		StartCoroutine("goToWaypoint",waypointId);
-		endChasingPlayer = false;/*********************/
-
-	}
-	private IEnumerator goToWaypoint (int waypointIDToReach) {
-		if(waypoints[waypointIDToReach].position.x > transform.position.x) {
-			isRight = true;
-			isLeft = false;
-			facingDir = facing.Right;
-		}
-		if(waypoints[waypointIDToReach].position.x < transform.position.x) {
-			isLeft = true;
-			isRight = false;
-			facingDir = facing.Left;
-		}
-		UpdateMovement();
-		yield return new WaitForSeconds(0.01f);
-		if(Vector3.Distance(transform.position, waypoints[waypointIDToReach].position) < waypointDetectionWidth) {
-			//endChasingPlayer = false;
-			//StopCoroutine("goToWaypoint");
-			waypointReached = true;
-		}
-		else StartCoroutine("goToWaypoint",waypointIDToReach);
-	}
-	private void Patrol () {
-		if(waypoints.Count<=0) print("No Waypoints linked");
-
-		if(waypointReached) {
-			waypointReached = false;
-			timeToWait = timePauseWP[waypointId];
-			isRight = isLeft = false;
-			StopCoroutine("goToWaypoint");
-			if(goLeft) {
-				if(waypointId-1 < 0) {
-					goLeft = false;
-					waypointId++;
-				}
-				else waypointId--;
-			}
-			else {
-				if(waypointId >= waypoints.Count-1) {
-					goLeft = true;
-					waypointId--;
-				}
-				else waypointId++;
-			}
-			StartCoroutine("waitAtWP",timeToWait);
-		}
-	}
-	private IEnumerator waitAtWP(float timePause) {
-		yield return new WaitForSeconds(timePause);
-		StartCoroutine("goToWaypoint",waypointId);
-	}
-
 	private void ChasePlayer () {
-		StopCoroutine("goToWaypoint");
-		StopCoroutine("waitAtWP");
 		if (target.position.x < thisTransform.position.x-waypointDetectionWidth/4) {
 			//direction = Vector3.left;
 			isLeft = true;

@@ -7,7 +7,8 @@ public class WaveCreator : MonoBehaviour {
 	
 	public float angleMax = 180, numberOfObjects=10;
 	public int offset = 0;
-	public WaveElt prefabWaveElt;
+	//public WaveElt prefabWaveElt;
+	private GameObject GOwaveElt;
 	//public Vector3 startPosition;
 	
 	private float angleUnitaire, rayon;
@@ -25,8 +26,10 @@ public class WaveCreator : MonoBehaviour {
 		if(angleMax != 360) numberOfObjects++;
 		
 		for(int i = (0+nbObjectsToAdd); i < numberOfObjects+nbObjectsToAdd; i++) {
-			instanceWaveElt = Instantiate(prefabWaveElt) as WaveElt;
-			
+			//instanceWaveElt = Instantiate(prefabWaveElt) as WaveElt;
+			GOwaveElt = Instantiate(Resources.Load("Prefabs/04 Gameplay/SndWaveElt&Blob")) as GameObject;
+			instanceWaveElt = GOwaveElt.GetComponent<WaveElt>();
+			instanceWaveElt.gameObject.transform.parent = GameObject.Find("Level/Waves/"+gameObject.name).transform;
 			//instanceWaveElt.setPosition(new Vector3(50f,50f,50f));
 			//			instanceWaveElt.setX(player.transform.position.x);
 			//			instanceWaveElt.setY(player.transform.position.y);

@@ -9,27 +9,26 @@ public class Player : Character {
 	public Skills skill_knife;
 	public Skills skill_axe;
 	public Skills skill_shield;
-	public Pebble instPebble;
-	public WaveCreator instFootWave,instInstruWave;
-	public GameObject instPebbleBar;
+	private GameObject GOpebble, GOinstFootWave, GOinstInstruWave;
 	public OTSprite menu;
 	public float footStepDelay = 0.6f;
 	
 	[SerializeField] private Rect hp_display;
 	[SerializeField] private SoundSprite soundMan;
 	[SerializeField] private ModulatedSound mdSound;
-	private WaveCreator soundEmitt1, soundEmitt2, soundInstru1, soundInstru2,soundEmitt3;
-	private int cptWave=1, pebbleDirection = 1;
-	private bool blockCoroutine, first, toSprint, toWalk, specialCast, playerDirLeft;
-	private Pebble pebble1;
-	private float powerPebble;
-	private GameObject pebbleBar;
+	private WaveCreator soundEmitt1, soundEmitt2, soundEmitt3, soundInstru1, soundInstru2; //waves footsteps 1, 2, 3 | intru 1, 2 so that the active wave is not destroyed when calling a another one 
+	private int cptWave=1, pebbleDirection = 1, pebbleMaxStrengh = 10;//cptWave = ID of the current displayed wave (from 1 to 3)| pebbleDirection = 1 or -1 -> right or left
+	private bool 	blockCoroutine, first, 		//block the footsteps coroutine|first instru wave or not
+					toSprint, toWalk, 			//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
+					specialCast, playerDirLeft; //true when playing instru (locks player and footsteps) | player goes left or not (used for offsetting footwaves center point)
+	private Pebble pebble; //Throwable pebble
+	private float powerPebble; //Throwing force added to the pebble after cast
+	private GameObject pebbleBar; //UI Bar to tell the player the power of his shoot
 
 	[HideInInspector] public bool paused = false;
 	
 	// Use this for initialization
-	public override void Start () 
-	{
+	public override void Start () {
 		base.Start();
 
 		
@@ -40,63 +39,38 @@ public class Player : Character {
 
 		spawnPos = thisTransform.position;
 
-		soundEmitt1 = Instantiate(instFootWave) as WaveCreator;
-		soundEmitt2 = Instantiate(instFootWave) as WaveCreator;
-		soundEmitt3 = Instantiate(instFootWave) as WaveCreator;
-		soundInstru1 = Instantiate(instInstruWave) as WaveCreator;
-		soundInstru2 = Instantiate(instInstruWave) as WaveCreator;
-		soundEmitt1.createCircle(thisTransform);
-		soundEmitt2.createCircle(thisTransform);
-		soundEmitt3.createCircle(thisTransform);
-		soundInstru1.createCircle(thisTransform);soundInstru1.specialCircle();
-		soundInstru2.createCircle(thisTransform);soundInstru2.specialCircle();
+		//Creating waves game objects
+		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesEmitter")) as GameObject; //footsteps wave 1
+		soundEmitt1 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt1.gameObject.name = "_footWavePlayer1";
+		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesEmitter")) as GameObject; //footsteps wave 2
+		soundEmitt2 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt2.gameObject.name = "_footWavePlayer2";
+		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesEmitter")) as GameObject; //footsteps wave 3
+		soundEmitt3 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt3.gameObject.name = "_footWavePlayer3";
+		GOinstInstruWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesInstru")) as GameObject; //intru wave 1
+		soundInstru1 = GOinstInstruWave.GetComponent<WaveCreator>();soundInstru1.gameObject.name = "_instruWavePlayer1";
+		GOinstInstruWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesInstru")) as GameObject; //instru wave 2
+		soundInstru2 = GOinstInstruWave.GetComponent<WaveCreator>();soundInstru2.gameObject.name = "_instruWavePlayer2";
+		
+		soundEmitt1.gameObject.transform.parent = soundEmitt2.gameObject.transform.parent = soundEmitt3.gameObject.transform.parent = 
+			soundInstru1.gameObject.transform.parent = soundInstru2.gameObject.transform.parent = GameObject.Find("Level/Waves/").transform;
 
-		pebbleBar = Instantiate(instPebbleBar) as GameObject;
+		soundEmitt1.createCircle(thisTransform); //creating wave elements of FOOT wave 1
+		soundEmitt2.createCircle(thisTransform); //creating wave elements of FOOT wave 2
+		soundEmitt3.createCircle(thisTransform); //creating wave elements of FOOT wave 3
+		soundInstru1.createCircle(thisTransform);soundInstru1.specialCircle(); //creating wave elements of INSTRU wave 1 & setting waves params to INSTRU
+		soundInstru2.createCircle(thisTransform);soundInstru2.specialCircle(); //creating wave elements of INSTRU wave 2 & setting waves params to INSTRU
+	
+		pebbleBar = Instantiate(Resources.Load("Prefabs/04 Gameplay/PebbleBar")) as GameObject; //Create UI power bar
 	}
+
 	// Update is called once per frame
-	public void Update () 
-	{
+	public void Update () {
 		checkInput();
 		UpdateMovement();
-		offsetCircles ();
-	}
-	
-	private void GameStart () 
-	{
-		if(FindObjectOfType(typeof(Player)) && this != null) {
-			transform.localPosition = spawnPos;
-			enabled = true;
-		}
-	}
-	
-	private void GameOver () 
-	{
-		enabled = false;
-		isLeft = false;
-		isRight = false;
-		isJump = false;
-		isPass = false;
-		movingDir = moving.None;
-	}
-	private void GamePause()
-	{
-		enabled = false;
-		isLeft = false;
-		isRight = false;
-		isJump = false;
-		isPass = false;
-		paused = true;
-		movingDir = moving.None;
-		
-	}
-	private void GameUnpause()
-	{
-		paused = false;
-		enabled = true;	
+		offsetCircles (); //Replace waves at the center of the player (+/- offests)
 	}
 
-	private void checkInput()
-	{
+	private void checkInput() {
 		// these are false unless one of keys is pressed
 		isLeft = false;
 		isRight = false;
@@ -107,35 +81,35 @@ public class Player : Character {
 
 		movingDir = moving.None;
 
-		// keyboard input
-		if (Input.GetKeyDown(KeyCode.F))
-		{
-			if(!pebble1) {
-				powerPebble = 0f;
+		#region Pebble (F)
+		if (Input.GetKeyDown(KeyCode.F)) { //OnPress -> set pebble power to 0 and create powerBar
+			if(!pebble) { //Only if not already existing (can't have 2 pebbles at the same time)
+				powerPebble = 0f; //
 				setPebbleBarPos();
 				pebbleBar.transform.localScale = new Vector3(0f,1f,1f);
 			}
 		}
-		if (Input.GetKey(KeyCode.F))
-		{
-			if(powerPebble <=10 && !pebble1) {
+		if (Input.GetKey(KeyCode.F)) { //Hold F to add power
+			if(powerPebble <= pebbleMaxStrengh && !pebble) { //Pebble max strenght
 				powerPebble += 0.2f;
-				pebbleBar.transform.localScale = new Vector3(powerPebble,1f,1f);
-				pebbleBar.transform.position = new Vector3((powerPebble-12f)/2,5.5f,-30f);
+				pebbleBar.transform.localScale = new Vector3(powerPebble,0.3f,1f); //Resize powerBar
+				setPebbleBarPos();
 			}
 		}
-		if (Input.GetKeyUp(KeyCode.F))
-		{
-			if(!pebble1) {
-				pebble1 = Instantiate(instPebble) as Pebble;
-				pebble1.setPosition((transform.position.x-transform.localScale.x/2),transform.position.y, -6f);
-				pebbleDirection = (facingDir == facing.Right) ? 1 : -1;
-				pebble1.throwPebble(powerPebble, pebbleDirection);
-				powerPebble = 0f;
-				pebbleBar.transform.localScale = new Vector3(powerPebble,1f,1f);
-				pebbleBar.transform.position = new Vector3((powerPebble-12f)/2,5.5f,-30f);
+		if (Input.GetKeyUp(KeyCode.F)) { //RELEASE THE PEBBLE !!
+			if(!pebble) { //If no pebble already existing
+				GOpebble = Instantiate(Resources.Load("Prefabs/04 Gameplay/Pebble")) as GameObject;
+				pebble = GOpebble.GetComponent<Pebble>(); //Create Pebble
+				pebble.setPosition((transform.position.x-transform.localScale.x/2),transform.position.y, -6f); //Pebble ini position
+				pebbleDirection = (facingDir == facing.Right) ? 1 : -1;	//Direction of the pebble
+				pebble.throwPebble(powerPebble, pebbleDirection); //Throw pebble function
+				powerPebble = 0f; //reset power
+				pebbleBar.transform.localScale = new Vector3(powerPebble,0.3f,1f); //reset power bar
+				pebbleBar.transform.position = new Vector3((powerPebble/2)+thisTransform.position.x,thisTransform.position.y+2f,-30f);
 			}
 		}
+		#endregion
+		#region TEMPORARY MUST NOT BE IN FINAL VERSION (Y) & (T) -> Destroy current circles
 		if (Input.GetKeyDown(KeyCode.Y))
 		{
 			soundInstru2.destroyCircle();
@@ -144,26 +118,29 @@ public class Player : Character {
 		{
 			soundInstru1.destroyCircle();
 		}
-		if (Input.GetKeyDown(KeyCode.R)  && grounded && !specialCast)
-		{
+		#endregion
+		#region Instru Skill (R)
+		if (Input.GetKeyDown(KeyCode.R)  && grounded && !specialCast) {
 			StartCoroutine("specialCircleCast");
 		}
-		if(Input.GetKeyDown("left shift")) {
-			moveVel = 1.75f * moveVel;
-			footStepDelay = footStepDelay / 2f;
+		#endregion
+		#region Sprint management (LeftShift)
+		if(Input.GetKeyDown("left shift")) {//OnPress
+			moveVel = 1.75f * moveVel; //Increase Player Speed
+			footStepDelay = footStepDelay / 2f; //Decrease FootStep Delay
 		}
-		if(Input.GetKeyUp("left shift")) {
-			moveVel = moveVel / 1.75f;
-			footStepDelay = footStepDelay * 2f;
+		if(Input.GetKeyUp("left shift")) {//OnRelease
+			moveVel = moveVel / 1.75f; //Decrease Player Speed
+			footStepDelay = footStepDelay * 2f; //Increase FootStep Delay
 		}
-		if(Input.GetKey("left shift")) {
+		if(Input.GetKey("left shift")) {//LeftShift input
 			toSprint=true;
 		}
-		else if(!Input.GetKey("left shift")) {
+		else if(!Input.GetKey("left shift")) {//NO LeftShift input
 			toWalk=true;
 		}
 		/*if(!blockCoroutine) {*/
-			if(toSprint) 		{
+			if(toSprint) {
 				if(soundEmitt1.getAlpha() <= 0f) soundEmitt1.circleWalkToSprint();
 				if(soundEmitt2.getAlpha() <= 0f) soundEmitt2.circleWalkToSprint();
 				if(soundEmitt3.getAlpha() <= 0f) soundEmitt3.circleWalkToSprint();
@@ -176,76 +153,66 @@ public class Player : Character {
 				toWalk=false;
 			}
 		/*}*/
-		if(Input.GetKey("left") && !specialCast) 
-		{ 
+		#endregion
+		#region Movement (Left), (Right), (Up), (Down), (Space)
+		if(Input.GetKey("left") && !specialCast) { //If input left & not casting instru
 			isLeft = true;
 			shootLeft = true;
 			facingDir = facing.Left;
 			if(!blockCoroutine && grounded) StartCoroutine("waitB4FootStep");
 		}
-		if((Input.GetKeyUp("left") && !specialCast) || (Input.GetKeyUp("right") && !isLeft && !specialCast)) {
+		if((Input.GetKeyUp("left") && !specialCast) || (Input.GetKeyUp("right") && !isLeft && !specialCast)) { 
 			StopCoroutine("footStep");
 			blockCoroutine = false;
 		}
-		if (Input.GetKey("right") && !isLeft && !specialCast) 
-		{ 
+		if (Input.GetKey("right") && !isLeft && !specialCast) { //If input right & not casting instru
 			isRight = true; 
 			facingDir = facing.Right;
 			shootLeft = false;
 			if(!blockCoroutine && grounded) StartCoroutine("waitB4FootStep");
 		}
-		if (Input.GetKey(KeyCode.DownArrow))
-		{
+		if (Input.GetKey(KeyCode.DownArrow)) {
 			isCrounch = true;
 			facingDir = facing.Down;
 		}
-		if (Input.GetKeyDown("up")) 
-		{ 
+		if (Input.GetKeyDown("up")) {
 			isJump = true; 
 		}
-		if(Input.GetKeyDown("space"))
-		{
+		if(Input.GetKeyDown("space")) {
 			isPass = true;
 		}
-		if (Input.GetKeyDown(KeyCode.Alpha1))
-		{
+		#endregion
+		#region Alpha (1), (2), (3)
+		if (Input.GetKeyDown(KeyCode.Alpha1)) {
 			//skill_axe.useSkill(Skills.SkillList.Axe);
 		}
-		if (Input.GetKeyDown(KeyCode.Alpha2))
-		{
+		if (Input.GetKeyDown(KeyCode.Alpha2)) {
 
 		}
-		if (Input.GetKeyDown(KeyCode.Alpha3))
-		{
+		if (Input.GetKeyDown(KeyCode.Alpha3)) {
 
 		}
-		if (Input.GetKeyDown(KeyCode.Escape))
-		{
-			if (GameEventManager.gamePaused == false)
-			{
-				GameEventManager.TriggerGamePause();
-			}
-			else if (GameEventManager.gamePaused == true)
-			{
-				GameEventManager.TriggerGameUnpause();
-			}
+		#endregion
+		#region (Escape)
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			if (GameEventManager.gamePaused == false) GameEventManager.TriggerGamePause();
+			else if (GameEventManager.gamePaused == true) GameEventManager.TriggerGameUnpause();
 		}
+		#endregion
 	}
-	private void offsetCircles () {
+	private void offsetCircles () { //Set circles position
 		soundEmitt1.setCharacterMoveOffset(vectorFixed.x);
 		soundEmitt2.setCharacterMoveOffset(vectorFixed.x);
 		soundEmitt3.setCharacterMoveOffset(vectorFixed.x);
 	}
-	private void setPebbleBarPos() {
-		pebbleBar.transform.position = new Vector3(thisTransform.position.x, thisTransform.position.y,pebbleBar.transform.position.z);
+	private void setPebbleBarPos() { //Set pebbleBar position
+		pebbleBar.transform.position = new Vector3((powerPebble/2)+thisTransform.position.x,thisTransform.position.y+2f,-30f); //Replace powerBar as resize is made from center expanding to each side
 	}
-	IEnumerator waitB4FootStep()
-	{
+	IEnumerator waitB4FootStep() { //Short Delay before the sprite actually touches the ground (edit when anim is finished)
 		yield return new WaitForSeconds(0.1f);
 		if(!blockCoroutine && grounded) StartCoroutine("footStep");
 	}
-	IEnumerator footStep()
-	{
+	IEnumerator footStep() { //Footsteps management
 		blockCoroutine =true;
 		
 		/*if(Input.GetKeyDown("left shift")) {
@@ -261,21 +228,52 @@ public class Player : Character {
 			soundEmitt2.circleSprintToWalk();
 		}*/
 		playerDirLeft = (facingDir == facing.Right) ? false : true;
-		if(cptWave == 1) {cptWave++;soundEmitt1.resetCircle(transform.localScale.x/1.5f,playerDirLeft, true);}
-		else if (cptWave == 2) {cptWave++;soundEmitt2.resetCircle(transform.localScale.x/1.5f,playerDirLeft, true);}
-		else if (cptWave == 3) {cptWave=1;soundEmitt3.resetCircle(transform.localScale.x/1.5f,playerDirLeft, true);}
-		yield return new WaitForSeconds(footStepDelay);
+		if(cptWave == 1) {cptWave++;soundEmitt1.resetCircle(transform.localScale.x/1.5f,playerDirLeft, true);} //First wave launch
+		else if (cptWave == 2) {cptWave++;soundEmitt2.resetCircle(transform.localScale.x/1.5f,playerDirLeft, true);} //Second wave launch
+		else if (cptWave == 3) {cptWave=1;soundEmitt3.resetCircle(transform.localScale.x/1.5f,playerDirLeft, true);} //Third wave launch
+		yield return new WaitForSeconds(footStepDelay); //Wait before launching next wave....wait...wait...wait...
 
-		blockCoroutine = false;
+		blockCoroutine = false; //UNLOCK THE COROUTIIIINE !!
 	}
-	IEnumerator specialCircleCast()
-	{
-		specialCast = true;
-		yield return new WaitForSeconds(1f);
+	IEnumerator specialCircleCast() { //Instru management
+		specialCast = true; //Say "I AM PLAYING AN INTRUMENT" to the rest of the game (lock player)
+		yield return new WaitForSeconds(1f); //Cast time before playing the sound (the character has to take his intrument out of his ass)
 		
-		if(first) {first=!first;soundInstru1.resetCircle();}
-		else {first=!first;soundInstru2.resetCircle();}
+		if(first) {first=!first;soundInstru1.resetCircle();} //If it's the first time playing
+		else {first=!first;soundInstru2.resetCircle();} //If it's the second time playing (2 waves so that player can display both on screen if spamming music)
 		//yield return new WaitForSeconds(soundInstru1.getLifeTime());
-		specialCast = false;
+		specialCast = false; //Not playing anymore, can move again
 	}
+
+	#region Game State Management - Events detection
+	private void GameStart () {
+		if(FindObjectOfType(typeof(Player)) && this != null) {
+			transform.localPosition = spawnPos;
+			enabled = true;
+		}
+	}
+	
+	private void GameOver () {
+		enabled = false;
+		isLeft = false;
+		isRight = false;
+		isJump = false;
+		isPass = false;
+		movingDir = moving.None;
+	}
+	private void GamePause() {
+		enabled = false;
+		isLeft = false;
+		isRight = false;
+		isJump = false;
+		isPass = false;
+		paused = true;
+		movingDir = moving.None;
+		
+	}
+	private void GameUnpause() {
+		paused = false;
+		enabled = true;	
+	}
+	#endregion
 }
