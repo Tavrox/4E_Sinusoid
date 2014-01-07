@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class PlatformAnims : MonoBehaviour 
+public class PlatformDestrAnims : MonoBehaviour 
 {
 	public enum animDef
 	{

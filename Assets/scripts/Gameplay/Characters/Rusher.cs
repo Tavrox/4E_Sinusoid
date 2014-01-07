@@ -77,7 +77,7 @@ public class Rusher : Enemy {
 
 		target = GameObject.FindWithTag("Player").transform; //target the player
 		patroling = true;
-		waypointDetectionWidth = transform.localScale.x;
+		waypointDetectionWidth = transform.localScale.x/4;
 	}
 	private void setIniState() {
 		thisTransform.position = spawnPos;
@@ -86,6 +86,11 @@ public class Rusher : Enemy {
 		waypointId = 0;
 		timeToWait=0;
 		pebbleDirection = 1;
+		chasingPlayer = false;
+		blockCoroutine = false;
+		StopCoroutine("waitB4FootStep");StopCoroutine("footStep");
+		isLeft = isRight = isJump = isGoDown = isPass = isCrounch = false;
+		movingDir = moving.None;
 	}
 	// Update is called once per frame
 	public void Update () 
@@ -143,14 +148,14 @@ public class Rusher : Enemy {
 	 *						*
 	 ***********************/
 	private void ChasePlayer () {
-		if (target.position.x < thisTransform.position.x-waypointDetectionWidth/4) {
+		if (target.position.x < thisTransform.position.x-waypointDetectionWidth) {
 			//direction = Vector3.left;
 			isLeft = true;
 			isRight = false;
 			facingDir = facing.Left;
 			UpdateMovement();
 		}
-		else if (target.position.x > thisTransform.position.x+waypointDetectionWidth/4 /*&& isLeft == false*/) {
+		else if (target.position.x > thisTransform.position.x+waypointDetectionWidth /*&& isLeft == false*/) {
 			//direction = Vector3.right;
 			isRight = true; 
 			isLeft = false;
@@ -248,7 +253,7 @@ public class Rusher : Enemy {
 
 	private void GameStart () {
 		if(FindObjectOfType(typeof(Zombie)) && this != null) {
-			transform.localPosition = spawnPos;
+			setIniState();//transform.localPosition = spawnPos;
 			enabled = true;
 		}
 	}
