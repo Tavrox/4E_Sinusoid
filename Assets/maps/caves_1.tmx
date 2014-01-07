@@ -15,6 +15,27 @@
  </tileset>
  <tileset firstgid="159" name="rusher" tilewidth="100" tileheight="120">
   <image source="../prod/gfx/Gameplay/Characters/Player/rusher.png" width="512" height="1024"/>
+  <terraintypes>
+   <terrain name="Nouveau terrain" tile="0"/>
+   <terrain name="Nouveaudsdfdsf terrain" tile="1"/>
+   <terrain name="bdfdsf" tile="27"/>
+  </terraintypes>
+  <tile id="0" terrain=",0,,0"/>
+  <tile id="1" terrain="0,0,0,0"/>
+  <tile id="2" terrain="0,0,0,0"/>
+  <tile id="3" terrain=",,0,"/>
+  <tile id="6" terrain="0,0,,0"/>
+  <tile id="7" terrain="0,0,0,"/>
+  <tile id="21" terrain="0,0,0,0"/>
+  <tile id="22" terrain="0,0,0,0"/>
+  <tile id="23" terrain="0,0,0,0"/>
+  <tile id="26" terrain="0,0,,"/>
+  <tile id="27" terrain="1,0,,"/>
+  <tile id="28" terrain="0,0,,"/>
+  <tile id="33" terrain=",,1,"/>
+ </tileset>
+ <tileset firstgid="199" name="TileRoche" tilewidth="50" tileheight="50" margin="5">
+  <image source="../gfx/Levels/Layout/Materials/TileRoche.png" width="512" height="1024"/>
  </tileset>
  <layer name="FirstQuarter" width="100" height="100">
   <data>
@@ -21857,6 +21878,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="199"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -21951,6 +21973,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
+   <tile gid="121"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -22253,9 +22276,7 @@
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
-   <tile gid="0"/>
+   <tile gid="199"/>
    <tile gid="0"/>
    <tile gid="0"/>
    <tile gid="0"/>
@@ -40034,6 +40055,14 @@
  </layer>
  <objectgroup name="Enemies" width="100" height="100">
   <object name="Footman" type="Footman" gid="119" x="1126" y="362"/>
+  <object gid="159" x="1226" y="456"/>
+  <object type="Turrets" gid="122" x="375" y="555"/>
+  <object x="400" y="620" width="55" height="55">
+   <properties>
+    <property name="WAypoint1" value=""/>
+   </properties>
+  </object>
+  <object x="580" y="620" width="55" height="55"/>
  </objectgroup>
  <objectgroup name="Environments" width="100" height="100"/>
  <objectgroup name="LevelBricks" width="100" height="100">
