@@ -91,10 +91,15 @@ public class Walker : Enemy {
 		thisTransform.position = spawnPos;
 		StartCoroutine("goToWaypoint",waypointId);
 		cptWave = 1;
-		goLeft = true;
+		goLeft = patroling = true;
 		waypointId = 0;
 		timeToWait=0;
 		pebbleDirection = 1;
+		StopCoroutine("waitB4FootStep");StopCoroutine("footStep");
+		waypointReached = chasingPlayer = endChasingPlayer = blockCoroutine = isLeft = isRight = isJump = isGoDown = isPass = isCrounch = false;
+		movingDir = moving.None;
+		StopCoroutine("goToWaypoint");StopCoroutine("waitAtWP");
+		StartCoroutine("goToWaypoint",waypointId);
 	}
 	// Update is called once per frame
 	public void Update () 
@@ -331,7 +336,8 @@ public class Walker : Enemy {
 
 	private void GameStart () {
 		if(FindObjectOfType(typeof(Zombie)) && this != null) {
-			transform.localPosition = spawnPos;
+			//transform.localPosition = spawnPos;
+			setIniState();
 			enabled = true;
 		}
 	}
