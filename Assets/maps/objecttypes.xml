@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objecttypes>
+ <objecttype name="Footman" color="#a4157e"/>
+ <objecttype name="Rusher" color="#ff0000"/>
+ <objecttype name="Turrets" color="#ddcd14"/>
+</objecttypes>

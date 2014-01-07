@@ -31,12 +31,8 @@ public class Walker : Enemy {
 //	public WaveCreator instFootWave,instInstruWave;
 	private GameObject GOinstFootWave, GOinstInstruWave;
 	//public GameObject instPebbleBar;
-	public OTSprite menu;
 	public float footStepDelay = 0.6f;
-	
-	[SerializeField] private Rect hp_display;
-	[SerializeField] private SoundSprite soundMan;
-	[SerializeField] private ModulatedSound mdSound;
+
 	private WaveCreator soundEmitt1, soundEmitt2, soundInstru1, soundInstru2,soundEmitt3;
 	private int cptWave=1, pebbleDirection = 1;
 	private bool blockCoroutine, first, toSprint, toWalk, specialCast, playerDirLeft, waypointReached;
@@ -76,10 +72,6 @@ public class Walker : Enemy {
 		soundInstru1.createCircle(thisTransform);soundInstru1.specialCircle();
 
 		//enabled = false;
-		
-		HP = 150;
-		res_mag = 50;
-		res_phys = 10;
 		runSpeed = 0.5f;
 
 		target = GameObject.FindWithTag("Player").transform; //target the player

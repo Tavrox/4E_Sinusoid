@@ -7,7 +7,6 @@ public class Player : Character {
 	[HideInInspector] public Transform trans;
 
 	private GameObject GOpebble, GOinstFootWave, GOinstInstruWave;
-	public OTSprite menu;
 	
 	[SerializeField] private Rect hp_display;
 	private WaveCreator soundEmitt1, soundEmitt2, soundEmitt3, soundInstru1, soundInstru2; //waves footsteps 1, 2, 3 | intru 1, 2 so that the active wave is not destroyed when calling a another one 
@@ -21,6 +20,13 @@ public class Player : Character {
 	public float footStepDelay;
 
 	public FESound WalkSound;
+	public FESound PrepareRockThrowSound;
+	public FESound LaunchRockThrowSound;
+	public FESound InstruSound;
+	public FESound FallSound;
+	public FESound JumpSound;
+	public FESound StandUpSound;
+	public FESound HideSound;
 
 	[HideInInspector] public bool paused = false;
 	
@@ -68,7 +74,6 @@ public class Player : Character {
 		checkInput();
 		UpdateMovement();
 		offsetCircles (); //Replace waves at the center of the player (+/- offests)
-		WalkSound.RepeatRate = WalkSound.RepeatRate;
 	}
 
 	private void checkInput() {
@@ -99,6 +104,7 @@ public class Player : Character {
 		}
 		if (Input.GetKeyUp(KeyCode.F)) { //RELEASE THE PEBBLE !!
 			if(!pebble) { //If no pebble already existing
+
 				GOpebble = Instantiate(Resources.Load("Prefabs/04 Gameplay/Pebble")) as GameObject;
 				pebble = GOpebble.GetComponent<Pebble>(); //Create Pebble
 				pebble.setPosition((transform.position.x-transform.localScale.x/2),transform.position.y, -6f); //Pebble ini position
@@ -245,7 +251,8 @@ public class Player : Character {
 		//yield return new WaitForSeconds(soundInstru1.getLifeTime());
 		specialCast = false; //Not playing anymore, can move again
 	}
-
+	
+	#region PlaySounds
 	private void playFootstep()
 	{
 		if ((isLeft == true || isRight == true) && grounded )
@@ -253,6 +260,36 @@ public class Player : Character {
 			WalkSound.playSound();
 		}
 	}
+	private void playSoundPrepareRockThrow()
+	{
+
+	}
+	private void playSoundLaunchRockThrow()
+	{
+		
+	}
+	private void playSoundGrip()
+	{
+		
+	}
+	private void playSoundHide()
+	{
+		HideSound.playSound();
+	}
+	private void playSoundInstru()
+	{
+		InstruSound.playSound();
+	}
+	private void playSoundStandUp()
+	{
+		StandUpSound.playSound();
+	}
+	private void playSoundJump()
+	{
+		JumpSound.playSound();
+	}
+	#endregion
+
 
 	#region Game State Management - Events detection
 	private void GameStart () {

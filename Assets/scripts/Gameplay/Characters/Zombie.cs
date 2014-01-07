@@ -28,10 +28,7 @@ public class Zombie : Enemy {
 		GameEventManager.GameUnpause += GameUnpause;
 		
 		enabled = false;
-		
-		HP = 150;
-		res_mag = 50;
-		res_phys = 10;
+
 		runSpeed = 0.5f;
 		
 		spawnPos = thisTransform.position;
