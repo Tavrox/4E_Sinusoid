@@ -16,6 +16,8 @@ public class Pebble : MonoBehaviour {
 		thisRigidbody = rigidbody;
 		GOsoundEmitt = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesPeeble")) as GameObject;
 		soundEmitt = GOsoundEmitt.GetComponent<WaveCreator>();
+		soundEmitt.gameObject.name = "_pebbleWave";
+		soundEmitt.gameObject.transform.parent = GameObject.Find("Level/Waves/").transform;
 		//soundEmitt = Instantiate(instWave) as WaveCreator;
 		soundEmitt.createCircle(thisTransform);
 		soundEmitt.setParent(thisTransform);
