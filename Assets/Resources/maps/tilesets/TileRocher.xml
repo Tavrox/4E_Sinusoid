@@ -7,7 +7,7 @@
             <key>black.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,1},{50,50}}</string>
+                <string>{{0,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>tileAngleInter_BasD_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{51,1},{50,50}}</string>
+                <string>{{50,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>tileAngleInter_BasG_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{101,1},{50,50}}</string>
+                <string>{{100,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>tileAngleInter_HautD_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{151,1},{50,50}}</string>
+                <string>{{150,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>tileAngleInter_HautG_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{201,1},{50,50}}</string>
+                <string>{{200,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>tileAngle_BDroite_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{251,1},{50,50}}</string>
+                <string>{{250,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>tileAngle_BDroite_02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{301,1},{50,50}}</string>
+                <string>{{300,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>tileAngle_BDroite_03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{351,1},{50,50}}</string>
+                <string>{{350,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>tileAngle_BDroite_04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{401,1},{50,100}}</string>
+                <string>{{400,0},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>tileAngle_BDroite_05-46.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{451,1},{50,50}}</string>
+                <string>{{450,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +137,7 @@
             <key>tileAngle_BDroite_05-48.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{451,1},{50,50}}</string>
+                <string>{{450,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +150,7 @@
             <key>tileAngle_BDroite_05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,101},{50,50}}</string>
+                <string>{{0,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +163,7 @@
             <key>tileAngle_BDroite_06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{51,101},{50,50}}</string>
+                <string>{{50,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +176,7 @@
             <key>tileAngle_BDroite_07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{101,101},{50,50}}</string>
+                <string>{{100,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +189,7 @@
             <key>tileAngle_BGauche_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{151,101},{50,50}}</string>
+                <string>{{150,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +202,7 @@
             <key>tileAngle_BGauche_02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{201,101},{50,50}}</string>
+                <string>{{200,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +215,7 @@
             <key>tileAngle_BGauche_03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{251,101},{50,50}}</string>
+                <string>{{250,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -228,7 +228,7 @@
             <key>tileAngle_BGauche_04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{301,101},{50,50}}</string>
+                <string>{{300,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -241,7 +241,7 @@
             <key>tileAngle_BGauche_05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{351,101},{50,50}}</string>
+                <string>{{350,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -254,7 +254,7 @@
             <key>tileAngle_HDroite_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{401,101},{50,50}}</string>
+                <string>{{400,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,7 +267,7 @@
             <key>tileAngle_HDroite_02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{451,101},{50,50}}</string>
+                <string>{{450,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -280,7 +280,7 @@
             <key>tileAngle_HDroite_03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,151},{50,50}}</string>
+                <string>{{0,150},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -293,7 +293,7 @@
             <key>tileAngle_HDroite_04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{51,151},{50,50}}</string>
+                <string>{{50,150},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -306,7 +306,7 @@
             <key>tileAngle_HDroite_05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{101,151},{50,50}}</string>
+                <string>{{100,150},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -319,7 +319,7 @@
             <key>tileAngle_HGauche_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{151,151},{50,50}}</string>
+                <string>{{150,150},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -332,7 +332,7 @@
             <key>tileAngle_HGauche_02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{201,151},{50,50}}</string>
+                <string>{{200,150},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -345,7 +345,7 @@
             <key>tileAngle_HGauche_03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{251,151},{50,50}}</string>
+                <string>{{250,150},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -358,7 +358,7 @@
             <key>tileAngle_HGauche_04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{301,151},{50,50}}</string>
+                <string>{{300,150},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -371,7 +371,7 @@
             <key>tileAngle_HGauche_05-32.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{351,151},{50,50}}</string>
+                <string>{{350,150},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -384,7 +384,7 @@
             <key>tileAngle_HGauche_05-34.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{351,151},{50,50}}</string>
+                <string>{{350,150},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -397,7 +397,7 @@
             <key>tileAngle_HGauche_05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{401,151},{50,50}}</string>
+                <string>{{400,150},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -410,7 +410,7 @@
             <key>tileHorizontal_Bas_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{451,151},{50,50}}</string>
+                <string>{{450,150},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -423,7 +423,7 @@
             <key>tileHorizontal_Bas_02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,201},{100,50}}</string>
+                <string>{{0,200},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -436,7 +436,7 @@
             <key>tileHorizontal_Bas_03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{101,201},{100,50}}</string>
+                <string>{{100,200},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -449,7 +449,7 @@
             <key>tileHorizontal_Bas_04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{201,201},{100,50}}</string>
+                <string>{{200,200},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -462,7 +462,7 @@
             <key>tileHorizontal_Bas_05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{301,201},{50,50}}</string>
+                <string>{{300,200},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -475,7 +475,7 @@
             <key>tileHorizontal_Bas_07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{351,201},{50,50}}</string>
+                <string>{{350,200},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -488,7 +488,7 @@
             <key>tileHorizontal_Haut_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{401,201},{100,50}}</string>
+                <string>{{400,200},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -501,7 +501,7 @@
             <key>tileHorizontal_Haut_02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,251},{100,50}}</string>
+                <string>{{0,250},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -514,7 +514,7 @@
             <key>tileHorizontal_Haut_03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{101,251},{100,50}}</string>
+                <string>{{100,250},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -527,7 +527,7 @@
             <key>tileHorizontal_Haut_04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{201,251},{100,50}}</string>
+                <string>{{200,250},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -540,7 +540,7 @@
             <key>tileHorizontal_Haut_05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{301,251},{100,50}}</string>
+                <string>{{300,250},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -553,7 +553,7 @@
             <key>tileHorizontal_Haut_06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{401,251},{100,50}}</string>
+                <string>{{400,250},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -566,7 +566,7 @@
             <key>tileHorizontal_Haut_07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,301},{100,50}}</string>
+                <string>{{0,300},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -579,7 +579,7 @@
             <key>tileHorizontal_Haut_08.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{101,301},{100,50}}</string>
+                <string>{{100,300},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -592,7 +592,7 @@
             <key>tileHorizontal_Haut_09.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{201,301},{100,50}}</string>
+                <string>{{200,300},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -605,7 +605,7 @@
             <key>tileHorizontal_Haut_10.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{301,301},{100,50}}</string>
+                <string>{{300,300},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -618,7 +618,7 @@
             <key>tileHorizontal_Haut_11.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{401,301},{100,50}}</string>
+                <string>{{400,300},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -631,7 +631,7 @@
             <key>tileHorizontal_Haut_12.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,351},{100,50}}</string>
+                <string>{{0,350},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -644,7 +644,7 @@
             <key>tileHorizontal_Haut_13.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{101,351},{100,50}}</string>
+                <string>{{100,350},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -657,7 +657,7 @@
             <key>tileHorizontal_Haut_14.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{201,351},{100,50}}</string>
+                <string>{{200,350},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -670,7 +670,7 @@
             <key>tileHorizontal_Haut_15.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{301,351},{100,50}}</string>
+                <string>{{300,350},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -683,7 +683,7 @@
             <key>tileHorizontal_Haut_16.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{401,351},{100,50}}</string>
+                <string>{{400,350},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -696,7 +696,7 @@
             <key>tileHorizontal_Haut_17.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,401},{50,50}}</string>
+                <string>{{0,400},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -709,7 +709,7 @@
             <key>tileHorizontal_Haut_18.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{51,401},{50,50}}</string>
+                <string>{{50,400},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -722,7 +722,7 @@
             <key>tileHorizontal_Haut_20.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{101,401},{50,50}}</string>
+                <string>{{100,400},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -735,7 +735,7 @@
             <key>tileHorizontal_Haut_22.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{151,401},{50,50}}</string>
+                <string>{{150,400},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -748,7 +748,7 @@
             <key>tileVertical_Droite_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{201,401},{50,100}}</string>
+                <string>{{200,400},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -761,7 +761,7 @@
             <key>tileVertical_Droite_02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{251,401},{50,100}}</string>
+                <string>{{250,400},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -774,7 +774,7 @@
             <key>tileVertical_Droite_03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{301,401},{50,100}}</string>
+                <string>{{300,400},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -787,7 +787,7 @@
             <key>tileVertical_Droite_04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{351,401},{50,100}}</string>
+                <string>{{350,400},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -800,7 +800,7 @@
             <key>tileVertical_Droite_05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{401,401},{50,100}}</string>
+                <string>{{400,400},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -813,7 +813,7 @@
             <key>tileVertical_Droite_07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{451,401},{50,50}}</string>
+                <string>{{450,400},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -826,7 +826,7 @@
             <key>tileVertical_Gauche_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1,501},{50,100}}</string>
+                <string>{{0,500},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -839,7 +839,7 @@
             <key>tileVertical_Gauche_02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{51,501},{50,100}}</string>
+                <string>{{50,500},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -852,7 +852,7 @@
             <key>tileVertical_Gauche_03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{101,501},{50,100}}</string>
+                <string>{{100,500},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -865,7 +865,7 @@
             <key>tileVertical_Gauche_04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{151,501},{50,100}}</string>
+                <string>{{150,500},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -878,7 +878,7 @@
             <key>tileVertical_Gauche_05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{201,501},{50,100}}</string>
+                <string>{{200,500},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -891,7 +891,7 @@
             <key>tileVertical_Gauche_07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{251,501},{50,50}}</string>
+                <string>{{250,500},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -911,7 +911,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1d0e34164842cfa12eeb06a654c81f7b:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:6208944a3fba3dde44451ea146988e8b:1/1$</string>
             <key>textureFileName</key>
             <string>TileRocher.png</string>
         </dict>
