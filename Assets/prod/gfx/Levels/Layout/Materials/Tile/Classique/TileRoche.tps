@@ -2,31 +2,17 @@
 <data version="1.0">
     <struct type="Settings">
         <key>fileFormatVersion</key>
-        <int>3</int>
-        <key>texturePackerVersion</key>
-        <string>3.2.1</string>
+        <int>1</int>
+        <key>variation</key>
+        <string>main</string>
+        <key>verbose</key>
+        <false/>
         <key>autoSDSettings</key>
-        <array>
-            <struct type="AutoSDSettings">
-                <key>scale</key>
-                <double>1</double>
-                <key>extension</key>
-                <string></string>
-                <key>spriteFilter</key>
-                <string></string>
-                <key>acceptFractionalValues</key>
-                <false/>
-                <key>maxTextureSize</key>
-                <QSize>
-                    <key>width</key>
-                    <int>-1</int>
-                    <key>height</key>
-                    <int>-1</int>
-                </QSize>
-            </struct>
-        </array>
+        <array/>
         <key>allowRotation</key>
-        <true/>
+        <false/>
+        <key>quiet</key>
+        <false/>
         <key>premultiplyAlpha</key>
         <false/>
         <key>shapeDebug</key>
@@ -36,7 +22,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>TileRoche.png</filename>
+        <filename>TileRocher.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -54,7 +40,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>5</uint>
+        <uint>0</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -64,7 +50,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-        <uint>5</uint>
+        <uint>0</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -101,7 +87,7 @@
             <key>basic</key>
             <struct type="AlgorithmBasicSettings">
                 <key>sortBy</key>
-                <enum type="AlgorithmBasicSettings::SortBy">Best</enum>
+                <enum type="AlgorithmBasicSettings::SortBy">Name</enum>
                 <key>order</key>
                 <enum type="AlgorithmBasicSettings::Order">Ascending</enum>
             </struct>
@@ -112,6 +98,8 @@
             <enum type="AndEngine::MinFilter">Linear</enum>
             <key>packageName</key>
             <string>Texture</string>
+            <key>javaFileName</key>
+            <filename>TileRocher0.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -122,16 +110,12 @@
             <key>magFilter</key>
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
-        <key>dataFileNames</key>
-        <map type="GFileNameMap">
-            <key>data</key>
-            <struct type="DataFile">
-                <key>name</key>
-                <filename>TileRoche.xml</filename>
-            </struct>
-        </map>
+        <key>dataFileName</key>
+        <filename>TileRocher.xml</filename>
         <key>multiPack</key>
         <false/>
+        <key>mainExtension</key>
+        <string></string>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -145,8 +129,6 @@
         <true/>
         <key>trimSpriteNames</key>
         <false/>
-        <key>cleanTransparentPixels</key>
-        <true/>
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>
@@ -166,91 +148,75 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Gauche_06.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Gauche_07.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BDroite_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BDroite_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BDroite_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BDroite_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BDroite_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BDroite_05-56.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BDroite_06.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BDroite_07.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BGauche_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BGauche_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BGauche_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BGauche_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_BGauche_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_HDroite_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_HDroite_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_HDroite_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_HDroite_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_HDroite_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_HGauche_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_HGauche_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_HGauche_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_HGauche_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_HGauche_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileAngle_HGauche_05-36.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Bas_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Bas_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Bas_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Bas_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Bas_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Bas_06.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Bas_07.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Bas_08.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Bas_09.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_06.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_07.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_08.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_09.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_10.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_11.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_12.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_13.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_14.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_15.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_16.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_17.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_18.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_19.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_20.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_21.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_22.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileHorizontal_Haut_23.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_BGauche_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HDroit_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HDroit_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HDroit_02-57.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HDroit_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HDroit_03-70.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HDroit_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HDroit_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HGauche_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HGauche_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HGauche_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HGauche_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HGauche_04-81.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileLien_HGauche_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Droite_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Droite_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Droite_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Droite_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Droite_05.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Droite_06.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Droite_07.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Droite_08.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Gauche_01.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Gauche_02.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Gauche_03.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Gauche_04.png</filename>
-            <filename>../../../Photophop/Plateformes/Tile Classique/Ensemble/tileVertical_Gauche_05.png</filename>
+            <filename>Tile_Roche/tileAngle_BDroite_03.png</filename>
+            <filename>Tile_Roche/tileAngle_BDroite_04.png</filename>
+            <filename>Tile_Roche/tileAngle_BDroite_05.png</filename>
+            <filename>Tile_Roche/tileAngle_BDroite_05-46.png</filename>
+            <filename>Tile_Roche/tileAngle_BDroite_05-48.png</filename>
+            <filename>Tile_Roche/tileAngle_BDroite_06.png</filename>
+            <filename>Tile_Roche/tileAngle_BDroite_07.png</filename>
+            <filename>Tile_Roche/tileAngle_BGauche_01.png</filename>
+            <filename>Tile_Roche/tileAngle_BGauche_02.png</filename>
+            <filename>Tile_Roche/tileAngle_BGauche_03.png</filename>
+            <filename>Tile_Roche/tileAngle_BGauche_04.png</filename>
+            <filename>Tile_Roche/tileAngle_BGauche_05.png</filename>
+            <filename>Tile_Roche/tileAngle_HDroite_01.png</filename>
+            <filename>Tile_Roche/tileAngle_HDroite_02.png</filename>
+            <filename>Tile_Roche/tileAngle_HDroite_03.png</filename>
+            <filename>Tile_Roche/tileAngle_HDroite_04.png</filename>
+            <filename>Tile_Roche/tileAngle_HDroite_05.png</filename>
+            <filename>Tile_Roche/tileAngle_HGauche_01.png</filename>
+            <filename>Tile_Roche/tileAngle_HGauche_02.png</filename>
+            <filename>Tile_Roche/tileAngle_HGauche_03.png</filename>
+            <filename>Tile_Roche/tileAngle_HGauche_04.png</filename>
+            <filename>Tile_Roche/tileAngle_HGauche_05.png</filename>
+            <filename>Tile_Roche/tileAngle_HGauche_05-32.png</filename>
+            <filename>Tile_Roche/tileAngle_HGauche_05-34.png</filename>
+            <filename>Tile_Roche/tileAngleInter_BasD_01.png</filename>
+            <filename>Tile_Roche/tileAngleInter_BasG_01.png</filename>
+            <filename>Tile_Roche/tileAngleInter_HautD_01.png</filename>
+            <filename>Tile_Roche/tileAngleInter_HautG_01.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Bas_01.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Bas_02.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Bas_03.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Bas_04.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Bas_05.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Bas_07.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_01.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_02.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_03.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_04.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_05.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_06.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_07.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_08.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_09.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_10.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_11.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_12.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_13.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_14.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_15.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_16.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_17.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_18.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_20.png</filename>
+            <filename>Tile_Roche/tileHorizontal_Haut_22.png</filename>
+            <filename>Tile_Roche/tileVertical_Droite_01.png</filename>
+            <filename>Tile_Roche/tileVertical_Droite_02.png</filename>
+            <filename>Tile_Roche/tileVertical_Droite_03.png</filename>
+            <filename>Tile_Roche/tileVertical_Droite_04.png</filename>
+            <filename>Tile_Roche/tileVertical_Droite_05.png</filename>
+            <filename>Tile_Roche/tileVertical_Droite_07.png</filename>
+            <filename>Tile_Roche/tileVertical_Gauche_01.png</filename>
+            <filename>Tile_Roche/tileVertical_Gauche_02.png</filename>
+            <filename>Tile_Roche/tileVertical_Gauche_03.png</filename>
+            <filename>Tile_Roche/tileVertical_Gauche_04.png</filename>
+            <filename>Tile_Roche/tileVertical_Gauche_05.png</filename>
+            <filename>Tile_Roche/tileVertical_Gauche_07.png</filename>
+            <filename>Tile_Roche/tileAngle_BDroite_01.png</filename>
+            <filename>Tile_Roche/tileAngle_BDroite_02.png</filename>
+            <filename>Tile_Roche/black.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
