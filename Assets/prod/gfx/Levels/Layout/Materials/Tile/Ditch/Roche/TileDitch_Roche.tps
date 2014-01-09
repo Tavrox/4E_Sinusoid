@@ -54,7 +54,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>5</uint>
+        <uint>0</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -64,7 +64,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-        <uint>5</uint>
+        <uint>0</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -166,12 +166,18 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>Tile/Ditch_02_01.png</filename>
-            <filename>Tile/Ditch_02_02.png</filename>
-            <filename>Tile/Ditch_02_03.png</filename>
-            <filename>Tile/Ditch_04_01.png</filename>
-            <filename>Tile/Ditch_04_02.png</filename>
-            <filename>Tile/Ditch2.png</filename>
+            <filename>Tile/NewDitch50Roche_16.png</filename>
+            <filename>Tile/NewDitch50Roche_15.png</filename>
+            <filename>Tile/NewDitch50Roche_14.png</filename>
+            <filename>Tile/NewDitch50Roche_13.png</filename>
+            <filename>Tile/NewDitch50Roche_12.png</filename>
+            <filename>Tile/NewDitch50Roche_11.png</filename>
+            <filename>Tile/NewDitch50Roche_10.png</filename>
+            <filename>Tile/NewDitch50Roche_07.png</filename>
+            <filename>Tile/NewDitch50Roche_06.png</filename>
+            <filename>Tile/NewDitch50Roche_05.png</filename>
+            <filename>Tile/NewDitch50Roche_04.png</filename>
+            <filename>Tile/NewDitch50Roche_03.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

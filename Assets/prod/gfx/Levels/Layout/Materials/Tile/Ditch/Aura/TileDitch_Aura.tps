@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../Roche/TileDitch_Aura.png</filename>
+        <filename>TileDitch_Aura.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -54,7 +54,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>5</uint>
+        <uint>0</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -64,7 +64,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-        <uint>5</uint>
+        <uint>0</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -166,12 +166,18 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>Tile/Ditch_02_01.png</filename>
-            <filename>Tile/Ditch_02_02.png</filename>
-            <filename>Tile/Ditch_02_03.png</filename>
-            <filename>Tile/Ditch_04_01.png</filename>
-            <filename>Tile/Ditch_04_02.png</filename>
-            <filename>Tile/Ditch2.png</filename>
+            <filename>Tile/NewDitch50Auta_06.png</filename>
+            <filename>Tile/NewDitch50Auta_07.png</filename>
+            <filename>Tile/NewDitch50Auta_08.png</filename>
+            <filename>Tile/NewDitch50Auta_10.png</filename>
+            <filename>Tile/NewDitch50Auta_11.png</filename>
+            <filename>Tile/NewDitch50Auta_12.png</filename>
+            <filename>Tile/NewDitch50Auta_13.png</filename>
+            <filename>Tile/NewDitch50Auta_14.png</filename>
+            <filename>Tile/NewDitch50Auta_15.png</filename>
+            <filename>Tile/NewDitch50Auta_03.png</filename>
+            <filename>Tile/NewDitch50Auta_04.png</filename>
+            <filename>Tile/NewDitch50Auta_05.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
