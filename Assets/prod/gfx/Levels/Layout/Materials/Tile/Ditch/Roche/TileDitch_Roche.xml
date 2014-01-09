@@ -7,7 +7,15 @@
             <key>NewDitch50Roche_03.png</key>
             <dict>
                 <key>frame</key>
+<<<<<<< HEAD
                 <string>{{0,0},{50,100}}</string>
+=======
+<<<<<<< HEAD
+                <string>{{0,0},{50,100}}</string>
+=======
+                <string>{{5,5},{50,75}}</string>
+>>>>>>> c67e035310ad1f1348681358e6f18dee9982e469
+>>>>>>> db02f9346ea4d4fb3fd437a3fc002332a020a6ec
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +28,15 @@
             <key>NewDitch50Roche_04.png</key>
             <dict>
                 <key>frame</key>
+<<<<<<< HEAD
                 <string>{{50,0},{100,100}}</string>
+=======
+<<<<<<< HEAD
+                <string>{{50,0},{50,100}}</string>
+=======
+                <string>{{60,5},{50,75}}</string>
+>>>>>>> c67e035310ad1f1348681358e6f18dee9982e469
+>>>>>>> db02f9346ea4d4fb3fd437a3fc002332a020a6ec
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +49,15 @@
             <key>NewDitch50Roche_05.png</key>
             <dict>
                 <key>frame</key>
+<<<<<<< HEAD
                 <string>{{150,0},{100,100}}</string>
+=======
+<<<<<<< HEAD
+                <string>{{100,0},{50,100}}</string>
+=======
+                <string>{{115,5},{50,75}}</string>
+>>>>>>> c67e035310ad1f1348681358e6f18dee9982e469
+>>>>>>> db02f9346ea4d4fb3fd437a3fc002332a020a6ec
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +70,15 @@
             <key>NewDitch50Roche_06.png</key>
             <dict>
                 <key>frame</key>
+<<<<<<< HEAD
                 <string>{{0,100},{150,100}}</string>
+=======
+<<<<<<< HEAD
+                <string>{{150,0},{50,100}}</string>
+=======
+                <string>{{170,5},{50,75}}</string>
+>>>>>>> c67e035310ad1f1348681358e6f18dee9982e469
+>>>>>>> db02f9346ea4d4fb3fd437a3fc002332a020a6ec
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +91,15 @@
             <key>NewDitch50Roche_07.png</key>
             <dict>
                 <key>frame</key>
+<<<<<<< HEAD
                 <string>{{0,200},{150,100}}</string>
+=======
+<<<<<<< HEAD
+                <string>{{0,100},{100,100}}</string>
+=======
+                <string>{{5,85},{100,75}}</string>
+>>>>>>> c67e035310ad1f1348681358e6f18dee9982e469
+>>>>>>> db02f9346ea4d4fb3fd437a3fc002332a020a6ec
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +112,15 @@
             <key>NewDitch50Roche_10.png</key>
             <dict>
                 <key>frame</key>
+<<<<<<< HEAD
                 <string>{{150,200},{50,50}}</string>
+=======
+<<<<<<< HEAD
+                <string>{{100,100},{100,100}}</string>
+=======
+                <string>{{110,85},{100,75}}</string>
+>>>>>>> c67e035310ad1f1348681358e6f18dee9982e469
+>>>>>>> db02f9346ea4d4fb3fd437a3fc002332a020a6ec
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -170,7 +218,15 @@
             <key>size</key>
             <string>{256,512}</string>
             <key>smartupdate</key>
+<<<<<<< HEAD
             <string>$TexturePacker:SmartUpdate:c841367a86b2c6338dcacb7cb1e64f72:5e3882b17e34c51aa5ba9aab837185ad:fe5ee54705aba51530672711ce113f4d$</string>
+=======
+<<<<<<< HEAD
+            <string>$TexturePacker:SmartUpdate:69e467c8d561f2ca87d5da29aab87b44:1/1$</string>
+=======
+            <string>$TexturePacker:SmartUpdate:4281bd257cdc9877e6f2010f258d2e0e:bb3be7bdf2b211de5459ac877ed09d1a:fe5ee54705aba51530672711ce113f4d$</string>
+>>>>>>> c67e035310ad1f1348681358e6f18dee9982e469
+>>>>>>> db02f9346ea4d4fb3fd437a3fc002332a020a6ec
             <key>textureFileName</key>
             <string>TileDitch_Roche.png</string>
         </dict>

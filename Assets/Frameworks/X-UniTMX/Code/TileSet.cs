@@ -92,6 +92,10 @@ namespace X_UniTMX
 			//int imageHeight = this.Texture.height - Margin * 2;
 
 			// figure out how many frames fit on the X axis
+			if (this.Texture == null)
+			{
+				Debug.Log("The texture hasn't been found");
+			}
 			int frameCountX = -(2 * Margin - Spacing - this.Texture.width) / (TileWidth + Spacing);
 			/*while (frameCountX * TileWidth < imageWidth)
 			{

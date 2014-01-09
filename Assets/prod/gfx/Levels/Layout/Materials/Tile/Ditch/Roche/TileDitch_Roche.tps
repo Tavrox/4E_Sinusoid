@@ -2,31 +2,17 @@
 <data version="1.0">
     <struct type="Settings">
         <key>fileFormatVersion</key>
-        <int>3</int>
-        <key>texturePackerVersion</key>
-        <string>3.2.1</string>
+        <int>1</int>
+        <key>variation</key>
+        <string>main</string>
+        <key>verbose</key>
+        <false/>
         <key>autoSDSettings</key>
-        <array>
-            <struct type="AutoSDSettings">
-                <key>scale</key>
-                <double>1</double>
-                <key>extension</key>
-                <string></string>
-                <key>spriteFilter</key>
-                <string></string>
-                <key>acceptFractionalValues</key>
-                <false/>
-                <key>maxTextureSize</key>
-                <QSize>
-                    <key>width</key>
-                    <int>-1</int>
-                    <key>height</key>
-                    <int>-1</int>
-                </QSize>
-            </struct>
-        </array>
+        <array/>
         <key>allowRotation</key>
-        <true/>
+        <false/>
+        <key>quiet</key>
+        <false/>
         <key>premultiplyAlpha</key>
         <false/>
         <key>shapeDebug</key>
@@ -54,7 +40,11 @@
             </struct>
         </struct>
         <key>shapePadding</key>
+<<<<<<< HEAD
         <uint>0</uint>
+=======
+        <uint>1</uint>
+>>>>>>> db02f9346ea4d4fb3fd437a3fc002332a020a6ec
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -64,7 +54,11 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
+<<<<<<< HEAD
         <uint>0</uint>
+=======
+        <uint>1</uint>
+>>>>>>> db02f9346ea4d4fb3fd437a3fc002332a020a6ec
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -101,7 +95,7 @@
             <key>basic</key>
             <struct type="AlgorithmBasicSettings">
                 <key>sortBy</key>
-                <enum type="AlgorithmBasicSettings::SortBy">Best</enum>
+                <enum type="AlgorithmBasicSettings::SortBy">Name</enum>
                 <key>order</key>
                 <enum type="AlgorithmBasicSettings::Order">Ascending</enum>
             </struct>
@@ -112,6 +106,8 @@
             <enum type="AndEngine::MinFilter">Linear</enum>
             <key>packageName</key>
             <string>Texture</string>
+            <key>javaFileName</key>
+            <filename>TileDitch_Roche.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -122,16 +118,12 @@
             <key>magFilter</key>
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
-        <key>dataFileNames</key>
-        <map type="GFileNameMap">
-            <key>data</key>
-            <struct type="DataFile">
-                <key>name</key>
-                <filename>TileDitch_Roche.xml</filename>
-            </struct>
-        </map>
+        <key>dataFileName</key>
+        <filename>TileDitch_Roche.xml</filename>
         <key>multiPack</key>
         <false/>
+        <key>mainExtension</key>
+        <string></string>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -145,8 +137,6 @@
         <true/>
         <key>trimSpriteNames</key>
         <false/>
-        <key>cleanTransparentPixels</key>
-        <true/>
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>
@@ -166,6 +156,7 @@
         </struct>
         <key>fileList</key>
         <array>
+<<<<<<< HEAD
             <filename>Tile/NewDitch50Roche_16.png</filename>
             <filename>Tile/NewDitch50Roche_15.png</filename>
             <filename>Tile/NewDitch50Roche_14.png</filename>
@@ -178,6 +169,14 @@
             <filename>Tile/NewDitch50Roche_05.png</filename>
             <filename>Tile/NewDitch50Roche_04.png</filename>
             <filename>Tile/NewDitch50Roche_03.png</filename>
+=======
+            <filename>Tile/Ditch2.png</filename>
+            <filename>Tile/Ditch_02_01.png</filename>
+            <filename>Tile/Ditch_02_02.png</filename>
+            <filename>Tile/Ditch_02_03.png</filename>
+            <filename>Tile/Ditch_04_01.png</filename>
+            <filename>Tile/Ditch_04_02.png</filename>
+>>>>>>> db02f9346ea4d4fb3fd437a3fc002332a020a6ec
         </array>
         <key>ignoreFileList</key>
         <array/>

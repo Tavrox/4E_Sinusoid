@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objecttypes>
  <objecttype name="Checkpoint" color="#fff708"/>
- <objecttype name="Walker" color="#3c00a4"/>
+ <objecttype name="WalkerPoints" color="#3c00a4"/>
  <objecttype name="Rusher" color="#be0003"/>
+ <objecttype name="Drop" color="#359dd5"/>
 </objecttypes>
