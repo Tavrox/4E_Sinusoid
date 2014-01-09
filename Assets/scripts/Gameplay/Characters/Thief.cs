@@ -30,10 +30,7 @@ public class Thief : Enemy {
 		GameEventManager.GameStart += GameStart;
 		GameEventManager.GameOver += GameOver;
 		enabled = false;
-		
-		HP = 150;
-		res_mag = 50;
-		res_phys = 10;
+
 		runSpeed = 1f;
 		
 		spawnPos = thisTransform.position;

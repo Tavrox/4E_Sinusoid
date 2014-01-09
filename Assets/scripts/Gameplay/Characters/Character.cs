@@ -5,12 +5,6 @@ public enum MyTeam { Team1, Team2, None }
 
 public class Character : MonoBehaviour 
 {
-	public OTAnimation anim;
-
-	/** ADD **/
-	public int res_phys, res_mag;
-	
-	public int maxHP;
 	[HideInInspector] public int HP;
 	[HideInInspector] public bool isShot;
 	[HideInInspector] public bool talking;
@@ -53,12 +47,13 @@ public class Character : MonoBehaviour
 	[HideInInspector] public Vector3 vectorFixed;
 	protected Vector3 vectorMove;
 	private Vector3 mypos;
+	public Environment onEnvironment;
 	
 	[Range (0,10)] 	public float 	moveVel = 4f;
 	[Range (0,30)] 	public float 	jumpVel = 16f;
-	[Range (0,30)] 	public float 	jump2Vel = 14f;
-	[Range (1,2)] 	public int 		maxJumps = 2;
-	[Range (0,25)] public float 	fallVel = 18f;
+	[Range (0,30)] 	private float 	jump2Vel = 14f;
+	[Range (1,2)] 	private int 		maxJumps = 2;
+	[Range (0,25)]  public float 	fallVel = 18f;
 	
 	[SerializeField] private int jumps = 0;
 	[SerializeField] private float gravityY;
@@ -84,7 +79,6 @@ public class Character : MonoBehaviour
 	// Use this for initialization
 	public virtual void Start () 
 	{
-		HP = maxHP;
 		maxVelY = fallVel;
 		vectorMove.y = 0;
 		halfMyX = GetComponentInChildren<Transform>().GetComponentInChildren<OTAnimatingSprite>().size.x * 0.5f;
@@ -184,14 +178,10 @@ public class Character : MonoBehaviour
 		Vector3 tst = new Vector3(mypos.x, mypos.y,0f);
 		Debug.DrawLine( tst , tst+Vector3.down, Color.green);
 		Debug.DrawLine( mypos , Vector3.down, Color.blue);
-//		print (mypos);
-//
-//		print (halfMyY);
 		
 		//BLOCKED TO DOWN
 		if (Physics.Raycast(mypos, mypos+Vector3.down, out hitInfo, halfMyY, platformMask))
 		{
-//			print ("entered blocker");
 			Debug.DrawLine(thisTransform.position, hitInfo.point, Color.black);
 			if (isCrounch == true)
 			{
@@ -202,10 +192,10 @@ public class Character : MonoBehaviour
 			{
 				BlockedDown();	
 			}
+			print (hitInfo.collider.gameObject.GetComponent<Environment>().typeList);
 		}
 		if (Physics.Raycast(mypos, Vector3.down, out hitInfo, halfMyY, groundMask))
 		{
-//			print ("blocked down");
 			BlockedDown();
 		}
 		
