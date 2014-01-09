@@ -19,7 +19,7 @@ public class TiledMapComponent : MonoBehaviour {
 	public TextAsset MapTMX;
 	public bool GenerateCollider = false;
 	public float[] CollidersZDepth;
-	public float[] CollidersWidth;
+	public float[] CollidersWidth = new float[] {50f};
 	public string[] CollidersLayerName;
 	public bool[] CollidersIsInner;
 	public bool MakeUniqueTiles = true;
@@ -37,6 +37,7 @@ public class TiledMapComponent : MonoBehaviour {
 		XmlDocument document = new XmlDocument();
 		document.LoadXml(MapTMX.text);
 		tiledMap = new Map(document, MakeUniqueTiles, fullPath, mapPath, this.gameObject);//, MeshRendererPrefab);
+		CollidersWidth[0] = 50f;
 	}
 
 	public void GenerateColliders()
@@ -49,6 +50,7 @@ public class TiledMapComponent : MonoBehaviour {
 				List<MapObject> colliders = collisionLayer.Objects;
 				foreach (MapObject collider in colliders)
 				{
+					Debug.Log(collider.MapObjectType);
 					switch (collider.MapObjectType)
 					{
 						case MapObjectType.Box:

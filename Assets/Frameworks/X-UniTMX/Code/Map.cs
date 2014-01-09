@@ -461,6 +461,7 @@ namespace X_UniTMX
 			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
 
 			boxCollider.isStatic = true;
+			boxCollider.tag = "soundStopper";
 
 			return boxCollider;
 		}
@@ -484,6 +485,7 @@ namespace X_UniTMX
 			cc.height = obj.Bounds.height * colliderWidth;
 
 			capsuleCollider.isStatic = true;
+			capsuleCollider.tag = "soundStopper";
 
 			return capsuleCollider;
 		}
@@ -577,6 +579,7 @@ namespace X_UniTMX
 			mc.sharedMesh = colliderMesh;
 
 			polygonCollider.isStatic = true;
+			polygonCollider.tag = "soundStopper";
 
 			return polygonCollider;
 		}
@@ -640,6 +643,7 @@ namespace X_UniTMX
 			mc.sharedMesh = colliderMesh;
 
 			polylineCollider.isStatic = true;
+			polylineCollider.tag = "soundStopper";
 
 			return polylineCollider;
 		}
