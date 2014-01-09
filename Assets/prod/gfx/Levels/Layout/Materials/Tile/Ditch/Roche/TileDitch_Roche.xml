@@ -7,7 +7,7 @@
             <key>Ditch2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{5,5},{50,100}}</string>
+                <string>{{0,0},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>Ditch_02_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{60,5},{50,100}}</string>
+                <string>{{50,0},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>Ditch_02_02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{115,5},{50,100}}</string>
+                <string>{{100,0},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>Ditch_02_03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{170,5},{50,100}}</string>
+                <string>{{150,0},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>Ditch_04_01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{5,110},{100,100}}</string>
+                <string>{{0,100},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>Ditch_04_02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{110,110},{100,100}}</string>
+                <string>{{100,100},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -92,7 +92,7 @@
             <key>size</key>
             <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:e1fe8e4603500f6665070f201662f25f:eb533a150dc517d14e2ba3eb6269f274:fe5ee54705aba51530672711ce113f4d$</string>
+            <string>$TexturePacker:SmartUpdate:69e467c8d561f2ca87d5da29aab87b44:1/1$</string>
             <key>textureFileName</key>
             <string>TileDitch_Roche.png</string>
         </dict>

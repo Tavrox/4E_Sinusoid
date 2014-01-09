@@ -12,12 +12,7 @@ public class TileImporter : MonoBehaviour {
 	private int tileHeight;
 
 	private string url;
-	public int levelID = 1;
-	public string specificAddition = "";
-	public bool specificTrigger = false;
-	public int chosenVariation = 0;
-	public int minVariation;
-	public int maxVariation;
+	public TextAsset levelToLoad;
 	private XmlDocument xmlDoc;
 	private XmlNodeList mapNodes;
 	private XmlNodeList tileNodes;
@@ -25,38 +20,19 @@ public class TileImporter : MonoBehaviour {
 	private XmlNodeList itemNodes;
 
 	 
-	public enum tileList
+	private enum tileList
 	{
 		Metal,
 		Background
 	};
-	public tileList tileToGet;
+	private tileList tileToGet;
 
 	public enum objectList
 	{
-		Lever,
-		Crate,
-		Walker,
-		Patroler,
-		TurretU,
-		TurretD,
-		TurretL,
-		TurretR,
-		Key,
-		TriggeredDoor,
-		TimedBtn,
-		SequencedBtn,
-		TeleportIn,
-		TeleportOut,
-		TrapKill,
-		Collibox,
-		BaseArcU,
-		BaseArcD,
-		BaseArcL,
-		BaseArcR,
-		ArcHorizontal,
-		ArcVertical,
-		EndDoor,
+		Checkpoint,
+		WalkerPoints,
+		Rusher
+
 	};
 	public objectList obj;
 
@@ -66,7 +42,14 @@ public class TileImporter : MonoBehaviour {
 	{
 		activateTiles();
 	}
-
+	
+	private void initXML()
+	{
+		xmlDoc = new XmlDocument();
+		xmlDoc.LoadXml(levelToLoad.text);
+		Debug.Log("Xml successfully loaded" + xmlDoc);
+		initTilesets();
+	}
 
 	private void activateTiles()
 	{
@@ -89,23 +72,8 @@ public class TileImporter : MonoBehaviour {
 			print ("lists are null" + listTiles);
 		}
 	}
-	
-	private void initXML()
-	{
-		xmlDoc = new XmlDocument();
-		string url = "file:///" + Application.dataPath + "/"+"maps/" + levelID.ToString() + ".xml";
-		xmlDoc.Load(url);
-		Debug.Log("Xml successfully loaded" + xmlDoc);
-		initTilesets();
-	}
 
-	public void OnInspectorGUI()
-	{
-		if (GUILayout.Button("ClearMetal"))
-		{
-			Debug.Log("omg");
-		}
-	}
+	#region TilesetImport
 
 	private void initTilesets()
 	{
@@ -199,11 +167,6 @@ public class TileImporter : MonoBehaviour {
 						{ stringVal = modVal.ToString(); }
 						namePrefab = "Tiles/" + _currTile.ToString() + "/" + stringVal;
 
-						if (specificTrigger == true)
-						{
-							namePrefab = "Tiles/" + _currTile.ToString() + "/" + specificAddition;
-						}
-
 						if (_currWidth >= levelWidth * tileWidth)
 						{
 							_currWidth = -0;
@@ -232,7 +195,7 @@ public class TileImporter : MonoBehaviour {
 		}
 		Debug.Log("Finish getting tiles");
 	}
-
+	#endregion
 
 	
 	[ContextMenu ("Get Objects")]
@@ -242,60 +205,34 @@ public class TileImporter : MonoBehaviour {
 		initXML();
 		objectList _currObj = obj;
 		itemNodes = xmlDoc.SelectNodes("map/objectgroup");
-		GameObject _parentVariation = new GameObject(chosenVariation.ToString());
-		_parentVariation.transform.parent = GameObject.Find("Level/Gameplay").transform;
 		foreach (XmlNode node in itemNodes)
 		{
-			if (node.Attributes.GetNamedItem("name").Value == chosenVariation.ToString())
+			foreach (XmlNode children in node.ChildNodes)
 			{
-				foreach (XmlNode children in node.ChildNodes)
+				foreach (objectList _obj in Enum.GetValues(typeof(objectList)))
 				{
-					foreach (objectList _obj in Enum.GetValues(typeof(objectList)))
+					if (Resources.Load("Bricks/" + _obj.ToString()) != null)
 					{
-						if (Resources.Load("Objects/" + _obj.ToString()) != null)
+						if(children.Attributes.GetNamedItem("type").Value != null)
 						{
-							if(children.Attributes.GetNamedItem("type").Value != null)
+							if (children.Attributes.GetNamedItem("type").Value == _obj.ToString())
 							{
-								if (children.Attributes.GetNamedItem("type").Value == _obj.ToString())
+								GameObject _instance = Instantiate(Resources.Load("Bricks/" + children.Attributes.GetNamedItem("type").Value)) as GameObject;
+								_instance.transform.parent = this.transform.parent;
+								_instance.transform.position = new Vector3 (float.Parse(children.Attributes.GetNamedItem("x").Value) + 50, float.Parse(children.Attributes.GetNamedItem("y").Value) * -1, -5f);
+								if (children.Attributes.GetNamedItem("name").Value != null)
 								{
-									GameObject _instance = Instantiate(Resources.Load("Objects/" + children.Attributes.GetNamedItem("type").Value)) as GameObject;
-									_instance.transform.position = new Vector3 (float.Parse(children.Attributes.GetNamedItem("x").Value) + 50, float.Parse(children.Attributes.GetNamedItem("y").Value) * -1, -5f);
-									if (children.Attributes.GetNamedItem("name").Value != null)
-									{
-										_instance.name = children.Attributes.GetNamedItem("name").Value;
-									}
-									_instance.transform.parent = _parentVariation.transform;
-									if (_obj.ToString() == objectList.Collibox.ToString())
-									{
-										print ("boxcollider enabled");
-										float width = float.Parse(children.Attributes.GetNamedItem("width").Value) ;
-										float height = float.Parse(children.Attributes.GetNamedItem("height").Value);
-										_instance.GetComponent<BoxCollider>().size = new Vector3 ( width, height, 100f); 
-										_instance.transform.position =
-											new Vector3 (
-											(float.Parse(children.Attributes.GetNamedItem("x").Value)) + width / 2f,
-											(float.Parse(children.Attributes.GetNamedItem("y").Value) * -1) - height / 2f,
-											-5f);
-
-									}
-									Debug.Log("Created a " + children.Attributes.GetNamedItem("type").Value + " at position (X" + _instance.transform.position.x + "/Y" +_instance.transform.position.y+")");
+									_instance.name = children.Attributes.GetNamedItem("name").Value;
 								}
-								else
-								{
-		//							print ("didnt find object");
-								}
+								Debug.Log("Created a " + children.Attributes.GetNamedItem("type").Value + " at position (X" + _instance.transform.position.x + "/Y" +_instance.transform.position.y+")");
 							}
 						}
-						else 
-						{
-							Debug.Log("The object " + _obj.ToString() + " hasn't been found ! Fix that error NOW.");
-						}
+					}
+					else 
+					{
+						Debug.Log("Couldn't find the object at : " + "Bricks/Objects/" + _obj.ToString());
 					}
 				}
-			}
-			else
-			{
-				print (node.Attributes.GetNamedItem("name").Value + "not picked");
 			}
 		}
 		Debug.Log("Finish getting item");

@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>TileDitch_Roche.png</filename>
+        <filename>../../Resources/maps/tilesets/gameplay.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -99,7 +99,7 @@
             <key>packageName</key>
             <string>Texture</string>
             <key>javaFileName</key>
-            <filename>TileDitch_Roche.java</filename>
+            <filename>../../Resources/maps/tilesets/gameplay.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>TileDitch_Roche.xml</filename>
+        <filename>../../Resources/maps/tilesets/gameplay.xml</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -148,12 +148,10 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>Tile/Ditch2.png</filename>
-            <filename>Tile/Ditch_02_01.png</filename>
-            <filename>Tile/Ditch_02_02.png</filename>
-            <filename>Tile/Ditch_02_03.png</filename>
-            <filename>Tile/Ditch_04_01.png</filename>
-            <filename>Tile/Ditch_04_02.png</filename>
+            <filename>../../gfx/Gameplay/Characters/140-120RusherPng.png</filename>
+            <filename>../../gfx/Gameplay/Characters/140-120WalkerPng.png</filename>
+            <filename>../../gfx/Gameplay/Characters/perso_sinusoid_demo.png</filename>
+            <filename>../gfx/Gameplay/Bricks/ditch.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
