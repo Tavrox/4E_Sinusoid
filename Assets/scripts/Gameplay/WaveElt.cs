@@ -13,6 +13,7 @@ public class WaveElt : MonoBehaviour {
 	private bool extendProj, lightened, rotated, reducingAlpha, ligthOffing, specialCircle;
 	private Material myProjMaterial;
 	private float speedSoundIni;
+	private GameObject _mySprite;
 	
 	//public Projector prefabProj;
 	public float numberOfAlphaStates = 3;
@@ -26,13 +27,13 @@ public class WaveElt : MonoBehaviour {
 	private Transform callerObj;
 	//public bool calledByCharacter;
 
-	private RaycastHit hitInfo; //infos de collision
-	private Ray /*detectBlockTop, detectBlockBottom,*/ detectBlockLeft, detectBlockRight; //point de départ, direction
+//	private RaycastHit hitInfo; //infos de collision
+//	private Ray /*detectBlockTop, detectBlockBottom,*/ detectBlockLeft, detectBlockRight; //point de départ, direction
 	// Use this for initialization
 	void Start () {
 		myTransform = transform;
 		//player = GameObject.FindWithTag("Player").GetComponent<Player>();
-		
+		_mySprite = gameObject.transform.parent.GetComponentInChildren<OTSprite>().gameObject as GameObject;
 		//callerObj = GameObject.FindWithTag("Player");
 	
 		//setPosition(new Vector3(callerObj.transform.position.x, (callerObj.transform.position.y-callerObj.transform.localScale.y/2), callerObj.transform.position.z));
@@ -58,7 +59,7 @@ public class WaveElt : MonoBehaviour {
 	// Update is called once per frame
 	IEnumerator myUpdate () {
 		if(extendProj && !ligthOffing) StartCoroutine("lightsOff");
-		else {
+		else if (!extendProj) {
 			if(_alpha <= 0) endLife();
 			else updateWaveElt();
 		}
@@ -66,14 +67,14 @@ public class WaveElt : MonoBehaviour {
 //		   myTransform.position.y > (callerObj.position.y + 10f) || myTransform.position.y < (callerObj.position.y - 10f)) {
 //			endLife();
 //		}
-		detectBlockLeft = new Ray(myTransform.position, Vector3.left);
-		detectBlockRight = new Ray(myTransform.position, Vector3.right);
+//		detectBlockLeft = new Ray(myTransform.position, Vector3.left);
+//		detectBlockRight = new Ray(myTransform.position, Vector3.right);
 		//		detectBlockTop = new Ray(myTransform.position, Vector3.up);
 		//		detectBlockBottom = new Ray(myTransform.position, Vector3.down);
-		Debug.DrawRay(myTransform.position, Vector3.left*0.5f);
-		Debug.DrawRay(myTransform.position, Vector3.right*0.5f);
-		Debug.DrawRay(myTransform.position, Vector3.up*0.5f);
-		Debug.DrawRay(myTransform.position, Vector3.down*0.5f);
+//		Debug.DrawRay(myTransform.position, Vector3.left*0.5f, Color.cyan);
+//		Debug.DrawRay(myTransform.position, Vector3.right*0.5f, Color.cyan);
+//		Debug.DrawRay(myTransform.position, Vector3.up*0.5f, Color.cyan);
+//		Debug.DrawRay(myTransform.position, Vector3.down*0.5f, Color.cyan);
 	
 		yield return new WaitForSeconds(0.015f);
 		StartCoroutine("myUpdate");
@@ -109,6 +110,9 @@ public class WaveElt : MonoBehaviour {
 //		else waveXOffset = callerObj.localScale.x/1.5f;
 		//print(callerObj.name);
 		myTransform.parent.transform.position = new Vector3((callerObj.position.x),callerObj.position.y,-15f);
+		_mySprite.renderer.enabled = true;
+		gameObject.collider.isTrigger = true;
+		if(rotated) {myTransform.parent.transform.transform.Rotate(new Vector3(0f,0f,-90f));rotated = false;}
 	//	instanceProj.transform.position = new Vector3((callerObj.position.x+waveXOffset),(callerObj.position.y/*-callerObj.localScale.y/2.3f*/),-15f);
 		_alpha/*this.GetComponentInChildren<OTSprite>().alpha*/ = _initialAlpha;
 		//myProjMaterial.color = new Color (0f,0f,0f,0.001f);
@@ -142,6 +146,7 @@ public class WaveElt : MonoBehaviour {
 		//print ("ça stoppe ?!");
 		_cos = 0;
 		_sin = 0;
+		_mySprite.renderer.enabled = false;
 		//_alpha/*this.GetComponentInChildren<OTSprite>().alpha*/ = 0f;
 		extendProj = true;
 	}
@@ -159,9 +164,10 @@ public class WaveElt : MonoBehaviour {
 			//instanceProj.aspectRatio-=0.05f;
 			//if(instanceProj.aspectRatio < 0f) endLife();
 			_alpha -= fadeSpeed;
+			myTransform.localScale-=new Vector3(0f,0f,0.05f);
 			//instanceProj.material.color = new Color (0f,0f,0f,instanceProj.material.color.a-0.005f);
 		}
-		if(_alpha <= 0) {extendProj = false;ligthOffing=false;StopCoroutine("lightsOff");endLife();}
+		if(myTransform.localScale.z <= 0f) {extendProj = false;ligthOffing=false;StopCoroutine("lightsOff");endLife();}
 		else StartCoroutine("lightsOff");
 		ligthOffing = false;
 		//		print ("endLIGHTOFF******");
@@ -195,23 +201,47 @@ public class WaveElt : MonoBehaviour {
 		//print (callerObj.name);
 		//gameObject.transform.parent = GameObject.Find("Level/TilesLayout").transform;
 	}
+	void OnCollisionEnter(Collision col) {
 
+		Vector3 hit = col.contacts[0].normal;
+		//Debug.Log(hit);
+		float angle = Vector3.Angle(hit, Vector3.forward);
+
+		if (Vector3.Dot(hit,Vector3.forward) > 0) { // top
+			//print("PF_En_DESSOUS");
+		}else if(Vector3.Dot(hit,Vector3.forward) < 0){ // Back
+			//print("PF_Au_DESSUS");
+		}else if(Vector3.Dot(hit,Vector3.forward) == 0){
+			// Sides
+			Vector3 cross = Vector3.Cross(Vector3.forward, hit);
+			if (cross.y < 0) { // right
+				//print("PF_A_DROITE");
+				myTransform.parent.transform.transform.Rotate(new Vector3(0f,0f,90f));
+				rotated = true;
+			}
+			else { // left
+				//print("PF_A_GAUCHE");
+				myTransform.parent.transform.transform.Rotate(new Vector3(0f,0f,90f));
+				rotated = true;
+			}
+		}
+	}
 	void OnTriggerEnter(Collider other) {
 		if(other.gameObject.CompareTag("soundStopper"))//if(other.gameObject.name == "Tiles")
 		{
+			gameObject.collider.isTrigger = false;
 			//print("BWAAAAAA");
-			
+
 //			if (!rotated && Physics.Raycast(detectBlockLeft, out hitInfo, 0.5f)) {
 //				if(hitInfo.collider.tag == "soundStopper") {
-//					print("ROTATIOOOOOON LEEEFT");
-//					instanceProj.transform.Rotate(new Vector3(0f,0f,90f));
+//					//print("ROTATIOOOOOON LEEEFT");
 //					rotated = true;
 //				}
 //			}
 //			if (!rotated && Physics.Raycast(detectBlockRight, out hitInfo, 0.5f)) {
 //				if(hitInfo.collider.tag == "soundStopper") {
-//					print("ROTATIOOOOOON RIIIGHT");
-//					instanceProj.transform.Rotate(new Vector3(0f,0f,45f));
+//					//print("ROTATIOOOOOON RIIIGHT");
+//					myTransform.parent.transform.transform.Rotate(new Vector3(0f,0f,90f));
 //					rotated = true;
 //				}
 //			}
