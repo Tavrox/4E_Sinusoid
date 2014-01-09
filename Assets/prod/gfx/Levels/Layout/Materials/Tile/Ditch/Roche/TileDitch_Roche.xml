@@ -7,80 +7,104 @@
             <key>Ditch2.png</key>
             <dict>
                 <key>frame</key>
+<<<<<<< HEAD
                 <string>{{0,0},{50,100}}</string>
+=======
+                <string>{{5,5},{50,75}}</string>
+>>>>>>> c67e035310ad1f1348681358e6f18dee9982e469
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
+                <string>{{0,0},{50,75}}</string>
                 <key>sourceSize</key>
-                <string>{50,100}</string>
+                <string>{50,75}</string>
             </dict>
             <key>Ditch_02_01.png</key>
             <dict>
                 <key>frame</key>
+<<<<<<< HEAD
                 <string>{{50,0},{50,100}}</string>
+=======
+                <string>{{60,5},{50,75}}</string>
+>>>>>>> c67e035310ad1f1348681358e6f18dee9982e469
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
+                <string>{{0,0},{50,75}}</string>
                 <key>sourceSize</key>
-                <string>{50,100}</string>
+                <string>{50,75}</string>
             </dict>
             <key>Ditch_02_02.png</key>
             <dict>
                 <key>frame</key>
+<<<<<<< HEAD
                 <string>{{100,0},{50,100}}</string>
+=======
+                <string>{{115,5},{50,75}}</string>
+>>>>>>> c67e035310ad1f1348681358e6f18dee9982e469
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
+                <string>{{0,0},{50,75}}</string>
                 <key>sourceSize</key>
-                <string>{50,100}</string>
+                <string>{50,75}</string>
             </dict>
             <key>Ditch_02_03.png</key>
             <dict>
                 <key>frame</key>
+<<<<<<< HEAD
                 <string>{{150,0},{50,100}}</string>
+=======
+                <string>{{170,5},{50,75}}</string>
+>>>>>>> c67e035310ad1f1348681358e6f18dee9982e469
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
+                <string>{{0,0},{50,75}}</string>
                 <key>sourceSize</key>
-                <string>{50,100}</string>
+                <string>{50,75}</string>
             </dict>
             <key>Ditch_04_01.png</key>
             <dict>
                 <key>frame</key>
+<<<<<<< HEAD
                 <string>{{0,100},{100,100}}</string>
+=======
+                <string>{{5,85},{100,75}}</string>
+>>>>>>> c67e035310ad1f1348681358e6f18dee9982e469
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{100,75}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{100,75}</string>
             </dict>
             <key>Ditch_04_02.png</key>
             <dict>
                 <key>frame</key>
+<<<<<<< HEAD
                 <string>{{100,100},{100,100}}</string>
+=======
+                <string>{{110,85},{100,75}}</string>
+>>>>>>> c67e035310ad1f1348681358e6f18dee9982e469
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{100,75}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{100,75}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -92,7 +116,11 @@
             <key>size</key>
             <string>{256,256}</string>
             <key>smartupdate</key>
+<<<<<<< HEAD
             <string>$TexturePacker:SmartUpdate:69e467c8d561f2ca87d5da29aab87b44:1/1$</string>
+=======
+            <string>$TexturePacker:SmartUpdate:4281bd257cdc9877e6f2010f258d2e0e:bb3be7bdf2b211de5459ac877ed09d1a:fe5ee54705aba51530672711ce113f4d$</string>
+>>>>>>> c67e035310ad1f1348681358e6f18dee9982e469
             <key>textureFileName</key>
             <string>TileDitch_Roche.png</string>
         </dict>
