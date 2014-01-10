@@ -219,7 +219,9 @@ public class TileImporter : MonoBehaviour {
 							{
 								GameObject _instance = Instantiate(Resources.Load("Bricks/" + children.Attributes.GetNamedItem("type").Value)) as GameObject;
 								_instance.transform.parent = this.transform.parent;
-								_instance.transform.position = new Vector3 (float.Parse(children.Attributes.GetNamedItem("x").Value) + 50, float.Parse(children.Attributes.GetNamedItem("y").Value) * -1, -5f);
+								float _posX = (float.Parse(children.Attributes.GetNamedItem("x").Value) + 50) / 50;
+								float _posY = (float.Parse((children.Attributes.GetNamedItem("y").Value) + 50) * -1) / 50;
+								_instance.transform.position = new Vector3 (_posX, _posY , -5f);
 								if (children.Attributes.GetNamedItem("name").Value != null)
 								{
 									_instance.name = children.Attributes.GetNamedItem("name").Value;

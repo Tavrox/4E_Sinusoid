@@ -6,30 +6,18 @@ public class MenuThing : MonoBehaviour {
 	
 	public enum ListMenu
 	{
-		Main,
 		ChooseLevel,
-		HighScores,
-		EndLevel,
 		Play,
-		GoToCredits,
 		Title,
-		BackToMenu,
-		BackLevel,
-		GoToMainMenu,
 		None,
-		BackToMenuFromLevelChooser,
-		GoLevel1,
-		GoLevel2,
-		GoLevel3,
-		GoLevel4,
-		GoLevel5
+		GoToAnchor
 	};
 	public ListMenu menu;
-	private bool clickable = false;
 	public bool animate = true;
 	private OTSprite spr;
 	private List<GameObject> menuObjects;
-	public string _str = "Enter your name";
+	public GameObject chosenAnchor;
+	public int levelToLoad;
 	
 	// Use this for initialization
 	void Start () {
@@ -41,36 +29,6 @@ public class MenuThing : MonoBehaviour {
 			spr = GetComponentInChildren<OTSprite>();
 		}
 
-		switch (menu)	
-		{
-			case (ListMenu.Main):
-			{
-			
-			break;
-			}
-			case (ListMenu.Play):
-			{
-			
-			break;	
-			}
-			case (ListMenu.GoToMainMenu):
-			{
-			
-			break;
-			}
-			case (ListMenu.GoToCredits):
-			{
-			
-				break;
-			}
-			case (ListMenu.Title) :
-			{
-				MasterAudio.TriggerPlaylistClip("intro");
-				MasterAudio.ResumeAllPlaylists();
-
-				break;
-			}
-		}
 		if (animate == true)
 		{
 			InvokeRepeating("animateItem", 0f, 2.5f);
@@ -81,13 +39,21 @@ public class MenuThing : MonoBehaviour {
 	private void OnMouseDown()
 	{
 		menuObjects = new List<GameObject>();
+
+
 		switch (menu)
 		{
-			case (ListMenu.Main):
+			case (ListMenu.ChooseLevel):
 			{
-				
+				loadLevel(levelToLoad);
 				break;
 			}
+			case (ListMenu.GoToAnchor) :
+			{
+				goToAnchor(chosenAnchor);
+				break;
+			}
+			/*
 			case (ListMenu.Play):
 			{
 				translateCamera(800f);
@@ -136,16 +102,18 @@ public class MenuThing : MonoBehaviour {
 				StartCoroutine(loadLevel(2));
 				break;
 			}
-		case (ListMenu.GoLevel3) :
-		{
-			menuObjects.Add(findObject("Transition"));
-			fadeInObjects(menuObjects);
-			menuObjects.Clear();
-			MasterAudio.PlaySound("door_open");
-			StartCoroutine(loadLevel(3));
-			break;
+			case (ListMenu.GoLevel3) :
+			{
+				menuObjects.Add(findObject("Transition"));
+				fadeInObjects(menuObjects);
+				menuObjects.Clear();
+				MasterAudio.PlaySound("door_open");
+				StartCoroutine(loadLevel(3));
+				break;
+			}
+			*/
 		}
-		}
+		
 	}
 	
 	private void triggerCredits()
@@ -199,30 +167,28 @@ public class MenuThing : MonoBehaviour {
 		}
 	}
 
+	private void goToAnchor(GameObject _Anchor)
+	{
+		Transform _cam = GameObject.Find("UI/Main Camera").transform.transform;
+		if (_cam == null)
+		{Debug.Log("Camera hasn't been found");}
+		OTTween _tween = new OTTween(_cam,2f).Tween("position", new Vector3(_Anchor.transform.position.x, _Anchor.transform.position.y, _cam.position.z), OTEasing.StrongOut );
+	}
+
 	private void translateCamera(float posX)
 	{
 		Transform _cam = GameObject.Find("UI/Main Camera").transform.transform;
 		OTTween _tween = new OTTween(_cam,2f).Tween("position", new Vector3(posX, _cam.position.y, _cam.position.z), OTEasing.StrongOut );
 	}
 
-	private void goToMenu()
-	{
-
-	}
-
 	private void animateItem()
 	{
-		int randRange = Random.Range(-30,30);
-		OTTween _tween = new OTTween(spr,2.5f)
-			.Tween("size", new Vector2(spr.size.x - randRange, spr.size.y - randRange) )
-		.PingPong();
+		if (spr != null)
+		{
+			int randRange = Random.Range(-30,30);
+			OTTween _tween = new OTTween(spr,2.5f)
+				.Tween("size", new Vector2(spr.size.x - randRange, spr.size.y - randRange) )
+			.PingPong();
+		}
 	}
-	/*
-	private void revealIntro(OTTween _tween)
-	{
-		OTTween _introOut = new OTTween(_intro, 2.5f).Tween("color", Color.white).Wait(2f);
-		OTTween _titleOut = new OTTween(_title, 2.5f).Tween("alpha", 1f).Wait(2f);
-		_titleOut.OnFinish(fadeEverything);
-	}
-	*/
 }

@@ -55,6 +55,7 @@ public class TiledMapComponent : MonoBehaviour {
 					{
 						case MapObjectType.Box:
 							tiledMap.GenerateBoxCollider(collider, CollidersZDepth[i], CollidersWidth[i]);
+							tiledMap.GeneratePebbleCollider(collider, CollidersZDepth[i], CollidersWidth[i]);
 							break;
 						case MapObjectType.Ellipse:
 							tiledMap.GenerateEllipseCollider(collider, CollidersZDepth[i], CollidersWidth[i]);

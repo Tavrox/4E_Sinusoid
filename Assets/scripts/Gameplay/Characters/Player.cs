@@ -43,7 +43,7 @@ public class Player : Character {
 		spawnPos = thisTransform.position;
 
 		if (WalkSound != null)
-		{ InvokeRepeating("playFootstep",0f,WalkSound.RepeatRate);}
+		{ InvokeRepeating("playFootstep",5f,WalkSound.RepeatRate);}
 
 		//Creating waves game objects
 		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesEmitter")) as GameObject; //footsteps wave 1

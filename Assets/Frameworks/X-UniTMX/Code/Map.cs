@@ -192,7 +192,7 @@ namespace X_UniTMX
 			int i = 0;
 			for (i = 0; i < TileSets.Count; i++)
 			{
-				Material layerMat = new Material(Shader.Find("Unlit/Transparent"));
+				Material layerMat = new Material(Shader.Find("Mobile/Particles/Alpha Blended"));
 				layerMat.mainTexture = TileSets[i].Texture;
 				materials.Add(layerMat);
 			}
@@ -454,7 +454,6 @@ namespace X_UniTMX
 		{
 			GameObject boxCollider = new GameObject(obj.Name);
 			BoxCollider bx = boxCollider.AddComponent<BoxCollider>();
-			//boxCollider.transform.position.Set(obj.Bounds.x, obj.Bounds.y, zDepth);
 			boxCollider.transform.parent = this.Parent.transform;
 
 			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
@@ -462,9 +461,48 @@ namespace X_UniTMX
 
 			boxCollider.isStatic = true;
 			boxCollider.tag = "soundStopper";
+			boxCollider.layer = 8;
+
+			Rigidbody _rigid = boxCollider.AddComponent<Rigidbody>();
+			_rigid.isKinematic = false;
+			_rigid.useGravity = false;
+			_rigid.constraints = RigidbodyConstraints.FreezeAll;
 
 			return boxCollider;
 		}
+
+		/// <summary>
+		/// Generate a Pebble collider mesh
+		/// </summary>
+		/// <param name="obj">Object which properties will be used to generate this collider.</param>
+		/// <param name="zDepth">Z Depth of the collider.</param>
+		/// <returns>Generated Game Object containing the Collider.</returns>
+		public GameObject GeneratePebbleCollider(MapObject obj, float zDepth = 0, float colliderWidth = 30f)
+		{
+			GameObject boxCollider = new GameObject(obj.Name);
+			BoxCollider bx = boxCollider.AddComponent<BoxCollider>();
+			boxCollider.transform.parent = this.Parent.transform;
+			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
+			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
+			
+			BoxCollider bx2 = boxCollider.AddComponent<BoxCollider>();
+			bx2.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
+			bx2.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
+			bx2.isTrigger = true;
+			
+			boxCollider.isStatic = true;
+			boxCollider.tag = "pebbleKiller";
+			boxCollider.layer = 8;
+
+			Rigidbody _rigid = boxCollider.AddComponent<Rigidbody>();
+			_rigid.isKinematic = true;
+			_rigid.useGravity = false;
+			_rigid.constraints = RigidbodyConstraints.FreezeAll;
+			
+			return boxCollider;
+		}
+
+
 
 		/// <summary>
 		/// Generate an Ellipse Collider mesh. To mimic Tiled's Ellipse Object properties, a Capsule collider is created.
@@ -486,6 +524,11 @@ namespace X_UniTMX
 
 			capsuleCollider.isStatic = true;
 			capsuleCollider.tag = "soundStopper";
+			capsuleCollider.layer = 8;
+			Rigidbody _rigid = capsuleCollider.AddComponent<Rigidbody>();
+			_rigid.isKinematic = false;
+			_rigid.useGravity = false;
+			_rigid.constraints = RigidbodyConstraints.FreezeAll;
 
 			return capsuleCollider;
 		}
@@ -580,6 +623,11 @@ namespace X_UniTMX
 
 			polygonCollider.isStatic = true;
 			polygonCollider.tag = "soundStopper";
+			polygonCollider.layer = 8;
+			Rigidbody _rigid = polygonCollider.AddComponent<Rigidbody>();
+			_rigid.isKinematic = false;
+			_rigid.useGravity = false;
+			_rigid.constraints = RigidbodyConstraints.FreezeAll;
 
 			return polygonCollider;
 		}
@@ -644,6 +692,11 @@ namespace X_UniTMX
 
 			polylineCollider.isStatic = true;
 			polylineCollider.tag = "soundStopper";
+			polylineCollider.layer = 8;
+			Rigidbody _rigid = polylineCollider.AddComponent<Rigidbody>();
+			_rigid.isKinematic = false;
+			_rigid.useGravity = false;
+			_rigid.constraints = RigidbodyConstraints.FreezeAll;
 
 			return polylineCollider;
 		}
