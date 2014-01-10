@@ -76,7 +76,7 @@ public class WaveElt : MonoBehaviour {
 //		Debug.DrawRay(myTransform.position, Vector3.up*0.5f, Color.cyan);
 //		Debug.DrawRay(myTransform.position, Vector3.down*0.5f, Color.cyan);
 	
-		yield return new WaitForSeconds(0.015f);
+		yield return new WaitForSeconds(0.02f);
 		StartCoroutine("myUpdate");
 	}
 	
@@ -87,18 +87,22 @@ public class WaveElt : MonoBehaviour {
 		yield return new WaitForSeconds((float) lifeTime/numberOfAlphaStates);
 		_alpha -= /*this.GetComponentInChildren<OTSprite>().alpha -=*/ (float) 1/numberOfAlphaStates;
 		//myProjMaterial.color = new Color (0f,0f,0f,myProjMaterial.color.a-((float) 1f/numberOfAlphaStates));
+		_mySprite.GetComponent<OTSprite>().alpha = _alpha;
 		//		print ("endREDUCEALPHA-----");
 		reducingAlpha = false;
 		StartCoroutine("reduceAlpha");
 	}
 	public void endLife () {
+		StopCoroutine("myUpdate");
 		StopCoroutine("reduceAlpha");
 		reducingAlpha = false;
 		gameObject.collider.isTrigger = true;
+		_mySprite.GetComponent<OTSprite>().alpha = 0f;
 //		myTransform.position = new Vector3(-100f,-100f,0f);
 //		instanceProj.transform.position = new Vector3(-100f,-100f,-15f);
 		_alpha/*this.GetComponentInChildren<OTSprite>().alpha*/ = 0f;
 		myTransform.localScale=new Vector3(0,4,0);
+		_mySprite.renderer.enabled = false;
 		//myProjMaterial.color = new Color (0f,0f,0f,0f);
 		//enabled = false;
 		//Destroy(instanceProj.gameObject);
@@ -119,14 +123,18 @@ public class WaveElt : MonoBehaviour {
 		if(rotated) {myTransform.parent.transform.transform.Rotate(new Vector3(0f,0f,-90f));rotated = false;}
 	//	instanceProj.transform.position = new Vector3((callerObj.position.x+waveXOffset),(callerObj.position.y/*-callerObj.localScale.y/2.3f*/),-15f);
 		_alpha/*this.GetComponentInChildren<OTSprite>().alpha*/ = _initialAlpha;
+		_mySprite.GetComponent<OTSprite>().alpha = _alpha;
 		//myProjMaterial.color = new Color (0f,0f,0f,0.001f);
 	//	myProjMaterial.color = _initialAlphaProj;
 	//	instanceProj.aspectRatio = _myProjAspectRatioIni;
 		myTransform.localScale=new Vector3(projDiameterIni,4,projDiameterIni);
+		gameObject.collider.enabled=true;
 		_cos = _cosIni;
 		_sin = _sinIni;//if(callerObj.name=="Pebble(Clone)") print("PEEEEEEBLE");
 		extendProj = false;ligthOffing=false;StopCoroutine("lightsOff");
 		if(!reducingAlpha) StartCoroutine("reduceAlpha");
+		StopCoroutine("myUpdate");
+		StartCoroutine("myUpdate");
 	}
 	public void setCharacterPositionOffset (float charScaleX, bool dirLeft) {
 		if(dirLeft) waveXOffset = -charScaleX/1.5f;
@@ -155,6 +163,7 @@ public class WaveElt : MonoBehaviour {
 		extendProj = true;
 	}
 	IEnumerator lightsOff() {
+		StopCoroutine("myUpdate");
 		ligthOffing = true;
 				//print ("*****beginLIGHTOFF");
 		yield return new WaitForSeconds(0.1f);
@@ -168,7 +177,7 @@ public class WaveElt : MonoBehaviour {
 			//instanceProj.aspectRatio-=0.05f;
 			//if(instanceProj.aspectRatio < 0f) endLife();
 			_alpha -= fadeSpeed;
-			myTransform.localScale-=new Vector3(0f,0f,0.05f);
+			myTransform.localScale-=new Vector3(0f,0f,fadeSpeed);
 			//instanceProj.material.color = new Color (0f,0f,0f,instanceProj.material.color.a-0.005f);
 		}
 		if(myTransform.localScale.z <= 0f) {extendProj = false;ligthOffing=false;StopCoroutine("lightsOff");endLife();}
@@ -207,28 +216,29 @@ public class WaveElt : MonoBehaviour {
 	}
 	void OnCollisionEnter(Collision col) {
 		if(col.gameObject.CompareTag("soundStopper") && !rotated) {
-		Vector3 hit = col.contacts[0].normal;
-		//Debug.Log(hit);
-		float angle = Vector3.Angle(hit, Vector3.forward);
+			Vector3 hit = col.contacts[0].normal;
+			//Debug.Log(hit);
+			float angle = Vector3.Angle(hit, Vector3.forward);
 
-		if (Vector3.Dot(hit,Vector3.forward) > 0) { // top
-			//print("PF_En_DESSOUS");
-		}else if(Vector3.Dot(hit,Vector3.forward) < 0){ // Back
-			//print("PF_Au_DESSUS");
-		}else if(Vector3.Dot(hit,Vector3.forward) == 0){
-			// Sides
-			Vector3 cross = Vector3.Cross(Vector3.forward, hit);
-			if (cross.y < 0) { // right
-				//print("PF_A_DROITE");
-				myTransform.parent.transform.transform.Rotate(new Vector3(0f,0f,90f));
-				rotated = true;
+			if (Vector3.Dot(hit,Vector3.forward) > 0) { // top
+				//print("PF_En_DESSOUS");
+			}else if(Vector3.Dot(hit,Vector3.forward) < 0){ // Back
+				//print("PF_Au_DESSUS");
+			}else if(Vector3.Dot(hit,Vector3.forward) == 0){
+				// Sides
+				Vector3 cross = Vector3.Cross(Vector3.forward, hit);
+				if (cross.y < 0) { // right
+					//print("PF_A_DROITE");
+					myTransform.parent.transform.transform.Rotate(new Vector3(0f,0f,90f));
+					rotated = true;
+				}
+				else { // left
+					//print("PF_A_GAUCHE");
+					myTransform.parent.transform.transform.Rotate(new Vector3(0f,0f,90f));
+					rotated = true;
+				}
 			}
-			else { // left
-				//print("PF_A_GAUCHE");
-				myTransform.parent.transform.transform.Rotate(new Vector3(0f,0f,90f));
-				rotated = true;
-			}
-		}
+			gameObject.collider.enabled=false;
 		}
 	}
 	void OnTriggerEnter(Collider other) {

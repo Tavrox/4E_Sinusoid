@@ -2,14 +2,14 @@ using UnityEngine;
 using System.Collections;
 
 public class Pebble : MonoBehaviour {
-
+	
 	
 	private Transform thisTransform;
 	private Rigidbody thisRigidbody;
 	[HideInInspector] public WaveCreator soundEmitt;
 	private GameObject GOsoundEmitt;
 	private bool isSounding;
-
+	
 	void Awake()
 	{
 		thisTransform = transform;
@@ -22,15 +22,18 @@ public class Pebble : MonoBehaviour {
 		soundEmitt.createCircle(thisTransform);
 		soundEmitt.setParent(thisTransform);
 	}
-
+	
 	void Update () {
-		if(rigidbody.velocity == Vector3.zero && rigidbody.angularVelocity == Vector3.zero)
+		if(rigidbody.velocity.x >= -0.1f && rigidbody.velocity.x <= 0.1f && rigidbody.velocity.y >= -0.1f && rigidbody.velocity.y <= 0.1f && rigidbody.angularVelocity == Vector3.zero)
 		{
-			soundEmitt.destroyCircle();
-			Destroy(gameObject);
+			StartCoroutine("killPebble");
 		}
 	}
-
+	IEnumerator killPebble() {
+		yield return new WaitForSeconds(soundEmitt.getLifeTime());
+		soundEmitt.destroyCircle();
+		Destroy(gameObject);
+	}
 	public void switchON()
 	{
 		thisRigidbody.isKinematic = false;
@@ -45,17 +48,17 @@ public class Pebble : MonoBehaviour {
 		thisRigidbody.isKinematic = true;
 		thisRigidbody.useGravity = false;
 	}
-
+	
 	void OnTriggerEnter(Collider other) {
 		if(/*other.gameObject.CompareTag("soundStopper") ||*/ other.gameObject.CompareTag("pebbleKiller"))//if(other.gameObject.name == "Tiles")
 		{
-//			thisRigidbody.isKinematic = true;
-//			thisRigidbody.useGravity = false;
+			//			thisRigidbody.isKinematic = true;
+			//			thisRigidbody.useGravity = false;
 			//thisRigidbody.AddForce(new Vector3(10f,20f,0));
 			soundEmitt.circleWalkToSprint();
 			/*if(!isSounding) {*/isSounding=true;soundEmitt.resetCircle();/*}*/
 		}
-
+		
 	}
 	public void setPosition (float x, float y, float z) {
 		thisTransform.position = new Vector3(x,y,z);
