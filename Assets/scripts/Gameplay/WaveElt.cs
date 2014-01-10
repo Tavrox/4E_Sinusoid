@@ -94,6 +94,7 @@ public class WaveElt : MonoBehaviour {
 	public void endLife () {
 		StopCoroutine("reduceAlpha");
 		reducingAlpha = false;
+		gameObject.collider.isTrigger = true;
 //		myTransform.position = new Vector3(-100f,-100f,0f);
 //		instanceProj.transform.position = new Vector3(-100f,-100f,-15f);
 		_alpha/*this.GetComponentInChildren<OTSprite>().alpha*/ = 0f;
@@ -104,14 +105,17 @@ public class WaveElt : MonoBehaviour {
 		//Destroy(gameObject);
 	}
 	public void startLife () {
+		StopCoroutine("reduceAlpha");
+		_alpha/*this.GetComponentInChildren<OTSprite>().alpha*/ = 0f;
 		enabled = true;
 		lightened = false;
+		reducingAlpha = false;
 //		if(callerObj.isLeft) waveXOffset = -callerObj.localScale.x/1.5f;
 //		else waveXOffset = callerObj.localScale.x/1.5f;
 		//print(callerObj.name);
+		gameObject.collider.isTrigger = true;
 		myTransform.parent.transform.position = new Vector3((callerObj.position.x),callerObj.position.y,-15f);
 		_mySprite.renderer.enabled = true;
-		gameObject.collider.isTrigger = true;
 		if(rotated) {myTransform.parent.transform.transform.Rotate(new Vector3(0f,0f,-90f));rotated = false;}
 	//	instanceProj.transform.position = new Vector3((callerObj.position.x+waveXOffset),(callerObj.position.y/*-callerObj.localScale.y/2.3f*/),-15f);
 		_alpha/*this.GetComponentInChildren<OTSprite>().alpha*/ = _initialAlpha;
@@ -202,7 +206,7 @@ public class WaveElt : MonoBehaviour {
 		//gameObject.transform.parent = GameObject.Find("Level/TilesLayout").transform;
 	}
 	void OnCollisionEnter(Collision col) {
-
+		if(col.gameObject.CompareTag("soundStopper") && !rotated) {
 		Vector3 hit = col.contacts[0].normal;
 		//Debug.Log(hit);
 		float angle = Vector3.Angle(hit, Vector3.forward);
@@ -224,6 +228,7 @@ public class WaveElt : MonoBehaviour {
 				myTransform.parent.transform.transform.Rotate(new Vector3(0f,0f,90f));
 				rotated = true;
 			}
+		}
 		}
 	}
 	void OnTriggerEnter(Collider other) {
