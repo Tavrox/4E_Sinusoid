@@ -4,11 +4,12 @@ using System.Collections;
 public class LevelDoor : MonoBehaviour {
 	
 	public enum doorType { BeginLevel, EndLevel }
-	public LevelManager lvlManager;
+	private LevelManager lvlManager;
 	public doorType myDoorType;
 	
 	// Use this for initialization
 	void Start () {
+		lvlManager = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>();
 		GameEventManager.NextLevel += NextLevel;
 		GameEventManager.PreviousLevel += PreviousLevel;
 	}

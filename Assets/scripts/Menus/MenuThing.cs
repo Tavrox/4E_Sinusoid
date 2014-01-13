@@ -10,7 +10,7 @@ public class MenuThing : MonoBehaviour {
 		Play,
 		Title,
 		None,
-		GoToAnchor
+		GoToAnchor,
 	};
 	public ListMenu menu;
 	public bool animate = true;
@@ -21,14 +21,12 @@ public class MenuThing : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-
 		menuObjects = new List<GameObject>();
 
 		if (GetComponentInChildren<OTSprite>() != null)
 		{
 			spr = GetComponentInChildren<OTSprite>();
 		}
-
 		if (animate == true)
 		{
 			InvokeRepeating("animateItem", 0f, 2.5f);
