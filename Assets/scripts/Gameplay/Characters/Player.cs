@@ -60,11 +60,11 @@ public class Player : Character {
 		soundEmitt1.gameObject.transform.parent = soundEmitt2.gameObject.transform.parent = soundEmitt3.gameObject.transform.parent = 
 			soundInstru1.gameObject.transform.parent = soundInstru2.gameObject.transform.parent = GameObject.Find("Level/Waves/").transform;
 
-		soundEmitt1.createCircle(thisTransform); //creating wave elements of FOOT wave 1
-		soundEmitt2.createCircle(thisTransform); //creating wave elements of FOOT wave 2
-		soundEmitt3.createCircle(thisTransform); //creating wave elements of FOOT wave 3
-		soundInstru1.createCircle(thisTransform);soundInstru1.specialCircle(); //creating wave elements of INSTRU wave 1 & setting waves params to INSTRU
-		soundInstru2.createCircle(thisTransform);soundInstru2.specialCircle(); //creating wave elements of INSTRU wave 2 & setting waves params to INSTRU
+		soundEmitt1.createCircle(thisTransform);soundEmitt1.setParent(thisTransform); //creating wave elements of FOOT wave 1
+		soundEmitt2.createCircle(thisTransform);soundEmitt2.setParent(thisTransform); //creating wave elements of FOOT wave 2
+		soundEmitt3.createCircle(thisTransform);soundEmitt3.setParent(thisTransform); //creating wave elements of FOOT wave 3
+		soundInstru1.createCircle(thisTransform);soundInstru1.specialCircle();soundInstru1.setParent(thisTransform); //creating wave elements of INSTRU wave 1 & setting waves params to INSTRU
+		soundInstru2.createCircle(thisTransform);soundInstru2.specialCircle();soundInstru2.setParent(thisTransform); //creating wave elements of INSTRU wave 2 & setting waves params to INSTRU
 	
 		pebbleBar = Instantiate(Resources.Load("Prefabs/04 Gameplay/PebbleBar")) as GameObject; //Create UI power bar
 	}
@@ -108,6 +108,7 @@ public class Player : Character {
 				GOpebble = Instantiate(Resources.Load("Prefabs/04 Gameplay/Pebble")) as GameObject;
 				pebble = GOpebble.GetComponent<Pebble>(); //Create Pebble
 				pebble.setPosition((transform.position.x-transform.localScale.x/2),transform.position.y, -6f); //Pebble ini position
+				pebble.setCallerObject(thisTransform);
 				pebbleDirection = (facingDir == facing.Right) ? 1 : -1;	//Direction of the pebble
 				pebble.throwPebble(powerPebble, pebbleDirection); //Throw pebble function
 				powerPebble = 0f; //reset power

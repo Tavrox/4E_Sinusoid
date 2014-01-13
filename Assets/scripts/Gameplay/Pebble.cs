@@ -9,6 +9,7 @@ public class Pebble : MonoBehaviour {
 	[HideInInspector] public WaveCreator soundEmitt;
 	private GameObject GOsoundEmitt;
 	private bool isSounding;
+	private Transform callerObj;
 	
 	void Awake()
 	{
@@ -67,5 +68,11 @@ public class Pebble : MonoBehaviour {
 		switchON();
 		//thisRigidbody.AddForce(new Vector3(10f,20f,0));
 		thisRigidbody.AddForce(new Vector3(8f*power*dir,8f*power,0f));
+	}
+	public void setCallerObject (Transform obj) {
+		callerObj = obj;
+	}
+	public Transform getCallerObject () {
+		return callerObj;
 	}
 }

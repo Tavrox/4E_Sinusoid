@@ -8,9 +8,7 @@ public class Rusher : Enemy {
 	[HideInInspector] public Transform trans;
 
 	/***** ENNEMI BEGIN *****/
-	private Transform target; //the enemy's target
 
-	private bool chasingPlayer, endChasingPlayer, patroling;
 	private Vector3 direction;
 	
 	public float targetDetectionArea = 3f;
@@ -19,12 +17,12 @@ public class Rusher : Enemy {
 	private RaycastHit hitInfo; //infos de collision
 	private Ray detectTargetLeft, detectTargetRight; //point de départ, direction
 	
-	private bool goLeft = true;
-	private int waypointId = 0;
+	private bool goLeft = true, defineRushDirection;
+	//private int waypointId = 0;
 	//public Transform[] waypoints;
-	public List<Transform> waypoints= new List<Transform>(), endChaseArea= new List<Transform>();
-	public float[] timePauseWP;
-	private float timeToWait=0;
+	//public List<Transform> waypoints= new List<Transform>(), endChaseArea= new List<Transform>();
+	//public float[] timePauseWP;
+	//private float timeToWait=0;
 
 	/***** ENNEMI END *****/
 //	public Pebble instPebble;
@@ -34,7 +32,7 @@ public class Rusher : Enemy {
 	public float footStepDelay = 0.6f;
 	
 	[SerializeField] private Rect hp_display;
-	private WaveCreator soundEmitt1, soundEmitt2, soundInstru1, soundInstru2,soundEmitt3;
+	private WaveCreator soundEmitt1, soundEmitt2, soundInstru1/*, soundInstru2,soundEmitt3*/;
 	private int cptWave=1, pebbleDirection = 1;
 	private bool blockCoroutine, first, toSprint, toWalk, specialCast, playerDirLeft, waypointReached;
 	private Pebble pebble1;
@@ -67,26 +65,26 @@ public class Rusher : Enemy {
 //		soundEmitt1 = Instantiate(instFootWave) as WaveCreator;
 //		soundEmitt2 = Instantiate(instFootWave) as WaveCreator;
 //		soundInstru1 = Instantiate(instInstruWave) as WaveCreator;
-		soundEmitt1.createCircle(thisTransform);
-		soundEmitt2.createCircle(thisTransform);
-		soundInstru1.createCircle(thisTransform);soundInstru1.specialCircle();
+		soundEmitt1.createCircle(thisTransform);soundEmitt1.setParent(thisTransform);
+		soundEmitt2.createCircle(thisTransform);soundEmitt2.setParent(thisTransform);
+		soundInstru1.createCircle(thisTransform);soundInstru1.specialCircle();soundInstru1.setParent(thisTransform);
 
 		//enabled = false;
 
 		runSpeed = 0.5f;
-
-		target = GameObject.FindWithTag("Player").transform; //target the player
+		
+		setTarget(GameObject.FindWithTag("Player").transform); //target the player
 		patroling = true;
-		waypointDetectionWidth = transform.localScale.x/4;
+		waypointDetectionWidth = thisTransform.gameObject.GetComponentInChildren<Transform>().GetComponentInChildren<OTSprite>().transform.localScale.x/4;//transform.localScale.x/4;
 	}
 	private void setIniState() {
 		thisTransform.position = spawnPos;
 		cptWave = 1;
 		goLeft = true;
-		waypointId = 0;
-		timeToWait=0;
+		//waypointId = 0;
+		//timeToWait=0;
 		pebbleDirection = 1;
-		chasingPlayer = false;
+		defineRushDirection = chasingPlayer = false;
 		blockCoroutine = false;
 		StopCoroutine("waitB4FootStep");StopCoroutine("footStep");
 		isLeft = isRight = isJump = isGoDown = isPass = isCrounch = false;
@@ -111,10 +109,10 @@ public class Rusher : Enemy {
 //		}
 //		checkInput();
 		//GameObject _instance = Instantiate(Resources.Load(namePrefab)) as GameObject;
-		UpdateMovement();
+		if(!grounded) UpdateMovement();
 		offsetCircles ();
 		detectPlayer();
-		if(chasingPlayer) {ChasePlayer();}
+		if(chasingPlayer && target!=null && !blockedLeft && !blockedRight) {ChasePlayer();}
 		//detectEndChaseArea();
 		//detectEndPlatform();
 
@@ -134,10 +132,10 @@ public class Rusher : Enemy {
 		detectTargetRight = new Ray(thisTransform.position, Vector3.right);
 		Debug.DrawRay(thisTransform.position, Vector3.left*targetDetectionArea);
 		Debug.DrawRay(thisTransform.position, Vector3.right*targetDetectionArea);
-
 		if (Physics.Raycast(detectTargetLeft, out hitInfo, targetDetectionArea, projectorMask) || Physics.Raycast(detectTargetRight, out hitInfo, targetDetectionArea, projectorMask)) {
 			if(hitInfo.collider.name == "Player" && !endChasingPlayer) {
-				chasingPlayer = true;
+				setTarget(GameObject.FindWithTag("Player").transform); //target the player
+				activeChasing();
 			}
 		}
 	}
@@ -148,22 +146,34 @@ public class Rusher : Enemy {
 	 *						*
 	 ***********************/
 	private void ChasePlayer () {
-		if (target.position.x < thisTransform.position.x-waypointDetectionWidth) {
-			//direction = Vector3.left;
-			isLeft = true;
-			isRight = false;
-			facingDir = facing.Left;
-			UpdateMovement();
-		}
-		else if (target.position.x > thisTransform.position.x+waypointDetectionWidth /*&& isLeft == false*/) {
-			//direction = Vector3.right;
-			isRight = true; 
-			isLeft = false;
-			facingDir = facing.Right;
-			UpdateMovement();
+		if(!defineRushDirection) {
+			defineRushDirection = true;
+			if (thisTransform.position.x > target.position.x) {
+				isLeft = true;
+				isRight = false;
+				facingDir = facing.Left;
+				UpdateMovement();
+			}
+			else if (thisTransform.position.x < target.position.x) {
+				//direction = Vector3.right;
+				isRight = true; 
+				isLeft = false;
+				facingDir = facing.Right;
+				UpdateMovement();
+			}
+			else {
+				isLeft = isRight = false;
+				defineRushDirection = false;
+				targetReached();
+			}
 		}
 		else {
-			isLeft = isRight = false;
+			UpdateMovement();
+			if ((isLeft && target.position.x > thisTransform.position.x-waypointDetectionWidth) || (isRight && target.position.x < thisTransform.position.x+waypointDetectionWidth)) {
+				isLeft = isRight = false;
+				defineRushDirection = false;
+				targetReached();
+			}
 		}
 	}
 

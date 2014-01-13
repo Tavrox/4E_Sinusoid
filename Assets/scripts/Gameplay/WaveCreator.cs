@@ -27,7 +27,7 @@ public class WaveCreator : MonoBehaviour {
 		
 		for(int i = (0+nbObjectsToAdd); i < numberOfObjects+nbObjectsToAdd; i++) {
 			//instanceWaveElt = Instantiate(prefabWaveElt) as WaveElt;
-			//GOwaveElt = Instantiate(Resources.Load("Prefabs/04 Gameplay/SndWaveElt&Blob")) as GameObject;
+			//GOwaveElt = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWaveEltProj")) as GameObject;
 			GOwaveElt = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWaveElt")) as GameObject;
 			GOwaveElt.gameObject.transform.parent = GameObject.Find("Level/Waves/"+gameObject.name).transform;
 			instanceWaveElt = GOwaveElt.GetComponentInChildren<WaveElt>();

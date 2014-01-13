@@ -8,9 +8,7 @@ public class Walker : Enemy {
 	[HideInInspector] public Transform trans;
 
 	/***** ENNEMI BEGIN *****/
-	private Transform target; //the enemy's target
 
-	private bool chasingPlayer, endChasingPlayer, patroling;
 	private Vector3 direction;
 	
 	public float targetDetectionArea = 3f;
@@ -33,7 +31,7 @@ public class Walker : Enemy {
 	//public GameObject instPebbleBar;
 	public float footStepDelay = 0.6f;
 
-	private WaveCreator soundEmitt1, soundEmitt2, soundInstru1, soundInstru2,soundEmitt3;
+	private WaveCreator soundEmitt1, soundEmitt2, soundInstru1/*, soundInstru2,soundEmitt3*/;
 	private int cptWave=1, pebbleDirection = 1;
 	private bool blockCoroutine, first, toSprint, toWalk, specialCast, playerDirLeft, waypointReached;
 	private Pebble pebble1;
@@ -67,16 +65,16 @@ public class Walker : Enemy {
 //		soundEmitt1 = Instantiate(instFootWave) as WaveCreator;
 //		soundEmitt2 = Instantiate(instFootWave) as WaveCreator;
 //		soundInstru1 = Instantiate(instInstruWave) as WaveCreator;
-		soundEmitt1.createCircle(thisTransform);
-		soundEmitt2.createCircle(thisTransform);
-		soundInstru1.createCircle(thisTransform);soundInstru1.specialCircle();
-
+		soundEmitt1.createCircle(thisTransform);soundEmitt1.setParent(thisTransform);
+		soundEmitt2.createCircle(thisTransform);soundEmitt2.setParent(thisTransform);
+		soundInstru1.createCircle(thisTransform);soundInstru1.specialCircle();soundInstru1.setParent(thisTransform);
+		//pebble1.setCallerObject(thisTransform);
 		//enabled = false;
 		runSpeed = 0.5f;
 
-		target = GameObject.FindWithTag("Player").transform; //target the player
+		setTarget(GameObject.FindWithTag("Player").transform); //target the player
 		patroling = true;
-		waypointDetectionWidth = transform.localScale.x;
+		waypointDetectionWidth = thisTransform.gameObject.GetComponentInChildren<Transform>().GetComponentInChildren<OTSprite>().transform.localScale.x/2;//transform.localScale.x;
 		StartCoroutine("goToWaypoint",waypointId);
 	}
 	private void setIniState() {
@@ -102,9 +100,9 @@ public class Walker : Enemy {
 //		isShot = false;
 //		isPass = false;
 //		movingDir = moving.None;
-//
+
 		if(!endChasingPlayer) {
-			if(chasingPlayer) {ChasePlayer();}
+			if(chasingPlayer) {/*if(target==null) stopChasing();else*/ ChasePlayer();}
 			else if(patroling) {Patrol();}
 		}
 		else {
@@ -135,17 +133,16 @@ public class Walker : Enemy {
 		Debug.DrawRay(thisTransform.position, Vector3.right*targetDetectionArea);
 
 		if (Physics.Raycast(detectTargetLeft, out hitInfo, targetDetectionArea, projectorMask) || Physics.Raycast(detectTargetRight, out hitInfo, targetDetectionArea, projectorMask)) {
-			if(hitInfo.collider.name == "Player" && !endChasingPlayer) {
-				chasingPlayer = true;
-				patroling = false;
+			if(hitInfo.collider.name == "Player") {
+				setTarget(GameObject.FindWithTag("Player").transform);
+				activeChasing();
 			}
 		}
 	}
 	private void detectEndChaseArea() {
 		foreach(Transform chaseAreaLimit in endChaseArea) {
 			if(Vector3.Distance(transform.position, chaseAreaLimit.position) < waypointDetectionWidth) {
-				chasingPlayer = false;
-				endChasingPlayer = true;
+				stopChasing();
 			}
 		}
 	}
@@ -160,12 +157,23 @@ public class Walker : Enemy {
 		isRight = false;
 		patroling = true;
 
-		if(facingDir == facing.Right) {
-			waypointId = waypoints.Count-1;
+		waypointId=0;
+		float distTemp=Vector2.Distance(new Vector2(transform.position.x,0f), new Vector2(waypoints[waypointId].position.x,0f));
+		int cpt=1;
+		foreach(Transform point in waypoints) {
+			if(Vector2.Distance(new Vector2(transform.position.x,0f), new Vector2(waypoints[waypointId].position.x,0f)) < distTemp) {
+				distTemp = Vector2.Distance(new Vector2(transform.position.x,0f), new Vector2(waypoints[waypointId].position.x,0f));
+				waypointId=cpt;
+			}
+			cpt++;
 		}
-		if(facingDir == facing.Left) {
-			waypointId = 0;
-		}
+
+//		if(facingDir == facing.Right) {
+//			waypointId = waypoints.Count-1;
+//		}
+//		if(facingDir == facing.Left) {
+//			waypointId = 0;
+//		}
 		StartCoroutine("goToWaypoint",waypointId);
 		endChasingPlayer = false;/*********************/
 
@@ -223,14 +231,14 @@ public class Walker : Enemy {
 	private void ChasePlayer () {
 		StopCoroutine("goToWaypoint");
 		StopCoroutine("waitAtWP");
-		if (target.position.x < thisTransform.position.x-waypointDetectionWidth/4) {
+		if (target.position.x < thisTransform.position.x+waypointDetectionWidth) {
 			//direction = Vector3.left;
 			isLeft = true;
 			isRight = false;
 			facingDir = facing.Left;
 			UpdateMovement();
 		}
-		else if (target.position.x > thisTransform.position.x+waypointDetectionWidth/4 /*&& isLeft == false*/) {
+		else if (target.position.x > thisTransform.position.x-waypointDetectionWidth /*&& isLeft == false*/) {
 			//direction = Vector3.right;
 			isRight = true; 
 			isLeft = false;
@@ -239,9 +247,9 @@ public class Walker : Enemy {
 		}
 		else {
 			isLeft = isRight = false;
+			targetReached();
 		}
 	}
-
 	/************************
 	 *						*
 	 *  WAVES MANAGEMENT	*
@@ -289,7 +297,10 @@ public class Walker : Enemy {
 		//yield return new WaitForSeconds(soundInstru1.getLifeTime());
 		specialCast = false;
 	}
-	
+
+	/* ---- SOUND DETECTION ---- */
+
+
 	/* ---- PEBBLE ---- */
 //	private void setPebbleBarPos() {
 //		pebbleBar.transform.position = new Vector3(thisTransform.position.x, thisTransform.position.y,pebbleBar.transform.position.z);

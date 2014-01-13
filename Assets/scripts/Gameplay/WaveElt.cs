@@ -96,7 +96,8 @@ public class WaveElt : MonoBehaviour {
 		StopCoroutine("myUpdate");
 		StopCoroutine("reduceAlpha");
 		reducingAlpha = false;
-		gameObject.collider.isTrigger = true;
+		gameObject.collider.isTrigger = false;
+		gameObject.collider.enabled=false;
 		_mySprite.GetComponent<OTSprite>().alpha = 0f;
 //		myTransform.position = new Vector3(-100f,-100f,0f);
 //		instanceProj.transform.position = new Vector3(-100f,-100f,-15f);
@@ -214,6 +215,9 @@ public class WaveElt : MonoBehaviour {
 		//print (callerObj.name);
 		//gameObject.transform.parent = GameObject.Find("Level/TilesLayout").transform;
 	}
+	public Transform getCallerObject () {
+		return callerObj;
+	}
 	void OnCollisionEnter(Collision col) {
 		if(col.gameObject.CompareTag("soundStopper") && !rotated) {
 			Vector3 hit = col.contacts[0].normal;
@@ -269,6 +273,18 @@ public class WaveElt : MonoBehaviour {
 			_alpha = 0f;
 			endLife();
 		}
+		if(other.gameObject.CompareTag("Enemy") && !callerObj.CompareTag("Enemy")) {
+			if(callerObj.CompareTag("Pebble") && callerObj.GetComponent<Pebble>().getCallerObject().CompareTag("Player")) {
+				//print ("I HEAR A PLAYER'S PEBBLE");
+				other.GetComponent<Enemy>().setTarget(callerObj);
+				other.GetComponent<Enemy>().activeChasing();
+			}
+			else {
+				//print ("I HEAR A FOOTSTEP");
+				other.GetComponent<Enemy>().setTarget(callerObj);
+				other.GetComponent<Enemy>().activeChasing();
+			}
+		}
 	}
 	public void setWalkState () {
 		lifeTime = lifeTimeIni;
@@ -308,6 +324,7 @@ public class WaveElt : MonoBehaviour {
 //	private bool extendProj, lightened, rotated, reducingAlpha, ligthOffing, specialCircle;
 //	private Material myProjMaterial;
 //	private float speedSoundIni;
+//	private GameObject _mySprite;
 //	
 //	//public Projector prefabProj;
 //	public float numberOfAlphaStates = 3;
@@ -330,6 +347,7 @@ public class WaveElt : MonoBehaviour {
 //		
 //		//callerObj = GameObject.FindWithTag("Player");
 //		
+//		_mySprite = gameObject.GetComponentInChildren<OTSprite>().gameObject as GameObject;
 //		
 //		//setPosition(new Vector3(callerObj.transform.position.x, (callerObj.transform.position.y-callerObj.transform.localScale.y/2), callerObj.transform.position.z));
 //		instanceProj = this.GetComponent<Projector>();//Instantiate(prefabProj) as Projector;
@@ -343,7 +361,7 @@ public class WaveElt : MonoBehaviour {
 //		speedSoundIni = speedSound;
 //		lifeTimeIni = lifeTime;
 //		
-//		this.GetComponentInChildren<OTSprite>().alpha = 0f;
+//		_mySprite.GetComponent<OTSprite>().alpha = 0f;
 //		myProjMaterial.color = new Color (0f,0f,0f,0f);
 //		//instanceProj.transform.Rotate(new Vector3(0f,0f,90f));
 //		//instanceProj.aspectRatio=1;
@@ -358,10 +376,10 @@ public class WaveElt : MonoBehaviour {
 //			if(myProjMaterial.color.a <= 0) endLife();
 //			else updateWaveElt();
 //		}
-//		if(myTransform.position.x > (callerObj.position.x + 10f) || myTransform.position.x < (callerObj.position.x - 10f) ||
-//		   myTransform.position.y > (callerObj.position.y + 10f) || myTransform.position.y < (callerObj.position.y - 10f)) {
-//			endLife();
-//		}
+////		if(myTransform.position.x > (callerObj.position.x + 10f) || myTransform.position.x < (callerObj.position.x - 10f) ||
+////		   myTransform.position.y > (callerObj.position.y + 10f) || myTransform.position.y < (callerObj.position.y - 10f)) {
+////			endLife();
+////		}
 //		detectBlockLeft = new Ray(myTransform.position, Vector3.left);
 //		detectBlockRight = new Ray(myTransform.position, Vector3.right);
 //		//		detectBlockTop = new Ray(myTransform.position, Vector3.up);
@@ -371,7 +389,7 @@ public class WaveElt : MonoBehaviour {
 //		Debug.DrawRay(myTransform.position, Vector3.up*0.5f);
 //		Debug.DrawRay(myTransform.position, Vector3.down*0.5f);
 //		
-//		yield return new WaitForSeconds(0.015f);
+//		yield return new WaitForSeconds(0.02f);
 //		StartCoroutine("myUpdate");
 //	}
 //	
@@ -380,40 +398,50 @@ public class WaveElt : MonoBehaviour {
 //		reducingAlpha =true;
 //		//		print ("----beginREDUCEALPHA");
 //		yield return new WaitForSeconds((float) lifeTime/numberOfAlphaStates);
-//		this.GetComponentInChildren<OTSprite>().alpha -= (float) 1/numberOfAlphaStates;
+//		//this.GetComponentInChildren<OTSprite>().alpha -= (float) 1/numberOfAlphaStates;
 //		myProjMaterial.color = new Color (0f,0f,0f,myProjMaterial.color.a-((float) 1f/numberOfAlphaStates));
+//		_mySprite.GetComponent<OTSprite>().alpha = myProjMaterial.color.a;
 //		//		print ("endREDUCEALPHA-----");
 //		StartCoroutine("reduceAlpha");
 //		reducingAlpha = false;
 //	}
 //	public void endLife () {
 //		StopCoroutine("reduceAlpha");
+//		StopCoroutine("myUpdate");
 //		reducingAlpha = false;
+//		gameObject.collider.isTrigger = true;
+//		_mySprite.GetComponent<OTSprite>().alpha = 0f;
+//		_mySprite.renderer.enabled = false;
 //		//		myTransform.position = new Vector3(-100f,-100f,0f);
 //		//		instanceProj.transform.position = new Vector3(-100f,-100f,-15f);
-//		this.GetComponentInChildren<OTSprite>().alpha = 0f;
 //		myProjMaterial.color = new Color (0f,0f,0f,0f);
 //		//enabled = false;
 //		//Destroy(instanceProj.gameObject);
 //		//Destroy(gameObject);
 //	}
 //	public void startLife () {
+//		StopCoroutine("reduceAlpha");
 //		enabled = true;
 //		lightened = false;
+//		gameObject.collider.isTrigger = true;
 //		//		if(callerObj.isLeft) waveXOffset = -callerObj.localScale.x/1.5f;
 //		//		else waveXOffset = callerObj.localScale.x/1.5f;
 //		//print(callerObj.name);
 //		myTransform.position = new Vector3((callerObj.position.x),callerObj.position.y,0f);
+//		_mySprite.renderer.enabled = true;
 //		instanceProj.transform.position = new Vector3((callerObj.position.x+waveXOffset),(callerObj.position.y/*-callerObj.localScale.y/2.3f*/),-15f);
-//		this.GetComponentInChildren<OTSprite>().alpha = _initialAlpha;
+//		_mySprite.GetComponent<OTSprite>().alpha = _initialAlpha;
 //		//myProjMaterial.color = new Color (0f,0f,0f,0.001f);
 //		myProjMaterial.color = _initialAlphaProj;
 //		instanceProj.aspectRatio = _myProjAspectRatioIni;
 //		instanceProj.fieldOfView = projDiameterIni;
+//		gameObject.collider.enabled=true;
 //		_cos = _cosIni;
 //		_sin = _sinIni;//if(callerObj.name=="Pebble(Clone)") print("PEEEEEEBLE");
 //		extendProj = false;ligthOffing=false;StopCoroutine("lightsOff");
 //		if(!reducingAlpha) StartCoroutine("reduceAlpha");
+//		StopCoroutine("myUpdate");
+//		StartCoroutine("myUpdate");
 //	}
 //	public void setCharacterPositionOffset (float charScaleX, bool dirLeft) {
 //		if(dirLeft) waveXOffset = -charScaleX/1.5f;
@@ -437,7 +465,7 @@ public class WaveElt : MonoBehaviour {
 //		//print ("ça stoppe ?!");
 //		_cos = 0;
 //		_sin = 0;
-//		this.GetComponentInChildren<OTSprite>().alpha = 0f;
+//		_mySprite.renderer.enabled = false;
 //		extendProj = true;
 //	}
 //	IEnumerator lightsOff() {
@@ -491,9 +519,37 @@ public class WaveElt : MonoBehaviour {
 //		//gameObject.transform.parent = GameObject.Find("Level/TilesLayout").transform;
 //	}
 //	
+//	void OnCollisionEnter(Collision col) {
+//		if(col.gameObject.CompareTag("soundStopper") && !rotated) {
+//			Vector3 hit = col.contacts[0].normal;
+//			//Debug.Log(hit);
+//			float angle = Vector3.Angle(hit, Vector3.forward);
+//			
+//			if (Vector3.Dot(hit,Vector3.forward) > 0) { // top
+//				//print("PF_En_DESSOUS");
+//			}else if(Vector3.Dot(hit,Vector3.forward) < 0){ // Back
+//				//print("PF_Au_DESSUS");
+//			}else if(Vector3.Dot(hit,Vector3.forward) == 0){
+//				// Sides
+//				Vector3 cross = Vector3.Cross(Vector3.forward, hit);
+//				if (cross.y < 0) { // right
+//					//print("PF_A_DROITE");
+//					myTransform.parent.transform.transform.Rotate(new Vector3(0f,0f,90f));
+//					rotated = true;
+//				}
+//				else { // left
+//					//print("PF_A_GAUCHE");
+//					myTransform.parent.transform.transform.Rotate(new Vector3(0f,0f,90f));
+//					rotated = true;
+//				}
+//			}
+//			gameObject.collider.enabled=false;
+//		}
+//	}
 //	void OnTriggerEnter(Collider other) {
 //		if(other.gameObject.CompareTag("soundStopper"))//if(other.gameObject.name == "Tiles")
 //		{
+//			gameObject.collider.isTrigger = false;
 //			//print("BWAAAAAA");
 //			
 //			//			if (!rotated && Physics.Raycast(detectBlockLeft, out hitInfo, 0.5f)) {
@@ -516,7 +572,7 @@ public class WaveElt : MonoBehaviour {
 //		{
 //			_cos = 0;
 //			_sin = 0;
-//			this.GetComponentInChildren<OTSprite>().alpha = 0f;
+//			_mySprite.GetComponent<OTSprite>().alpha = 0f;
 //			endLife();
 //		}
 //	}
@@ -541,4 +597,3 @@ public class WaveElt : MonoBehaviour {
 //		specialCircle = true;
 //	}
 //}
-//
