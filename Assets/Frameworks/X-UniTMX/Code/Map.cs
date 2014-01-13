@@ -465,7 +465,7 @@ namespace X_UniTMX
 
 			Rigidbody _rigid = boxCollider.AddComponent<Rigidbody>();
 			_rigid.isKinematic = false;
-			_rigid.useGravity = false;
+			_rigid.useGravity = true;
 			_rigid.constraints = RigidbodyConstraints.FreezeAll;
 
 			return boxCollider;

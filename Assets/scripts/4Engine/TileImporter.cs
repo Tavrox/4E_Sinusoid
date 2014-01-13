@@ -18,6 +18,7 @@ public class TileImporter : MonoBehaviour {
 	private XmlNodeList tileNodes;
 	private XmlNodeList tilesetNodes;
 	private XmlNodeList itemNodes;
+	private LevelManager _LevMan;
 
 	 
 	private enum tileList
@@ -31,12 +32,15 @@ public class TileImporter : MonoBehaviour {
 	{
 		Checkpoint,
 		WalkerPoints,
-		Rusher
+		Rusher,
+		LevelEntry,
+		LevelExit,
+		Ditch
 
 	};
-	public objectList obj;
+	private objectList obj;
 
-	public List<GameObject> listTiles = new List<GameObject>();
+	private List<GameObject> listTiles = new List<GameObject>();
 
 	void Start()
 	{
@@ -213,15 +217,22 @@ public class TileImporter : MonoBehaviour {
 				{
 					if (Resources.Load("Bricks/" + _obj.ToString()) != null)
 					{
-						if(children.Attributes.GetNamedItem("type").Value != null)
+						if(children.Attributes.GetNamedItem("type") != null)
 						{
 							if (children.Attributes.GetNamedItem("type").Value == _obj.ToString())
 							{
 								GameObject _instance = Instantiate(Resources.Load("Bricks/" + children.Attributes.GetNamedItem("type").Value)) as GameObject;
-								_instance.transform.parent = this.transform.parent;
-								float _posX = (float.Parse(children.Attributes.GetNamedItem("x").Value) + 50) / 50;
-								float _posY = (float.Parse((children.Attributes.GetNamedItem("y").Value) + 50) * -1) / 50;
-								_instance.transform.position = new Vector3 (_posX, _posY , -5f);
+								_instance.transform.parent = this.transform;
+								float _posX = float.Parse(children.Attributes.GetNamedItem("x").Value) + 50;
+								float _posY = float.Parse(children.Attributes.GetNamedItem("y").Value) - 50;
+								if (children.Attributes.GetNamedItem("width") != null)
+								{
+									float _objWidth = float.Parse(children.Attributes.GetNamedItem("width").Value) / 2f;
+									float _objHeight =  float.Parse(children.Attributes.GetNamedItem("height").Value) / 2f;
+									_posX += _objWidth;
+									_posY += _objHeight;
+								}
+								_instance.transform.position = new Vector3 (_posX / 50f, _posY / - 50f , -5f);
 								if (children.Attributes.GetNamedItem("name").Value != null)
 								{
 									_instance.name = children.Attributes.GetNamedItem("name").Value;

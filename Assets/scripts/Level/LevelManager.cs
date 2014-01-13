@@ -1,28 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour {
-	
-	public OTSprite background;
-	[SerializeField] private Player player;
-	[SerializeField] private Camera myCamera;
-	
+
 	public int ID;
 	public int nextLvlID;
 	public int previousLvlID;
+	public Checkpoint lastCheckpointValidated;
+	private Player _player;
+	private List<GameObject> gameplayObjects;
 
 	// Use this for initialization
 	void Start () 
 	{
-		player = GameObject.FindWithTag("Player").GetComponent<Player>();
-		//myCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+		_player = GameObject.FindWithTag("Player").GetComponent<Player>();
 		
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		myCamera.transform.position = new Vector3 (player.transform.position.x, 0, player.transform.position.z);
-		myCamera.nearClipPlane = -1000;
+
+	}
+
+	public void setActivatedCheckpoint(Checkpoint _check)
+	{
+		lastCheckpointValidated = _check;
+	}
+
+	public void addGameplayObjects(List<GameObject> _list)
+	{
+		gameplayObjects = _list;
+	}
+
+	public void revivePlayer()
+	{
+		/*
+		Transform _cam = GameObject.Find("UI/Main Camera").transform.transform;
+		if (_cam == null)
+		{Debug.Log("Camera hasn't been found");}
+		OTTween _tween = new OTTween(_cam,2f).Tween("position", new Vector3(_Anchor.transform.position.x, _Anchor.transform.position.y, _cam.position.z), OTEasing.StrongOut );
+		*/
 	}
 }
