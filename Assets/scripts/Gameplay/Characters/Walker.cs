@@ -11,7 +11,7 @@ public class Walker : Enemy {
 
 	private Vector3 direction;
 	
-	public float targetDetectionArea = 3f;
+	public float targetDetectionArea = 3f, timeSearchingPlayer = 2f;
 	private float blockDetectionArea = 2f;
 	
 	private RaycastHit hitInfo; //infos de collision
@@ -33,7 +33,7 @@ public class Walker : Enemy {
 
 	private WaveCreator soundEmitt1, soundEmitt2, soundInstru1/*, soundInstru2,soundEmitt3*/;
 	private int cptWave=1, pebbleDirection = 1;
-	private bool blockCoroutine, first, toSprint, toWalk, specialCast, playerDirLeft, waypointReached;
+	private bool blockCoroutine, first, toSprint, toWalk, specialCast, playerDirLeft, waypointReached, loosingPlayer;
 	private Pebble pebble1;
 	private float powerPebble;
 //	private GameObject pebbleBar;
@@ -72,7 +72,7 @@ public class Walker : Enemy {
 		//enabled = false;
 		runSpeed = 0.5f;
 
-		setTarget(GameObject.FindWithTag("Player").transform); //target the player
+		setTarget(transform); //target
 		patroling = true;
 		waypointDetectionWidth = thisTransform.gameObject.GetComponentInChildren<Transform>().GetComponentInChildren<OTSprite>().transform.localScale.x/2;//transform.localScale.x;
 		StartCoroutine("goToWaypoint",waypointId);
@@ -100,19 +100,27 @@ public class Walker : Enemy {
 //		isShot = false;
 //		isPass = false;
 //		movingDir = moving.None;
+		
+		offsetCircles ();
+		detectPlayer();
+		detectEndChaseArea();
 
 		if(!endChasingPlayer) {
 			if(chasingPlayer) {/*if(target==null) stopChasing();else*/ ChasePlayer();}
 			else if(patroling) {Patrol();}
 		}
 		else {
-			goBackToPatrol();
+			if (!Physics.Raycast(detectTargetLeft, out hitInfo, targetDetectionArea, projectorMask) && !Physics.Raycast(detectTargetRight, out hitInfo, targetDetectionArea, projectorMask) && !loosingPlayer) {
+				//if(hitInfo.collider.name != "Player") {
+				//goBackToPatrol();
+				StartCoroutine("goBackToPatrol");
+				//}
+			}//AJOUTER D'AUTRES CONDITIONS
+			//else goBackToPatrol();
+			//if(!chasingPlayer) goBackToPatrol();
 		}
 //		checkInput();
 //		UpdateMovement();
-		offsetCircles ();
-		detectPlayer();
-		detectEndChaseArea();
 		//detectEndPlatform();
 
 		if(isLeft || isRight) {
@@ -142,6 +150,8 @@ public class Walker : Enemy {
 	private void detectEndChaseArea() {
 		foreach(Transform chaseAreaLimit in endChaseArea) {
 			if(Vector3.Distance(transform.position, chaseAreaLimit.position) < waypointDetectionWidth) {
+				endPFReached = true;
+				StopCoroutine("footStep");
 				stopChasing();
 			}
 		}
@@ -152,11 +162,13 @@ public class Walker : Enemy {
 	 *    IA MANAGEMENT		*
 	 *						*
 	 ***********************/
-	private void goBackToPatrol () {
+	private IEnumerator goBackToPatrol () {
+		loosingPlayer = true;
+		yield return new WaitForSeconds(timeSearchingPlayer);
 		isLeft = false;
 		isRight = false;
 		patroling = true;
-
+		setTarget(transform); //target
 		waypointId=0;
 		float distTemp=Vector2.Distance(new Vector2(transform.position.x,0f), new Vector2(waypoints[waypointId].position.x,0f));
 		int cpt=1;
@@ -173,9 +185,11 @@ public class Walker : Enemy {
 //		}
 //		if(facingDir == facing.Left) {
 //			waypointId = 0;
-//		}
+		//		}
+		blockCoroutine = false;
+		StartCoroutine("waitB4FootStep");
 		StartCoroutine("goToWaypoint",waypointId);
-		endChasingPlayer = false;/*********************/
+		loosingPlayer = endPFReached = endChasingPlayer = false;/*********************/
 
 	}
 	private IEnumerator goToWaypoint (int waypointIDToReach) {

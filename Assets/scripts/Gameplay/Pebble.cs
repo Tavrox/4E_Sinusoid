@@ -59,7 +59,11 @@ public class Pebble : MonoBehaviour {
 			soundEmitt.circleWalkToSprint();
 			/*if(!isSounding) {*/isSounding=true;soundEmitt.resetCircle();/*}*/
 		}
-		
+		if(other.gameObject.CompareTag("Enemy") && !callerObj.CompareTag("Enemy")) {
+			soundEmitt.circleWalkToSprint();isSounding=true;soundEmitt.resetCircle();
+				other.GetComponent<Enemy>().setTarget(callerObj);
+				other.GetComponent<Enemy>().activeChasing();
+		}
 	}
 	public void setPosition (float x, float y, float z) {
 		thisTransform.position = new Vector3(x,y,z);

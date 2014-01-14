@@ -24,6 +24,7 @@ public class WalkerAnims : MonoBehaviour
 	private animDef currentAnim;
 	private Character _character;
 	private Player _player;
+	private Walker _walker;
 	
 	private bool animPlaying = false;
 	
@@ -31,6 +32,7 @@ public class WalkerAnims : MonoBehaviour
 	void Start () 
 	{
 		_character 	= GetComponent<Character>();
+		_walker = GetComponent<Walker>();
 		_player 	= GameObject.FindObjectOfType<Player>();
 		animSprite.Play("stand");
 	}
@@ -50,13 +52,13 @@ public class WalkerAnims : MonoBehaviour
 	}
 	private void Run()
 	{
-		if(_character.isRight && _character.grounded && currentAnim!=animDef.WalkRight)
+		if(_character.isRight && _character.grounded && currentAnim!=animDef.WalkRight && !_walker.getEndPFReached())
 		{
 			currentAnim = animDef.WalkRight;
 			animSprite.Play("run");
 			NormalScaleSprite();;
 		}
-		if(_character.isLeft && _character.grounded && currentAnim!=animDef.WalkLeft)
+		if(_character.isLeft && _character.grounded && currentAnim!=animDef.WalkLeft && !_walker.getEndPFReached())
 		{
 			currentAnim = animDef.WalkLeft;
 			animSprite.Play("run");
@@ -69,6 +71,10 @@ public class WalkerAnims : MonoBehaviour
 	}
 	private void Stand()
 	{	
+		if(_walker.getEndPFReached()) {
+			currentAnim = animDef.StandLeft;
+			animSprite.Play("stand");
+		}
 		if(!_character.isLeft && _character.grounded == true && currentAnim != animDef.StandLeft && _character.facingDir == Character.facing.Left && animPlaying == false)
 		{
 			currentAnim = animDef.StandLeft;

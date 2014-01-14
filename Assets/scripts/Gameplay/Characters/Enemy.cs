@@ -3,13 +3,18 @@ using System.Collections;
 
 public class Enemy : Character {
 	
-	protected Transform target; //the enemy's target
-	protected bool chasingPlayer, endChasingPlayer, patroling;
+	public Transform target; //the enemy's target
+	protected bool chasingPlayer, endChasingPlayer, patroling, endPFReached;
 	
 	public void setTarget(Transform obj) {
 		target = obj;
 	}
-	
+	public Transform getTarget() {
+		return target;
+	}
+	public bool getChasingPlayer() {
+		return chasingPlayer;
+	}
 	public void activeChasing() {
 		chasingPlayer = true;
 		patroling = false;
@@ -19,7 +24,10 @@ public class Enemy : Character {
 		endChasingPlayer = true;
 	}
 	public void targetReached() {
-		setTarget(GameObject.FindWithTag("Player").transform);
+		setTarget(transform);
 		stopChasing();
+	}
+	public bool getEndPFReached () {
+		return endPFReached;
 	}
 }
