@@ -5,7 +5,7 @@ public static class GameEventManager {
 
 	public delegate void GameEvent();
 	
-	public static event GameEvent GameStart, GamePause, GameUnpause, GameOver, NextLevel, PreviousLevel;
+	public static event GameEvent GameStart, GamePause, GameUnpause, GameOver, NextLevel, PreviousLevel, Respawn;
 	public enum GameState
 	{
 		Live,
@@ -14,7 +14,8 @@ public static class GameEventManager {
 	};
 	public static GameState state = GameState.Live;
 	
-	public static void TriggerGameStart(){
+	public static void TriggerGameStart()
+	{
 		if(GameStart != null)
 		{
 			Debug.Log("GAMESTART");
@@ -58,6 +59,15 @@ public static class GameEventManager {
 			Debug.Log("UNPAUSE");
 			state = GameState.Live;
 			GameUnpause();
+		}
+	}
+	public static void TriggerRespawn()
+	{
+		if(Respawn != null)
+		{
+			Debug.Log("RESPAWN");
+			state = GameState.Live;
+			Respawn();
 		}
 	}
 }

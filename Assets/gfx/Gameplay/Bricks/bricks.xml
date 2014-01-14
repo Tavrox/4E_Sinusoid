@@ -4,10 +4,23 @@
     <dict>
         <key>frames</key>
         <dict>
+            <key>checkpoint.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,0},{194,216}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{194,216}}</string>
+                <key>sourceSize</key>
+                <string>{194,216}</string>
+            </dict>
             <key>ditch.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,216},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -25,9 +38,9 @@
             <key>realTextureFileName</key>
             <string>bricks.png</string>
             <key>size</key>
-            <string>{128,128}</string>
+            <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:c57edfb22421769dfcd61d0be4ee60c9:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:c7e5ca8e174a0566eb4045116b06cea9:1/1$</string>
             <key>textureFileName</key>
             <string>bricks.png</string>
         </dict>

@@ -208,6 +208,7 @@
   <object name="Rusher" type="Rusher" gid="401" x="1520" y="1626"/>
   <object name="Rusher" type="Rusher" gid="401" x="922" y="1630"/>
   <object name="Walker" type="WalkerPoints" gid="402" x="2548" y="669"/>
+  <object name="Rusher" type="Rusher" gid="402" x="1922" y="1378"/>
  </objectgroup>
  <objectgroup name="LevelBricks" width="60" height="60">
   <object name="Checkpoint" type="Checkpoint" gid="403" x="941" y="529"/>
@@ -243,5 +244,7 @@
   <object x="733" y="527" width="436" height="106"/>
   <object x="703" y="3" width="2285" height="239"/>
   <object x="2975" y="241" width="84" height="929"/>
+  <object x="4" y="2878" width="1612" height="116"/>
+  <object x="488" y="2784" width="982" height="98"/>
  </objectgroup>
 </map>
