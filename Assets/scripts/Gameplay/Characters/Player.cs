@@ -203,8 +203,8 @@ public class Player : Character {
 		#endregion
 		#region (Escape)
 		if (Input.GetKeyDown(KeyCode.Escape)) {
-			if (GameEventManager.gamePaused == false) GameEventManager.TriggerGamePause();
-			else if (GameEventManager.gamePaused == true) GameEventManager.TriggerGameUnpause();
+			if (GameEventManager.state != GameEventManager.GameState.Pause) GameEventManager.TriggerGamePause();
+			else if (GameEventManager.state == GameEventManager.GameState.Pause) GameEventManager.TriggerGameUnpause();
 		}
 		#endregion
 	}

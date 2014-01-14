@@ -148,13 +148,18 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>Main/back.png</filename>
-            <filename>Main/back_level.png</filename>
-            <filename>Main/gameover.png</filename>
-            <filename>Main/menu_ingame.png</filename>
-            <filename>Main/muteMusic.png</filename>
-            <filename>Main/revive.png</filename>
-            <filename>Main/title.png</filename>
+            <filename>music.png</filename>
+            <filename>nomusic.png</filename>
+            <filename>pauseTitle.png</filename>
+            <filename>resumegame.png</filename>
+            <filename>revive.png</filename>
+            <filename>title.png</filename>
+            <filename>tutorial.png</filename>
+            <filename>back.png</filename>
+            <filename>back_level.png</filename>
+            <filename>backtomenu.png</filename>
+            <filename>gameover.png</filename>
+            <filename>menu_ingame.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

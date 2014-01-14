@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class IngameUI : MonoBehaviour {
-
+	
+	public Dictionary<string,GameObject> subUIObjects = new Dictionary<string, GameObject>();
 
 	void Start () 
 	{
@@ -10,6 +12,10 @@ public class IngameUI : MonoBehaviour {
 		GameEventManager.GameOver += GameOver;
 		GameEventManager.GamePause += GamePause;
 		GameEventManager.GameUnpause += GameUnpause;
+
+		subUIObjects.Add("GameOver", FETool.findWithinChildren(this.gameObject, "GameOver"));
+		subUIObjects.Add("Pause", FETool.findWithinChildren(this.gameObject, "Pause"));
+		subUIObjects.Add("Ingame", FETool.findWithinChildren(this.gameObject, "Ingame"));
 	}
 	
 	// Update is called once per frame
@@ -24,12 +30,13 @@ public class IngameUI : MonoBehaviour {
 	}
 	private void GameOver () 
 	{
+		subUIObjects["GameOver"].GetComponent<SubUI>().revealSub();
+		subUIObjects["Ingame"].GetComponent<SubUI>().hideSub();
 		// Afficher le gameover
 	}
 	private void GamePause()
 	{
-		// Afficher le menu
-		
+		subUIObjects["GameOver"].GetComponent<SubUI>().revealSub();
 	}
 	private void GameUnpause()
 	{

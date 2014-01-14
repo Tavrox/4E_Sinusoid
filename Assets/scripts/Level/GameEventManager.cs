@@ -6,16 +6,28 @@ public static class GameEventManager {
 	public delegate void GameEvent();
 	
 	public static event GameEvent GameStart, GamePause, GameUnpause, GameOver, NextLevel, PreviousLevel;
-	public static bool gamePaused = false;
+	public enum GameState
+	{
+		Live,
+		GameOver,
+		Pause
+	};
+	public static GameState state = GameState.Live;
 	
 	public static void TriggerGameStart(){
-		if(GameStart != null){					
+		if(GameStart != null)
+		{
+			Debug.Log("GAMESTART");
+			state = GameState.Live;
 			GameStart();
 		}
 	}
 
 	public static void TriggerGameOver(){
-		if(GameOver != null){
+		if(GameOver != null && state != GameState.GameOver)
+		{
+			Debug.Log("GAMEOVER");
+			state = GameState.GameOver;
 			GameOver();
 		}
 	}
@@ -32,20 +44,19 @@ public static class GameEventManager {
 	}
 	public static void TriggerGamePause()
 	{
-		if(GamePause != null)
+		if(GamePause != null && state != GameState.Pause)
 		{
-			Debug.Log("Pause");
-			gamePaused = true;
+			Debug.Log("PAUSE");
+			state = GameState.Pause;
 			GamePause();
 		}
 	}
 	public static void TriggerGameUnpause()
 	{
-		Debug.Log("OMG");
 		if(GameUnpause != null)
 		{
-			Debug.Log("Unpause");
-			gamePaused = false;
+			Debug.Log("UNPAUSE");
+			state = GameState.Live;
 			GameUnpause();
 		}
 	}
