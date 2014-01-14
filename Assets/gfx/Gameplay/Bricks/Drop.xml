@@ -4,10 +4,10 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>drop_baseV20001.png</key>
+            <key>drop00base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{100,50}}</string>
+                <string>{{1,1},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -17,10 +17,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20002.png</key>
+            <key>drop01base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,0},{100,50}}</string>
+                <string>{{102,1},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -30,10 +30,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20003.png</key>
+            <key>drop02base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,0},{100,50}}</string>
+                <string>{{203,1},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -43,10 +43,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20004.png</key>
+            <key>drop03base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,0},{100,50}}</string>
+                <string>{{304,1},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -56,10 +56,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20005.png</key>
+            <key>drop04base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,0},{100,50}}</string>
+                <string>{{405,1},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -69,10 +69,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20006.png</key>
+            <key>drop05base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,50},{100,50}}</string>
+                <string>{{1,52},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -82,10 +82,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20007.png</key>
+            <key>drop06base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,50},{100,50}}</string>
+                <string>{{102,52},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -95,10 +95,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20008.png</key>
+            <key>drop07base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,50},{100,50}}</string>
+                <string>{{203,52},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -108,10 +108,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20009.png</key>
+            <key>drop08base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,50},{100,50}}</string>
+                <string>{{304,52},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -121,10 +121,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20010.png</key>
+            <key>drop09base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,50},{100,50}}</string>
+                <string>{{405,52},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -134,10 +134,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20011.png</key>
+            <key>drop10base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,100},{100,50}}</string>
+                <string>{{1,103},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -147,10 +147,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20012.png</key>
+            <key>drop11base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,100},{100,50}}</string>
+                <string>{{102,103},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -160,10 +160,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20013.png</key>
+            <key>drop12base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,100},{100,50}}</string>
+                <string>{{203,103},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -173,10 +173,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20014.png</key>
+            <key>drop13base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,100},{100,50}}</string>
+                <string>{{304,103},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -186,10 +186,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20015.png</key>
+            <key>drop14base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,100},{100,50}}</string>
+                <string>{{405,103},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -199,10 +199,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20016.png</key>
+            <key>drop15base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,150},{100,50}}</string>
+                <string>{{1,154},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -212,10 +212,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20017.png</key>
+            <key>drop16base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,150},{100,50}}</string>
+                <string>{{102,154},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -225,10 +225,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20018.png</key>
+            <key>drop17base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,150},{100,50}}</string>
+                <string>{{203,154},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -238,10 +238,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20019.png</key>
+            <key>drop18base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,150},{100,50}}</string>
+                <string>{{203,154},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -251,10 +251,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20020.png</key>
+            <key>drop19base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,150},{100,50}}</string>
+                <string>{{304,154},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -264,10 +264,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20021.png</key>
+            <key>drop20base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,150},{100,50}}</string>
+                <string>{{405,154},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -277,10 +277,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20022.png</key>
+            <key>drop21base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,200},{100,50}}</string>
+                <string>{{1,205},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -290,10 +290,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20023.png</key>
+            <key>drop22base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,200},{100,50}}</string>
+                <string>{{102,205},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -303,10 +303,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20024.png</key>
+            <key>drop23base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,200},{100,50}}</string>
+                <string>{{203,205},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -316,10 +316,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20025.png</key>
+            <key>drop24base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,200},{100,50}}</string>
+                <string>{{304,205},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -329,10 +329,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20026.png</key>
+            <key>drop25base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,200},{100,50}}</string>
+                <string>{{405,205},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -342,10 +342,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20027.png</key>
+            <key>drop26base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,250},{100,50}}</string>
+                <string>{{1,256},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -355,10 +355,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20028.png</key>
+            <key>drop27base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,250},{100,50}}</string>
+                <string>{{102,256},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -368,10 +368,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20029.png</key>
+            <key>drop28base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,250},{100,50}}</string>
+                <string>{{203,256},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -381,10 +381,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20030.png</key>
+            <key>drop29base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,250},{100,50}}</string>
+                <string>{{304,256},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -394,10 +394,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20031.png</key>
+            <key>drop30base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,250},{100,50}}</string>
+                <string>{{405,256},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -407,10 +407,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20032.png</key>
+            <key>drop31base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,300},{100,50}}</string>
+                <string>{{1,307},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -420,10 +420,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20033.png</key>
+            <key>drop32base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,300},{100,50}}</string>
+                <string>{{102,307},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -433,10 +433,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20034.png</key>
+            <key>drop33base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,300},{100,50}}</string>
+                <string>{{203,307},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -446,10 +446,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20035.png</key>
+            <key>drop34base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,300},{100,50}}</string>
+                <string>{{304,307},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -459,10 +459,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20036.png</key>
+            <key>drop35base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,300},{100,50}}</string>
+                <string>{{405,307},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -472,10 +472,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20037.png</key>
+            <key>drop36base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,350},{100,50}}</string>
+                <string>{{1,358},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -485,10 +485,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20038.png</key>
+            <key>drop37base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,350},{100,50}}</string>
+                <string>{{102,358},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -498,10 +498,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20039.png</key>
+            <key>drop38base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,350},{100,50}}</string>
+                <string>{{203,358},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -511,10 +511,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20040.png</key>
+            <key>drop39base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,350},{100,50}}</string>
+                <string>{{304,358},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -524,10 +524,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20041.png</key>
+            <key>drop40base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,350},{100,50}}</string>
+                <string>{{405,358},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -537,10 +537,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20042.png</key>
+            <key>drop41base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,400},{100,50}}</string>
+                <string>{{1,409},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -550,10 +550,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20043.png</key>
+            <key>drop42base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,400},{100,50}}</string>
+                <string>{{102,409},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -563,10 +563,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20044.png</key>
+            <key>drop43base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,400},{100,50}}</string>
+                <string>{{203,409},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -576,10 +576,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20045.png</key>
+            <key>drop44base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,400},{100,50}}</string>
+                <string>{{203,409},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -589,10 +589,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20046.png</key>
+            <key>drop45base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,400},{100,50}}</string>
+                <string>{{203,409},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -602,10 +602,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20047.png</key>
+            <key>drop46base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,400},{100,50}}</string>
+                <string>{{203,409},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -615,10 +615,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20048.png</key>
+            <key>drop47base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,400},{100,50}}</string>
+                <string>{{203,409},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -628,10 +628,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20049.png</key>
+            <key>drop48base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,400},{100,50}}</string>
+                <string>{{203,409},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -641,10 +641,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20050.png</key>
+            <key>drop49base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,400},{100,50}}</string>
+                <string>{{203,409},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -654,10 +654,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20051.png</key>
+            <key>drop50base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,400},{100,50}}</string>
+                <string>{{203,409},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -667,10 +667,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20052.png</key>
+            <key>drop51base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,400},{100,50}}</string>
+                <string>{{203,409},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -680,10 +680,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>drop_baseV20053.png</key>
+            <key>drop52base.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,400},{100,50}}</string>
+                <string>{{203,409},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -692,6 +692,149 @@
                 <string>{{0,0},{100,50}}</string>
                 <key>sourceSize</key>
                 <string>{100,50}</string>
+            </dict>
+            <key>drop53emitter.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{304,409},{50,25}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,25}}</string>
+                <key>sourceSize</key>
+                <string>{50,25}</string>
+            </dict>
+            <key>drop54emitter.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{355,409},{50,25}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,25}}</string>
+                <key>sourceSize</key>
+                <string>{50,25}</string>
+            </dict>
+            <key>drop55emitter.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{406,409},{50,25}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,25}}</string>
+                <key>sourceSize</key>
+                <string>{50,25}</string>
+            </dict>
+            <key>drop56emitter.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{457,409},{50,25}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,25}}</string>
+                <key>sourceSize</key>
+                <string>{50,25}</string>
+            </dict>
+            <key>drop57emitter.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1,460},{50,25}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,25}}</string>
+                <key>sourceSize</key>
+                <string>{50,25}</string>
+            </dict>
+            <key>drop58emitter.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{52,460},{50,25}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,25}}</string>
+                <key>sourceSize</key>
+                <string>{50,25}</string>
+            </dict>
+            <key>drop59emitter.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{103,460},{50,25}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,25}}</string>
+                <key>sourceSize</key>
+                <string>{50,25}</string>
+            </dict>
+            <key>drop60emitter.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{154,460},{50,25}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,25}}</string>
+                <key>sourceSize</key>
+                <string>{50,25}</string>
+            </dict>
+            <key>drop61emitter.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{205,460},{50,25}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,25}}</string>
+                <key>sourceSize</key>
+                <string>{50,25}</string>
+            </dict>
+            <key>drop62emitter.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{256,460},{50,25}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,25}}</string>
+                <key>sourceSize</key>
+                <string>{50,25}</string>
+            </dict>
+            <key>drop63emitter.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{307,460},{50,25}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,25}}</string>
+                <key>sourceSize</key>
+                <string>{50,25}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -699,13 +842,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>Drop_base_emitter.png</string>
+            <string>Drop.png</string>
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:8b0631f0fdec670d80096644ab74e096:01ffeb04ffff083be5ffd8ce4bf7f301:91119bfd94c9671ebde0102a6209a1b5$</string>
+            <string>$TexturePacker:SmartUpdate:f560d1e08409057ef3efbdb56dc91bb4:1/1$</string>
             <key>textureFileName</key>
-            <string>Drop_base_emitter.png</string>
+            <string>Drop.png</string>
         </dict>
     </dict>
 </plist>

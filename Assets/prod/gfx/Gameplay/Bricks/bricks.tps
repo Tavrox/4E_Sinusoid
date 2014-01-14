@@ -149,6 +149,7 @@
         <key>fileList</key>
         <array>
             <filename>ditch.png</filename>
+            <filename>checkpoint.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

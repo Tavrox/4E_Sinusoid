@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System;
 
-public class TileImporter : MonoBehaviour {
+public class ObjectImporter : MonoBehaviour {
 	
 	private int levelWidth;
 	private int levelHeight;
@@ -94,7 +94,6 @@ public class TileImporter : MonoBehaviour {
 		Debug.Log("Setupped Tiles [TW:"+tileWidth+"][TH:"+tileHeight+"]");
 	}
 
-	[ContextMenu ("Clear Tiles")]
 	private void clearTiles()
 	{
 		foreach(GameObject _tile in listTiles)
@@ -103,8 +102,7 @@ public class TileImporter : MonoBehaviour {
 			listTiles.Remove(_tile);
 		}
 	}
-	
-	[ContextMenu ("Remove Specific Tiles")]
+
 	private void removeSpecificTiles()
 	{
 		foreach(GameObject _tile in listTiles)
@@ -116,7 +114,6 @@ public class TileImporter : MonoBehaviour {
 		}
 	}
 
-	[ContextMenu ("Refresh Tiles")]
 	private void refreshTiles()
 	{
 		clearTiles();
@@ -124,7 +121,6 @@ public class TileImporter : MonoBehaviour {
 
 	}
 
-	[ContextMenu ("Show Parameters")]
 	private void showParameters()
 	{
 		initXML();
@@ -133,8 +129,7 @@ public class TileImporter : MonoBehaviour {
 		Debug.Log (tilesetParams);
 		Debug.Log (tilesetNodes);
 	}
-	
-	[ContextMenu ("Get Tiles")]
+
 	private void getTiles()
 	{
 		Debug.Log("Start getting tiles");
