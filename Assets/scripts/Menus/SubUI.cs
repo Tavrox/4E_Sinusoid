@@ -37,6 +37,9 @@ public class SubUI : MonoBehaviour {
 		}
 		case listSubUI.Pause :
 		{
+			ContainedObject.Add("MuteSound", FETool.findWithinChildren(this.gameObject, "MuteSound"));
+			ContainedObject.Add("BackToMenu", FETool.findWithinChildren(this.gameObject, "BackToMenu"));
+			ContainedObject.Add("Resume", FETool.findWithinChildren(this.gameObject, "Resume"));
 			break;
 		}
 		}

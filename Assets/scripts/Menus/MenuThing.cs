@@ -11,9 +11,10 @@ public class MenuThing : MonoBehaviour {
 		Title,
 		None,
 		GoToAnchor,
+		MuteMusic
 	};
 	public ListMenu menu;
-	public bool animate = true;
+	public bool animate = false;
 	private OTSprite spr;
 	private List<GameObject> menuObjects;
 	public GameObject chosenAnchor;
@@ -37,20 +38,28 @@ public class MenuThing : MonoBehaviour {
 	private void OnMouseDown()
 	{
 		menuObjects = new List<GameObject>();
-
-
+		Debug.Log("Clicked" + this.gameObject.name);
 		switch (menu)
 		{
-			case (ListMenu.ChooseLevel):
-			{
-				loadLevel(levelToLoad);
-				break;
-			}
-			case (ListMenu.GoToAnchor) :
-			{
-				goToAnchor(chosenAnchor);
-				break;
-			}
+		case (ListMenu.ChooseLevel):
+		{
+			StartCoroutine(loadLevel(levelToLoad));
+			break;
+		}
+		case (ListMenu.GoToAnchor) :
+		{
+			goToAnchor(chosenAnchor);
+			break;
+		}
+		case (ListMenu.MuteMusic) :
+		{
+			Debug.Log("TDL - Mute Sound");
+			if (spr.frameName == "music")
+			{spr.frameName = "nomusic";}
+			if (spr.frameName == "nomusic")
+			{spr.frameName = "music";}
+			break;
+		}
 			/*
 			case (ListMenu.Play):
 			{
@@ -121,7 +130,8 @@ public class MenuThing : MonoBehaviour {
 
 	IEnumerator loadLevel(int _lvl)
 	{
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(0.3f);
+		Debug.Log("loading level");
 		Application.LoadLevel(_lvl);
 	}
 
@@ -183,7 +193,7 @@ public class MenuThing : MonoBehaviour {
 	{
 		if (spr != null)
 		{
-			int randRange = Random.Range(-30,30);
+			float randRange = Random.Range(0.1f,0.5f);
 			OTTween _tween = new OTTween(spr,2.5f)
 				.Tween("size", new Vector2(spr.size.x - randRange, spr.size.y - randRange) )
 			.PingPong();

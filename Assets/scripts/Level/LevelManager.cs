@@ -41,7 +41,8 @@ public class LevelManager : MonoBehaviour {
 
 	public void Respawn()
 	{
-		_player.transform.position = lastCheckpointValidated.transform.position;
+		_player.transform.position = new Vector3(lastCheckpointValidated.transform.position.x, lastCheckpointValidated.transform.position.y, _player.transform.position.z); ;
+		_player.enabled = true;
 	}
 
 	public void leaveForMenu()

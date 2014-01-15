@@ -37,7 +37,9 @@ public class IngameUI : MonoBehaviour {
 	}
 	private void GamePause()
 	{
-		subUIObjects["GameOver"].GetComponent<SubUI>().revealSub();
+		subUIObjects["Pause"].GetComponent<SubUI>().revealSub();
+		subUIObjects["GameOver"].GetComponent<SubUI>().hideSub();
+		subUIObjects["Ingame"].GetComponent<SubUI>().hideSub();
 	}
 	private void GameUnpause()
 	{
