@@ -53,11 +53,11 @@ public class Walker : Enemy {
 		GameEventManager.GameUnpause += GameUnpause;
 
 		
-		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesEmitter")) as GameObject;
+		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesEmitter")) as GameObject;
 		soundEmitt1 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt1.gameObject.name = "_footWaveWalker1";//footsteps wave 1
-		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesEmitter")) as GameObject;
+		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesEmitter")) as GameObject;
 		soundEmitt2 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt2.gameObject.name = "_footWaveWalker2";//footsteps wave 2
-		GOinstInstruWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesInstru")) as GameObject;
+		GOinstInstruWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesInstru")) as GameObject;
 		soundInstru1 = GOinstInstruWave.GetComponent<WaveCreator>();soundInstru1.gameObject.name = "_instruWaveWalker1"; //intru wave 1
 
 		soundEmitt1.gameObject.transform.parent = soundEmitt2.gameObject.transform.parent = soundInstru1.gameObject.transform.parent = GameObject.Find("Level/Waves/").transform;

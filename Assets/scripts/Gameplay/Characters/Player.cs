@@ -46,15 +46,15 @@ public class Player : Character {
 		{ InvokeRepeating("playFootstep",5f,WalkSound.RepeatRate);}
 
 		//Creating waves game objects
-		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesEmitter")) as GameObject; //footsteps wave 1
+		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesEmitter")) as GameObject; //footsteps wave 1
 		soundEmitt1 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt1.gameObject.name = "_footWavePlayer1";
-		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesEmitter")) as GameObject; //footsteps wave 2
+		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesEmitter")) as GameObject; //footsteps wave 2
 		soundEmitt2 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt2.gameObject.name = "_footWavePlayer2";
-		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesEmitter")) as GameObject; //footsteps wave 3
+		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesEmitter")) as GameObject; //footsteps wave 3
 		soundEmitt3 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt3.gameObject.name = "_footWavePlayer3";
-		GOinstInstruWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesInstru")) as GameObject; //intru wave 1
+		GOinstInstruWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesInstru")) as GameObject; //intru wave 1
 		soundInstru1 = GOinstInstruWave.GetComponent<WaveCreator>();soundInstru1.gameObject.name = "_instruWavePlayer1";
-		GOinstInstruWave = Instantiate(Resources.Load("Prefabs/04 Gameplay/SoundWavesInstru")) as GameObject; //instru wave 2
+		GOinstInstruWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesInstru")) as GameObject; //instru wave 2
 		soundInstru2 = GOinstInstruWave.GetComponent<WaveCreator>();soundInstru2.gameObject.name = "_instruWavePlayer2";
 		
 		soundEmitt1.gameObject.transform.parent = soundEmitt2.gameObject.transform.parent = soundEmitt3.gameObject.transform.parent = 
