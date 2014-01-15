@@ -24,8 +24,9 @@ public class UIThing : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
 		GameEventManager.GameOver += GameOver;
+		GameEventManager.Respawn += Respawn;
 		if (collider != null)
 		{collider.enabled = false;}
 		_LevMan = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>();
@@ -46,17 +47,15 @@ public class UIThing : MonoBehaviour {
 
 	void OnMouseDown()
 	{
-		Debug.Log("Im clicked bro, please stop clicking me");
 		switch (thingTypesList)
 		{
 			case (Thingtypes.ReloadFromCP) :
 			{
-				_LevMan.revivePlayer();
+				GameEventManager.TriggerRespawn();
 				break;
 			}
 			case (Thingtypes.BackToMainMenu) :
 			{
-				Debug.Log("What bout goin to mnu ?");
 				_LevMan.leaveForMenu();
 				break;
 			}
@@ -79,9 +78,13 @@ public class UIThing : MonoBehaviour {
 		if (collider != null)
 		{collider.enabled = false;}
 	}
-
+	
 	private void GameOver()
 	{
-
+		
+	}
+	private void Respawn()
+	{
+		
 	}
 }

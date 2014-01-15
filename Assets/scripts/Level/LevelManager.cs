@@ -14,6 +14,12 @@ public class LevelManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+//		GameEventManager.GameStart += GameStart;
+//		GameEventManager.GameOver += GameOver;
+//		GameEventManager.GamePause += GamePause;
+//		GameEventManager.GameUnpause += GameUnpause;
+		GameEventManager.Respawn += Respawn;
+
 		_player = GameObject.FindWithTag("Player").GetComponent<Player>();
 	}
 	
@@ -33,14 +39,9 @@ public class LevelManager : MonoBehaviour {
 		gameplayObjects = _list;
 	}
 
-	public void revivePlayer()
+	public void Respawn()
 	{
-		/*
-		Transform _cam = GameObject.Find("UI/Main Camera").transform.transform;
-		if (_cam == null)
-		{Debug.Log("Camera hasn't been found");}
-		OTTween _tween = new OTTween(_cam,2f).Tween("position", new Vector3(_Anchor.transform.position.x, _Anchor.transform.position.y, _cam.position.z), OTEasing.StrongOut );
-		*/
+		_player.transform.position = lastCheckpointValidated.transform.position;
 	}
 
 	public void leaveForMenu()

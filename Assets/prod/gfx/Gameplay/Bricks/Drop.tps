@@ -2,31 +2,17 @@
 <data version="1.0">
     <struct type="Settings">
         <key>fileFormatVersion</key>
-        <int>3</int>
-        <key>texturePackerVersion</key>
-        <string>3.2.1</string>
+        <int>1</int>
+        <key>variation</key>
+        <string>main</string>
+        <key>verbose</key>
+        <false/>
         <key>autoSDSettings</key>
-        <array>
-            <struct type="AutoSDSettings">
-                <key>scale</key>
-                <double>1</double>
-                <key>extension</key>
-                <string></string>
-                <key>spriteFilter</key>
-                <string></string>
-                <key>acceptFractionalValues</key>
-                <false/>
-                <key>maxTextureSize</key>
-                <QSize>
-                    <key>width</key>
-                    <int>-1</int>
-                    <key>height</key>
-                    <int>-1</int>
-                </QSize>
-            </struct>
-        </array>
+        <array/>
         <key>allowRotation</key>
-        <true/>
+        <false/>
+        <key>quiet</key>
+        <false/>
         <key>premultiplyAlpha</key>
         <false/>
         <key>shapeDebug</key>
@@ -36,7 +22,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>Drop_base_emitter.png</filename>
+        <filename>../../../../gfx/Gameplay/Bricks/Drop.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -54,7 +40,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>0</uint>
+        <uint>1</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -64,7 +50,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-        <uint>0</uint>
+        <uint>1</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -101,7 +87,7 @@
             <key>basic</key>
             <struct type="AlgorithmBasicSettings">
                 <key>sortBy</key>
-                <enum type="AlgorithmBasicSettings::SortBy">Best</enum>
+                <enum type="AlgorithmBasicSettings::SortBy">Name</enum>
                 <key>order</key>
                 <enum type="AlgorithmBasicSettings::Order">Ascending</enum>
             </struct>
@@ -112,6 +98,8 @@
             <enum type="AndEngine::MinFilter">Linear</enum>
             <key>packageName</key>
             <string>Texture</string>
+            <key>javaFileName</key>
+            <filename>Drop.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -122,16 +110,12 @@
             <key>magFilter</key>
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
-        <key>dataFileNames</key>
-        <map type="GFileNameMap">
-            <key>data</key>
-            <struct type="DataFile">
-                <key>name</key>
-                <filename>Drop_base_emitter.xml</filename>
-            </struct>
-        </map>
+        <key>dataFileName</key>
+        <filename>../../../../gfx/Gameplay/Bricks/Drop.xml</filename>
         <key>multiPack</key>
         <false/>
+        <key>mainExtension</key>
+        <string></string>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -145,8 +129,6 @@
         <true/>
         <key>trimSpriteNames</key>
         <false/>
-        <key>cleanTransparentPixels</key>
-        <true/>
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>
@@ -166,59 +148,70 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>drop_baseV20053.png</filename>
-            <filename>drop_baseV20052.png</filename>
-            <filename>drop_baseV20051.png</filename>
-            <filename>drop_baseV20050.png</filename>
-            <filename>drop_baseV20049.png</filename>
-            <filename>drop_baseV20048.png</filename>
-            <filename>drop_baseV20047.png</filename>
-            <filename>drop_baseV20046.png</filename>
-            <filename>drop_baseV20045.png</filename>
-            <filename>drop_baseV20044.png</filename>
-            <filename>drop_baseV20043.png</filename>
-            <filename>drop_baseV20042.png</filename>
-            <filename>drop_baseV20041.png</filename>
-            <filename>drop_baseV20040.png</filename>
-            <filename>drop_baseV20039.png</filename>
-            <filename>drop_baseV20038.png</filename>
-            <filename>drop_baseV20037.png</filename>
-            <filename>drop_baseV20036.png</filename>
-            <filename>drop_baseV20035.png</filename>
-            <filename>drop_baseV20034.png</filename>
-            <filename>drop_baseV20033.png</filename>
-            <filename>drop_baseV20032.png</filename>
-            <filename>drop_baseV20031.png</filename>
-            <filename>drop_baseV20030.png</filename>
-            <filename>drop_baseV20029.png</filename>
-            <filename>drop_baseV20028.png</filename>
-            <filename>drop_baseV20027.png</filename>
-            <filename>drop_baseV20026.png</filename>
-            <filename>drop_baseV20025.png</filename>
-            <filename>drop_baseV20024.png</filename>
-            <filename>drop_baseV20023.png</filename>
-            <filename>drop_baseV20022.png</filename>
-            <filename>drop_baseV20021.png</filename>
-            <filename>drop_baseV20020.png</filename>
-            <filename>drop_baseV20019.png</filename>
-            <filename>drop_baseV20018.png</filename>
-            <filename>drop_baseV20017.png</filename>
-            <filename>drop_baseV20016.png</filename>
-            <filename>drop_baseV20015.png</filename>
-            <filename>drop_baseV20014.png</filename>
-            <filename>drop_baseV20013.png</filename>
-            <filename>drop_baseV20012.png</filename>
-            <filename>drop_baseV20011.png</filename>
-            <filename>drop_baseV20010.png</filename>
-            <filename>drop_baseV20009.png</filename>
-            <filename>drop_baseV20008.png</filename>
-            <filename>drop_baseV20007.png</filename>
-            <filename>drop_baseV20006.png</filename>
-            <filename>drop_baseV20005.png</filename>
-            <filename>drop_baseV20004.png</filename>
-            <filename>drop_baseV20003.png</filename>
-            <filename>drop_baseV20002.png</filename>
-            <filename>drop_baseV20001.png</filename>
+            <filename>Drop/drop53emitter.png</filename>
+            <filename>Drop/drop54emitter.png</filename>
+            <filename>Drop/drop55emitter.png</filename>
+            <filename>Drop/drop56emitter.png</filename>
+            <filename>Drop/drop57emitter.png</filename>
+            <filename>Drop/drop58emitter.png</filename>
+            <filename>Drop/drop59emitter.png</filename>
+            <filename>Drop/drop60emitter.png</filename>
+            <filename>Drop/drop61emitter.png</filename>
+            <filename>Drop/drop62emitter.png</filename>
+            <filename>Drop/drop63emitter.png</filename>
+            <filename>Drop/drop00base.png</filename>
+            <filename>Drop/drop01base.png</filename>
+            <filename>Drop/drop02base.png</filename>
+            <filename>Drop/drop03base.png</filename>
+            <filename>Drop/drop04base.png</filename>
+            <filename>Drop/drop05base.png</filename>
+            <filename>Drop/drop06base.png</filename>
+            <filename>Drop/drop07base.png</filename>
+            <filename>Drop/drop08base.png</filename>
+            <filename>Drop/drop09base.png</filename>
+            <filename>Drop/drop10base.png</filename>
+            <filename>Drop/drop11base.png</filename>
+            <filename>Drop/drop12base.png</filename>
+            <filename>Drop/drop13base.png</filename>
+            <filename>Drop/drop14base.png</filename>
+            <filename>Drop/drop15base.png</filename>
+            <filename>Drop/drop16base.png</filename>
+            <filename>Drop/drop17base.png</filename>
+            <filename>Drop/drop18base.png</filename>
+            <filename>Drop/drop19base.png</filename>
+            <filename>Drop/drop20base.png</filename>
+            <filename>Drop/drop21base.png</filename>
+            <filename>Drop/drop22base.png</filename>
+            <filename>Drop/drop23base.png</filename>
+            <filename>Drop/drop24base.png</filename>
+            <filename>Drop/drop25base.png</filename>
+            <filename>Drop/drop26base.png</filename>
+            <filename>Drop/drop27base.png</filename>
+            <filename>Drop/drop28base.png</filename>
+            <filename>Drop/drop29base.png</filename>
+            <filename>Drop/drop30base.png</filename>
+            <filename>Drop/drop31base.png</filename>
+            <filename>Drop/drop32base.png</filename>
+            <filename>Drop/drop33base.png</filename>
+            <filename>Drop/drop34base.png</filename>
+            <filename>Drop/drop35base.png</filename>
+            <filename>Drop/drop36base.png</filename>
+            <filename>Drop/drop37base.png</filename>
+            <filename>Drop/drop38base.png</filename>
+            <filename>Drop/drop39base.png</filename>
+            <filename>Drop/drop40base.png</filename>
+            <filename>Drop/drop41base.png</filename>
+            <filename>Drop/drop42base.png</filename>
+            <filename>Drop/drop43base.png</filename>
+            <filename>Drop/drop44base.png</filename>
+            <filename>Drop/drop45base.png</filename>
+            <filename>Drop/drop46base.png</filename>
+            <filename>Drop/drop47base.png</filename>
+            <filename>Drop/drop48base.png</filename>
+            <filename>Drop/drop49base.png</filename>
+            <filename>Drop/drop50base.png</filename>
+            <filename>Drop/drop51base.png</filename>
+            <filename>Drop/drop52base.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

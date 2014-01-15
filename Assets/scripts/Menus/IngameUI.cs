@@ -12,6 +12,7 @@ public class IngameUI : MonoBehaviour {
 		GameEventManager.GameOver += GameOver;
 		GameEventManager.GamePause += GamePause;
 		GameEventManager.GameUnpause += GameUnpause;
+		GameEventManager.Respawn += Respawn;
 
 		subUIObjects.Add("GameOver", FETool.findWithinChildren(this.gameObject, "GameOver"));
 		subUIObjects.Add("Pause", FETool.findWithinChildren(this.gameObject, "Pause"));
@@ -41,6 +42,10 @@ public class IngameUI : MonoBehaviour {
 	private void GameUnpause()
 	{
 		// Désactiver le menu
-	
+	}
+	private void Respawn()
+	{
+		subUIObjects["GameOver"].GetComponent<SubUI>().hideSub();
+		subUIObjects["Ingame"].GetComponent<SubUI>().revealSub();
 	}
 }

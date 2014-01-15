@@ -192,7 +192,7 @@ namespace X_UniTMX
 			int i = 0;
 			for (i = 0; i < TileSets.Count; i++)
 			{
-				Material layerMat = new Material(Shader.Find("Mobile/Particles/Alpha Blended"));
+				Material layerMat = new Material(Shader.Find("custom/MyBlendedAlpha"));
 				layerMat.mainTexture = TileSets[i].Texture;
 				materials.Add(layerMat);
 			}
@@ -467,6 +467,8 @@ namespace X_UniTMX
 			_rigid.isKinematic = false;
 			_rigid.useGravity = true;
 			_rigid.constraints = RigidbodyConstraints.FreezeAll;
+			_rigid.angularDrag = 0.000001f;
+			_rigid.mass = 0.000001f;
 
 			return boxCollider;
 		}
