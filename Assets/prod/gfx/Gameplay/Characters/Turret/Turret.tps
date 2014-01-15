@@ -26,7 +26,7 @@
             </struct>
         </array>
         <key>allowRotation</key>
-        <false/>
+        <true/>
         <key>premultiplyAlpha</key>
         <false/>
         <key>shapeDebug</key>
@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../../../../../gfx/Gameplay/Bricks/checkpoint.png</filename>
+        <filename>../../../../../gfx/Gameplay/Characters/Turret/Turret.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -127,7 +127,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../../../../gfx/Gameplay/Bricks/Checkpoint.xml</filename>
+                <filename>../../../../../gfx/Gameplay/Characters/Turret/Turret.xml</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -166,19 +166,22 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>Checkpoint03pool.png</filename>
-            <filename>Checkpoint02pool.png</filename>
-            <filename>Checkpoint01pool.png</filename>
-            <filename>Checkpoint00pool.png</filename>
-            <filename>Checkpoint12tile.png</filename>
-            <filename>Checkpoint11tile.png</filename>
-            <filename>Checkpoint10tile.png</filename>
-            <filename>Checkpoint09tile.png</filename>
-            <filename>Checkpoint08Source.png</filename>
-            <filename>Checkpoint07Source.png</filename>
-            <filename>Checkpoint06Source.png</filename>
-            <filename>Checkpoint05pool.png</filename>
-            <filename>Checkpoint04pool.png</filename>
+            <filename>Turret15projectile.png</filename>
+            <filename>Turret14shoot.png</filename>
+            <filename>Turret13shoot.png</filename>
+            <filename>Turret12deContract.png</filename>
+            <filename>Turret11deContract.png</filename>
+            <filename>Turret10old.png</filename>
+            <filename>Turret09old.png</filename>
+            <filename>Turret08contract.png</filename>
+            <filename>Turret07contract.png</filename>
+            <filename>Turret06contract.png</filename>
+            <filename>Turret05idle.png</filename>
+            <filename>Turret04idle.png</filename>
+            <filename>Turret03idle.png</filename>
+            <filename>Turret02idle.png</filename>
+            <filename>Turret01idle.png</filename>
+            <filename>Turret00idle.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

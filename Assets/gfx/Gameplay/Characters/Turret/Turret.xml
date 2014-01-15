@@ -4,174 +4,213 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>Checkpoint00pool.png</key>
+            <key>Turret00idle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{70,100}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{70,100}</string>
             </dict>
-            <key>Checkpoint01pool.png</key>
+            <key>Turret01idle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,0},{50,50}}</string>
+                <string>{{70,0},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{70,100}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{70,100}</string>
             </dict>
-            <key>Checkpoint02pool.png</key>
+            <key>Turret02idle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,0},{50,50}}</string>
+                <string>{{140,0},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{70,100}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{70,100}</string>
             </dict>
-            <key>Checkpoint03pool.png</key>
+            <key>Turret03idle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,100},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{70,100}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{70,100}</string>
             </dict>
-            <key>Checkpoint04pool.png</key>
+            <key>Turret04idle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,0},{50,50}}</string>
+                <string>{{70,100},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{70,100}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{70,100}</string>
             </dict>
-            <key>Checkpoint05pool.png</key>
+            <key>Turret05idle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,0},{50,50}}</string>
+                <string>{{140,100},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{70,100}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{70,100}</string>
             </dict>
-            <key>Checkpoint06Source.png</key>
+            <key>Turret06contract.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,0},{100,300}}</string>
+                <string>{{210,100},{35,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,300}}</string>
+                <string>{{0,0},{35,40}}</string>
                 <key>sourceSize</key>
-                <string>{100,300}</string>
+                <string>{35,40}</string>
             </dict>
-            <key>Checkpoint07Source.png</key>
+            <key>Turret07contract.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,0},{100,300}}</string>
+                <string>{{0,200},{35,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,300}}</string>
+                <string>{{0,0},{35,40}}</string>
                 <key>sourceSize</key>
-                <string>{100,300}</string>
+                <string>{35,40}</string>
             </dict>
-            <key>Checkpoint08Source.png</key>
+            <key>Turret08contract.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,0},{100,300}}</string>
+                <string>{{35,200},{35,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,300}}</string>
+                <string>{{0,0},{35,40}}</string>
                 <key>sourceSize</key>
-                <string>{100,300}</string>
+                <string>{35,40}</string>
             </dict>
-            <key>Checkpoint09tile.png</key>
+            <key>Turret09old.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,300},{50,50}}</string>
+                <string>{{70,200},{35,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{35,40}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{35,40}</string>
             </dict>
-            <key>Checkpoint10tile.png</key>
+            <key>Turret10old.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,300},{50,50}}</string>
+                <string>{{105,200},{35,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{35,40}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{35,40}</string>
             </dict>
-            <key>Checkpoint11tile.png</key>
+            <key>Turret11deContract.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,300},{50,50}}</string>
+                <string>{{140,200},{35,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{35,40}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{35,40}</string>
             </dict>
-            <key>Checkpoint12tile.png</key>
+            <key>Turret12deContract.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,300},{50,50}}</string>
+                <string>{{175,200},{35,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{35,40}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{35,40}</string>
+            </dict>
+            <key>Turret13shoot.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{210,200},{20,30}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{20,30}}</string>
+                <key>sourceSize</key>
+                <string>{20,30}</string>
+            </dict>
+            <key>Turret14shoot.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{230,200},{20,30}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{20,30}}</string>
+                <key>sourceSize</key>
+                <string>{20,30}</string>
+            </dict>
+            <key>Turret15projectile.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{250,200},{6,20}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{6,20}}</string>
+                <key>sourceSize</key>
+                <string>{6,20}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -179,13 +218,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>checkpoint.png</string>
+            <string>Turret.png</string>
             <key>size</key>
-            <string>{512,512}</string>
+            <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0cf5250abba6364934c6a66505258d8d:671de7a41f74a6584c5e054086b7ac43:0f0c01cdb06cd8d981561e34f4270cf1$</string>
+            <string>$TexturePacker:SmartUpdate:f6108586c86237a9ea86c4c41964ac73:be5a19ed313322278387352a19f7e789:981d922c858cc36c61509996291f0e64$</string>
             <key>textureFileName</key>
-            <string>checkpoint.png</string>
+            <string>Turret.png</string>
         </dict>
     </dict>
 </plist>
