@@ -166,19 +166,13 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>Checkpoint03pool.png</filename>
-            <filename>Checkpoint02pool.png</filename>
-            <filename>Checkpoint01pool.png</filename>
-            <filename>Checkpoint00pool.png</filename>
-            <filename>Checkpoint12tile.png</filename>
-            <filename>Checkpoint11tile.png</filename>
-            <filename>Checkpoint10tile.png</filename>
-            <filename>Checkpoint09tile.png</filename>
-            <filename>Checkpoint08Source.png</filename>
-            <filename>Checkpoint07Source.png</filename>
-            <filename>Checkpoint06Source.png</filename>
-            <filename>Checkpoint05pool.png</filename>
-            <filename>Checkpoint04pool.png</filename>
+            <filename>checkpoint06tile.png</filename>
+            <filename>checkpoint05pool.png</filename>
+            <filename>checkpoint04pool.png</filename>
+            <filename>checkpoint03pool.png</filename>
+            <filename>checkpoint02Source.png</filename>
+            <filename>checkpoint01Source.png</filename>
+            <filename>checkpoint00Source.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

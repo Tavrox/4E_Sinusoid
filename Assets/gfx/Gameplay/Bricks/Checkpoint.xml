@@ -4,85 +4,33 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>Checkpoint00pool.png</key>
+            <key>checkpoint00Source.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{100,300}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{100,300}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{100,300}</string>
             </dict>
-            <key>Checkpoint01pool.png</key>
+            <key>checkpoint01Source.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,0},{50,50}}</string>
+                <string>{{100,0},{100,300}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{100,300}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{100,300}</string>
             </dict>
-            <key>Checkpoint02pool.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{100,0},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>Checkpoint03pool.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>Checkpoint04pool.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{50,0},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>Checkpoint05pool.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{150,0},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>Checkpoint06Source.png</key>
+            <key>checkpoint02Source.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,0},{100,300}}</string>
@@ -95,83 +43,57 @@
                 <key>sourceSize</key>
                 <string>{100,300}</string>
             </dict>
-            <key>Checkpoint07Source.png</key>
+            <key>checkpoint03pool.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,0},{100,300}}</string>
+                <string>{{300,0},{150,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,300}}</string>
+                <string>{{0,0},{150,50}}</string>
                 <key>sourceSize</key>
-                <string>{100,300}</string>
+                <string>{150,50}</string>
             </dict>
-            <key>Checkpoint08Source.png</key>
+            <key>checkpoint04pool.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,0},{100,300}}</string>
+                <string>{{0,300},{150,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,300}}</string>
+                <string>{{0,0},{150,50}}</string>
                 <key>sourceSize</key>
-                <string>{100,300}</string>
+                <string>{150,50}</string>
             </dict>
-            <key>Checkpoint09tile.png</key>
+            <key>checkpoint05pool.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,300},{50,50}}</string>
+                <string>{{150,300},{150,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{150,50}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{150,50}</string>
             </dict>
-            <key>Checkpoint10tile.png</key>
+            <key>checkpoint06tile.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,300},{50,50}}</string>
+                <string>{{300,300},{150,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{150,50}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>Checkpoint11tile.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{100,300},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>Checkpoint12tile.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{150,300},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{150,50}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -183,7 +105,7 @@
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:0cf5250abba6364934c6a66505258d8d:671de7a41f74a6584c5e054086b7ac43:0f0c01cdb06cd8d981561e34f4270cf1$</string>
+            <string>$TexturePacker:SmartUpdate:9806d6e94edda56f5e6cc9d7efe79114:3af969518ea6ea8fde56deb180632d29:0f0c01cdb06cd8d981561e34f4270cf1$</string>
             <key>textureFileName</key>
             <string>checkpoint.png</string>
         </dict>
