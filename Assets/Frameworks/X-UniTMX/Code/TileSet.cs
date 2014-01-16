@@ -59,7 +59,6 @@ namespace X_UniTMX
 				this.Image = Path.GetFileName(this.Image);
 
 			//this.Image = mapPath + "/" + this.Image;
-			Debug.Log(this.Image);
 
 			if (imageNode.Attributes["trans"] != null)
 			{
@@ -86,7 +85,6 @@ namespace X_UniTMX
 
 			// Build tiles from this tileset
 			this.Texture = (Texture2D)Resources.Load(mapPath + "tilesets/" + Path.GetFileNameWithoutExtension(this.Image), typeof(Texture2D));
-			Debug.Log("/"+mapPath + "tilesets/" + Path.GetFileNameWithoutExtension(this.Image) + ".png");
 			
 			//int imageWidth = this.Texture.width - Margin * 2;
 			//int imageHeight = this.Texture.height - Margin * 2;

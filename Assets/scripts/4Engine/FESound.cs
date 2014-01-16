@@ -15,7 +15,7 @@ public class FESound : MonoBehaviour {
 	{
 		MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay);
 	}
-	public void playSound(string _enviro)
+	public void playSound(Environment.types _enviro)
 	{
 		MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay, SoundGroup.name + "_" + _enviro.ToString() );
 	}

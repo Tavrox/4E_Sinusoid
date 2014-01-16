@@ -14,10 +14,8 @@ public class Label : MonoBehaviour {
 		Box
 	};
 	public type typeList;
-	private int widthWrap;
-	private int heightWrap;
-	private int testy;
-	private int testx;
+	public float offsetX = 215f;
+	public float offsetY = -580f;
 
 	void OnGUI()
 	{
@@ -29,21 +27,21 @@ public class Label : MonoBehaviour {
 			{
 				skin.box.normal.textColor = color;
 				skin.box.fontSize = size;
-				GUI.Box(new Rect(point.x - 100, Screen.currentResolution.height - point.y - 400, 200, 200), text);
+				GUI.Box(new Rect(point.x - offsetX, Screen.currentResolution.height - point.y  + offsetY, 200, 200), text);
 				break;
 			}
 			case (type.Button) :
 			{
 				skin.button.normal.textColor = color;
 				skin.button.fontSize = size;
-				GUI.Button(new Rect(point.x - 100, Screen.currentResolution.height - point.y, 200, 200), text);
+				GUI.Button(new Rect(point.x - offsetX, Screen.currentResolution.height - point.y  + offsetY, 200, 200), text);
 				break;
 			}
 			case (type.Label) :
 			{
 				skin.label.normal.textColor = color;
 				skin.label.fontSize = size;
-			GUI.Label(new Rect(point.x - 100 - 120, Screen.currentResolution.height - point.y - 620 , 200, 200), text);
+				GUI.Label(new Rect(point.x - offsetX, Screen.currentResolution.height - point.y + offsetY , 200, 200), text);
 				break;
 			}
 		}

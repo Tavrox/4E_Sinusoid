@@ -10,6 +10,7 @@ public class Pebble : MonoBehaviour {
 	private GameObject GOsoundEmitt;
 	private bool isSounding;
 	private Transform callerObj;
+	public FESound _CollisionSound;
 	
 	void Awake()
 	{
@@ -58,6 +59,15 @@ public class Pebble : MonoBehaviour {
 			//thisRigidbody.AddForce(new Vector3(10f,20f,0));
 			soundEmitt.circleWalkToSprint();
 			/*if(!isSounding) {*/isSounding=true;soundEmitt.resetCircle();/*}*/
+			if (other.gameObject.GetComponent<Environment>() == null)
+			{
+				Debug.Log("There's no environment comp on the object");
+			}
+			else
+			{
+				Environment _env = other.gameObject.GetComponent<Environment>();
+				_CollisionSound.playSound(_env.typeList);
+			}
 		}
 		if(other.gameObject.CompareTag("Enemy") && !callerObj.CompareTag("Enemy")) {
 			soundEmitt.circleWalkToSprint();isSounding=true;soundEmitt.resetCircle();

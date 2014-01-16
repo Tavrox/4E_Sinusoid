@@ -196,6 +196,8 @@ public class Character : MonoBehaviour
 		}
 		if (Physics.Raycast(mypos, Vector3.down, out hitInfo, halfMyY, groundMask))
 		{
+			onEnvironment = hitInfo.collider.GetComponent<Environment>();
+			Debug.Log(hitInfo.collider.GetComponent<Environment>().typeList);
 			BlockedDown();
 		}
 		

@@ -16,6 +16,8 @@ using UnityEngine;
 
 namespace X_UniTMX
 {
+
+
 	/// <summary>
 	/// Defines the possible orientations for a Map.
 	/// </summary>
@@ -45,6 +47,22 @@ namespace X_UniTMX
 	/// </summary>
 	public class Map
 	{
+		public enum typesEnv
+		{
+			Stone,
+			Aura,
+			Electric,
+			Touchy,
+			Wood,
+			Fragile,
+			Remote,
+			Mobile,
+			Reverb,
+			Floorboard,
+			Stalactite,
+		};
+		public typesEnv typePick;
+
 		/// <summary>
 		/// The difference in layer depth between layers.
 		/// </summary>
@@ -452,7 +470,7 @@ namespace X_UniTMX
 		/// <returns>Generated Game Object containing the Collider.</returns>
 		public GameObject GenerateBoxCollider(MapObject obj, float zDepth = 0, float colliderWidth = 1.0f)
 		{
-			GameObject boxCollider = new GameObject(obj.Name);
+			GameObject boxCollider = new GameObject("Coll"+obj.GetPropertyAsString("env"));
 			BoxCollider bx = boxCollider.AddComponent<BoxCollider>();
 			boxCollider.transform.parent = this.Parent.transform;
 
@@ -470,6 +488,9 @@ namespace X_UniTMX
 			_rigid.angularDrag = 0.000001f;
 			_rigid.mass = 0.000001f;
 
+			Environment _env = boxCollider.AddComponent<Environment>();
+			_env.typeImport = obj.GetPropertyAsString("env");
+
 			return boxCollider;
 		}
 
@@ -481,7 +502,7 @@ namespace X_UniTMX
 		/// <returns>Generated Game Object containing the Collider.</returns>
 		public GameObject GeneratePebbleCollider(MapObject obj, float zDepth = 0, float colliderWidth = 30f)
 		{
-			GameObject boxCollider = new GameObject(obj.Name);
+			GameObject boxCollider = new GameObject("PebbleCollider");
 			BoxCollider bx = boxCollider.AddComponent<BoxCollider>();
 			boxCollider.transform.parent = this.Parent.transform;
 			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
@@ -500,6 +521,9 @@ namespace X_UniTMX
 			_rigid.isKinematic = true;
 			_rigid.useGravity = false;
 			_rigid.constraints = RigidbodyConstraints.FreezeAll;
+			
+			Environment _env = boxCollider.AddComponent<Environment>();
+			_env.typeImport = obj.GetPropertyAsString("env");
 			
 			return boxCollider;
 		}
