@@ -66,7 +66,7 @@ public class Player : Character {
 		soundInstru1.createCircle(thisTransform);soundInstru1.specialCircle();soundInstru1.setParent(thisTransform); //creating wave elements of INSTRU wave 1 & setting waves params to INSTRU
 		soundInstru2.createCircle(thisTransform);soundInstru2.specialCircle();soundInstru2.setParent(thisTransform); //creating wave elements of INSTRU wave 2 & setting waves params to INSTRU
 	
-		pebbleBar = Instantiate(Resources.Load("Prefabs/04 Gameplay/PebbleBar")) as GameObject; //Create UI power bar
+		pebbleBar = Instantiate(Resources.Load("Prefabs/04Gameplay/PebbleBar")) as GameObject; //Create UI power bar
 	}
 
 	// Update is called once per frame
@@ -105,7 +105,7 @@ public class Player : Character {
 		if (Input.GetKeyUp(KeyCode.F)) { //RELEASE THE PEBBLE !!
 			if(!pebble) { //If no pebble already existing
 
-				GOpebble = Instantiate(Resources.Load("Prefabs/04 Gameplay/Pebble")) as GameObject;
+				GOpebble = Instantiate(Resources.Load("Prefabs/04Gameplay/Pebble")) as GameObject;
 				pebble = GOpebble.GetComponent<Pebble>(); //Create Pebble
 				pebble.setPosition((transform.position.x-transform.localScale.x/2),transform.position.y, -6f); //Pebble ini position
 				pebble.setCallerObject(thisTransform);

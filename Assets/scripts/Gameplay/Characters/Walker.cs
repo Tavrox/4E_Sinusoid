@@ -205,7 +205,7 @@ public class Walker : Enemy {
 		}
 		UpdateMovement();
 		yield return new WaitForSeconds(0.01f);
-		if(Vector3.Distance(transform.position, waypoints[waypointIDToReach].position) < waypointDetectionWidth) {
+		if(Mathf.Abs(transform.position.x-waypoints[waypointIDToReach].position.x) < waypointDetectionWidth) {
 			//endChasingPlayer = false;
 			//StopCoroutine("goToWaypoint");
 			waypointReached = true;
