@@ -14,13 +14,12 @@ public class LevelManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-//		GameEventManager.GameStart += GameStart;
-//		GameEventManager.GameOver += GameOver;
-//		GameEventManager.GamePause += GamePause;
-//		GameEventManager.GameUnpause += GameUnpause;
+		GameEventManager.GameStart += GameStart;
 		GameEventManager.Respawn += Respawn;
 
 		_player = GameObject.FindWithTag("Player").GetComponent<Player>();
+
+		GameEventManager.TriggerGameStart();
 	}
 	
 	// Update is called once per frame
@@ -41,14 +40,20 @@ public class LevelManager : MonoBehaviour {
 
 	public void Respawn()
 	{
-		_player.transform.position = new Vector3(lastCheckpointValidated.transform.position.x, lastCheckpointValidated.transform.position.y, _player.transform.position.z); ;
+		_player.transform.position = new Vector3(lastCheckpointValidated.transform.position.x, lastCheckpointValidated.transform.position.y, _player.transform.position.z);
 		_player.enabled = true;
 	}
 
 	public void leaveForMenu()
 	{
-		// Save informations of player, cp, level reached.
-		// go tmenu
 		Application.LoadLevel("MainMenu");
+	}
+
+	public void GameStart()
+	{
+		if (FEDebug.testMode == false)
+		{
+			_player.transform.position = new Vector3(lastCheckpointValidated.transform.position.x, lastCheckpointValidated.transform.position.y - 3.5f, _player.transform.position.z);
+		}
 	}
 }

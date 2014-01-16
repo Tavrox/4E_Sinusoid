@@ -286,7 +286,7 @@
  <objectgroup name="Collider_0" width="60" height="60">
   <object name="Stone" x="-2" y="2" width="266" height="1170">
    <properties>
-    <property name="env" value="stone"/>
+    <property name="env" value=""/>
    </properties>
   </object>
   <object name="Stone" x="262" y="632" width="2116" height="270">
@@ -296,18 +296,14 @@
   </object>
   <object name="Stone" x="692" y="538" width="726" height="84">
    <properties>
-    <property name="env" value="aura"/>
+    <property name="env" value=""/>
    </properties>
   </object>
   <object name="Stone" x="1416" y="576" width="954" height="54">
    <properties>
-    <property name="env" value="touchy"/>
+    <property name="env" value=""/>
    </properties>
   </object>
-  <object name="Stone" x="2382" y="672" width="388" height="246">
-   <properties>
-    <property name="env" value="stone"/>
-   </properties>
-  </object>
+  <object name="Stone" x="2382" y="672" width="388" height="246"/>
  </objectgroup>
 </map>

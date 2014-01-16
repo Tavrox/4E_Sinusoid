@@ -6,6 +6,7 @@ public class FEDebug : MonoBehaviour {
 	private Player objToDebug;
 	private GameObject objToDebug2;
 	private GameObject objToDebug3;
+	public static bool testMode = true;
 
 	// Use this for initialization
 	void Start () 

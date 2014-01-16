@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LevelDoor : MonoBehaviour {
+public class LevelDoor : Checkpoint {
 	
 	public enum doorType { BeginLevel, EndLevel }
 	private LevelManager lvlManager;
 	public doorType myDoorType;
+	public bool isLevelDoor;
 	
 	// Use this for initialization
 	void Start () {
@@ -18,20 +19,23 @@ public class LevelDoor : MonoBehaviour {
 //	}
 	void OnTriggerEnter(Collider other)
     {
-		if(other.gameObject.CompareTag("Player")) 
+		if(other.gameObject.CompareTag("Player") && myDoorType == doorType.BeginLevel) 
 		{	
-			if(myDoorType.ToString()=="BeginLevel") GameEventManager.TriggerPreviousLevel();
-			else GameEventManager.TriggerNextLevel();
+			GameEventManager.TriggerPreviousLevel();
+		}
+		if (other.gameObject.CompareTag("Player") && myDoorType == doorType.EndLevel)
+		{
+			GameEventManager.TriggerNextLevel();
 		}
     }
 	
+	private void PreviousLevel () {
+		Application.LoadLevel(lvlManager.previousLvlID);
+	}
+
 	private void NextLevel ()
 	{
 		Application.LoadLevel(lvlManager.nextLvlID);
-	}
-	
-	private void PreviousLevel () {
-		Application.LoadLevel(lvlManager.previousLvlID);
 	}
 	
 }

@@ -35,10 +35,15 @@ public class Environment : MonoBehaviour {
 		dicoEnv.Add("reverb", types.reverb);
 		dicoEnv.Add("floorboard", types.floorboard);
 		dicoEnv.Add("stalactite", types.stalactite);
-
+		
+		if (typeImport == "" || typeImport == null)
+		{
+			typeImport = "stone";
+		}
 		typeImport = typeImport.ToLower();
 
-			adaptCollider();
+		adaptCollider();
+
 	}
 
 	public void adaptCollider()
