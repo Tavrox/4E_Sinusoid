@@ -7,6 +7,7 @@ public class RusherAnims : MonoBehaviour
 	{
 		None,
 		WalkLeft, WalkRight,
+		Contract,
 		RopeLeft, RopeRight,
 		Climb, ClimbStop,
 		StandLeft, StandRight,
@@ -16,21 +17,27 @@ public class RusherAnims : MonoBehaviour
 		CrounchLeft, CrounchRight,
 		AttackLeft, AttackRight,
 	}
+	public enum enemyPart
+	{
+		Body,
+		Char
+	}
 	
 	public Transform spriteParent;
 	public OTAnimatingSprite animSprite;
 	public OTAnimation anim;
 	
+	public enemyPart part;
 	private animDef currentAnim;
 	private Character _character;
 	private Player _player;
 	
-	private bool animPlaying = false;
+	private bool animPlaying = false, contracted = false;
 	
 	// Use this for initialization
 	void Start () 
 	{
-		_character 	= GetComponent<Character>();
+		_character 	= transform.parent.transform.parent.GetComponent<Character>();
 		_player 	= GameObject.FindObjectOfType<Player>();
 		animSprite.Play("stand");
 	}
@@ -50,6 +57,20 @@ public class RusherAnims : MonoBehaviour
 	}
 	private void Run()
 	{
+		if(_character.isRight && _character.grounded && currentAnim!=animDef.Contract && !contracted)
+		{
+			contracted = true;
+			currentAnim = animDef.Contract;
+			animSprite.PlayOnce("contract");
+			NormalScaleSprite();
+		}
+		if(_character.isLeft && _character.grounded && currentAnim!=animDef.Contract && !contracted)
+		{
+			contracted = true;
+			currentAnim = animDef.Contract;
+			animSprite.PlayOnce("contract");
+			InvertSprite();
+		}
 		if(_character.isRight && _character.grounded && currentAnim!=animDef.WalkRight)
 		{
 			currentAnim = animDef.WalkRight;
@@ -71,12 +92,14 @@ public class RusherAnims : MonoBehaviour
 	{	
 		if(!_character.isLeft && _character.grounded == true && currentAnim != animDef.StandLeft && _character.facingDir == Character.facing.Left && animPlaying == false)
 		{
+			contracted = false;
 			currentAnim = animDef.StandLeft;
 			animSprite.Play("stand"); // stand left
 			InvertSprite();
 		}
 		if(!_character.isRight && _character.grounded && currentAnim != animDef.StandRight && _character.facingDir == Character.facing.Right && animPlaying == false)
 		{
+			contracted = false;
 			currentAnim = animDef.StandRight;
 			animSprite.Play("stand"); // stand left
 			NormalScaleSprite();

@@ -301,12 +301,12 @@ public class WaveElt : MonoBehaviour {
 		numberOfAlphaStates = 6;
 		lifeTime = lifeTimeIni = 8f;
 		speedSound = speedSoundIni = 8f;
-		projDiameterIni = 2f;
+		projDiameterIni = 1f;
 		enlargeDiameterSpeed = 1f;
-		diameterMultiplier = 2f;
-		fadeSpeed = 500f;
+		diameterMultiplier = 5f;
+		fadeSpeed = 0.1f;
 		enlargeRatioSpeed = 0.4f;
-		maximumRatio = 2f;
+		maximumRatio = 5f;
 		specialCircle = true;
 	}
 }

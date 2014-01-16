@@ -73,7 +73,7 @@ public class Rusher : Enemy {
 
 		runSpeed = 0.5f;
 		
-		setTarget(GameObject.FindWithTag("Player").transform); //target the player
+		setTarget(transform); //target reset
 		patroling = true;
 		waypointDetectionWidth = thisTransform.gameObject.GetComponentInChildren<Transform>().GetComponentInChildren<OTSprite>().transform.localScale.x/4;//transform.localScale.x/4;
 	}
@@ -134,7 +134,7 @@ public class Rusher : Enemy {
 		Debug.DrawRay(thisTransform.position, Vector3.right*targetDetectionArea);
 		if (Physics.Raycast(detectTargetLeft, out hitInfo, targetDetectionArea, projectorMask) || Physics.Raycast(detectTargetRight, out hitInfo, targetDetectionArea, projectorMask)) {
 			if(hitInfo.collider.name == "Player" && !endChasingPlayer) {
-				setTarget(GameObject.FindWithTag("Player").transform); //target the player
+				setTarget(transform); //target reset
 				activeChasing();
 			}
 		}

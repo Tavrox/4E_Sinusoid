@@ -23,38 +23,58 @@ public class CheckpointAnims : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		playAnimDef();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		animSprite.looping = true;
-		playAnimDef();
 	}
 
 	void playAnimDef () {
 		switch(currentAnim.ToString()) 
 		{
 		case "Waterfall" :
-			animSprite.Play("waterfall");
+			//if(currentAnim != animDef.Waterfall) {
+				currentAnim = animDef.Waterfall;
+				animSprite.Play("waterfall");
+			//}
 			break;
 		case "Water" :
-			animSprite.Play("water");
+			//if(currentAnim != animDef.Water) {
+				currentAnim = animDef.Water;
+				animSprite.Play("water");
+			//}
 			break;
 		case "WaterLeft" :
-			animSprite.Play("waterL");
+			//if(currentAnim != animDef.WaterLeft) {
+				currentAnim = animDef.WaterLeft;
+				animSprite.Play("waterL");
+			//}
 			break;
 		case "WaterRight" :
-			animSprite.Play("waterR");
+			//if(currentAnim != animDef.WaterRight) {
+				currentAnim = animDef.WaterRight;
+				animSprite.Play("waterR");
+			//}
 			break;
 		case "Ground" :
-			animSprite.Play("waterground");
+			//if(currentAnim != animDef.Ground) {
+				currentAnim = animDef.Ground;
+				animSprite.Play("ground");
+			//}
 			break;
 		case "GroundLeft" :
-			animSprite.Play("watergroundL");
+			//if(currentAnim != animDef.GroundLeft) {
+				currentAnim = animDef.GroundLeft;
+				animSprite.Play("groundL");
+			//}
 			break;
 		case "GroundRight" :
-			animSprite.Play("watergroundR");
+			//if(currentAnim != animDef.GroundRight) {
+				currentAnim = animDef.GroundRight;
+				animSprite.Play("groundR");
+			//}
 			break;
 		}
 	}
