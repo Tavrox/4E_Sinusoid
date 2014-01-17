@@ -101,7 +101,7 @@
             <key>basic</key>
             <struct type="AlgorithmBasicSettings">
                 <key>sortBy</key>
-                <enum type="AlgorithmBasicSettings::SortBy">Best</enum>
+                <enum type="AlgorithmBasicSettings::SortBy">Name</enum>
                 <key>order</key>
                 <enum type="AlgorithmBasicSettings::Order">Ascending</enum>
             </struct>
@@ -171,22 +171,42 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>Tile/WoodAngle2BotLeft.png</filename>
-            <filename>Tile/WoodAngle2BotRight.png</filename>
-            <filename>Tile/WoodAngle2TopLeft.png</filename>
-            <filename>Tile/WoodAngle2TopRight.png</filename>
-            <filename>Tile/WoodAngle3Botleft.png</filename>
-            <filename>Tile/WoodAngle3BotRight.png</filename>
-            <filename>Tile/WoodAngle3Topleft.png</filename>
-            <filename>Tile/WoodAngle3TopRight.png</filename>
-            <filename>Tile/WoodAngleBotLeft.png</filename>
-            <filename>Tile/WoodAngleBotRight.png</filename>
-            <filename>Tile/WoodAngleTopLeft.png</filename>
-            <filename>Tile/WoodAngleTopRight.png</filename>
-            <filename>Tile/WoodBot.png</filename>
-            <filename>Tile/WoodLeft.png</filename>
-            <filename>Tile/WoodRight.png</filename>
-            <filename>Tile/WoodTop.png</filename>
+            <filename>Tile/Tile22wood.png</filename>
+            <filename>Tile/Tile23wood.png</filename>
+            <filename>Tile/Tile24wood.png</filename>
+            <filename>Tile/Tile25wood.png</filename>
+            <filename>Tile/Tile26wood.png</filename>
+            <filename>Tile/Tile27wood.png</filename>
+            <filename>Tile/Tile28wood.png</filename>
+            <filename>Tile/Tile29wood.png</filename>
+            <filename>Tile/Tile30wood.png</filename>
+            <filename>Tile/Tile31wood.png</filename>
+            <filename>Tile/Tile32wood.png</filename>
+            <filename>Tile/Tile01wood.png</filename>
+            <filename>Tile/Tile02wood.png</filename>
+            <filename>Tile/Tile03wood.png</filename>
+            <filename>Tile/Tile04wood.png</filename>
+            <filename>Tile/Tile05wood.png</filename>
+            <filename>Tile/Tile06wood.png</filename>
+            <filename>Tile/Tile07wood.png</filename>
+            <filename>Tile/Tile08wood.png</filename>
+            <filename>Tile/Tile09wood.png</filename>
+            <filename>Tile/Tile10wood.png</filename>
+            <filename>Tile/Tile11wood.png</filename>
+            <filename>Tile/Tile12wood.png</filename>
+            <filename>Tile/Tile13wood.png</filename>
+            <filename>Tile/Tile14wood.png</filename>
+            <filename>Tile/Tile15wood.png</filename>
+            <filename>Tile/Tile16wood.png</filename>
+            <filename>Tile/Tile17wood.png</filename>
+            <filename>Tile/Tile18wood.png</filename>
+            <filename>Tile/Tile19wood.png</filename>
+            <filename>Tile/Tile20wood.png</filename>
+            <filename>Tile/Tile21wood.png</filename>
+            <filename>Tile/Tile33wood.png</filename>
+            <filename>Tile/Tile34wood.png</filename>
+            <filename>Tile/Tile35wood.png</filename>
+            <filename>Tile/Tile36wood.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
