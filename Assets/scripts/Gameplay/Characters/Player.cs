@@ -12,12 +12,13 @@ public class Player : Character {
 	private WaveCreator soundEmitt1, soundEmitt2, soundEmitt3, soundInstru1, soundInstru2; //waves footsteps 1, 2, 3 | intru 1, 2 so that the active wave is not destroyed when calling a another one 
 	private int cptWave=1, pebbleDirection = 1, pebbleMaxStrengh = 10;//cptWave = ID of the current displayed wave (from 1 to 3)| pebbleDirection = 1 or -1 -> right or left
 	private bool 	blockCoroutine, first, 		//block the footsteps coroutine|first instru wave or not
-					toSprint, toWalk, 			//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
 					specialCast, playerDirLeft; //true when playing instru (locks player and footsteps) | player goes left or not (used for offsetting footwaves center point)
 	private Pebble pebble; //Throwable pebble
 	private float powerPebble; //Throwing force added to the pebble after cast
 	private GameObject pebbleBar; //UI Bar to tell the player the power of his shoot
 	public float footStepDelay;
+
+	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
 
 	public FESound WalkSound;
 	public FESound PrepareRockThrowSound;
@@ -136,10 +137,12 @@ public class Player : Character {
 		if(Input.GetKeyDown("left shift")) {//OnPress
 			moveVel = 1.75f * moveVel; //Increase Player Speed
 			footStepDelay = footStepDelay / 2f; //Decrease FootStep Delay
+			isSprint = true;
 		}
 		if(Input.GetKeyUp("left shift")) {//OnRelease
 			moveVel = moveVel / 1.75f; //Decrease Player Speed
 			footStepDelay = footStepDelay * 2f; //Increase FootStep Delay
+			isSprint = false;
 		}
 		if(Input.GetKey("left shift")) {//LeftShift input
 			toSprint=true;

@@ -7,6 +7,7 @@ public class PlayerAnims : MonoBehaviour
 	{
 		None,
 		WalkLeft, WalkRight,
+		RunLeft, RunRight,
 		RopeLeft, RopeRight,
 		Climb, ClimbStop,
 		StandLeft, StandRight,
@@ -49,15 +50,16 @@ public class PlayerAnims : MonoBehaviour
 	}
 	private void Run()
 	{
-		if(_character.isRight && _character.grounded && currentAnim!=animDef.WalkRight)
+		if(_character.isRight && _character.grounded && currentAnim!=animDef.RunRight && _player.isSprint)
 		{
-			currentAnim = animDef.WalkRight;
+
+			currentAnim = animDef.RunRight;
 			animSprite.Play("run");
 			NormalScaleSprite();;
 		}
-		if(_character.isLeft && _character.grounded && currentAnim!=animDef.WalkLeft)
+		if(_character.isLeft && _character.grounded && currentAnim!=animDef.RunLeft && _player.isSprint)
 		{
-			currentAnim = animDef.WalkLeft;
+			currentAnim = animDef.RunLeft;
 			animSprite.Play("run");
 			InvertSprite();
 		}
@@ -65,6 +67,19 @@ public class PlayerAnims : MonoBehaviour
 	private void Walk()
 	{
 		
+		if(_character.isRight && _character.grounded && currentAnim!=animDef.WalkRight && !_player.isSprint)
+		{
+			
+			currentAnim = animDef.WalkRight;
+			animSprite.Play("walk");
+			NormalScaleSprite();;
+		}
+		if(_character.isLeft && _character.grounded && currentAnim!=animDef.WalkLeft && !_player.isSprint)
+		{
+			currentAnim = animDef.WalkLeft;
+			animSprite.Play("walk");
+			InvertSprite();
+		}
 	}
 	private void Stand()
 	{	
