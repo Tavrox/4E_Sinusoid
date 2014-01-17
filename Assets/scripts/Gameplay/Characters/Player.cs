@@ -20,6 +20,8 @@ public class Player : Character {
 
 	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
 
+	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
+
 	public FESound WalkSound;
 	public FESound RunSound;
 	public FESound PrepareRockThrowSound;
