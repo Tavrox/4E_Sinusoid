@@ -2,17 +2,31 @@
 <data version="1.0">
     <struct type="Settings">
         <key>fileFormatVersion</key>
-        <int>1</int>
-        <key>variation</key>
-        <string>main</string>
-        <key>verbose</key>
-        <false/>
+        <int>3</int>
+        <key>texturePackerVersion</key>
+        <string>3.2.1</string>
         <key>autoSDSettings</key>
-        <array/>
+        <array>
+            <struct type="AutoSDSettings">
+                <key>scale</key>
+                <double>1</double>
+                <key>extension</key>
+                <string></string>
+                <key>spriteFilter</key>
+                <string></string>
+                <key>acceptFractionalValues</key>
+                <false/>
+                <key>maxTextureSize</key>
+                <QSize>
+                    <key>width</key>
+                    <int>-1</int>
+                    <key>height</key>
+                    <int>-1</int>
+                </QSize>
+            </struct>
+        </array>
         <key>allowRotation</key>
-        <false/>
-        <key>quiet</key>
-        <false/>
+        <true/>
         <key>premultiplyAlpha</key>
         <false/>
         <key>shapeDebug</key>
@@ -22,7 +36,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>TileDitch_Roche.png</filename>
+        <filename>../../../../../../../../Resources/maps/tilesets/TileDitch_Roche.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -40,11 +54,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-<<<<<<< HEAD
         <uint>0</uint>
-=======
-        <uint>1</uint>
->>>>>>> db02f9346ea4d4fb3fd437a3fc002332a020a6ec
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -54,11 +64,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">png</enum>
         <key>borderPadding</key>
-<<<<<<< HEAD
         <uint>0</uint>
-=======
-        <uint>1</uint>
->>>>>>> db02f9346ea4d4fb3fd437a3fc002332a020a6ec
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -95,7 +101,7 @@
             <key>basic</key>
             <struct type="AlgorithmBasicSettings">
                 <key>sortBy</key>
-                <enum type="AlgorithmBasicSettings::SortBy">Name</enum>
+                <enum type="AlgorithmBasicSettings::SortBy">Best</enum>
                 <key>order</key>
                 <enum type="AlgorithmBasicSettings::Order">Ascending</enum>
             </struct>
@@ -106,8 +112,6 @@
             <enum type="AndEngine::MinFilter">Linear</enum>
             <key>packageName</key>
             <string>Texture</string>
-            <key>javaFileName</key>
-            <filename>TileDitch_Roche.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -118,12 +122,16 @@
             <key>magFilter</key>
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
-        <key>dataFileName</key>
-        <filename>TileDitch_Roche.xml</filename>
+        <key>dataFileNames</key>
+        <map type="GFileNameMap">
+            <key>data</key>
+            <struct type="DataFile">
+                <key>name</key>
+                <filename>../../../../../../../../Resources/maps/tilesets/TileDitch_Roche.xml</filename>
+            </struct>
+        </map>
         <key>multiPack</key>
         <false/>
-        <key>mainExtension</key>
-        <string></string>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -137,6 +145,8 @@
         <true/>
         <key>trimSpriteNames</key>
         <false/>
+        <key>cleanTransparentPixels</key>
+        <true/>
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>
@@ -156,27 +166,55 @@
         </struct>
         <key>fileList</key>
         <array>
-<<<<<<< HEAD
-            <filename>Tile/NewDitch50Roche_16.png</filename>
-            <filename>Tile/NewDitch50Roche_15.png</filename>
-            <filename>Tile/NewDitch50Roche_14.png</filename>
-            <filename>Tile/NewDitch50Roche_13.png</filename>
-            <filename>Tile/NewDitch50Roche_12.png</filename>
-            <filename>Tile/NewDitch50Roche_11.png</filename>
-            <filename>Tile/NewDitch50Roche_10.png</filename>
-            <filename>Tile/NewDitch50Roche_07.png</filename>
-            <filename>Tile/NewDitch50Roche_06.png</filename>
-            <filename>Tile/NewDitch50Roche_05.png</filename>
-            <filename>Tile/NewDitch50Roche_04.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_18.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_19.png</filename>
             <filename>Tile/NewDitch50Roche_03.png</filename>
-=======
-            <filename>Tile/Ditch2.png</filename>
-            <filename>Tile/Ditch_02_01.png</filename>
-            <filename>Tile/Ditch_02_02.png</filename>
-            <filename>Tile/Ditch_02_03.png</filename>
-            <filename>Tile/Ditch_04_01.png</filename>
-            <filename>Tile/Ditch_04_02.png</filename>
->>>>>>> db02f9346ea4d4fb3fd437a3fc002332a020a6ec
+            <filename>Tile/NewDitch50Roche_04.png</filename>
+            <filename>Tile/NewDitch50Roche_05.png</filename>
+            <filename>Tile/NewDitch50Roche_06.png</filename>
+            <filename>Tile/NewDitch50Roche_07.png</filename>
+            <filename>Tile/NewDitch50Roche_10.png</filename>
+            <filename>Tile/NewDitch50Roche_11.png</filename>
+            <filename>Tile/NewDitch50Roche_12.png</filename>
+            <filename>Tile/NewDitch50Roche_13.png</filename>
+            <filename>Tile/NewDitch50Roche_14.png</filename>
+            <filename>Tile/NewDitch50Roche_15.png</filename>
+            <filename>Tile/NewDitch50Roche_16.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_06.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_07.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_08.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_09.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_10.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_11.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_12.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_14.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_15.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_16.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_17.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_18.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_19.gif</filename>
+            <filename>Tile/NewDitch50RocheRight_16.png</filename>
+            <filename>Tile/NewDitch50RocheRight_17.png</filename>
+            <filename>Tile/NewDitch50RocheRight_18.png</filename>
+            <filename>Tile/NewDitch50RocheRight_19.png</filename>
+            <filename>Tile/NewDitch50RocheRight_20.png</filename>
+            <filename>Tile/NewDitch50RocheRight_21.gif</filename>
+            <filename>Tile/NewDitch50RocheRight_02.png</filename>
+            <filename>Tile/NewDitch50RocheRight_04.png</filename>
+            <filename>Tile/NewDitch50RocheRight_05.png</filename>
+            <filename>Tile/NewDitch50RocheRight_06.png</filename>
+            <filename>Tile/NewDitch50RocheRight_07.png</filename>
+            <filename>Tile/NewDitch50RocheRight_08.png</filename>
+            <filename>Tile/NewDitch50RocheRight_12.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_02.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_04.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_05.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_06.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_07.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_08.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_13.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_15.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_17.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
