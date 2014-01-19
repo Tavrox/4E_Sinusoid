@@ -16,9 +16,9 @@ public class Player : Character {
 	private float powerPebble; //Throwing force added to the pebble after cast
 	private GameObject pebbleBar; //UI Bar to tell the player the power of his shoot
 	public float footStepDelay;
-	private bool isSprint = false;
+//	private bool isSprint = false;
 
-	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
+//	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
 
 	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
 

@@ -69,18 +69,18 @@ public class Turret : MonoBehaviour {
 	}
 	private void turn()
 	{
-
-		float rotPosX = _rotating.transform.position.x;
-		float rotPosY = _rotating.transform.position.y;
-		
-		float tarPosX = _target.transform.position.x;
-		float tarPosY = _target.transform.position.y;
-
-		Vector2 rotPos = new Vector2(rotPosX, rotPosY);
-		Vector2 tarPos = new Vector2(tarPosX, tarPosY);
-
-		Vector2 upVector = tarPos - rotPos;
-		_rotating.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Tan((Mathf.Abs(rotPosX - tarPosX) / Mathf.Abs(rotPosY - tarPosY))));
+		_rotating.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan((_target.transform.position.x-_rotating.transform.position.x)/Mathf.Abs(_rotating.transform.position.y-_target.transform.position.y))*Mathf.Rad2Deg);
+//		float rotPosX = _rotating.transform.position.x;
+//		float rotPosY = _rotating.transform.position.y;
+//		
+//		float tarPosX = _target.transform.position.x;
+//		float tarPosY = _target.transform.position.y;
+//
+//		Vector2 rotPos = new Vector2(rotPosX, rotPosY);
+//		Vector2 tarPos = new Vector2(tarPosX, tarPosY);
+//
+//		Vector2 upVector = tarPos - rotPos;
+//		_rotating.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Tan((Mathf.Abs(rotPosX - tarPosX) / Mathf.Abs(rotPosY - tarPosY))));
 	
 	}
 
