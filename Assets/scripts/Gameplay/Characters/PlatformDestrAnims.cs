@@ -30,6 +30,8 @@ public class PlatformDestrAnims : MonoBehaviour
 	private bool defaultState =true;
 	private BoxCollider[] colliderChild;
 
+	public FESound destroySound;
+
 	// Use this for initialization
 //	void Start () 
 //	{
@@ -72,8 +74,14 @@ public class PlatformDestrAnims : MonoBehaviour
 	void OnTriggerEnter(Collider other) {
 		if(other.name=="Player" || other.name=="Pebble(Clone)") {
 			if(defaultState) destroyAnim();
+			playDestroySound();
 		}
 //		print ("TOUCHE");
 //		print (other.name);
+	}
+
+	private void playDestroySound()
+	{
+		destroySound.playSound();
 	}
 }

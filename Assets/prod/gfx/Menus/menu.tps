@@ -160,6 +160,7 @@
             <filename>backtomenu.png</filename>
             <filename>gameover.png</filename>
             <filename>menu_ingame.png</filename>
+            <filename>pebbleCounter.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -7,8 +7,7 @@ public class Player : Character {
 	[HideInInspector] public Transform trans;
 
 	private GameObject GOpebble, GOinstFootWave, GOinstInstruWave;
-	
-	[SerializeField] private Rect hp_display;
+
 	private WaveCreator soundEmitt1, soundEmitt2, soundEmitt3, soundInstru1, soundInstru2; //waves footsteps 1, 2, 3 | intru 1, 2 so that the active wave is not destroyed when calling a another one 
 	private int cptWave=1, pebbleDirection = 1, pebbleMaxStrengh = 10;//cptWave = ID of the current displayed wave (from 1 to 3)| pebbleDirection = 1 or -1 -> right or left
 	private bool 	blockCoroutine, first, 		//block the footsteps coroutine|first instru wave or not
@@ -17,10 +16,14 @@ public class Player : Character {
 	private float powerPebble; //Throwing force added to the pebble after cast
 	private GameObject pebbleBar; //UI Bar to tell the player the power of his shoot
 	public float footStepDelay;
+	private bool isSprint = false;
+
+	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
 
 	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
 
 	public FESound WalkSound;
+	public FESound RunSound;
 	public FESound PrepareRockThrowSound;
 	public FESound LaunchRockThrowSound;
 	public FESound InstruSound;
@@ -44,7 +47,10 @@ public class Player : Character {
 		spawnPos = thisTransform.position;
 
 		if (WalkSound != null)
-		{ InvokeRepeating("playFootstep",5f,WalkSound.RepeatRate);}
+		{
+			InvokeRepeating("playFootstep",5f,WalkSound.RepeatRate);
+			InvokeRepeating("playRunstep",3f,WalkSound.RepeatRate);
+		}
 
 		//Creating waves game objects
 		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesEmitter")) as GameObject; //footsteps wave 1
@@ -261,7 +267,14 @@ public class Player : Character {
 	{
 		if ((isLeft == true || isRight == true) && grounded )
 		{
-			WalkSound.playSound();
+			WalkSound.playSound(onEnvironment);
+		}
+	}
+	private void playRunstep()
+	{
+		if ((isLeft == true || isRight == true) && grounded && isSprint )
+		{
+			WalkSound.playSound(onEnvironment);
 		}
 	}
 	private void playSoundPrepareRockThrow()
@@ -278,19 +291,19 @@ public class Player : Character {
 	}
 	private void playSoundHide()
 	{
-		HideSound.playSound();
+		HideSound.playSound(onEnvironment);
 	}
 	private void playSoundInstru()
 	{
-		InstruSound.playSound();
+		InstruSound.playSound(onEnvironment);
 	}
 	private void playSoundStandUp()
 	{
-		StandUpSound.playSound();
+		StandUpSound.playSound(onEnvironment);
 	}
 	private void playSoundJump()
 	{
-		JumpSound.playSound();
+		JumpSound.playSound(onEnvironment);
 	}
 	#endregion
 

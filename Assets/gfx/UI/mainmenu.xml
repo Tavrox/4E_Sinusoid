@@ -108,6 +108,19 @@
                 <key>sourceSize</key>
                 <string>{196,63}</string>
             </dict>
+            <key>pebbleCounter.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{470,356},{40,40}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{40,40}}</string>
+                <key>sourceSize</key>
+                <string>{40,40}</string>
+            </dict>
             <key>resumegame.png</key>
             <dict>
                 <key>frame</key>
@@ -170,7 +183,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:102aebcf37f6c78e10a26d63b2be0cd2:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:1a48131d4a0a8bb91b021684be13ec1b:1/1$</string>
             <key>textureFileName</key>
             <string>mainmenu.png</string>
         </dict>
