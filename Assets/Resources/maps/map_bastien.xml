@@ -15,7 +15,7 @@
  <tileset firstgid="501" name="gameplay" tilewidth="160" tileheight="120">
   <image source="tilesets/gameplay.png" width="512" height="128"/>
  </tileset>
- <layer name="Classique" width="60" height="60">
+ <layer name="Classique" width="60" height="60" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -79,15 +79,47 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="Colliders" width="60" height="60" visible="0">
-  <object x="852" y="1326" width="1165" height="277"/>
-  <object x="850" y="1000" width="1754" height="70"/>
-  <object x="2582" y="998" width="36" height="404"/>
-  <object x="848" y="1000" width="22" height="602"/>
-  <object x="1996" y="1576" width="308" height="72"/>
-  <object x="2282" y="1476" width="178" height="162"/>
-  <object x="2430" y="1372" width="178" height="178"/>
-  <object x="2128" y="1276" width="144" height="44"/>
+ <objectgroup name="Colliders" width="60" height="60">
+  <object x="852" y="1326" width="1165" height="277">
+   <properties>
+    <property name="env" value="stone"/>
+   </properties>
+  </object>
+  <object x="850" y="1000" width="1754" height="70">
+   <properties>
+    <property name="env" value="stone"/>
+   </properties>
+  </object>
+  <object x="2582" y="998" width="36" height="404">
+   <properties>
+    <property name="env" value="stone"/>
+   </properties>
+  </object>
+  <object x="848" y="1000" width="22" height="602">
+   <properties>
+    <property name="env" value="stone"/>
+   </properties>
+  </object>
+  <object x="1996" y="1576" width="308" height="72">
+   <properties>
+    <property name="env" value="stone"/>
+   </properties>
+  </object>
+  <object x="2282" y="1476" width="178" height="162">
+   <properties>
+    <property name="env" value="stone"/>
+   </properties>
+  </object>
+  <object x="2430" y="1372" width="178" height="178">
+   <properties>
+    <property name="env" value="stone"/>
+   </properties>
+  </object>
+  <object x="2128" y="1276" width="144" height="44">
+   <properties>
+    <property name="env" value="stone"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup name="Ennemis" width="60" height="60" visible="0">
   <object type="WalkerPoints" gid="502" x="1382" y="1318"/>

@@ -21,7 +21,7 @@ public class LevelDoor : Checkpoint {
     {
 		if(other.gameObject.CompareTag("Player") && myDoorType == doorType.BeginLevel) 
 		{	
-			GameEventManager.TriggerPreviousLevel();
+//			GameEventManager.TriggerPreviousLevel();
 		}
 		if (other.gameObject.CompareTag("Player") && myDoorType == doorType.EndLevel)
 		{
