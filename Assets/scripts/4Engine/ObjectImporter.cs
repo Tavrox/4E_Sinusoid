@@ -161,6 +161,7 @@ public class ObjectImporter : MonoBehaviour {
 		initXML();
 		itemNodes = xmlDoc.SelectNodes("map/objectgroup");
 		string path = "Prefabs/03Level/";
+		Vector2 offset = new Vector2 (5f ,-1f);
 		foreach (XmlNode node in itemNodes)
 		{
 			GameObject objectContainer = FETool.findWithinChildren(this.gameObject, node.Attributes.GetNamedItem("name").Value);
@@ -174,20 +175,22 @@ public class ObjectImporter : MonoBehaviour {
 					{
 						GameObject _instance = Instantiate(Resources.Load(path + childType)) as GameObject;
 						_instance.transform.parent = objectContainer.transform;
-						float _posX = float.Parse(children.Attributes.GetNamedItem("x").Value) + 50;
-						float _posY = float.Parse(children.Attributes.GetNamedItem("y").Value) - 50;
+						float _posX = float.Parse(children.Attributes.GetNamedItem("x").Value);
+						float _posY = float.Parse(children.Attributes.GetNamedItem("y").Value);
 						if (children.Attributes.GetNamedItem("width") != null)
 						{
-							float _objWidth = float.Parse(children.Attributes.GetNamedItem("width").Value) / 2f;
-							float _objHeight =  float.Parse(children.Attributes.GetNamedItem("height").Value) / 2f;
-							_posX += _objWidth;
-							_posY += _objHeight;
+							if (childType == LevelBrick.brickEnum.Ditch.ToString())
+							{
+								float _objWidth = float.Parse(children.Attributes.GetNamedItem("width").Value);
+								float _objHeight =  float.Parse(children.Attributes.GetNamedItem("height").Value);
+								_instance.transform.localScale = new Vector3(_objWidth / 50f, _objHeight / 50f, 30f);
+							}
 						}
-						_instance.transform.position = new Vector3 (_posX / 50f, _posY / - 51f , -5f);
 						if (children.Attributes.GetNamedItem("name") != null)
 						{
 							_instance.name = children.Attributes.GetNamedItem("name").Value;
 						}
+						_instance.transform.position = new Vector3 (_posX, _posY , -5f);
 						Debug.Log("Created a " + children.Attributes.GetNamedItem("type").Value + " at position (X" + _instance.transform.position.x + "/Y" +_instance.transform.position.y+")");
 					}
 					else 

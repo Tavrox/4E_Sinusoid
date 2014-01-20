@@ -48,9 +48,9 @@ public class Player : Character {
 		if (WalkSound != null)
 		{
 			InvokeRepeating("playFootstepLeft",0f,WalkSound.RepeatRate);
-			InvokeRepeating("playFootstepRight",1f,WalkSound.RepeatRate);
+			InvokeRepeating("playFootstepRight",WalkSound.Delay,WalkSound.RepeatRate);
 			InvokeRepeating("playRunstepLeft",0f,RunSound.RepeatRate);
-			InvokeRepeating("playRunstepRight",1f,RunSound.RepeatRate);
+			InvokeRepeating("playRunstepRight",WalkSound.Delay,RunSound.RepeatRate);
 		}
 
 		//Creating waves game objects
