@@ -104,7 +104,7 @@ public class Walker : Enemy {
 		offsetCircles ();
 		detectPlayer();
 		detectEndChaseArea();
-
+		if(target==null) setTarget(transform);
 		if(!endChasingPlayer) {
 			if(chasingPlayer) {/*if(target==null) stopChasing();else*/ ChasePlayer();}
 			else if(patroling) {Patrol();}
