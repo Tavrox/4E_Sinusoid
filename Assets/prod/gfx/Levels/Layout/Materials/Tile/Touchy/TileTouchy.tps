@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../../../../../../../Resources/maps/tilesets/TileWood.png</filename>
+        <filename>../../../../../../../Resources/maps/tilesets/TileTouchy.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -127,7 +127,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../../../../../../Resources/maps/tilesets/TileWood.xml</filename>
+                <filename>../../../../../../../Resources/maps/tilesets/TileTouchy.xml</filename>
             </struct>
             <key>java</key>
             <struct type="DataFile">
@@ -171,42 +171,71 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>Tile/env24wood.png</filename>
-            <filename>Tile/env25wood.png</filename>
-            <filename>Tile/env26wood.png</filename>
-            <filename>Tile/env27wood.png</filename>
-            <filename>Tile/env28wood.png</filename>
-            <filename>Tile/env29wood.png</filename>
-            <filename>Tile/env30wood.png</filename>
-            <filename>Tile/env31wood.png</filename>
-            <filename>Tile/env32wood.png</filename>
-            <filename>Tile/env33wood.png</filename>
-            <filename>Tile/env34wood.png</filename>
-            <filename>Tile/env35wood.png</filename>
-            <filename>Tile/env36wood.png</filename>
-            <filename>Tile/env01wood.png</filename>
-            <filename>Tile/env02wood.png</filename>
-            <filename>Tile/env03wood.png</filename>
-            <filename>Tile/env04wood.png</filename>
-            <filename>Tile/env05wood.png</filename>
-            <filename>Tile/env06wood.png</filename>
-            <filename>Tile/env07wood.png</filename>
-            <filename>Tile/env08wood.png</filename>
-            <filename>Tile/env09wood.png</filename>
-            <filename>Tile/env10wood.png</filename>
-            <filename>Tile/env11wood.png</filename>
-            <filename>Tile/env12wood.png</filename>
-            <filename>Tile/env13wood.png</filename>
-            <filename>Tile/env14wood.png</filename>
-            <filename>Tile/env15wood.png</filename>
-            <filename>Tile/env16wood.png</filename>
-            <filename>Tile/env17wood.png</filename>
-            <filename>Tile/env18wood.png</filename>
-            <filename>Tile/env19wood.png</filename>
-            <filename>Tile/env20wood.png</filename>
-            <filename>Tile/env21wood.png</filename>
-            <filename>Tile/env22wood.png</filename>
-            <filename>Tile/env23wood.png</filename>
+            <filename>Tile/env01Touchy.png</filename>
+            <filename>Tile/env02Touchy.png</filename>
+            <filename>Tile/env03Touchy.png</filename>
+            <filename>Tile/env04Touchy.png</filename>
+            <filename>Tile/env05Touchy.png</filename>
+            <filename>Tile/env06Touchy.png</filename>
+            <filename>Tile/env07Touchy.png</filename>
+            <filename>Tile/env08Touchy.png</filename>
+            <filename>Tile/env09Touchy.png</filename>
+            <filename>Tile/env10Touchy.png</filename>
+            <filename>Tile/env11Touchy.png</filename>
+            <filename>Tile/env12Touchy.png</filename>
+            <filename>Tile/env13Touchy.png</filename>
+            <filename>Tile/env14Touchy.png</filename>
+            <filename>Tile/env15Touchy.png</filename>
+            <filename>Tile/env16Touchy.png</filename>
+            <filename>Tile/env17Touchy.png</filename>
+            <filename>Tile/env18Touchy.png</filename>
+            <filename>Tile/env19Touchy.png</filename>
+            <filename>Tile/env20Touchy.png</filename>
+            <filename>Tile/env21Touchy.png</filename>
+            <filename>Tile/env22Touchy.png</filename>
+            <filename>Tile/env23Touchy.png</filename>
+            <filename>Tile/env24Touchy.png</filename>
+            <filename>Tile/env25Touchy.png</filename>
+            <filename>Tile/env26Touchy.png</filename>
+            <filename>Tile/env27Touchy.png</filename>
+            <filename>Tile/env28Touchy.png</filename>
+            <filename>Tile/env29Touchy.png</filename>
+            <filename>Tile/env30Touchy.png</filename>
+            <filename>Tile/env31Touchy.png</filename>
+            <filename>Tile/env32Touchy.png</filename>
+            <filename>Tile/env33Touchy.png</filename>
+            <filename>Tile/env34Touchy.png</filename>
+            <filename>Tile/env35Touchy.png</filename>
+            <filename>Tile/env36Touchy.png</filename>
+            <filename>Tile/env37Touchy.png</filename>
+            <filename>Tile/env38Touchy.png</filename>
+            <filename>Tile/env39Touchy.png</filename>
+            <filename>Tile/env40Touchy.png</filename>
+            <filename>Tile/env41Touchy.png</filename>
+            <filename>Tile/env42Touchy.png</filename>
+            <filename>Tile/env43Touchy.png</filename>
+            <filename>Tile/env44Touchy.png</filename>
+            <filename>Tile/env45Touchy.png</filename>
+            <filename>Tile/env46Touchy.png</filename>
+            <filename>Tile/env47Touchy.png</filename>
+            <filename>Tile/env48Touchy.png</filename>
+            <filename>Tile/env49Touchy.png</filename>
+            <filename>Tile/env50Touchy.png</filename>
+            <filename>Tile/env51Touchy.png</filename>
+            <filename>Tile/env52Touchy.png</filename>
+            <filename>Tile/env53Touchy.png</filename>
+            <filename>Tile/env54Touchy.png</filename>
+            <filename>Tile/env55Touchy.png</filename>
+            <filename>Tile/env56Touchy.png</filename>
+            <filename>Tile/env57Touchy.png</filename>
+            <filename>Tile/env58Touchy.png</filename>
+            <filename>Tile/env59Touchy.png</filename>
+            <filename>Tile/env60Touchy.png</filename>
+            <filename>Tile/env61Touchy.png</filename>
+            <filename>Tile/env62Touchy.png</filename>
+            <filename>Tile/env63Touchy.png</filename>
+            <filename>Tile/env64Touchy.png</filename>
+            <filename>Tile/env65Touchy.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

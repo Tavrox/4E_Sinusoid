@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>footman.png</filename>
+        <filename>../../../../../gfx/Gameplay/Characters/Walker/footman.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -127,7 +127,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../footman/footman.xml</filename>
+                <filename>../../../../../gfx/Gameplay/Characters/Walker/footman.xml</filename>
             </struct>
             <key>java</key>
             <struct type="DataFile">
