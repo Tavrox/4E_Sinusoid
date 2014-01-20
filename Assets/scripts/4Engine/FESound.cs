@@ -7,10 +7,7 @@ public class FESound : MonoBehaviour {
 	[Range (0,10f)] public float Delay = 0f;
 	[Range (0,1f)] public float Volume = 1f;
 	[Range (0,1f)] public float Pitch = 1f;
-	public enum SoundType {Oneshot, Continuous, LR};
-	public SoundType type;
 	public float RepeatRate = 0.6f;
-	public int numberOfLRVariations = 1;
 
 	public void playSound()
 	{
@@ -32,13 +29,11 @@ public class FESound : MonoBehaviour {
 	}
 	public void playLeftSound(Environment _enviro)
 	{
-		int _rand = Random.Range(0, numberOfLRVariations);
 		MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "L", Volume, Pitch, Delay);
 //		Debug.Log(SoundGroup.name + "_" + _enviro.typeList.ToString() + "L" );
 	}
 	public void playRightSound(Environment _enviro)
 	{
-		int _rand = Random.Range(0, numberOfLRVariations);
 		MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "R" , Volume, Pitch, Delay);
 //		Debug.Log(SoundGroup.name + "_" + _enviro.typeList.ToString() + "R" );
 	}
