@@ -29,7 +29,6 @@ public class FESound : MonoBehaviour {
 	}
 	public void playLeftSound(Environment _enviro)
 	{
-<<<<<<< HEAD
 		PlaySoundResult _psr = MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "L", Volume, Pitch, Delay);
 		Debug.Log(_psr.ActingVariation);
 	}
@@ -37,20 +36,6 @@ public class FESound : MonoBehaviour {
 	{
 		PlaySoundResult _psr = MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "R" , Volume, Pitch, Delay);
 		Debug.Log(_psr.ActingVariation);
-=======
-		MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "L", Volume, Pitch, Delay);
-
-		//Debug.Log(SoundGroup.name + "_" + _enviro.typeList.ToString() + "L" );
-	}
-	public void playRightSound(Environment _enviro)
-	{
-		MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "R" , Volume, Pitch, Delay);
-
-		//Debug.Log(SoundGroup.name + "_" + _enviro.typeList.ToString() + "R" );
-<<<<<<< HEAD
->>>>>>> a76fef3f17288fd6b838ae568a104bb276d0e2d3
-=======
->>>>>>> a76fef3f17288fd6b838ae568a104bb276d0e2d3
 	}
 	public void playDistancedSound(Transform _obj1, Transform _obj2)
 	{
