@@ -494,6 +494,20 @@ namespace X_UniTMX
 			return boxCollider;
 		}
 
+		public GameObject GenerateDitchesCollider(MapObject obj, float zDepth = 0, float colliderWidth = 1.0f)
+		{
+			GameObject boxCollider = new GameObject("Ditches");
+			BoxCollider bx = boxCollider.AddComponent<BoxCollider>();
+			boxCollider.transform.parent = this.Parent.transform;
+			
+			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
+			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
+			
+			Ditch _ditch = boxCollider.AddComponent<Ditch>();
+			
+			return boxCollider;
+		}
+
 		/// <summary>
 		/// Generate a Pebble collider mesh
 		/// </summary>
@@ -647,6 +661,7 @@ namespace X_UniTMX
 
 			mc.sharedMesh = colliderMesh;
 
+			/*
 			polygonCollider.isStatic = true;
 			polygonCollider.tag = "soundStopper";
 			polygonCollider.layer = 8;
@@ -654,6 +669,9 @@ namespace X_UniTMX
 			_rigid.isKinematic = false;
 			_rigid.useGravity = false;
 			_rigid.constraints = RigidbodyConstraints.FreezeAll;
+			*/
+
+			Ditch _ditch = polygonCollider.AddComponent<Ditch>();
 
 			return polygonCollider;
 		}
@@ -719,6 +737,7 @@ namespace X_UniTMX
 			polylineCollider.isStatic = true;
 			polylineCollider.tag = "soundStopper";
 			polylineCollider.layer = 8;
+
 			Rigidbody _rigid = polylineCollider.AddComponent<Rigidbody>();
 			_rigid.isKinematic = false;
 			_rigid.useGravity = false;

@@ -12,7 +12,7 @@
  <tileset firstgid="404" name="TileDitch_Roche" tilewidth="50" tileheight="50">
   <image source="tilesets/TileDitch_Roche.png" width="512" height="1024"/>
  </tileset>
- <layer name="Rocher" width="60" height="60" visible="0">
+ <layer name="Rocher" width="60" height="60">
   <data encoding="csv">
 1,1,1,1,1,1,117,0,0,0,0,97,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 1,6,83,83,83,80,39,0,0,0,0,35,61,66,67,68,69,70,61,62,63,64,65,66,67,68,69,70,61,62,63,64,65,66,67,68,69,70,61,62,63,64,65,66,67,68,69,70,61,62,63,64,65,66,67,68,69,70,4,1,
@@ -205,13 +205,12 @@
 </data>
  </layer>
  <objectgroup name="Enemies" width="60" height="60" visible="0">
-  <object name="walker" type="WalkerPoints" gid="402" x="1215" y="1170"/>
+  <object name="walker" type="WalkerPoints" gid="402" x="1235" y="1164"/>
  </objectgroup>
- <objectgroup name="LevelBricks" width="60" height="60">
+ <objectgroup name="LevelBricks" width="60" height="60" visible="0">
   <object name="LevelEntry" type="LevelEntry" x="316" y="4" width="274" height="66"/>
-  <object name="Ditch" type="Ditch" x="1650" y="450" width="150" height="100"/>
  </objectgroup>
- <objectgroup name="Collider_0" width="60" height="60" visible="0">
+ <objectgroup name="Collider_0" width="60" height="60">
   <object x="-3" y="0" width="73" height="3030">
    <properties>
     <property name="env" value="stone"/>
@@ -249,5 +248,26 @@
   <object x="1132" y="1180" width="334" height="336"/>
   <object x="68" y="6" width="242" height="60"/>
   <object x="70" y="2921" width="2858" height="79"/>
+  <object x="108" y="516">
+   <polygon points="0,0 32,-50 188,-42 188,22 2,20"/>
+  </object>
+  <object x="801" y="481">
+   <polygon points="0,0 18,-24 46,-19 50,2"/>
+  </object>
+  <object x="1099" y="478">
+   <polygon points="0,0 21,-21 40,-23 49,1"/>
+  </object>
+  <object x="1651" y="525">
+   <polygon points="0,0 57,-41 93,-53 147,2"/>
+  </object>
+  <object x="2171" y="553">
+   <polygon points="0,0 49,37 61,116 -15,160 -11,1"/>
+  </object>
+  <object x="1835" y="936">
+   <polygon points="0,0 39,-66 451,-71 475,31"/>
+  </object>
+  <object x="2753" y="1224">
+   <polygon points="0,0 90,-56 155,11"/>
+  </object>
  </objectgroup>
 </map>
