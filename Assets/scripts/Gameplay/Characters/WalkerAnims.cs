@@ -16,10 +16,12 @@ public class WalkerAnims : MonoBehaviour
 		CrounchLeft, CrounchRight,
 		AttackLeft, AttackRight,
 	}
+
 	
-	public Transform spriteParent;
-	public OTAnimatingSprite animSprite;
-	public OTAnimation anim;
+	private OTAnimatingSprite animBody, animMecha, animTail;
+	private OTAnimatingSprite[] spritesTab;
+
+	private Transform spriteParentBody, spriteParentMecha, spriteParentTail;
 	
 	private animDef currentAnim;
 	private Character _character;
@@ -34,11 +36,22 @@ public class WalkerAnims : MonoBehaviour
 		_character 	= GetComponent<Character>();
 		_walker = GetComponent<Walker>();
 		_player 	= GameObject.FindObjectOfType<Player>();
-		animSprite.Play("stand");
+		spritesTab = gameObject.GetComponentsInChildren<OTAnimatingSprite>();
+		foreach (OTAnimatingSprite sprite in spritesTab) {
+			if(sprite.name=="walkerBodySprite") animBody = sprite;
+			if(sprite.name=="walkerMechaSprite") animMecha = sprite;
+			if(sprite.name=="walkerTailSprite") animTail = sprite;
+		}
+		spriteParentBody = animBody.transform.parent.transform;
+		spriteParentMecha = animMecha.transform.parent.transform;
+		spriteParentTail = animTail.transform.parent.transform;
+		animBody.Play ("standBody");
+		animMecha.Play ("standMecha");
+		animTail.Play ("standTail");
 	}
 	void Update() 
 	{
-		animSprite.looping = true;
+		animBody.looping = true;
 		// Order of action matters, they need to have priorities. //
 		Run();
 		Walk();
@@ -55,13 +68,17 @@ public class WalkerAnims : MonoBehaviour
 		if(_character.isRight && _character.grounded && currentAnim!=animDef.WalkRight && !_walker.getEndPFReached())
 		{
 			currentAnim = animDef.WalkRight;
-			animSprite.Play("run");
+			animBody.Play ("runBody");
+			animMecha.Play ("runMecha");
+			animTail.Play ("runTail");
 			NormalScaleSprite();;
 		}
 		if(_character.isLeft && _character.grounded && currentAnim!=animDef.WalkLeft && !_walker.getEndPFReached())
 		{
 			currentAnim = animDef.WalkLeft;
-			animSprite.Play("run");
+			animBody.Play ("runBody");
+			animMecha.Play ("runMecha");
+			animTail.Play ("runTail");
 			InvertSprite();
 		}
 	}
@@ -73,18 +90,22 @@ public class WalkerAnims : MonoBehaviour
 	{	
 		if(_walker.getEndPFReached()) {
 			currentAnim = animDef.StandLeft;
-			animSprite.Play("stand");
+			animBody.Play ("standBody");
+			animMecha.Play ("standMecha");
+			animTail.Play ("standTail");
 		}
 		if(!_character.isLeft && _character.grounded == true && currentAnim != animDef.StandLeft && _character.facingDir == Character.facing.Left && animPlaying == false)
 		{
 			currentAnim = animDef.StandLeft;
-			animSprite.Play("stand"); // stand left
+			animMecha.Play ("standMecha");
+			if(!_character.isShot) {animBody.Play ("standBody");animTail.Play ("standTail");}
 			InvertSprite();
 		}
 		if(!_character.isRight && _character.grounded && currentAnim != animDef.StandRight && _character.facingDir == Character.facing.Right && animPlaying == false)
 		{
 			currentAnim = animDef.StandRight;
-			animSprite.Play("stand"); // stand left
+			animMecha.Play ("standMecha");
+			if(!_character.isShot) {animBody.Play ("standBody");animTail.Play ("standTail");}
 			NormalScaleSprite();
 		}
 	}
@@ -93,7 +114,9 @@ public class WalkerAnims : MonoBehaviour
 		if (_character.isCrounch == true)
 		{
 			currentAnim = animDef.CrounchLeft;
-			animSprite.Play("crounch");
+			animBody.Play ("crouchBody");
+			animMecha.Play ("crouchMecha");
+			animTail.Play ("crouchTail");
 		}
 	}
 	private void Jump()
@@ -101,36 +124,37 @@ public class WalkerAnims : MonoBehaviour
 		if(_character.grounded == false && currentAnim != animDef.FallLeft && _character.facingDir == Character.facing.Left)
 		{
 			currentAnim = animDef.FallLeft;
-			animSprite.Play("jump"); // fall left
+			animMecha.Play ("jumpMecha");
+			if(!_character.isShot) {animBody.Play ("jumpBody");animTail.Play ("jumpTail");}
 			InvertSprite();
 		}
 		if(_character.grounded == false && currentAnim != animDef.FallRight && _character.facingDir == Character.facing.Right)
 		{
 			currentAnim = animDef.FallRight;
-			animSprite.Play("jump"); // fall right
+			animMecha.Play ("jumpMecha");
+			if(!_character.isShot) {animBody.Play ("jumpBody");animTail.Play ("jumpTail");}
 			NormalScaleSprite();
 		}
 	}
 	private void Attack()
 	{
-		/*
-		if (_player.shootingKnife == true  && _character.facingDir == Character.facing.Left)
-		{
+		if(_character.isShot && _character.facingDir == Character.facing.Left) {
 			animPlaying = true;
 			currentAnim = animDef.ShootRight;
-			animSprite.Play("throw_knife");
+			animBody.Play ("attackBody");
+			animTail.Play ("attacktTail");
 			InvertSprite();
-			StartCoroutine( WaitAndCallback( anim.GetDuration(anim.framesets[3]) ) );
+			StartCoroutine( WaitAndCallback( 1f ) );
 		}
-		if (_player.shootingKnife == true && _character.facingDir == Character.facing.Right)
-		{
+		if(_character.isShot && _character.facingDir == Character.facing.Right) {
+			
 			animPlaying = true;
 			currentAnim = animDef.ShootRight;
-			animSprite.Play("throw_knife");
+			animBody.Play ("attackBody");
+			animTail.Play ("attacktTail");
 			NormalScaleSprite();
-			StartCoroutine( WaitAndCallback( anim.GetDuration(anim.framesets[3]) ) );
+			StartCoroutine( WaitAndCallback( 1f ) );
 		}
-		*/
 	}
 	private void Hurt()
 	{
@@ -138,15 +162,17 @@ public class WalkerAnims : MonoBehaviour
 		if (_character.isShot == true && _character.facingDir == Character.facing.Left)
 		{
 			animPlaying = true;
-			animSprite.Play("hurt");
-			StartCoroutine( WaitAndCallback( anim.GetDuration(anim.framesets[2]) ) );
+			animMecha.Play ("hurtMecha");
+			if(!_character.isShot) {animBody.Play ("hurtBody");animTail.Play ("hurtTail");}
+			StartCoroutine( WaitAndCallback( 1f ) );
 			InvertSprite();
 		}
 		if (_character.isShot == true && _character.facingDir == Character.facing.Right)
 		{
 			animPlaying = true;
-			animSprite.Play("hurt");
-			StartCoroutine( WaitAndCallback( anim.GetDuration(anim.framesets[2]) ) );
+			animMecha.Play ("hurtMecha");
+			if(!_character.isShot) {animBody.Play ("hurtBody");animTail.Play ("hurtTail");}
+			StartCoroutine( WaitAndCallback( 1f ) );
 			NormalScaleSprite();
 		}
 	}
@@ -159,7 +185,9 @@ public class WalkerAnims : MonoBehaviour
 		if (_player.paused == true)
 		{
 			currentAnim = animDef.None;
-			animSprite.looping = false;
+			animBody.looping = false;
+			animMecha.looping = false;
+			animTail.looping = false;
 		}
 	}
 	
@@ -169,11 +197,15 @@ public class WalkerAnims : MonoBehaviour
 	}
 	private void InvertSprite()
 	{
-		spriteParent.localScale = new Vector3(-1,1,1);
+		spriteParentBody.localScale = new Vector3(-1,1,1);
+		spriteParentMecha.localScale = new Vector3(-1,1,1);
+		spriteParentTail.localScale = new Vector3(-1,1,1);
 	}
 	private void NormalScaleSprite()
 	{
-		spriteParent.localScale = new Vector3(1,1,1);
+		spriteParentBody.localScale = new Vector3(1,1,1);
+		spriteParentMecha.localScale = new Vector3(1,1,1);
+		spriteParentTail.localScale = new Vector3(1,1,1);
 	}
 	IEnumerator WaitAndCallback(float waitTime)
 	{

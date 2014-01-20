@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>anim_test_00run.png</key>
+            <key>player00run.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1,1},{200,240}}</string>
@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
-            <key>anim_test_01run.png</key>
+            <key>player01run.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{202,1},{200,240}}</string>
@@ -30,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
-            <key>anim_test_02run.png</key>
+            <key>player02run.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{403,1},{200,240}}</string>
@@ -43,7 +43,7 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
-            <key>anim_test_03run.png</key>
+            <key>player03run.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{604,1},{200,240}}</string>
@@ -56,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
-            <key>anim_test_04run.png</key>
+            <key>player04run.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{805,1},{200,240}}</string>
@@ -69,7 +69,7 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
-            <key>anim_test_05run.png</key>
+            <key>player05run.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1,242},{200,240}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
-            <key>anim_test_06run.png</key>
+            <key>player06run.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{202,242},{200,240}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
-            <key>anim_test_07run.png</key>
+            <key>player07run.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{403,242},{200,240}}</string>
@@ -108,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
-            <key>anim_test_08run.png</key>
+            <key>player08run.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{604,242},{200,240}}</string>
@@ -121,7 +121,7 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
-            <key>anim_test_09run.png</key>
+            <key>player09run.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{805,242},{200,240}}</string>
@@ -134,7 +134,7 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
-            <key>anim_test_10walk.png</key>
+            <key>player10walk.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1,483},{200,240}}</string>
@@ -147,7 +147,7 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
-            <key>anim_test_11walk.png</key>
+            <key>player11walk.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{202,483},{200,240}}</string>
@@ -160,7 +160,7 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
-            <key>anim_test_12walk.png</key>
+            <key>player12walk.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{403,483},{200,240}}</string>
@@ -173,7 +173,7 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
-            <key>anim_test_13walk.png</key>
+            <key>player13walk.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{604,483},{200,240}}</string>
@@ -186,7 +186,7 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
-            <key>anim_test_14walk.png</key>
+            <key>player14walk.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{805,483},{200,240}}</string>
@@ -199,10 +199,75 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
-            <key>anim_test_15walk.png</key>
+            <key>player15walk.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{1,724},{200,240}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{200,240}}</string>
+                <key>sourceSize</key>
+                <string>{200,240}</string>
+            </dict>
+            <key>player16walk.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{202,724},{200,240}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{200,240}}</string>
+                <key>sourceSize</key>
+                <string>{200,240}</string>
+            </dict>
+            <key>player17walk.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{403,724},{200,240}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{200,240}}</string>
+                <key>sourceSize</key>
+                <string>{200,240}</string>
+            </dict>
+            <key>player18walk.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{604,724},{200,240}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{200,240}}</string>
+                <key>sourceSize</key>
+                <string>{200,240}</string>
+            </dict>
+            <key>player19walk.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{805,724},{200,240}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{200,240}}</string>
+                <key>sourceSize</key>
+                <string>{200,240}</string>
+            </dict>
+            <key>player20stand.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1,965},{200,240}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -220,9 +285,9 @@
             <key>realTextureFileName</key>
             <string>playerFinal.png</string>
             <key>size</key>
-            <string>{1024,1024}</string>
+            <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:cd996664d4a134ca7576bdbd06029018:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:dc3e84f129fb2b67ab0f7c969503f1c4:1/1$</string>
             <key>textureFileName</key>
             <string>playerFinal.png</string>
         </dict>
