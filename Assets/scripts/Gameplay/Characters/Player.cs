@@ -219,6 +219,16 @@ public class Player : Character {
 		}
 		#endregion
 	}
+
+	void OnTriggerEnter(Collider col) {
+		if(col.gameObject.CompareTag("soundStopper")) {
+			print("LALALA");
+			
+			//gameObject.collider.enabled=false;
+		}
+	}
+
+
 	private void offsetCircles () { //Set circles position
 		soundEmitt1.setCharacterMoveOffset(vectorFixed.x);
 		soundEmitt2.setCharacterMoveOffset(vectorFixed.x);
