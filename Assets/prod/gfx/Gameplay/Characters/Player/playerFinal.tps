@@ -87,7 +87,7 @@
             <key>basic</key>
             <struct type="AlgorithmBasicSettings">
                 <key>sortBy</key>
-                <enum type="AlgorithmBasicSettings::SortBy">Name</enum>
+                <enum type="AlgorithmBasicSettings::SortBy">Best</enum>
                 <key>order</key>
                 <enum type="AlgorithmBasicSettings::Order">Ascending</enum>
             </struct>
@@ -148,27 +148,22 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>frames/player00run.png</filename>
-            <filename>frames/player01run.png</filename>
-            <filename>frames/player02run.png</filename>
-            <filename>frames/player03run.png</filename>
-            <filename>frames/player04run.png</filename>
-            <filename>frames/player05run.png</filename>
-            <filename>frames/player06run.png</filename>
-            <filename>frames/player07run.png</filename>
-            <filename>frames/player08run.png</filename>
-            <filename>frames/player09run.png</filename>
-            <filename>frames/player10walk.png</filename>
-            <filename>frames/player11walk.png</filename>
-            <filename>frames/player12walk.png</filename>
-            <filename>frames/player13walk.png</filename>
-            <filename>frames/player14walk.png</filename>
-            <filename>frames/player15walk.png</filename>
-            <filename>frames/player16walk.png</filename>
-            <filename>frames/player17walk.png</filename>
-            <filename>frames/player18walk.png</filename>
-            <filename>frames/player19walk.png</filename>
-            <filename>frames/player20stand.png</filename>
+            <filename>test_anims/anim_test_00run.png</filename>
+            <filename>test_anims/anim_test_01run.png</filename>
+            <filename>test_anims/anim_test_02run.png</filename>
+            <filename>test_anims/anim_test_03run.png</filename>
+            <filename>test_anims/anim_test_04run.png</filename>
+            <filename>test_anims/anim_test_05run.png</filename>
+            <filename>test_anims/anim_test_06run.png</filename>
+            <filename>test_anims/anim_test_07run.png</filename>
+            <filename>test_anims/anim_test_08run.png</filename>
+            <filename>test_anims/anim_test_09run.png</filename>
+            <filename>test_anims/anim_test_10walk.png</filename>
+            <filename>test_anims/anim_test_11walk.png</filename>
+            <filename>test_anims/anim_test_12walk.png</filename>
+            <filename>test_anims/anim_test_13walk.png</filename>
+            <filename>test_anims/anim_test_14walk.png</filename>
+            <filename>test_anims/anim_test_15walk.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

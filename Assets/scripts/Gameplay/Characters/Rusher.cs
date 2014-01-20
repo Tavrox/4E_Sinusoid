@@ -86,7 +86,6 @@ public class Rusher : Enemy {
 		pebbleDirection = 1;
 		defineRushDirection = chasingPlayer = false;
 		blockCoroutine = false;
-		setTarget(transform); //target reset
 		StopCoroutine("waitB4FootStep");StopCoroutine("footStep");
 		isLeft = isRight = isJump = isGoDown = isPass = isCrounch = false;
 		movingDir = moving.None;
@@ -135,7 +134,7 @@ public class Rusher : Enemy {
 		Debug.DrawRay(thisTransform.position, Vector3.right*targetDetectionArea);
 		if (Physics.Raycast(detectTargetLeft, out hitInfo, targetDetectionArea, projectorMask) || Physics.Raycast(detectTargetRight, out hitInfo, targetDetectionArea, projectorMask)) {
 			if(hitInfo.collider.name == "Player" && !endChasingPlayer) {
-				setTarget(GameObject.FindWithTag("Player").transform); //target reset
+				setTarget(transform); //target reset
 				activeChasing();
 			}
 		}

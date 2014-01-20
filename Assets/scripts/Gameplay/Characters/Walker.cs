@@ -74,7 +74,7 @@ public class Walker : Enemy {
 
 		setTarget(transform); //target
 		patroling = true;
-		waypointDetectionWidth = /*1f;//*/thisTransform.gameObject.GetComponentInChildren<Transform>().GetComponentInChildren<OTSprite>().transform.localScale.x/2;//transform.localScale.x;
+		waypointDetectionWidth = thisTransform.gameObject.GetComponentInChildren<Transform>().GetComponentInChildren<OTSprite>().transform.localScale.x/2;//transform.localScale.x;
 		StartCoroutine("goToWaypoint",waypointId);
 	}
 	private void setIniState() {
@@ -100,6 +100,7 @@ public class Walker : Enemy {
 //		isShot = false;
 //		isPass = false;
 //		movingDir = moving.None;
+		
 		offsetCircles ();
 		detectPlayer();
 		detectEndChaseArea();
@@ -145,14 +146,6 @@ public class Walker : Enemy {
 				activeChasing();
 			}
 		}
-		
-//		Debug.DrawRay(new Vector3(thisTransform.position.x,thisTransform.position.y+0.1f,thisTransform.position.z), Vector3.left*2, Color.red);
-//		Debug.DrawRay(new Vector3(thisTransform.position.x,thisTransform.position.y+0.1f,thisTransform.position.z), Vector3.right*2, Color.magenta);
-//		if (Physics.Raycast(detectTargetLeft, out hitInfo, 2, projectorMask) || Physics.Raycast(detectTargetRight, out hitInfo, 2, projectorMask)) {
-//			if(hitInfo.collider.name == "Player") {
-//				//isShot = true;
-//			}
-//		}
 	}
 	private void detectEndChaseArea() {
 		foreach(Transform chaseAreaLimit in endChaseArea) {
@@ -169,7 +162,7 @@ public class Walker : Enemy {
 	 *    IA MANAGEMENT		*
 	 *						*
 	 ***********************/
-	private IEnumerator goBackToPatrol () {print ("goBackPatrol");
+	private IEnumerator goBackToPatrol () {
 		loosingPlayer = true;
 		yield return new WaitForSeconds(timeSearchingPlayer);
 		isLeft = false;
@@ -199,7 +192,7 @@ public class Walker : Enemy {
 		loosingPlayer = endPFReached = endChasingPlayer = false;/*********************/
 
 	}
-	private IEnumerator goToWaypoint (int waypointIDToReach) {print ("goToWaypoint"+waypointIDToReach);
+	private IEnumerator goToWaypoint (int waypointIDToReach) {
 		if(waypoints[waypointIDToReach].position.x > transform.position.x) {
 			isRight = true;
 			isLeft = false;
@@ -219,7 +212,7 @@ public class Walker : Enemy {
 		}
 		else StartCoroutine("goToWaypoint",waypointIDToReach);
 	}
-	private void Patrol () {print ("Patrol");
+	private void Patrol () {
 		if(waypoints.Count<=0) print("No Waypoints linked");
 
 		if(waypointReached) {
@@ -244,32 +237,30 @@ public class Walker : Enemy {
 			StartCoroutine("waitAtWP",timeToWait);
 		}
 	}
-	private IEnumerator waitAtWP(float timePause) {print ("waitAtWp");
+	private IEnumerator waitAtWP(float timePause) {
 		yield return new WaitForSeconds(timePause);
 		StartCoroutine("goToWaypoint",waypointId);
 	}
 
-	private void ChasePlayer () {print ("ChasingPlayer");
+	private void ChasePlayer () {
 		StopCoroutine("goToWaypoint");
 		StopCoroutine("waitAtWP");
-		if (target.position.x < thisTransform.position.x/*+waypointDetectionWidth*/) {
+		if (target.position.x < thisTransform.position.x+waypointDetectionWidth) {
 			//direction = Vector3.left;
 			isLeft = true;
 			isRight = false;
 			facingDir = facing.Left;
 			UpdateMovement();
 		}
-		else if (target.position.x > thisTransform.position.x/*-waypointDetectionWidth*/ /*&& isLeft == false*/) {
+		else if (target.position.x > thisTransform.position.x-waypointDetectionWidth /*&& isLeft == false*/) {
 			//direction = Vector3.right;
-			isRight = true;
+			isRight = true; 
 			isLeft = false;
 			facingDir = facing.Right;
 			UpdateMovement();
 		}
 		else {
 			isLeft = isRight = false;
-//			GameEventManager.TriggerGameOver();
-//			chasingPlayer = false;
 			targetReached();
 		}
 	}
@@ -354,7 +345,7 @@ public class Walker : Enemy {
 	void OnTriggerEnter(Collider other) 
 	{
 		if(other.gameObject.CompareTag("Player")) 
-		{print ("OnTriggerEnterPlayer");
+		{
 			GameEventManager.TriggerGameOver();
 			chasingPlayer = false;
 		}
