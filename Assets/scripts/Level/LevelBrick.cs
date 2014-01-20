@@ -7,10 +7,13 @@ public class LevelBrick : MonoBehaviour {
 	{
 		Turret,
 		Crate,
-		Walker,
+		WalkerPoints,
 		Rusher,
 		Drop,
-		Ditch
+		Ditch,
+		LevelEntry,
+		LevelExit,
+		Checkpoint
 	};
 	public brickEnum brickType;
 

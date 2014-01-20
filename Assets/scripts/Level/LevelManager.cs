@@ -17,7 +17,11 @@ public class LevelManager : MonoBehaviour {
 		GameEventManager.GameStart += GameStart;
 		GameEventManager.Respawn += Respawn;
 
-		_player = GameObject.FindWithTag("Player").GetComponent<Player>();
+		if (GameObject.FindWithTag("Player").GetComponent<Player>() != null)
+		{
+			_player = GameObject.FindWithTag("Player").GetComponent<Player>();
+		}
+
 
 		GameEventManager.TriggerGameStart();
 	}

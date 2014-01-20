@@ -204,7 +204,9 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="Enemies" width="60" height="60"/>
+ <objectgroup name="Enemies" width="60" height="60">
+  <object name="walker" type="WalkerPoints" gid="402" x="1215" y="1170"/>
+ </objectgroup>
  <objectgroup name="LevelBricks" width="60" height="60">
   <object name="LevelEntry" type="LevelEntry" x="316" y="4" width="274" height="66"/>
   <object type="Ditch" x="1680" y="466" width="94" height="54"/>
