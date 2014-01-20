@@ -34,13 +34,13 @@ public class FESound : MonoBehaviour {
 	{
 		int _rand = Random.Range(0, numberOfLRVariations);
 		MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "L", Volume, Pitch, Delay);
-		Debug.Log(SoundGroup.name + "_" + _enviro.typeList.ToString() + "L" );
+//		Debug.Log(SoundGroup.name + "_" + _enviro.typeList.ToString() + "L" );
 	}
 	public void playRightSound(Environment _enviro)
 	{
 		int _rand = Random.Range(0, numberOfLRVariations);
 		MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "R" , Volume, Pitch, Delay);
-		Debug.Log(SoundGroup.name + "_" + _enviro.typeList.ToString() + "R" );
+//		Debug.Log(SoundGroup.name + "_" + _enviro.typeList.ToString() + "R" );
 	}
 	public void playDistancedSound(Transform _obj1, Transform _obj2)
 	{
