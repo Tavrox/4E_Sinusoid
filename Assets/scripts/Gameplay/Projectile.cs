@@ -4,12 +4,12 @@ using System.Collections;
 public class Projectile : MonoBehaviour {
 
 	public float _speedX;
-	public float _speedY;
-	public float _rot;
+	private float _speedY;
+	private float _rot;
 	private Vector3 _initPosProj;
 	private Quaternion _initRotProj;
-	public GameObject _target;
-	public bool moving;
+	[HideInInspector] public GameObject _target;
+	[HideInInspector] public bool moving;
 
 	public float speedX
 	{

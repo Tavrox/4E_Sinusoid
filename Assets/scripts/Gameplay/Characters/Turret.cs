@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Turret : MonoBehaviour {
+public class Turret : LevelBrick {
 
 
 	private GameObject _base;
@@ -9,24 +9,27 @@ public class Turret : MonoBehaviour {
 	private GameObject _rotating;
 	private Projectile _projectile;
 	private GameObject _target;
+	private Collider _triggerArea;
 	private OTAnimatingSprite _baseAnim;
 	private OTAnimatingSprite _macaAnim;
 	private OTAnimatingSprite _rotatingAnim;
 	private OTSprite _projectileSpr;
 
 	public float shootRate = 3f;
-	public float turnRate = 1f;
+	public float turnRate = 0.1f;
 	
 	public FESound ShootSound;
 	public FESound ScanSound;
 
 	// Use this for initialization
 	void Start () {
+		brickType = brickEnum.Turret;
 		_base = FETool.findWithinChildren(this.gameObject, "Base");
 		_maca = FETool.findWithinChildren(this.gameObject, "Maca");
 		_rotating = FETool.findWithinChildren(this.gameObject, "Rotating");
 		_target = FETool.findWithinChildren(this.gameObject, "Target");
 		_projectile = FETool.findWithinChildren(this.gameObject, "Projectile").GetComponent<Projectile>();
+		_triggerArea = FETool.findWithinChildren(this.gameObject, "TriggerArea").GetComponent<BoxCollider>();
 
 		_baseAnim = _base.GetComponentInChildren<OTAnimatingSprite>();
 		_macaAnim = _maca.GetComponentInChildren<OTAnimatingSprite>();
@@ -35,12 +38,12 @@ public class Turret : MonoBehaviour {
 
 		InvokeRepeating("shootAtPoint", 0f, shootRate);
 		InvokeRepeating("turn", 0f, turnRate);
-	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+
 	}
 	private void scanPlace()
 	{
@@ -52,8 +55,6 @@ public class Turret : MonoBehaviour {
 		_projectile.setupMove(_target, true);
 
 //		_projectiletransform.position = Vector3.MoveTowards(transform.position, target.position, _projectile.speedx;);
-
-		Debug.Log("Turret.shoot");
 	}
 	private void shootAtTarget(GameObject _target)
 	{

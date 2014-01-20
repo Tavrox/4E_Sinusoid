@@ -18,9 +18,8 @@ public class Player : Character {
 	public float footStepDelay;
 //	private bool isSprint = false;
 
-//	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
-
 	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
+	[HideInInspector] public bool hasFallen;
 
 	public FESound WalkSound;
 	public FESound RunSound;
@@ -48,8 +47,10 @@ public class Player : Character {
 
 		if (WalkSound != null)
 		{
-			InvokeRepeating("playFootstep",5f,WalkSound.RepeatRate);
-			InvokeRepeating("playRunstep",3f,WalkSound.RepeatRate);
+			InvokeRepeating("playFootstepLeft",0f,WalkSound.RepeatRate);
+			InvokeRepeating("playFootstepRight",1f,WalkSound.RepeatRate);
+			InvokeRepeating("playRunstepLeft",0f,RunSound.RepeatRate);
+			InvokeRepeating("playRunstepRight",1f,RunSound.RepeatRate);
 		}
 
 		//Creating waves game objects
@@ -136,6 +137,7 @@ public class Player : Character {
 		#endregion
 		#region Instru Skill (R)
 		if (Input.GetKeyDown(KeyCode.R)  && grounded && !specialCast) {
+			playSoundInstru();
 			StartCoroutine("specialCircleCast");
 		}
 		#endregion
@@ -263,18 +265,32 @@ public class Player : Character {
 	}
 	
 	#region PlaySounds
-	private void playFootstep()
+	private void playFootstepLeft()
 	{
-		if ((isLeft == true || isRight == true) && grounded )
+		if ((isLeft == true || isRight == true) && grounded && isSprint == false )
 		{
-			WalkSound.playSound(onEnvironment);
+			WalkSound.playLeftSound(onEnvironment);
 		}
 	}
-	private void playRunstep()
+	private void playFootstepRight()
+	{
+		if ((isLeft == true || isRight == true) && grounded && isSprint == false  )
+		{
+			WalkSound.playRightSound(onEnvironment);
+		}
+	}
+	private void playRunstepRight()
 	{
 		if ((isLeft == true || isRight == true) && grounded && isSprint )
 		{
-			WalkSound.playSound(onEnvironment);
+			RunSound.playRightSound(onEnvironment);
+		}
+	}
+	private void playRunstepLeft()
+	{
+		if ((isLeft == true || isRight == true) && grounded && isSprint )
+		{
+			RunSound.playLeftSound(onEnvironment);
 		}
 	}
 	private void playSoundPrepareRockThrow()
@@ -295,7 +311,7 @@ public class Player : Character {
 	}
 	private void playSoundInstru()
 	{
-		InstruSound.playSound(onEnvironment);
+		InstruSound.playSound();
 	}
 	private void playSoundStandUp()
 	{
