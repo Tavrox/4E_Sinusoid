@@ -24,6 +24,11 @@ public class Character : MonoBehaviour
 	[HideInInspector] public bool isLeft; 
 	[HideInInspector] public bool isRight;
 	[HideInInspector] public bool isJump;
+<<<<<<< HEAD
+=======
+	[HideInInspector] public bool isPass;
+	[HideInInspector] public bool isGrab;
+>>>>>>> cbbd334818e429ff88e6254064d6d43f8dd66438
 	
 	[HideInInspector] public bool jumping = false;
 	[HideInInspector] public bool grounded = false;
@@ -130,7 +135,7 @@ public class Character : MonoBehaviour
 		}
 		
 		// landed from fall/jump
-		if(grounded == true && vectorMove.y == 0)
+		if(grounded == true && vectorMove.y == 0 || isGrab)
 		{
 			jumping = false;
 			jumps = 0;
@@ -143,6 +148,10 @@ public class Character : MonoBehaviour
 		{
 			vectorMove.y -= gravityY * Time.deltaTime;
 		}
+		if(isGrab) {
+			vectorMove.x=0;
+			if(vectorMove.y<0)vectorMove.y=0;
+			/*isGrab = false;*/}
 		
 		// velocity limiter
 		if(vectorMove.y < -maxVelY)
