@@ -37,7 +37,7 @@ public class Walker : Enemy {
 	private Pebble pebble1;
 	private float powerPebble;
 //	private GameObject pebbleBar;
-	private float waypointDetectionWidth;
+	public float waypointDetectionWidth;
 	public LayerMask projectorMask;
 	
 	[HideInInspector] public bool paused = false;
@@ -243,7 +243,7 @@ public class Walker : Enemy {
 
 	private void ChasePlayer () {
 		StopCoroutine("goToWaypoint");
-		StopCoroutine("waitAtWP");
+		StopCoroutine("waitAtWP");print ("chaseeeee");
 		if (target.position.x < thisTransform.position.x+waypointDetectionWidth) {
 			//direction = Vector3.left;
 			isLeft = true;
@@ -259,9 +259,14 @@ public class Walker : Enemy {
 			UpdateMovement();
 		}
 		else {
+			print ("BLOUUUUUUUUUUUU");
 			isLeft = isRight = false;
-			targetReached();
+			StartCoroutine("waitAtWP",timeSearchingPlayer);
 		}
+	}
+	private IEnumerator waitAtTarget(float timePause) {
+		yield return new WaitForSeconds(timePause);
+		targetReached();
 	}
 	/************************
 	 *						*

@@ -275,15 +275,15 @@ public class WaveElt : MonoBehaviour {
 		}
 		if(other.gameObject.CompareTag("Enemy") && !callerObj.CompareTag("Enemy")) {
 			if(callerObj.CompareTag("Pebble") && callerObj.GetComponent<Pebble>().getCallerObject().CompareTag("Player")) {
-				//print ("I HEAR A PLAYER'S PEBBLE");
+				print ("I HEAR A PLAYER'S PEBBLE");
 				if(!other.GetComponent<Enemy>().getChasingPlayer() && !other.GetComponent<Enemy>().getTarget().CompareTag("Player")) { //Ne réagit pas au caillou si déjà en chasse du joueur
-					//print("QUI A VOLé L'ORANGE");
+					print("QUI A VOLé L'ORANGE");
 					other.GetComponent<Enemy>().setTarget(callerObj);
 					other.GetComponent<Enemy>().activeChasing();
 				}
 			}
 			else {
-				//print ("I HEAR A FOOTSTEP");
+				print ("I HEAR A FOOTSTEP");
 				other.GetComponent<Enemy>().setTarget(callerObj);
 				other.GetComponent<Enemy>().activeChasing();
 			}
