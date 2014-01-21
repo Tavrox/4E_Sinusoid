@@ -243,15 +243,15 @@ public class Walker : Enemy {
 
 	private void ChasePlayer () {
 		StopCoroutine("goToWaypoint");
-		StopCoroutine("waitAtWP");print ("chaseeeee");
-		if (target.position.x < thisTransform.position.x+waypointDetectionWidth) {
+		StopCoroutine("waitAtWP");
+		if (thisTransform.position.x-waypointDetectionWidth > target.position.x) {
 			//direction = Vector3.left;
 			isLeft = true;
 			isRight = false;
 			facingDir = facing.Left;
 			UpdateMovement();
 		}
-		else if (target.position.x > thisTransform.position.x-waypointDetectionWidth /*&& isLeft == false*/) {
+		else if (thisTransform.position.x+waypointDetectionWidth < target.position.x /*&& isLeft == false*/) {
 			//direction = Vector3.right;
 			isRight = true; 
 			isLeft = false;
@@ -259,9 +259,8 @@ public class Walker : Enemy {
 			UpdateMovement();
 		}
 		else {
-			print ("BLOUUUUUUUUUUUU");
 			isLeft = isRight = false;
-			StartCoroutine("waitAtWP",timeSearchingPlayer);
+			StartCoroutine("waitAtTarget",timeSearchingPlayer);
 		}
 	}
 	private IEnumerator waitAtTarget(float timePause) {

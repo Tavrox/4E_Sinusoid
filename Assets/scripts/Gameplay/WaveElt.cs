@@ -14,6 +14,7 @@ public class WaveElt : MonoBehaviour {
 	private Material myProjMaterial;
 	private float speedSoundIni;
 	private GameObject _mySprite;
+	private Transform pebblePositionSave;
 	
 	//public Projector prefabProj;
 	public float numberOfAlphaStates = 3;
@@ -52,7 +53,7 @@ public class WaveElt : MonoBehaviour {
 		//myProjMaterial.color = new Color (0f,0f,0f,0f);
 		//instanceProj.transform.Rotate(new Vector3(0f,0f,90f));
 		//instanceProj.aspectRatio=1;
-
+		pebblePositionSave = GameObject.Find("PebblePosition").GetComponent<Transform>();
 		StartCoroutine("reduceAlpha");
 		StartCoroutine("myUpdate");
 	}
@@ -275,15 +276,16 @@ public class WaveElt : MonoBehaviour {
 		}
 		if(other.gameObject.CompareTag("Enemy") && !callerObj.CompareTag("Enemy")) {
 			if(callerObj.CompareTag("Pebble") && callerObj.GetComponent<Pebble>().getCallerObject().CompareTag("Player")) {
-				print ("I HEAR A PLAYER'S PEBBLE");
+				//print ("I HEAR A PLAYER'S PEBBLE");
+				pebblePositionSave.transform.position = new Vector3(callerObj.gameObject.transform.position.x, callerObj.gameObject.transform.position.y, callerObj.gameObject.transform.position.z);
 				if(!other.GetComponent<Enemy>().getChasingPlayer() && !other.GetComponent<Enemy>().getTarget().CompareTag("Player")) { //Ne réagit pas au caillou si déjà en chasse du joueur
-					print("QUI A VOLé L'ORANGE");
-					other.GetComponent<Enemy>().setTarget(callerObj);
+					//print("QUI A VOLé L'ORANGE");
+					other.GetComponent<Enemy>().setTarget(pebblePositionSave);
 					other.GetComponent<Enemy>().activeChasing();
 				}
 			}
 			else {
-				print ("I HEAR A FOOTSTEP");
+				//print ("I HEAR A FOOTSTEP");
 				other.GetComponent<Enemy>().setTarget(callerObj);
 				other.GetComponent<Enemy>().activeChasing();
 			}
