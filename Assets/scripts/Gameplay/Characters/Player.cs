@@ -190,11 +190,16 @@ public class Player : Character {
 			shootLeft = false;
 			if(!blockCoroutine && grounded) StartCoroutine("waitB4FootStep");
 		}
-		if (Input.GetKey(KeyCode.DownArrow)) {
-			isCrounch = true;
-			facingDir = facing.Down;
+		if (Input.GetKeyDown("down")) {
+
+			if(isGrab) {isGrab = false;}
+			else {
+				isCrounch = true;
+				facingDir = facing.Down;
+			}
 		}
 		if (Input.GetKeyDown("up")) {
+			isGrab = false;
 			isJump = true; 
 		}
 		if(Input.GetKeyDown("space")) {
@@ -221,9 +226,8 @@ public class Player : Character {
 	}
 
 	void OnTriggerEnter(Collider col) {
-		if(col.gameObject.CompareTag("soundStopper")) {
-			print("LALALA");
-			
+		if(col.gameObject.CompareTag("plateformGrabber")) {
+			isGrab = true;
 			//gameObject.collider.enabled=false;
 		}
 	}
@@ -238,7 +242,7 @@ public class Player : Character {
 		pebbleBar.transform.position = new Vector3((powerPebble/2)+thisTransform.position.x,thisTransform.position.y+2f,-30f); //Replace powerBar as resize is made from center expanding to each side
 	}
 	IEnumerator waitB4FootStep() { //Short Delay before the sprite actually touches the ground (edit when anim is finished)
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(0.3f);
 		if(!blockCoroutine && grounded) StartCoroutine("footStep");
 	}
 	IEnumerator footStep() { //Footsteps management

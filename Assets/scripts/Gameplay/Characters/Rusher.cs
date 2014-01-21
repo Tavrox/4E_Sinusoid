@@ -262,7 +262,7 @@ public class Rusher : Enemy {
 	}
 
 	private void GameStart () {
-		if(FindObjectOfType(typeof(Zombie)) && this != null) {
+		if(FindObjectOfType(typeof(Rusher)) && this != null) {
 			setIniState();//transform.localPosition = spawnPos;
 			enabled = true;
 		}
