@@ -190,20 +190,14 @@ public class Player : Character {
 			shootLeft = false;
 			if(!blockCoroutine && grounded) StartCoroutine("waitB4FootStep");
 		}
-<<<<<<< HEAD
-		if (Input.GetKey(KeyCode.DownArrow)) {
-			isCrounch = true;
-			facingDir = facing.Down;
-			StartCoroutine("CrounchMode");
-=======
 		if (Input.GetKeyDown("down")) {
 
 			if(isGrab) {isGrab = false;}
 			else {
 				isCrounch = true;
 				facingDir = facing.Down;
+				StartCoroutine("CrounchMode");
 			}
->>>>>>> cbbd334818e429ff88e6254064d6d43f8dd66438
 		}
 		if (Input.GetKeyDown("up")) {
 			isGrab = false;
@@ -230,7 +224,7 @@ public class Player : Character {
 	}
 
 	void OnTriggerEnter(Collider col) {
-		if(col.gameObject.CompareTag("plateformGrabber")) {
+		if(col.gameObject.CompareTag("platformGrabber")) {
 			isGrab = true;
 			//gameObject.collider.enabled=false;
 		}

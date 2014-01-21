@@ -504,14 +504,18 @@ namespace X_UniTMX
 			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
 			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
 
-			if (ColliderType == "Wood")
+			if (ColliderType == "WoodColl")
 			{
 				Environment _env = boxCollider.AddComponent<Environment>();
 				_env.typeList = Environment.types.wood;
 			}
-			if (ColliderType == "Ditch")
+			if (ColliderType == "DitchColl")
 			{
 				Ditch _ditch = boxCollider.AddComponent<Ditch>();
+			}
+			if (ColliderType == "GrabColl")
+			{
+				boxCollider.tag = "platformGrabber";
 			}
 
 			

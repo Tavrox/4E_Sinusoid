@@ -24,11 +24,7 @@ public class Character : MonoBehaviour
 	[HideInInspector] public bool isLeft; 
 	[HideInInspector] public bool isRight;
 	[HideInInspector] public bool isJump;
-<<<<<<< HEAD
-=======
-	[HideInInspector] public bool isPass;
 	[HideInInspector] public bool isGrab;
->>>>>>> cbbd334818e429ff88e6254064d6d43f8dd66438
 	
 	[HideInInspector] public bool jumping = false;
 	[HideInInspector] public bool grounded = false;

@@ -261,14 +261,7 @@ public class Rusher : Enemy {
 	}
 
 	private void GameStart () {
-<<<<<<< HEAD
 
-=======
-		if(FindObjectOfType(typeof(Rusher)) && this != null) {
-			setIniState();//transform.localPosition = spawnPos;
-			enabled = true;
-		}
->>>>>>> cbbd334818e429ff88e6254064d6d43f8dd66438
 	}
 	
 	private void GameOver () {
