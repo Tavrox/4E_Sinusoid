@@ -688,7 +688,7 @@ namespace X_UniTMX
 			_rigid.constraints = RigidbodyConstraints.FreezeAll;
 			*/
 
-			Ditch _ditch = polygonCollider.AddComponent<Ditch>();
+			polygonCollider.AddComponent<Ditch>();
 
 			return polygonCollider;
 		}

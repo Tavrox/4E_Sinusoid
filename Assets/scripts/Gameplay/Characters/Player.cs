@@ -16,12 +16,13 @@ public class Player : Character {
 	private float powerPebble; //Throwing force added to the pebble after cast
 	private GameObject pebbleBar; //UI Bar to tell the player the power of his shoot
 	public float footStepDelay;
+	public int pebbleCount = 1;
 //	private bool isSprint = false;
 
 	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
 	[HideInInspector] public bool hasFallen;
 
-	private float crounchTime = 0.5f;
+	private float crounchTime = 0.3f;
 
 	public FESound WalkSound;
 	public FESound RunSound;
@@ -123,6 +124,14 @@ public class Player : Character {
 				pebbleBar.transform.localScale = new Vector3(powerPebble,0.3f,1f); //reset power bar
 				pebbleBar.transform.position = new Vector3((powerPebble/2)+thisTransform.position.x,thisTransform.position.y+2f,-30f);
 			}
+		}
+		if (Input.GetKeyDown(KeyCode.KeypadPlus))
+		{
+			pebbleCount += 1;
+		}
+		if (Input.GetKeyDown(KeyCode.KeypadMinus))
+		{
+			pebbleCount -= 1;
 		}
 		#endregion
 		#region TEMPORARY MUST NOT BE IN FINAL VERSION (Y) & (T) -> Destroy current circles
@@ -296,10 +305,13 @@ public class Player : Character {
 
 	public override void BlockedUp()
 	{
-		if(vectorMove.y > 0 && aboveEnvironment.typeList != Environment.types.wood)
+		if (aboveEnvironment != null)
 		{
-			vectorMove.y = 0f;
-			blockedUp = true;
+			if(vectorMove.y > 0 && aboveEnvironment.typeList != Environment.types.wood)
+			{
+				vectorMove.y = 0f;
+				blockedUp = true;
+			}
 		}
 	}
 	
