@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>Lueur.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,0},{100,350}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,350}}</string>
+                <key>sourceSize</key>
+                <string>{100,350}</string>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>2</integer>
+            <key>realTextureFileName</key>
+            <string>Lueur.png</string>
+            <key>size</key>
+            <string>{128,512}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:3253113648699428b60c4443e647a4cc:d469754381605c83154fb635b285e293:ce01967382cf0cfd1b6240bcfbc44799$</string>
+            <key>textureFileName</key>
+            <string>Lueur.png</string>
+        </dict>
+    </dict>
+</plist>
