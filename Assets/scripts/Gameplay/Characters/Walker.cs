@@ -86,7 +86,7 @@ public class Walker : Enemy {
 		timeToWait=0;
 		pebbleDirection = 1;
 		StopCoroutine("waitB4FootStep");StopCoroutine("footStep");
-		waypointReached = chasingPlayer = endChasingPlayer = blockCoroutine = isLeft = isRight = isJump = isGoDown = isPass = isCrounch = false;
+		waypointReached = chasingPlayer = endChasingPlayer = blockCoroutine = isLeft = isRight = isJump = isGoDown = isCrounch = false;
 		movingDir = moving.None;
 		StopCoroutine("goToWaypoint");StopCoroutine("waitAtWP");
 		StartCoroutine("goToWaypoint",waypointId);
@@ -98,7 +98,6 @@ public class Walker : Enemy {
 //		isRight = false;
 //		isJump = false;
 //		isShot = false;
-//		isPass = false;
 //		movingDir = moving.None;
 		
 		offsetCircles ();
@@ -335,7 +334,6 @@ public class Walker : Enemy {
 		isRight = false;
 		isJump = false;
 		isGoDown = false;
-		isPass = false;
 		isCrounch = false;
 		
 		movingDir = moving.None;
@@ -352,11 +350,7 @@ public class Walker : Enemy {
 	}
 
 	private void GameStart () {
-		if(FindObjectOfType(typeof(Zombie)) && this != null) {
-			//transform.localPosition = spawnPos;
-			setIniState();
-			enabled = true;
-		}
+
 	}
 	
 	private void GameOver () {
@@ -364,7 +358,6 @@ public class Walker : Enemy {
 		isLeft = false;
 		isRight = false;
 		isJump = false;
-		isPass = false;
 		movingDir = moving.None;
 	}
 	private void GamePause()
@@ -373,7 +366,6 @@ public class Walker : Enemy {
 		isLeft = false;
 		isRight = false;
 		isJump = false;
-		isPass = false;
 		paused = true;
 		movingDir = moving.None;	
 	}

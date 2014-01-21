@@ -87,7 +87,7 @@ public class Rusher : Enemy {
 		defineRushDirection = chasingPlayer = false;
 		blockCoroutine = false;
 		StopCoroutine("waitB4FootStep");StopCoroutine("footStep");
-		isLeft = isRight = isJump = isGoDown = isPass = isCrounch = false;
+		isLeft = isRight = isJump = isGoDown = isCrounch = false;
 		movingDir = moving.None;
 	}
 	// Update is called once per frame
@@ -245,7 +245,6 @@ public class Rusher : Enemy {
 		isRight = false;
 		isJump = false;
 		isGoDown = false;
-		isPass = false;
 		isCrounch = false;
 		
 		movingDir = moving.None;
@@ -262,10 +261,7 @@ public class Rusher : Enemy {
 	}
 
 	private void GameStart () {
-		if(FindObjectOfType(typeof(Zombie)) && this != null) {
-			setIniState();//transform.localPosition = spawnPos;
-			enabled = true;
-		}
+
 	}
 	
 	private void GameOver () {
@@ -273,7 +269,6 @@ public class Rusher : Enemy {
 		isLeft = false;
 		isRight = false;
 		isJump = false;
-		isPass = false;
 		movingDir = moving.None;
 	}
 	private void GamePause()
@@ -282,7 +277,6 @@ public class Rusher : Enemy {
 		isLeft = false;
 		isRight = false;
 		isJump = false;
-		isPass = false;
 		paused = true;
 		movingDir = moving.None;	
 	}

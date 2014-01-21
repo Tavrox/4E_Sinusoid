@@ -494,16 +494,26 @@ namespace X_UniTMX
 			return boxCollider;
 		}
 
-		public GameObject GenerateDitchesCollider(MapObject obj, float zDepth = 0, float colliderWidth = 1.0f)
+		public GameObject GenerateSpecialCollider(MapObject obj, string ColliderType, float zDepth = 0, float colliderWidth = 1.0f)
 		{
-			GameObject boxCollider = new GameObject("Ditches");
+			GameObject boxCollider = new GameObject(ColliderType);
 			BoxCollider bx = boxCollider.AddComponent<BoxCollider>();
+
 			boxCollider.transform.parent = this.Parent.transform;
 			
 			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
 			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
-			
-			Ditch _ditch = boxCollider.AddComponent<Ditch>();
+
+			if (ColliderType == "Wood")
+			{
+				Environment _env = boxCollider.AddComponent<Environment>();
+				_env.typeList = Environment.types.wood;
+			}
+			if (ColliderType == "Ditch")
+			{
+				Ditch _ditch = boxCollider.AddComponent<Ditch>();
+			}
+
 			
 			return boxCollider;
 		}

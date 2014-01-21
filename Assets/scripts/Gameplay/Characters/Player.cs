@@ -21,6 +21,8 @@ public class Player : Character {
 	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
 	[HideInInspector] public bool hasFallen;
 
+	private float crounchTime = 0.5f;
+
 	public FESound WalkSound;
 	public FESound RunSound;
 	public FESound PrepareRockThrowSound;
@@ -90,8 +92,6 @@ public class Player : Character {
 		isRight = false;
 		isJump = false;
 		isGoDown = false;
-		isPass = false;
-		isCrounch = false;
 
 		movingDir = moving.None;
 
@@ -193,12 +193,10 @@ public class Player : Character {
 		if (Input.GetKey(KeyCode.DownArrow)) {
 			isCrounch = true;
 			facingDir = facing.Down;
+			StartCoroutine("CrounchMode");
 		}
 		if (Input.GetKeyDown("up")) {
 			isJump = true; 
-		}
-		if(Input.GetKeyDown("space")) {
-			isPass = true;
 		}
 		#endregion
 		#region Alpha (1), (2), (3)
@@ -272,6 +270,12 @@ public class Player : Character {
 		else {first=!first;soundInstru2.resetCircle();} //If it's the second time playing (2 waves so that player can display both on screen if spamming music)
 		//yield return new WaitForSeconds(soundInstru1.getLifeTime());
 		specialCast = false; //Not playing anymore, can move again
+	}
+
+	IEnumerator CrounchMode()
+	{
+		yield return new WaitForSeconds(crounchTime);
+		isCrounch = false;
 	}
 	
 	#region PlaySounds
@@ -347,7 +351,6 @@ public class Player : Character {
 		isLeft = false;
 		isRight = false;
 		isJump = false;
-		isPass = false;
 		movingDir = moving.None;
 	}
 	private void GamePause() {
@@ -355,7 +358,6 @@ public class Player : Character {
 		isLeft = false;
 		isRight = false;
 		isJump = false;
-		isPass = false;
 		paused = true;
 		movingDir = moving.None;
 		

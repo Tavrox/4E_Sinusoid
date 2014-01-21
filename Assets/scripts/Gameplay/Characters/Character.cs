@@ -24,12 +24,9 @@ public class Character : MonoBehaviour
 	[HideInInspector] public bool isLeft; 
 	[HideInInspector] public bool isRight;
 	[HideInInspector] public bool isJump;
-	[HideInInspector] public bool isPass;
 	
 	[HideInInspector] public bool jumping = false;
 	[HideInInspector] public bool grounded = false;
-	[HideInInspector] public bool passingPlatform;
-	[HideInInspector] public bool onPlatform;
 	
 	[HideInInspector] public bool blockedRight;
 	[HideInInspector] public bool blockedLeft;
@@ -96,7 +93,6 @@ public class Character : MonoBehaviour
 	// Update is called once per frame
 	public virtual void UpdateMovement() 
 	{
-
 		mypos = new Vector3(thisTransform.position.x,thisTransform.position.y,thisTransform.position.z);
 		
 		if(alive == false) return;
@@ -183,15 +179,7 @@ public class Character : MonoBehaviour
 		if (Physics.Raycast(mypos, mypos+Vector3.down, out hitInfo, halfMyY, platformMask))
 		{
 			Debug.DrawLine(thisTransform.position, hitInfo.point, Color.black);
-			if (isCrounch == true)
-			{
-				passingPlatform = true;
-				ThroughPlatform();
-			}
-			else 
-			{
-				BlockedDown();	
-			}
+			BlockedDown();	
 			print (hitInfo.collider.gameObject.GetComponent<Environment>().typeList);
 		}
 		if (Physics.Raycast(mypos, Vector3.down, out hitInfo, halfMyY, groundMask))
@@ -238,7 +226,7 @@ public class Character : MonoBehaviour
 	}
 	void BlockedDown()
 	{
-		if (vectorMove.y <= 0)
+		if (vectorMove.y <= 0 && isCrounch == false)
 		{
 			grounded = true;
 			isJump = false;
@@ -270,10 +258,5 @@ public class Character : MonoBehaviour
 	public Vector3 getVectorFixed()
 	{
 		return vectorFixed;	
-	}
-	
-	void ThroughPlatform()
-	{
-		vectorMove.y -= pfPassSpeed;
 	}
 }

@@ -6,8 +6,8 @@ public class FETool : MonoBehaviour {
 	public static GameObject findWithinChildren(GameObject _go, string _fetch)
 	{
 		GameObject result = GameObject.Find(_go.name + "/" + _fetch);
-		if (result == null)
-		{Debug.Log("The object "+  _fetch + " couldn't be found.");}
+//		if (result == null)
+//		{Debug.Log("The object "+  _fetch + " couldn't be found.");}
 		return result;
 	}
 
