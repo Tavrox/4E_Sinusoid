@@ -244,22 +244,28 @@ public class Character : MonoBehaviour
 	}
 	void BlockedRight()
 	{
-		if(facingDir == facing.Right || movingDir == moving.Right)
+		if(hitInfo.collider.GetComponent<Environment>().typeList != Environment.types.wood && isCrounch == true)
 		{
-			blockedRight = true;
-			vectorMove.x = 0f;
-			thisTransform.position = new Vector3(hitInfo.point.x-(halfMyX-0.01f),thisTransform.position.y, 0f); // .01 less than collision width.
-			
+			if(facingDir == facing.Right || movingDir == moving.Right)
+			{
+				blockedRight = true;
+				vectorMove.x = 0f;
+				thisTransform.position = new Vector3(hitInfo.point.x-(halfMyX-0.01f),thisTransform.position.y, 0f); // .01 less than collision width.
+				
+			}
 		}
 	}
 	
 	void BlockedLeft()
 	{
-		if(facingDir == facing.Left || movingDir == moving.Left)
+		if(hitInfo.collider.GetComponent<Environment>().typeList != Environment.types.wood && isCrounch == true)
 		{
-			blockedLeft = true;
-			vectorMove.x = 0f;
-			thisTransform.position = new Vector3(hitInfo.point.x+(halfMyX-0.01f),thisTransform.position.y, 0f); // .01 less than collision width.
+			if(facingDir == facing.Left || movingDir == moving.Left)
+			{
+				blockedLeft = true;
+				vectorMove.x = 0f;
+				thisTransform.position = new Vector3(hitInfo.point.x+(halfMyX-0.01f),thisTransform.position.y, 0f); // .01 less than collision width.
+			}
 		}
 	}
 	

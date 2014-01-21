@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour {
 	public Checkpoint lastCheckpointValidated;
 	private Player _player;
 	private List<GameObject> gameplayObjects;
+	private GameObject _hidingPlane;
 
 	// Use this for initialization
 	void Start () 
@@ -21,6 +22,7 @@ public class LevelManager : MonoBehaviour {
 		{
 			_player = GameObject.FindWithTag("Player").GetComponent<Player>();
 		}
+		_hidingPlane = FETool.findWithinChildren(this.gameObject, "TopPlane");
 
 
 		GameEventManager.TriggerGameStart();
@@ -29,7 +31,7 @@ public class LevelManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		FETool.anchorToObject(FETool.findWithinChildren(this.gameObject, "TopPlane"), Camera.main.gameObject, "xy");
+		FETool.anchorToObject(_hidingPlane, Camera.main.gameObject, "xy");
 	}
 
 	public void setActivatedCheckpoint(Checkpoint _check)

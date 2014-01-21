@@ -191,8 +191,6 @@ public class Player : Character {
 			if(!blockCoroutine && grounded) StartCoroutine("waitB4FootStep");
 		}
 		if (Input.GetKeyDown("down")) {
-
-<<<<<<< HEAD
 			if(isGrab) {isGrab = false;}
 			else 
 			{
@@ -202,13 +200,6 @@ public class Player : Character {
 					facingDir = facing.Down;
 					StartCoroutine("CrounchMode");
 				}
-=======
-			if(isGrab) {isGrab = false;StopCoroutine("checkGrabberPosition");}
-			else {
-				isCrounch = true;
-				facingDir = facing.Down;
-				StartCoroutine("CrounchMode");
->>>>>>> dfb4d75603ad0185c80ba63664ecdc1c851b368c
 			}
 		}
 		if (Input.GetKeyDown("up")) {
@@ -236,8 +227,9 @@ public class Player : Character {
 	}
 
 	void OnTriggerEnter(Collider col) {
-		if(col.gameObject.CompareTag("platformGrabber") && !grounded) {
-			StartCoroutine("checkGrabberPosition",col);
+		if(col.gameObject.CompareTag("platformGrabber") && !grounded) 
+		{
+			StartCoroutine("checkGrabberPosition", col);
 		}
 	}
 	private IEnumerator checkGrabberPosition(Collider col) {
