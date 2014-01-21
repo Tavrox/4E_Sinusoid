@@ -58,8 +58,8 @@ public class Character : MonoBehaviour
 	[SerializeField] private float maxVelY = 0f;
 		
 	[SerializeField] private RaycastHit hitInfo;
-	[SerializeField] private float halfMyX;
-	[SerializeField] private float halfMyY;
+	[SerializeField] protected float halfMyX;
+	[SerializeField] protected float halfMyY;
 	
 //	[SerializeField] private float absVel2X;
 //	[SerializeField] private float absVel2Y;
@@ -79,7 +79,7 @@ public class Character : MonoBehaviour
 	{
 		maxVelY = fallVel;
 		vectorMove.y = 0;
-		halfMyX = GetComponentInChildren<Transform>().GetComponentInChildren<OTAnimatingSprite>().size.x * 0.5f;
+		halfMyX = GetComponentInChildren<Transform>().GetComponentInChildren<OTAnimatingSprite>().size.x * 0.5f - 0.5f;
 		halfMyY = GetComponentInChildren<Transform>().GetComponentInChildren<OTAnimatingSprite>().size.y * 0.5f + 0.2f;
 		StartCoroutine(StartGravity());
 	}

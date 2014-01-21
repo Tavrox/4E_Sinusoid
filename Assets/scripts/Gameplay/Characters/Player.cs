@@ -192,7 +192,7 @@ public class Player : Character {
 		}
 		if (Input.GetKeyDown("down")) {
 
-			if(isGrab) {isGrab = false;}
+			if(isGrab) {isGrab = false;StopCoroutine("checkGrabberPosition");}
 			else {
 				isCrounch = true;
 				facingDir = facing.Down;
@@ -200,7 +200,7 @@ public class Player : Character {
 			}
 		}
 		if (Input.GetKeyDown("up")) {
-			isGrab = false;
+			if(isGrab) {isGrab = false;StopCoroutine("checkGrabberPosition");}
 			isJump = true; 
 		}
 		#endregion
@@ -224,12 +224,20 @@ public class Player : Character {
 	}
 
 	void OnTriggerEnter(Collider col) {
-		if(col.gameObject.CompareTag("platformGrabber")) {
-			isGrab = true;
-			//gameObject.collider.enabled=false;
+		if(col.gameObject.CompareTag("platformGrabber") && !grounded) {
+			StartCoroutine("checkGrabberPosition",col);
 		}
 	}
-
+	private IEnumerator checkGrabberPosition(Collider col) {
+		yield return new WaitForSeconds(0.01f);
+		//print(col.transform.position.y-(thisTransform.position.y+halfMyY));
+		if(col.transform.position.y-(thisTransform.position.y+halfMyY) > -0.3f) {
+			isGrab = true;
+		}
+		else {
+			StartCoroutine("checkGrabberPosition",col);
+		}
+	}
 
 	private void offsetCircles () { //Set circles position
 		soundEmitt1.setCharacterMoveOffset(vectorFixed.x);
