@@ -504,6 +504,10 @@ namespace X_UniTMX
 			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
 			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
 
+			boxCollider.isStatic = true;
+			boxCollider.tag = "soundStopper";
+			boxCollider.layer = 8;
+
 			if (ColliderType == "WoodColl")
 			{
 				Environment _env = boxCollider.AddComponent<Environment>();
@@ -517,7 +521,6 @@ namespace X_UniTMX
 			{
 				boxCollider.tag = "platformGrabber";
 			}
-
 			
 			return boxCollider;
 		}

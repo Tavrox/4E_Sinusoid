@@ -37,9 +37,9 @@ public class TiledMapComponent : MonoBehaviour {
 		XmlDocument document = new XmlDocument();
 		document.LoadXml(MapTMX.text);
 		tiledMap = new Map(document, MakeUniqueTiles, fullPath, mapPath, this.gameObject);//, MeshRendererPrefab);
-		CollidersWidth[0] = 20f;
-		CollidersWidth[1] = 20f;
-		CollidersWidth[2] = 20f;
+		CollidersWidth[0] = 50f;
+		CollidersWidth[1] = 50f;
+		CollidersWidth[2] = 50f;
 		CollidersLayerName[0] = "GroundColl";
 		CollidersLayerName[1] = "WoodColl";
 		CollidersLayerName[2] = "DitchColl";

@@ -49,17 +49,21 @@ public class UIThing : MonoBehaviour {
 	{
 		switch (thingTypesList)
 		{
-			case (Thingtypes.ReloadFromCP) :
-			{
-				GameEventManager.TriggerRespawn();
-				break;
-			}
-			case (Thingtypes.BackToMainMenu) :
-			{
-				_LevMan.leaveForMenu();
-				break;
-			}
-
+		case (Thingtypes.ReloadFromCP) :
+		{
+			GameEventManager.TriggerRespawn();
+			break;
+		}
+		case (Thingtypes.BackToMainMenu) :
+		{
+			_LevMan.leaveForMenu();
+			break;
+		}
+		case (Thingtypes.ResumeGame) :
+		{
+			GameEventManager.TriggerGameUnpause();
+			break;
+		}
 		}
 	}
 

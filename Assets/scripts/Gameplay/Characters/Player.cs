@@ -193,10 +193,14 @@ public class Player : Character {
 		if (Input.GetKeyDown("down")) {
 
 			if(isGrab) {isGrab = false;}
-			else {
-				isCrounch = true;
-				facingDir = facing.Down;
-				StartCoroutine("CrounchMode");
+			else 
+			{
+				if ( onEnvironment.typeList == Environment.types.wood)
+				{
+					isCrounch = true;
+					facingDir = facing.Down;
+					StartCoroutine("CrounchMode");
+				}
 			}
 		}
 		if (Input.GetKeyDown("up")) {
@@ -280,6 +284,15 @@ public class Player : Character {
 	{
 		yield return new WaitForSeconds(crounchTime);
 		isCrounch = false;
+	}
+
+	public override void BlockedUp()
+	{
+		if(vectorMove.y > 0 && aboveEnvironment.typeList != Environment.types.wood)
+		{
+			vectorMove.y = 0f;
+			blockedUp = true;
+		}
 	}
 	
 	#region PlaySounds

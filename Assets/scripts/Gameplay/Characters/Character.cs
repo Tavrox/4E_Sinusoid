@@ -46,6 +46,7 @@ public class Character : MonoBehaviour
 	protected Vector3 vectorMove;
 	private Vector3 mypos;
 	public Environment onEnvironment;
+	public Environment aboveEnvironment;
 	
 	[Range (0,10)] 	public float 	moveVel = 4f;
 	[Range (0,30)] 	public float 	jumpVel = 16f;
@@ -198,6 +199,8 @@ public class Character : MonoBehaviour
 		// BLOCKED TO UP
 		if (Physics.Raycast(mypos, Vector3.up, out hitInfo, halfMyY, groundMask))
 		{
+			if (hitInfo.collider.GetComponent<Environment>() != null)
+			{aboveEnvironment = hitInfo.collider.GetComponent<Environment>();}
 			BlockedUp();
 			Debug.DrawLine (thisTransform.position, hitInfo.point, Color.red);
 		}
@@ -220,8 +223,8 @@ public class Character : MonoBehaviour
 			Debug.DrawRay(mypos, Vector3.left, Color.yellow);
 		}
 	}
-	
-	void BlockedUp()
+
+	public virtual void BlockedUp()
 	{
 		if(vectorMove.y > 0)
 		{
