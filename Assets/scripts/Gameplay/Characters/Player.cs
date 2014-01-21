@@ -231,7 +231,7 @@ public class Player : Character {
 	private IEnumerator checkGrabberPosition(Collider col) {
 		yield return new WaitForSeconds(0.01f);
 		//print(col.transform.position.y-(thisTransform.position.y+halfMyY));
-		if(col.transform.position.y-(thisTransform.position.y+halfMyY) > -0.3f) {
+		if(col.transform.position.y-(thisTransform.position.y+halfMyY) > -0.5f) {
 			isGrab = true;
 		}
 		else {
