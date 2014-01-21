@@ -48,6 +48,10 @@ public class Environment : MonoBehaviour {
 
 	public void adaptCollider()
 	{
+		if (typeImport != "")
+		{
+			typeImport = typeList.ToString();
+		}
 		foreach (KeyValuePair<string, types> _obj in dicoEnv)
 		{
 			if(typeImport == _obj.Key)

@@ -18,9 +18,10 @@ public class Player : Character {
 	public float footStepDelay;
 //	private bool isSprint = false;
 
-//	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
-
 	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
+	[HideInInspector] public bool hasFallen;
+
+	private float crounchTime = 0.5f;
 
 	public FESound WalkSound;
 	public FESound RunSound;
@@ -48,8 +49,10 @@ public class Player : Character {
 
 		if (WalkSound != null)
 		{
-			InvokeRepeating("playFootstep",5f,WalkSound.RepeatRate);
-			InvokeRepeating("playRunstep",3f,WalkSound.RepeatRate);
+			InvokeRepeating("playFootstepLeft",0f,WalkSound.RepeatRate);
+			InvokeRepeating("playFootstepRight",WalkSound.Delay,WalkSound.RepeatRate);
+			InvokeRepeating("playRunstepLeft",0f,RunSound.RepeatRate);
+			InvokeRepeating("playRunstepRight",WalkSound.Delay,RunSound.RepeatRate);
 		}
 
 		//Creating waves game objects
@@ -89,8 +92,6 @@ public class Player : Character {
 		isRight = false;
 		isJump = false;
 		isGoDown = false;
-		isPass = false;
-		isCrounch = false;
 
 		movingDir = moving.None;
 
@@ -136,6 +137,7 @@ public class Player : Character {
 		#endregion
 		#region Instru Skill (R)
 		if (Input.GetKeyDown(KeyCode.R)  && grounded && !specialCast) {
+			playSoundInstru();
 			StartCoroutine("specialCircleCast");
 		}
 		#endregion
@@ -188,15 +190,21 @@ public class Player : Character {
 			shootLeft = false;
 			if(!blockCoroutine && grounded) StartCoroutine("waitB4FootStep");
 		}
-		if (Input.GetKey(KeyCode.DownArrow)) {
-			isCrounch = true;
-			facingDir = facing.Down;
+		if (Input.GetKeyDown("down")) {
+			if(isGrab) {isGrab = false;}
+			else 
+			{
+				if ( onEnvironment.typeList == Environment.types.wood)
+				{
+					isCrounch = true;
+					facingDir = facing.Down;
+					StartCoroutine("CrounchMode");
+				}
+			}
 		}
 		if (Input.GetKeyDown("up")) {
+			if(isGrab) {isGrab = false;StopCoroutine("checkGrabberPosition");}
 			isJump = true; 
-		}
-		if(Input.GetKeyDown("space")) {
-			isPass = true;
 		}
 		#endregion
 		#region Alpha (1), (2), (3)
@@ -217,6 +225,24 @@ public class Player : Character {
 		}
 		#endregion
 	}
+
+	void OnTriggerEnter(Collider col) {
+		if(col.gameObject.CompareTag("platformGrabber") && !grounded) 
+		{
+			StartCoroutine("checkGrabberPosition", col);
+		}
+	}
+	private IEnumerator checkGrabberPosition(Collider col) {
+		yield return new WaitForSeconds(0.01f);
+		//print(col.transform.position.y-(thisTransform.position.y+halfMyY));
+		if(col.transform.position.y-(thisTransform.position.y+halfMyY) > -0.5f) {
+			isGrab = true;
+		}
+		else {
+			StartCoroutine("checkGrabberPosition",col);
+		}
+	}
+
 	private void offsetCircles () { //Set circles position
 		soundEmitt1.setCharacterMoveOffset(vectorFixed.x);
 		soundEmitt2.setCharacterMoveOffset(vectorFixed.x);
@@ -226,7 +252,7 @@ public class Player : Character {
 		pebbleBar.transform.position = new Vector3((powerPebble/2)+thisTransform.position.x,thisTransform.position.y+2f,-30f); //Replace powerBar as resize is made from center expanding to each side
 	}
 	IEnumerator waitB4FootStep() { //Short Delay before the sprite actually touches the ground (edit when anim is finished)
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(0.3f);
 		if(!blockCoroutine && grounded) StartCoroutine("footStep");
 	}
 	IEnumerator footStep() { //Footsteps management
@@ -261,20 +287,49 @@ public class Player : Character {
 		//yield return new WaitForSeconds(soundInstru1.getLifeTime());
 		specialCast = false; //Not playing anymore, can move again
 	}
-	
-	#region PlaySounds
-	private void playFootstep()
+
+	IEnumerator CrounchMode()
 	{
-		if ((isLeft == true || isRight == true) && grounded )
+		yield return new WaitForSeconds(crounchTime);
+		isCrounch = false;
+	}
+
+	public override void BlockedUp()
+	{
+		if(vectorMove.y > 0 && aboveEnvironment.typeList != Environment.types.wood)
 		{
-			WalkSound.playSound(onEnvironment);
+			vectorMove.y = 0f;
+			blockedUp = true;
 		}
 	}
-	private void playRunstep()
+	
+	#region PlaySounds
+	private void playFootstepLeft()
+	{
+		if ((isLeft == true || isRight == true) && grounded && isSprint == false )
+		{
+			WalkSound.playLeftSound(onEnvironment);
+		}
+	}
+	private void playFootstepRight()
+	{
+		if ((isLeft == true || isRight == true) && grounded && isSprint == false  )
+		{
+			WalkSound.playRightSound(onEnvironment);
+		}
+	}
+	private void playRunstepRight()
 	{
 		if ((isLeft == true || isRight == true) && grounded && isSprint )
 		{
-			WalkSound.playSound(onEnvironment);
+			RunSound.playRightSound(onEnvironment);
+		}
+	}
+	private void playRunstepLeft()
+	{
+		if ((isLeft == true || isRight == true) && grounded && isSprint )
+		{
+			RunSound.playLeftSound(onEnvironment);
 		}
 	}
 	private void playSoundPrepareRockThrow()
@@ -295,7 +350,7 @@ public class Player : Character {
 	}
 	private void playSoundInstru()
 	{
-		InstruSound.playSound(onEnvironment);
+		InstruSound.playSound();
 	}
 	private void playSoundStandUp()
 	{
@@ -321,7 +376,6 @@ public class Player : Character {
 		isLeft = false;
 		isRight = false;
 		isJump = false;
-		isPass = false;
 		movingDir = moving.None;
 	}
 	private void GamePause() {
@@ -329,7 +383,6 @@ public class Player : Character {
 		isLeft = false;
 		isRight = false;
 		isJump = false;
-		isPass = false;
 		paused = true;
 		movingDir = moving.None;
 		

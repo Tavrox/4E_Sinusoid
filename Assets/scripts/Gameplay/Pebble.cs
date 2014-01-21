@@ -33,6 +33,7 @@ public class Pebble : MonoBehaviour {
 	}
 	IEnumerator killPebble() {
 		yield return new WaitForSeconds(soundEmitt.getLifeTime());
+		enabled = false;
 		soundEmitt.destroyCircle();
 		Destroy(gameObject);
 	}
