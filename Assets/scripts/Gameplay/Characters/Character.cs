@@ -284,7 +284,6 @@ public class Character : MonoBehaviour
 		{
 			if( leftEnvironment != null && leftEnvironment.typeList != Environment.types.wood && isCrounch != true)
 			{
-				print (leftEnvironment + leftEnvironment.typeImport + isCrounch);
 				blockedLeft = true;
 				vectorMove.x = 0f;
 				thisTransform.position = new Vector3(hitInfo.point.x+(halfMyX-0.01f),thisTransform.position.y, 0f); // .01 less than collision width.

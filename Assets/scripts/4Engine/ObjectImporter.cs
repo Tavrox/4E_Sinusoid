@@ -139,6 +139,10 @@ public class ObjectImporter : MonoBehaviour {
 		itemNodes = xmlDoc.SelectNodes("map/objectgroup");
 
 		ListObjects.Clear();
+		ListLayers.Clear();
+
+		ListLayers.Add("LevelBricks");
+
 
 		foreach (LevelBrick.brickEnum _brick in Enum.GetValues(typeof(LevelBrick.brickEnum)))
 		{
@@ -174,7 +178,8 @@ public class ObjectImporter : MonoBehaviour {
 					if (Resources.Load(path + childType) != null)
 					{
 						GameObject _instance = Instantiate(Resources.Load(path + childType)) as GameObject;
-						_instance.transform.parent = objectContainer.transform;
+						if (objectContainer.name != "BUG")
+						{ _instance.transform.parent = objectContainer.transform;}
 						float _posX = float.Parse(children.Attributes.GetNamedItem("x").Value) / 50f;
 						float _posY = (float.Parse(children.Attributes.GetNamedItem("y").Value) / 50f) *-1f;
 						if (children.Attributes.GetNamedItem("width") != null)

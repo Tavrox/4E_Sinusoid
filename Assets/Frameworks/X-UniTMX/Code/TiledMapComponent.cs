@@ -40,9 +40,11 @@ public class TiledMapComponent : MonoBehaviour {
 		CollidersWidth[0] = 50f;
 		CollidersWidth[1] = 50f;
 		CollidersWidth[2] = 50f;
+		CollidersWidth[3] = 50f;
 		CollidersLayerName[0] = "GroundColl";
 		CollidersLayerName[1] = "WoodColl";
 		CollidersLayerName[2] = "DitchColl";
+		CollidersLayerName[3] = "GrabColl";
 	}
 
 	public void GenerateColliders()
