@@ -354,6 +354,14 @@ public class Walker : Enemy {
 	}
 
 	private void GameStart () {
+<<<<<<< HEAD
+		if(FindObjectOfType(typeof(Walker)) && this != null) {
+			//transform.localPosition = spawnPos;
+			setIniState();
+			enabled = true;
+		}
+=======
+>>>>>>> 55d6b6ca4e6dd5e0aae91b10b4ecbc0d7877cae6
 	}
 	
 	private void GameOver () {
