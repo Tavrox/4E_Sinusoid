@@ -48,7 +48,7 @@ public class LevelManager : MonoBehaviour {
 	{
 		_player.transform.position = new Vector3(lastCheckpointValidated.transform.position.x, lastCheckpointValidated.transform.position.y, _player.transform.position.z);
 		_player.enabled = true;
-		lastCheckpointValidated.playSoundRespawn();
+//		lastCheckpointValidated.playSoundRespawn();
 
 	}
 

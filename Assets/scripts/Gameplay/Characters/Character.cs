@@ -264,7 +264,8 @@ public class Character : MonoBehaviour
 	{
 		if (hitInfo.collider.GetComponent<Environment>() != null)
 		{rightEnvironment = hitInfo.collider.GetComponent<Environment>();}
-		if( isRight != null && rightEnvironment.typeList != Environment.types.wood && isCrounch == false)
+
+		if( isRight != null && rightEnvironment != null && rightEnvironment.typeList != Environment.types.wood && isCrounch == false)
 		{
 			if(facingDir == facing.Right || movingDir == moving.Right)
 			{

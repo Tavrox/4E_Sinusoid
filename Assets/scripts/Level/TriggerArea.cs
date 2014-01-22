@@ -17,11 +17,11 @@ public class TriggerArea : MonoBehaviour {
 	
 	}
 
-	void onTriggerEnter(Collider other)
+	void OnTriggerStay(Collider other)
 	{
 		if (linkedObject.brickType == LevelBrick.brickEnum.Turret && other.CompareTag("Player") == true)
 		{
-			Debug.Log("PlayerSpotted");
+			linkedObject.GetComponent<Turret>().changeTarget(other.gameObject);
 		}
 	}
 }

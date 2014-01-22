@@ -66,7 +66,6 @@ public class SubUI : MonoBehaviour {
 	{
 		foreach (KeyValuePair<string, GameObject> _obj in ContainedObject)
 		{
-			print (_obj);
 			_obj.Value.GetComponent<UIThing>().makeDisappear();
 		}
 	}
