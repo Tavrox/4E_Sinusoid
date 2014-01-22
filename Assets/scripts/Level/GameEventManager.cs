@@ -18,7 +18,7 @@ public static class GameEventManager {
 	{
 		if(GameStart != null)
 		{
-			Debug.Log("GAMESTART");
+			Debug.LogWarning("GAMESTART");
 			state = GameState.Live;
 			GameStart();
 		}
@@ -27,7 +27,7 @@ public static class GameEventManager {
 	public static void TriggerGameOver(){
 		if(GameOver != null && state != GameState.GameOver)
 		{
-			Debug.Log("GAMEOVER");
+			Debug.LogWarning("GAMEOVER");
 			state = GameState.GameOver;
 			GameOver();
 		}
@@ -47,7 +47,7 @@ public static class GameEventManager {
 	{
 		if(GamePause != null && state != GameState.Pause)
 		{
-			Debug.Log("PAUSE");
+			Debug.LogWarning("PAUSE");
 			state = GameState.Pause;
 			GamePause();
 		}
@@ -56,7 +56,7 @@ public static class GameEventManager {
 	{
 		if(GameUnpause != null)
 		{
-			Debug.Log("UNPAUSE");
+			Debug.LogWarning("UNPAUSE");
 			state = GameState.Live;
 			GameUnpause();
 		}
@@ -65,7 +65,7 @@ public static class GameEventManager {
 	{
 		if(Respawn != null)
 		{
-			Debug.Log("RESPAWN");
+			Debug.LogWarning("RESPAWN");
 			state = GameState.Live;
 			Respawn();
 		}

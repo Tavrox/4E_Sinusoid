@@ -30,6 +30,10 @@ namespace X_UniTMX
 		void OnEnable()
 		{
 			collidersLayers = new List<string>();
+			collidersLayers.Add("GroundColl");
+			collidersLayers.Add("WoodColl");
+			collidersLayers.Add("DitchColl");
+			collidersLayers.Add("GrabColl");
 			//collidersWidth = new List<float>();
 			//collidersZDepth = new List<float>();
 			//collidersIsInner = new List<bool>();

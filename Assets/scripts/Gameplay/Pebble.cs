@@ -60,18 +60,18 @@ public class Pebble : MonoBehaviour {
 			//thisRigidbody.AddForce(new Vector3(10f,20f,0));
 			soundEmitt.circleWalkToSprint();
 			/*if(!isSounding) {*/isSounding=true;soundEmitt.resetCircle();/*}*/
-			if (other.gameObject.GetComponent<Environment>() == null)
-			{
-				Debug.Log("There's no environment comp on the object");
-			}
-			else
-			{
-				Environment _env = other.gameObject.GetComponent<Environment>();
-				_CollisionSound.playSound(_env);
-			}
+//			if (other.gameObject.GetComponent<Environment>() == null)
+//			{
+//				Debug.Log("There's no environment comp on the object");
+//			}
+//			else
+//			{
+//				Environment _env = other.gameObject.GetComponent<Environment>();
+//				_CollisionSound.playSound(_env);
+//			}
 		}
-		if(other.gameObject.CompareTag("Enemy") && !callerObj.CompareTag("Enemy")) {
-			soundEmitt.circleWalkToSprint();isSounding=true;soundEmitt.resetCircle();
+		if(other.gameObject.CompareTag("Enemy") && !callerObj.CompareTag("Enemy") && other.GetComponent<Enemy>().getTarget().tag != "Pebble") {
+			soundEmitt.circleWalkToSprint();isSounding=true;soundEmitt.resetCircle();print("QUI M'A JET2 CE CAILLOU");
 				other.GetComponent<Enemy>().setTarget(callerObj);
 				other.GetComponent<Enemy>().activeChasing();
 		}

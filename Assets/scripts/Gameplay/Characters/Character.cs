@@ -47,11 +47,13 @@ public class Character : MonoBehaviour
 	private Vector3 mypos;
 	public Environment onEnvironment;
 	public Environment aboveEnvironment;
+	public Environment leftEnvironment;
+	public Environment rightEnvironment;
 	
 	[Range (0,10)] 	public float 	moveVel = 4f;
 	[Range (0,30)] 	public float 	jumpVel = 16f;
 	[Range (0,30)] 	private float 	jump2Vel = 14f;
-	[Range (1,2)] 	private int 		maxJumps = 2;
+	[Range (1,2)] 	private int 		maxJumps = 1;
 	[Range (0,25)]  public float 	fallVel = 18f;
 	
 	[SerializeField] private int jumps = 0;
@@ -190,19 +192,23 @@ public class Character : MonoBehaviour
 		}
 		if (Physics.Raycast(mypos, Vector3.down, out hitInfo, halfMyY, groundMask))
 		{
-			if (hitInfo.collider.GetComponent<Environment>() != null)
-			{onEnvironment = hitInfo.collider.GetComponent<Environment>();}
 			BlockedDown();
+		}
+		else
+		{
+			aboveEnvironment = null;
 		}
 		
 		
 		// BLOCKED TO UP
 		if (Physics.Raycast(mypos, Vector3.up, out hitInfo, halfMyY, groundMask))
 		{
-			if (hitInfo.collider.GetComponent<Environment>() != null)
-			{aboveEnvironment = hitInfo.collider.GetComponent<Environment>();}
 			BlockedUp();
 			Debug.DrawLine (thisTransform.position, hitInfo.point, Color.red);
+		}
+		else
+		{
+			aboveEnvironment = null;
 		}
 		
 		// Blocked on right
@@ -213,6 +219,10 @@ public class Character : MonoBehaviour
 			BlockedRight();
 			Debug.DrawRay(mypos, Vector3.right, Color.cyan);
 		}
+		else
+		{
+			rightEnvironment = null;
+		}
 		
 		// Blocked on left
 		if(	Physics.Raycast(mypos, Vector3.left, out hitInfo, halfMyX, groundMask)
@@ -222,10 +232,16 @@ public class Character : MonoBehaviour
 			BlockedLeft();
 			Debug.DrawRay(mypos, Vector3.left, Color.yellow);
 		}
+		else
+		{
+			leftEnvironment = null;
+		}
 	}
 
 	public virtual void BlockedUp()
 	{
+		if (hitInfo.collider.GetComponent<Environment>() != null)
+		{aboveEnvironment = hitInfo.collider.GetComponent<Environment>();}
 		if(vectorMove.y > 0)
 		{
 			vectorMove.y = 0f;
@@ -234,6 +250,8 @@ public class Character : MonoBehaviour
 	}
 	void BlockedDown()
 	{
+		if (hitInfo.collider.GetComponent<Environment>() != null)
+		{onEnvironment = hitInfo.collider.GetComponent<Environment>();}
 		if (vectorMove.y <= 0 && isCrounch == false)
 		{
 			grounded = true;
@@ -244,23 +262,27 @@ public class Character : MonoBehaviour
 	}
 	void BlockedRight()
 	{
-		if(hitInfo.collider.GetComponent<Environment>().typeList != Environment.types.wood && isCrounch == true)
+		if (hitInfo.collider.GetComponent<Environment>() != null)
+		{rightEnvironment = hitInfo.collider.GetComponent<Environment>();}
+		if( isRight != null && rightEnvironment.typeList != Environment.types.wood && isCrounch == false)
 		{
 			if(facingDir == facing.Right || movingDir == moving.Right)
 			{
 				blockedRight = true;
 				vectorMove.x = 0f;
 				thisTransform.position = new Vector3(hitInfo.point.x-(halfMyX-0.01f),thisTransform.position.y, 0f); // .01 less than collision width.
-				
+				Debug.LogWarning(isCrounch + " blockedRight");
 			}
 		}
 	}
 	
 	void BlockedLeft()
 	{
-		if(hitInfo.collider.GetComponent<Environment>().typeList != Environment.types.wood && isCrounch == true)
+		if (hitInfo.collider.GetComponent<Environment>() != null)
+		{leftEnvironment = hitInfo.collider.GetComponent<Environment>();}
+		if(facingDir == facing.Left || movingDir == moving.Left)
 		{
-			if(facingDir == facing.Left || movingDir == moving.Left)
+			if( leftEnvironment != null && leftEnvironment.typeList != Environment.types.wood && isCrounch != true)
 			{
 				blockedLeft = true;
 				vectorMove.x = 0f;

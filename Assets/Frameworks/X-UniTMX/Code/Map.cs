@@ -47,21 +47,6 @@ namespace X_UniTMX
 	/// </summary>
 	public class Map
 	{
-		public enum typesEnv
-		{
-			Stone,
-			Aura,
-			Electric,
-			Touchy,
-			Wood,
-			Fragile,
-			Remote,
-			Mobile,
-			Reverb,
-			Floorboard,
-			Stalactite,
-		};
-		public typesEnv typePick;
 
 		/// <summary>
 		/// The difference in layer depth between layers.
@@ -688,7 +673,7 @@ namespace X_UniTMX
 			_rigid.constraints = RigidbodyConstraints.FreezeAll;
 			*/
 
-			Ditch _ditch = polygonCollider.AddComponent<Ditch>();
+			polygonCollider.AddComponent<Ditch>();
 
 			return polygonCollider;
 		}
