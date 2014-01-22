@@ -4,57 +4,57 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>Lueur3_03.png</key>
+            <key>Tile01Fond.jpg</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{100,250}}</string>
+                <string>{{0,0},{300,300}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,250}}</string>
+                <string>{{0,0},{300,300}}</string>
                 <key>sourceSize</key>
-                <string>{100,250}</string>
+                <string>{300,300}</string>
             </dict>
-            <key>Lueur3_06.png</key>
+            <key>Tile02Fond.jpg</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,0},{300,150}}</string>
+                <string>{{300,0},{300,300}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{300,150}}</string>
+                <string>{{0,0},{300,300}}</string>
                 <key>sourceSize</key>
-                <string>{300,150}</string>
+                <string>{300,300}</string>
             </dict>
-            <key>Lueur3_08.png</key>
+            <key>Tile03Fond.jpg</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,250},{300,150}}</string>
+                <string>{{600,0},{300,300}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{300,150}}</string>
+                <string>{{0,0},{300,300}}</string>
                 <key>sourceSize</key>
-                <string>{300,150}</string>
+                <string>{300,300}</string>
             </dict>
-            <key>Lueur3_10.png</key>
+            <key>Tile04Fond.jpg</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,250},{100,250}}</string>
+                <string>{{0,300},{300,300}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,250}}</string>
+                <string>{{0,0},{300,300}}</string>
                 <key>sourceSize</key>
-                <string>{100,250}</string>
+                <string>{300,300}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -62,13 +62,13 @@
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>TileLueur.png</string>
+            <string>TileFond.png</string>
             <key>size</key>
-            <string>{512,512}</string>
+            <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1cc134297b14b9a8242b0920f2cf5c12:e1026c5602e44c7c168c415c0eea5bc1:0963f8e57ba65e650560c2a27fc599ec$</string>
+            <string>$TexturePacker:SmartUpdate:1d7d6815904aa176869df9df5164472e:5cf2fce1715c96d877f42edae18e6c8c:99f686d7de7d8123b79f625fe4c0d703$</string>
             <key>textureFileName</key>
-            <string>TileLueur.png</string>
+            <string>TileFond.png</string>
         </dict>
     </dict>
 </plist>
