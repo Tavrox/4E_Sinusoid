@@ -21,7 +21,7 @@ public class PlayerAnims : MonoBehaviour
 	public Transform spriteParent;
 	public OTAnimatingSprite animSprite;
 	public OTAnimation anim;
-	
+	public int normalFPS=14, sprintFPS=20;
 	private animDef currentAnim;
 	private Character _character;
 	private Player _player;
@@ -33,6 +33,7 @@ public class PlayerAnims : MonoBehaviour
 	{
 		_character 	= GetComponent<Character>();
 		_player 	= GetComponent<Player>();
+		anim = animSprite.animation;//GameObject.Find("Player/spriteParent/playerSprite-1").GetComponent<OTAnimatingSprite
 	}
 	void Update() 
 	{
@@ -52,14 +53,15 @@ public class PlayerAnims : MonoBehaviour
 	{
 		if(_character.isRight && _character.grounded && currentAnim!=animDef.RunRight && _player.isSprint)
 		{
-
 			currentAnim = animDef.RunRight;
+			anim.fps = sprintFPS;
 			animSprite.Play("run");
 			NormalScaleSprite();;
 		}
 		if(_character.isLeft && _character.grounded && currentAnim!=animDef.RunLeft && _player.isSprint)
 		{
 			currentAnim = animDef.RunLeft;
+			anim.fps = sprintFPS;
 			animSprite.Play("run");
 			InvertSprite();
 		}
@@ -69,15 +71,16 @@ public class PlayerAnims : MonoBehaviour
 		
 		if(_character.isRight && _character.grounded && currentAnim!=animDef.WalkRight && !_player.isSprint)
 		{
-			
 			currentAnim = animDef.WalkRight;
 			animSprite.Play("walk");
+			anim.fps = normalFPS;
 			NormalScaleSprite();;
 		}
 		if(_character.isLeft && _character.grounded && currentAnim!=animDef.WalkLeft && !_player.isSprint)
 		{
 			currentAnim = animDef.WalkLeft;
 			animSprite.Play("walk");
+			anim.fps = normalFPS;
 			InvertSprite();
 		}
 	}
@@ -87,12 +90,14 @@ public class PlayerAnims : MonoBehaviour
 		{
 			currentAnim = animDef.StandLeft;
 			animSprite.Play("stand"); // stand left
+			anim.fps = normalFPS;
 			InvertSprite();
 		}
 		if(!_character.isRight && _character.grounded && currentAnim != animDef.StandRight && _character.facingDir == Character.facing.Right && animPlaying == false)
 		{
 			currentAnim = animDef.StandRight;
 			animSprite.Play("stand"); // stand left
+			anim.fps = normalFPS;
 			NormalScaleSprite();
 		}
 	}
@@ -102,6 +107,7 @@ public class PlayerAnims : MonoBehaviour
 		{
 			currentAnim = animDef.CrounchLeft;
 			animSprite.Play("crounch");
+			anim.fps = normalFPS;
 		}
 	}
 	private void Jump()
@@ -110,12 +116,14 @@ public class PlayerAnims : MonoBehaviour
 		{
 			currentAnim = animDef.FallLeft;
 			animSprite.Play("jump"); // fall left
+			anim.fps = normalFPS;
 			InvertSprite();
 		}
 		if(_character.grounded == false && currentAnim != animDef.FallRight && _character.facingDir == Character.facing.Right)
 		{
 			currentAnim = animDef.FallRight;
 			animSprite.Play("jump"); // fall right
+			anim.fps = normalFPS;
 			NormalScaleSprite();
 		}
 	}
@@ -127,6 +135,7 @@ public class PlayerAnims : MonoBehaviour
 			animPlaying = true;
 			currentAnim = animDef.ShootRight;
 			animSprite.Play("throw_knife");
+			anim.fps = normalFPS;
 			InvertSprite();
 			StartCoroutine( WaitAndCallback( anim.GetDuration(anim.framesets[3]) ) );
 		}
@@ -135,6 +144,7 @@ public class PlayerAnims : MonoBehaviour
 			animPlaying = true;
 			currentAnim = animDef.ShootRight;
 			animSprite.Play("throw_knife");
+			anim.fps = normalFPS;
 			NormalScaleSprite();
 			StartCoroutine( WaitAndCallback( anim.GetDuration(anim.framesets[3]) ) );
 		}
@@ -147,6 +157,7 @@ public class PlayerAnims : MonoBehaviour
 		{
 			animPlaying = true;
 			animSprite.Play("hurt");
+			anim.fps = normalFPS;
 			StartCoroutine( WaitAndCallback( anim.GetDuration(anim.framesets[2]) ) );
 			InvertSprite();
 		}
@@ -154,6 +165,7 @@ public class PlayerAnims : MonoBehaviour
 		{
 			animPlaying = true;
 			animSprite.Play("hurt");
+			anim.fps = normalFPS;
 			StartCoroutine( WaitAndCallback( anim.GetDuration(anim.framesets[2]) ) );
 			NormalScaleSprite();
 		}

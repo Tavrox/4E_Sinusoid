@@ -84,5 +84,10 @@ public class Turret : LevelBrick {
 //		_rotating.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Tan((Mathf.Abs(rotPosX - tarPosX) / Mathf.Abs(rotPosY - tarPosY))));
 	
 	}
+	public void changeTarget(GameObject _newTarget)
+	{
+		_target.transform.position = _newTarget.transform.position;
+
+	}
 
 }

@@ -38,6 +38,13 @@ public class TiledMapComponent : MonoBehaviour {
 		document.LoadXml(MapTMX.text);
 		tiledMap = new Map(document, MakeUniqueTiles, fullPath, mapPath, this.gameObject);//, MeshRendererPrefab);
 		CollidersWidth[0] = 50f;
+		CollidersWidth[1] = 50f;
+		CollidersWidth[2] = 50f;
+		CollidersWidth[3] = 50f;
+		CollidersLayerName[0] = "GroundColl";
+		CollidersLayerName[1] = "WoodColl";
+		CollidersLayerName[2] = "DitchColl";
+		CollidersLayerName[3] = "GrabColl";
 	}
 
 	public void GenerateColliders()
@@ -50,22 +57,44 @@ public class TiledMapComponent : MonoBehaviour {
 				List<MapObject> colliders = collisionLayer.Objects;
 				foreach (MapObject collider in colliders)
 				{
+					print (collider.Name);
+					print (collisionLayer.Name);
 					Debug.Log(collider.MapObjectType);
 					switch (collider.MapObjectType)
 					{
-						case MapObjectType.Box:
+					case MapObjectType.Box :
+					{
+						switch(collisionLayer.Name)
+						{
+						case ("GroundColl") :
+						{
 							tiledMap.GenerateBoxCollider(collider, CollidersZDepth[i], CollidersWidth[i]);
 							tiledMap.GeneratePebbleCollider(collider, CollidersZDepth[i], CollidersWidth[i]);
 							break;
-						case MapObjectType.Ellipse:
-							tiledMap.GenerateEllipseCollider(collider, CollidersZDepth[i], CollidersWidth[i]);
+						}
+						default :
+						{
+							tiledMap.GenerateSpecialCollider(collider, collisionLayer.Name, CollidersZDepth[i], CollidersWidth[i]);
 							break;
-						case MapObjectType.Polygon:
-							tiledMap.GeneratePolygonCollider(collider, CollidersZDepth[i], CollidersWidth[i], CollidersIsInner[i]);
-							break;
-						case MapObjectType.Polyline:
-							tiledMap.GeneratePolylineCollider(collider, CollidersZDepth[i], CollidersWidth[i], CollidersIsInner[i]);
-							break;
+						}
+						}
+						break;
+					}
+					case MapObjectType.Ellipse:
+					{
+						tiledMap.GenerateEllipseCollider(collider, CollidersZDepth[i], CollidersWidth[i]);
+						break;
+					}	
+					case MapObjectType.Polygon:
+					{
+						tiledMap.GeneratePolygonCollider(collider, CollidersZDepth[i], CollidersWidth[i], CollidersIsInner[i]);
+						break;
+					}
+					case MapObjectType.Polyline:
+					{
+						tiledMap.GeneratePolylineCollider(collider, CollidersZDepth[i], CollidersWidth[i], CollidersIsInner[i]);
+						break;
+					}
 					}
 				}
 			}

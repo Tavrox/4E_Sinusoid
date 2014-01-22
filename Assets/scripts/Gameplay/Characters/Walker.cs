@@ -37,7 +37,7 @@ public class Walker : Enemy {
 	private Pebble pebble1;
 	private float powerPebble;
 //	private GameObject pebbleBar;
-	private float waypointDetectionWidth;
+	public float waypointDetectionWidth;
 	public LayerMask projectorMask;
 	
 	[HideInInspector] public bool paused = false;
@@ -86,7 +86,7 @@ public class Walker : Enemy {
 		timeToWait=0;
 		pebbleDirection = 1;
 		StopCoroutine("waitB4FootStep");StopCoroutine("footStep");
-		waypointReached = chasingPlayer = endChasingPlayer = blockCoroutine = isLeft = isRight = isJump = isGoDown = isPass = isCrounch = false;
+		waypointReached = chasingPlayer = endChasingPlayer = blockCoroutine = isLeft = isRight = isJump = isGoDown = isCrounch = false;
 		movingDir = moving.None;
 		StopCoroutine("goToWaypoint");StopCoroutine("waitAtWP");
 		StartCoroutine("goToWaypoint",waypointId);
@@ -98,13 +98,12 @@ public class Walker : Enemy {
 //		isRight = false;
 //		isJump = false;
 //		isShot = false;
-//		isPass = false;
 //		movingDir = moving.None;
 		
 		offsetCircles ();
 		detectPlayer();
 		detectEndChaseArea();
-
+		if(target==null) setTarget(transform);
 		if(!endChasingPlayer) {
 			if(chasingPlayer) {/*if(target==null) stopChasing();else*/ ChasePlayer();}
 			else if(patroling) {Patrol();}
@@ -245,14 +244,14 @@ public class Walker : Enemy {
 	private void ChasePlayer () {
 		StopCoroutine("goToWaypoint");
 		StopCoroutine("waitAtWP");
-		if (target.position.x < thisTransform.position.x+waypointDetectionWidth) {
+		if (thisTransform.position.x-waypointDetectionWidth > target.position.x) {
 			//direction = Vector3.left;
 			isLeft = true;
 			isRight = false;
 			facingDir = facing.Left;
 			UpdateMovement();
 		}
-		else if (target.position.x > thisTransform.position.x-waypointDetectionWidth /*&& isLeft == false*/) {
+		else if (thisTransform.position.x+waypointDetectionWidth < target.position.x /*&& isLeft == false*/) {
 			//direction = Vector3.right;
 			isRight = true; 
 			isLeft = false;
@@ -261,8 +260,12 @@ public class Walker : Enemy {
 		}
 		else {
 			isLeft = isRight = false;
-			targetReached();
+			StartCoroutine("waitAtTarget",timeSearchingPlayer);
 		}
+	}
+	private IEnumerator waitAtTarget(float timePause) {
+		yield return new WaitForSeconds(timePause);
+		targetReached();
 	}
 	/************************
 	 *						*
@@ -335,7 +338,6 @@ public class Walker : Enemy {
 		isRight = false;
 		isJump = false;
 		isGoDown = false;
-		isPass = false;
 		isCrounch = false;
 		
 		movingDir = moving.None;
@@ -352,11 +354,14 @@ public class Walker : Enemy {
 	}
 
 	private void GameStart () {
+<<<<<<< HEAD
 		if(FindObjectOfType(typeof(Walker)) && this != null) {
 			//transform.localPosition = spawnPos;
 			setIniState();
 			enabled = true;
 		}
+=======
+>>>>>>> 55d6b6ca4e6dd5e0aae91b10b4ecbc0d7877cae6
 	}
 	
 	private void GameOver () {
@@ -364,7 +369,6 @@ public class Walker : Enemy {
 		isLeft = false;
 		isRight = false;
 		isJump = false;
-		isPass = false;
 		movingDir = moving.None;
 	}
 	private void GamePause()
@@ -373,7 +377,6 @@ public class Walker : Enemy {
 		isLeft = false;
 		isRight = false;
 		isJump = false;
-		isPass = false;
 		paused = true;
 		movingDir = moving.None;	
 	}

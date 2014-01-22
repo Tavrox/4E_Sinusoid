@@ -47,21 +47,6 @@ namespace X_UniTMX
 	/// </summary>
 	public class Map
 	{
-		public enum typesEnv
-		{
-			Stone,
-			Aura,
-			Electric,
-			Touchy,
-			Wood,
-			Fragile,
-			Remote,
-			Mobile,
-			Reverb,
-			Floorboard,
-			Stalactite,
-		};
-		public typesEnv typePick;
 
 		/// <summary>
 		/// The difference in layer depth between layers.
@@ -472,9 +457,13 @@ namespace X_UniTMX
 		{
 			GameObject boxCollider = new GameObject("Coll"+obj.GetPropertyAsString("env"));
 			BoxCollider bx = boxCollider.AddComponent<BoxCollider>();
-			boxCollider.transform.parent = this.Parent.transform;
 
-			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
+			boxCollider.transform.parent = this.Parent.transform;
+//			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
+//			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
+			
+			boxCollider.transform.position = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, 0f);
+			bx.center = new Vector3(0f,0f, zDepth);
 			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
 
 			boxCollider.isStatic = true;
@@ -494,6 +483,40 @@ namespace X_UniTMX
 			return boxCollider;
 		}
 
+		public GameObject GenerateSpecialCollider(MapObject obj, string ColliderType, float zDepth = 0, float colliderWidth = 1.0f)
+		{
+			GameObject boxCollider = new GameObject(ColliderType);
+			BoxCollider bx = boxCollider.AddComponent<BoxCollider>();
+
+			boxCollider.transform.parent = this.Parent.transform;
+//			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
+//			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
+			
+			boxCollider.transform.position = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, 0f);			
+			bx.center = new Vector3(0f,0f, zDepth);
+			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
+
+			boxCollider.isStatic = true;
+			boxCollider.tag = "soundStopper";
+			boxCollider.layer = 8;
+
+			if (ColliderType == "WoodColl")
+			{
+				Environment _env = boxCollider.AddComponent<Environment>();
+				_env.typeList = Environment.types.wood;
+			}
+			if (ColliderType == "DitchColl")
+			{
+				Ditch _ditch = boxCollider.AddComponent<Ditch>();
+			}
+			if (ColliderType == "GrabColl")
+			{
+				boxCollider.tag = "platformGrabber";
+			}
+			
+			return boxCollider;
+		}
+
 		/// <summary>
 		/// Generate a Pebble collider mesh
 		/// </summary>
@@ -504,12 +527,17 @@ namespace X_UniTMX
 		{
 			GameObject boxCollider = new GameObject("PebbleCollider");
 			BoxCollider bx = boxCollider.AddComponent<BoxCollider>();
-			boxCollider.transform.parent = this.Parent.transform;
-			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
-			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
 			
+			boxCollider.transform.parent = this.Parent.transform;
+//			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
+//			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
+			
+			boxCollider.transform.position = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, 0f);
+			bx.center = new Vector3(0f,0f, zDepth);
+			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
+
 			BoxCollider bx2 = boxCollider.AddComponent<BoxCollider>();
-			bx2.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
+			bx2.center = new Vector3(0f,0f, zDepth);
 			bx2.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
 			bx2.isTrigger = true;
 			
@@ -647,6 +675,7 @@ namespace X_UniTMX
 
 			mc.sharedMesh = colliderMesh;
 
+			/*
 			polygonCollider.isStatic = true;
 			polygonCollider.tag = "soundStopper";
 			polygonCollider.layer = 8;
@@ -654,6 +683,9 @@ namespace X_UniTMX
 			_rigid.isKinematic = false;
 			_rigid.useGravity = false;
 			_rigid.constraints = RigidbodyConstraints.FreezeAll;
+			*/
+
+			polygonCollider.AddComponent<Ditch>();
 
 			return polygonCollider;
 		}
@@ -719,6 +751,7 @@ namespace X_UniTMX
 			polylineCollider.isStatic = true;
 			polylineCollider.tag = "soundStopper";
 			polylineCollider.layer = 8;
+
 			Rigidbody _rigid = polylineCollider.AddComponent<Rigidbody>();
 			_rigid.isKinematic = false;
 			_rigid.useGravity = false;

@@ -11,15 +11,18 @@ public class Player : Character {
 	private WaveCreator soundEmitt1, soundEmitt2, soundEmitt3, soundInstru1, soundInstru2; //waves footsteps 1, 2, 3 | intru 1, 2 so that the active wave is not destroyed when calling a another one 
 	private int cptWave=1, pebbleDirection = 1, pebbleMaxStrengh = 10;//cptWave = ID of the current displayed wave (from 1 to 3)| pebbleDirection = 1 or -1 -> right or left
 	private bool 	blockCoroutine, first, 		//block the footsteps coroutine|first instru wave or not
-					specialCast, playerDirLeft; //true when playing instru (locks player and footsteps) | player goes left or not (used for offsetting footwaves center point)
+					specialCast, playerDirLeft, checkingGrabPosition; //true when playing instru (locks player and footsteps) | player goes left or not (used for offsetting footwaves center point)
 	private Pebble pebble; //Throwable pebble
 	private float powerPebble; //Throwing force added to the pebble after cast
 	private GameObject pebbleBar; //UI Bar to tell the player the power of his shoot
 	public float footStepDelay;
+	public int pebbleCount = 1;
 //	private bool isSprint = false;
 
 	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
 	[HideInInspector] public bool hasFallen;
+
+	private float crounchTime = 0.3f;
 
 	public FESound WalkSound;
 	public FESound RunSound;
@@ -90,8 +93,6 @@ public class Player : Character {
 		isRight = false;
 		isJump = false;
 		isGoDown = false;
-		isPass = false;
-		isCrounch = false;
 
 		movingDir = moving.None;
 
@@ -124,6 +125,14 @@ public class Player : Character {
 				pebbleBar.transform.position = new Vector3((powerPebble/2)+thisTransform.position.x,thisTransform.position.y+2f,-30f);
 			}
 		}
+		if (Input.GetKeyDown(KeyCode.KeypadPlus))
+		{
+			pebbleCount += 1;
+		}
+		if (Input.GetKeyDown(KeyCode.KeypadMinus))
+		{
+			pebbleCount -= 1;
+		}
 		#endregion
 		#region TEMPORARY MUST NOT BE IN FINAL VERSION (Y) & (T) -> Destroy current circles
 		if (Input.GetKeyDown(KeyCode.Y))
@@ -143,12 +152,12 @@ public class Player : Character {
 		#endregion
 		#region Sprint management (LeftShift)
 		if(Input.GetKeyDown("left shift")) {//OnPress
-			moveVel = 1.75f * moveVel; //Increase Player Speed
+			moveVel = 1.9f * moveVel; //Increase Player Speed
 			footStepDelay = footStepDelay / 2f; //Decrease FootStep Delay
 			isSprint = true;
 		}
 		if(Input.GetKeyUp("left shift")) {//OnRelease
-			moveVel = moveVel / 1.75f; //Decrease Player Speed
+			moveVel = moveVel / 1.9f; //Decrease Player Speed
 			footStepDelay = footStepDelay * 2f; //Increase FootStep Delay
 			isSprint = false;
 		}
@@ -174,31 +183,37 @@ public class Player : Character {
 		/*}*/
 		#endregion
 		#region Movement (Left), (Right), (Up), (Down), (Space)
-		if(Input.GetKey("left") && !specialCast) { //If input left & not casting instru
+		if((Input.GetKey("left") || Input.GetKey(KeyCode.Q)) && !specialCast) { //If input left & not casting instru
 			isLeft = true;
 			shootLeft = true;
 			facingDir = facing.Left;
 			if(!blockCoroutine && grounded) StartCoroutine("waitB4FootStep");
 		}
-		if((Input.GetKeyUp("left") && !specialCast) || (Input.GetKeyUp("right") && !isLeft && !specialCast)) { 
+		if(((Input.GetKeyUp("left") || Input.GetKeyUp(KeyCode.Q)) && !specialCast) || ((Input.GetKeyUp("right") || Input.GetKeyUp(KeyCode.D)) && !isLeft && !specialCast)) { 
 			StopCoroutine("footStep");
 			blockCoroutine = false;
 		}
-		if (Input.GetKey("right") && !isLeft && !specialCast) { //If input right & not casting instru
+		if ((Input.GetKey("right") || Input.GetKey(KeyCode.D)) && !isLeft && !specialCast) { //If input right & not casting instru
 			isRight = true; 
 			facingDir = facing.Right;
 			shootLeft = false;
 			if(!blockCoroutine && grounded) StartCoroutine("waitB4FootStep");
 		}
-		if (Input.GetKey(KeyCode.DownArrow)) {
-			isCrounch = true;
-			facingDir = facing.Down;
+		if ((Input.GetKeyDown("down") || Input.GetKeyDown(KeyCode.S))) {
+
+			if(isGrab) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");isGrab = false;}
+			else {
+				if ( onEnvironment.typeList == Environment.types.wood)
+				{
+					isCrounch = true;
+					facingDir = facing.Down;
+					StartCoroutine("CrounchMode");
+				}
+			}
 		}
-		if (Input.GetKeyDown("up")) {
+		if ((Input.GetKeyDown("up") || Input.GetKeyDown(KeyCode.Z))) {
+			if(isGrab) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");isGrab = false;}
 			isJump = true; 
-		}
-		if(Input.GetKeyDown("space")) {
-			isPass = true;
 		}
 		#endregion
 		#region Alpha (1), (2), (3)
@@ -218,7 +233,28 @@ public class Player : Character {
 			else if (GameEventManager.state == GameEventManager.GameState.Pause) GameEventManager.TriggerGameUnpause();
 		}
 		#endregion
+		if(grounded && checkingGrabPosition) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");}
 	}
+
+	void OnTriggerEnter(Collider col) {
+		if(col.gameObject.CompareTag("platformGrabber") && !grounded) 
+		{
+			StartCoroutine("checkGrabberPosition", col);
+		}
+	}
+	private IEnumerator checkGrabberPosition(Collider col) {
+		checkingGrabPosition = true;
+		yield return new WaitForSeconds(0.01f);
+		//print(col.transform.position.y-(thisTransform.position.y+halfMyY));
+		if(col.transform.position.y-(thisTransform.position.y+halfMyY) > -0.5f) {
+			isGrab = true;
+			checkingGrabPosition = false;
+		}
+		else {
+			StartCoroutine("checkGrabberPosition",col);
+		}
+	}
+
 	private void offsetCircles () { //Set circles position
 		soundEmitt1.setCharacterMoveOffset(vectorFixed.x);
 		soundEmitt2.setCharacterMoveOffset(vectorFixed.x);
@@ -228,7 +264,7 @@ public class Player : Character {
 		pebbleBar.transform.position = new Vector3((powerPebble/2)+thisTransform.position.x,thisTransform.position.y+2f,-30f); //Replace powerBar as resize is made from center expanding to each side
 	}
 	IEnumerator waitB4FootStep() { //Short Delay before the sprite actually touches the ground (edit when anim is finished)
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(0.3f);
 		if(!blockCoroutine && grounded) StartCoroutine("footStep");
 	}
 	IEnumerator footStep() { //Footsteps management
@@ -262,6 +298,24 @@ public class Player : Character {
 		else {first=!first;soundInstru2.resetCircle();} //If it's the second time playing (2 waves so that player can display both on screen if spamming music)
 		//yield return new WaitForSeconds(soundInstru1.getLifeTime());
 		specialCast = false; //Not playing anymore, can move again
+	}
+
+	IEnumerator CrounchMode()
+	{
+		yield return new WaitForSeconds(crounchTime);
+		isCrounch = false;
+	}
+
+	public override void BlockedUp()
+	{
+		if (aboveEnvironment != null)
+		{
+			if(vectorMove.y > 0 && aboveEnvironment.typeList != Environment.types.wood)
+			{
+				vectorMove.y = 0f;
+				blockedUp = true;
+			}
+		}
 	}
 	
 	#region PlaySounds
@@ -337,7 +391,6 @@ public class Player : Character {
 		isLeft = false;
 		isRight = false;
 		isJump = false;
-		isPass = false;
 		movingDir = moving.None;
 	}
 	private void GamePause() {
@@ -345,7 +398,6 @@ public class Player : Character {
 		isLeft = false;
 		isRight = false;
 		isJump = false;
-		isPass = false;
 		paused = true;
 		movingDir = moving.None;
 		

@@ -5,6 +5,6 @@
  <objecttype name="Rusher" color="#be0003"/>
  <objecttype name="Drop" color="#359dd5"/>
  <objecttype name="LevelEntry" color="#8ea460"/>
- <objecttype name="Ditch" color="#a40065"/>
  <objecttype name="LevelExit" color="#70a472"/>
+ <objecttype name="Turret" color="#a49d76"/>
 </objecttypes>
