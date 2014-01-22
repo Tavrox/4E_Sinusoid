@@ -15,7 +15,7 @@ public class Turret : LevelBrick {
 	private OTAnimatingSprite _rotatingAnim;
 	private OTSprite _projectileSpr;
 
-	public float shootRate = 3f;
+	public float shootRate = 1f;
 	public float turnRate = 0.1f;
 	
 	public FESound ShootSound;
@@ -29,6 +29,8 @@ public class Turret : LevelBrick {
 		_rotating = FETool.findWithinChildren(this.gameObject, "Rotating");
 		_target = FETool.findWithinChildren(this.gameObject, "Target");
 		_projectile = FETool.findWithinChildren(this.gameObject, "Projectile").GetComponent<Projectile>();
+		_projectile.owner = this;
+		_projectile.Setup(_target, shootRate);
 		_triggerArea = FETool.findWithinChildren(this.gameObject, "TriggerArea").GetComponent<BoxCollider>();
 
 		_baseAnim = _base.GetComponentInChildren<OTAnimatingSprite>();
@@ -53,8 +55,6 @@ public class Turret : LevelBrick {
 	{
 		_macaAnim.PlayOnce("macaghul");
 		_projectile.setupMove(_target, true);
-
-//		_projectiletransform.position = Vector3.MoveTowards(transform.position, target.position, _projectile.speedx;);
 	}
 	private void shootAtTarget(GameObject _target)
 	{
@@ -71,23 +71,16 @@ public class Turret : LevelBrick {
 	private void turn()
 	{
 		_rotating.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan((_target.transform.position.x-_rotating.transform.position.x)/Mathf.Abs(_rotating.transform.position.y-_target.transform.position.y))*Mathf.Rad2Deg);
-//		float rotPosX = _rotating.transform.position.x;
-//		float rotPosY = _rotating.transform.position.y;
-//		
-//		float tarPosX = _target.transform.position.x;
-//		float tarPosY = _target.transform.position.y;
-//
-//		Vector2 rotPos = new Vector2(rotPosX, rotPosY);
-//		Vector2 tarPos = new Vector2(tarPosX, tarPosY);
-//
-//		Vector2 upVector = tarPos - rotPos;
-//		_rotating.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Tan((Mathf.Abs(rotPosX - tarPosX) / Mathf.Abs(rotPosY - tarPosY))));
 	
 	}
 	public void changeTarget(GameObject _newTarget)
 	{
-		_target.transform.position = _newTarget.transform.position;
-
+		_projectile._target = _newTarget.gameObject.transform.position;
+		_target.gameObject.transform.position = _newTarget.transform.position;
+	}
+	public GameObject getTarget()
+	{
+		return _target;
 	}
 
 }

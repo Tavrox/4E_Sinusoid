@@ -4,23 +4,25 @@ using System.Collections;
 public class Projectile : MonoBehaviour {
 
 	public float _speedX;
-	private float _speedY;
+	public float _speedY;
 	private float _rot;
 	private Vector3 _initPosProj;
 	private Quaternion _initRotProj;
-	[HideInInspector] public GameObject _target;
+	private LevelBrick _owner;
+	public Vector3 _target;
 	[HideInInspector] public bool moving;
+	private Vector3 _direction;
+
+	public Vector3 direction
+	{
+		get { return _direction; }
+		set { _direction = value; }
+	}
 
 	public float speedX
 	{
 		get { return _speedX; }
 		set { _speedX = value; }
-	}
-
-	public float speedY
-	{
-		get { return _speedY; }
-		set { _speedY = value; }
 	}
 
 	public float rot
@@ -41,42 +43,43 @@ public class Projectile : MonoBehaviour {
 		set { _initRotProj = value; }
 	}
 
-	void Start()
+	public LevelBrick owner
 	{
+		get { return _owner; }
+		set { _owner = value; }
+	}
+
+	public void Setup(GameObject _newTar, float _shtRate)
+	{
+		_target = _newTar.transform.position;
+		direction = (_target - initPosProj).normalized;
 		_initPosProj = gameObject.transform.position;
 		_initRotProj = gameObject.transform.rotation;
-
-		InvokeRepeating("projectileCheck", 0f, 1f);
 	}
 
 	void Update()
 	{
 		if (moving)
-		{	moveProj(); }
+		{moveProj();}
 
-	}
-
-	private void projectileCheck()
-	{
-		if (_target != null)
-		{
-			if (gameObject.transform.position == _target.transform.position)
-			{ resetProj(); }
-		}
 	}
 
 	public void resetProj()
 	{
 		gameObject.transform.position = initPosProj;
 		gameObject.transform.rotation = initRotProj;
+		direction = (_target - initPosProj).normalized;
+		moving = false;
 	}
 	public void moveProj()
 	{
-		gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, _target.transform.position, speedX);
+		Debug.DrawRay(initPosProj, direction);
+//		direction = (_target - initPosProj).normalized;
+		gameObject.transform.position += new Vector3 ( speedX * _direction.x, speedX * _direction.y, 0f);
 	}
 	public void setupMove(GameObject _tar, bool _state)
 	{
-		_target = _tar;
+		_target = _tar.gameObject.transform.position;
 		moving = _state;
 	}
 
@@ -84,7 +87,11 @@ public class Projectile : MonoBehaviour {
 	{
 		if (_other.CompareTag("Player"))
 	    {
-			GameEventManager.TriggerGameOver();
+//			GameEventManager.TriggerGameOver();
+		}
+		if (_other.CompareTag("soundStopper"))
+ 	    {
+			resetProj();
 		}
 
 	}
