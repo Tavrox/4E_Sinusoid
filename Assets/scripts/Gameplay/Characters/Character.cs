@@ -90,7 +90,7 @@ public class Character : MonoBehaviour
 	IEnumerator StartGravity()
 	{
 		// wait for things to settle before applying gravity
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(0.5f);
 		gravityY = 52f;
 	}
 	
