@@ -352,7 +352,7 @@ public class Walker : Enemy {
 	}
 
 	private void GameStart () {
-		if(FindObjectOfType(typeof(Zombie)) && this != null) {
+		if(FindObjectOfType(typeof(Walker)) && this != null) {
 			//transform.localPosition = spawnPos;
 			setIniState();
 			enabled = true;
