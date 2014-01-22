@@ -457,9 +457,13 @@ namespace X_UniTMX
 		{
 			GameObject boxCollider = new GameObject("Coll"+obj.GetPropertyAsString("env"));
 			BoxCollider bx = boxCollider.AddComponent<BoxCollider>();
-			boxCollider.transform.parent = this.Parent.transform;
 
-			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
+			boxCollider.transform.parent = this.Parent.transform;
+//			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
+//			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
+			
+			boxCollider.transform.position = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, 0f);
+			bx.center = new Vector3(0f,0f, zDepth);
 			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
 
 			boxCollider.isStatic = true;
@@ -485,8 +489,11 @@ namespace X_UniTMX
 			BoxCollider bx = boxCollider.AddComponent<BoxCollider>();
 
 			boxCollider.transform.parent = this.Parent.transform;
+//			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
+//			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
 			
-			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
+			boxCollider.transform.position = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, 0f);			
+			bx.center = new Vector3(0f,0f, zDepth);
 			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
 
 			boxCollider.isStatic = true;
@@ -520,12 +527,17 @@ namespace X_UniTMX
 		{
 			GameObject boxCollider = new GameObject("PebbleCollider");
 			BoxCollider bx = boxCollider.AddComponent<BoxCollider>();
-			boxCollider.transform.parent = this.Parent.transform;
-			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
-			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
 			
+			boxCollider.transform.parent = this.Parent.transform;
+//			bx.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
+//			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
+			
+			boxCollider.transform.position = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, 0f);
+			bx.center = new Vector3(0f,0f, zDepth);
+			bx.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
+
 			BoxCollider bx2 = boxCollider.AddComponent<BoxCollider>();
-			bx2.center = new Vector3(obj.Bounds.center.x, -obj.Bounds.center.y, zDepth);
+			bx2.center = new Vector3(0f,0f, zDepth);
 			bx2.size = new Vector3(obj.Bounds.width, obj.Bounds.height, colliderWidth);
 			bx2.isTrigger = true;
 			
