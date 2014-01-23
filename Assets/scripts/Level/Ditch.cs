@@ -18,4 +18,11 @@ public class Ditch : MonoBehaviour {
 			GameEventManager.TriggerGameOver();
 		}
 	}
+	void OnTriggerStay(Collider other) 
+	{
+		if(other.gameObject.CompareTag("Player")) 
+		{
+			GameEventManager.TriggerGameOver();
+		}
+	}
 }

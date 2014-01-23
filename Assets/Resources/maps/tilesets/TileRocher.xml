@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>black.png</key>
+            <key>TileRocher00.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,0},{50,50}}</string>
@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngleInter_BasD_01.png</key>
+            <key>TileRocher01.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,0},{50,50}}</string>
@@ -30,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngleInter_BasG_01.png</key>
+            <key>TileRocher02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,0},{50,50}}</string>
@@ -43,7 +43,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngleInter_HautD_01.png</key>
+            <key>TileRocher03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,0},{50,50}}</string>
@@ -56,20 +56,20 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngleInter_HautD_02.png</key>
+            <key>TileRocher04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,0},{50,50}}</string>
+                <string>{{200,0},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{50,100}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{50,100}</string>
             </dict>
-            <key>tileAngleInter_HautG_01.png</key>
+            <key>TileRocher05.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{250,0},{50,50}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngleInter_HautG_02.png</key>
+            <key>TileRocher06.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{300,0},{50,50}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_BDroite_01.png</key>
+            <key>TileRocher07.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{350,0},{50,50}}</string>
@@ -108,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_BDroite_02.png</key>
+            <key>TileRocher08.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{400,0},{50,50}}</string>
@@ -121,7 +121,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_BDroite_03.png</key>
+            <key>TileRocher09.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{450,0},{50,50}}</string>
@@ -134,23 +134,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_BDroite_04.png</key>
+            <key>TileRocher10.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,50},{50,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
-                <key>sourceSize</key>
-                <string>{50,100}</string>
-            </dict>
-            <key>tileAngle_BDroite_05-46.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{50,50},{50,50}}</string>
+                <string>{{0,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -160,10 +147,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_BDroite_05.png</key>
+            <key>TileRocher11.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,50},{50,50}}</string>
+                <string>{{50,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -173,10 +160,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_BDroite_06.png</key>
+            <key>TileRocher12.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,50},{50,50}}</string>
+                <string>{{100,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -186,10 +173,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_BDroite_07.png</key>
+            <key>TileRocher13.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,50},{50,50}}</string>
+                <string>{{150,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -199,10 +186,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_BGauche_01.png</key>
+            <key>TileRocher14.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{250,50},{50,50}}</string>
+                <string>{{200,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -212,23 +199,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_BGauche_02.png</key>
+            <key>TileRocher15.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,50},{50,51}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,51}}</string>
-                <key>sourceSize</key>
-                <string>{50,51}</string>
-            </dict>
-            <key>tileAngle_BGauche_03.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{350,50},{50,50}}</string>
+                <string>{{250,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -238,10 +212,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_BGauche_04.png</key>
+            <key>TileRocher16.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,50},{50,50}}</string>
+                <string>{{300,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -251,10 +225,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_BGauche_05.png</key>
+            <key>TileRocher17.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{450,50},{50,50}}</string>
+                <string>{{350,100},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -264,7 +238,33 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_HDroite_01.png</key>
+            <key>TileRocher18.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{400,100},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileRocher19.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{450,100},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileRocher20.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,150},{50,50}}</string>
@@ -277,7 +277,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_HDroite_02.png</key>
+            <key>TileRocher21.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,150},{50,50}}</string>
@@ -290,7 +290,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_HDroite_03.png</key>
+            <key>TileRocher22.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,150},{50,50}}</string>
@@ -303,7 +303,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_HDroite_04.png</key>
+            <key>TileRocher23.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,150},{50,50}}</string>
@@ -316,7 +316,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_HDroite_05.png</key>
+            <key>TileRocher24.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,150},{50,50}}</string>
@@ -329,7 +329,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_HGauche_01.png</key>
+            <key>TileRocher25.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{250,150},{50,50}}</string>
@@ -342,7 +342,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_HGauche_02.png</key>
+            <key>TileRocher26.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{300,150},{50,50}}</string>
@@ -355,7 +355,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_HGauche_05-32.png</key>
+            <key>TileRocher27.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{350,150},{50,50}}</string>
@@ -368,7 +368,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileAngle_HGauche_05.png</key>
+            <key>TileRocher28.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{400,150},{50,50}}</string>
@@ -381,7 +381,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileHorizontal_Bas_01.png</key>
+            <key>TileRocher29.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{450,150},{50,50}}</string>
@@ -394,7 +394,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileHorizontal_Bas_02.png</key>
+            <key>TileRocher30.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,200},{100,50}}</string>
@@ -407,7 +407,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Bas_03.png</key>
+            <key>TileRocher31.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,200},{100,50}}</string>
@@ -420,7 +420,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Bas_04.png</key>
+            <key>TileRocher32.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,200},{100,50}}</string>
@@ -433,7 +433,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Bas_05.png</key>
+            <key>TileRocher33.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{300,200},{50,50}}</string>
@@ -446,7 +446,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileHorizontal_Bas_07.png</key>
+            <key>TileRocher34.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{350,200},{50,50}}</string>
@@ -459,7 +459,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_01.png</key>
+            <key>TileRocher35.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{400,200},{100,50}}</string>
@@ -472,7 +472,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_02.png</key>
+            <key>TileRocher36.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,250},{100,50}}</string>
@@ -485,7 +485,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_03.png</key>
+            <key>TileRocher37.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,250},{100,50}}</string>
@@ -498,7 +498,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_04.png</key>
+            <key>TileRocher38.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,250},{100,50}}</string>
@@ -511,7 +511,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_05.png</key>
+            <key>TileRocher39.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{300,250},{100,50}}</string>
@@ -524,7 +524,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_06.png</key>
+            <key>TileRocher40.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{400,250},{100,50}}</string>
@@ -537,7 +537,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_07.png</key>
+            <key>TileRocher41.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,300},{100,50}}</string>
@@ -550,7 +550,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_08.png</key>
+            <key>TileRocher42.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,300},{100,50}}</string>
@@ -563,7 +563,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_09.png</key>
+            <key>TileRocher43.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,300},{100,50}}</string>
@@ -576,7 +576,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_10.png</key>
+            <key>TileRocher44.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{300,300},{100,50}}</string>
@@ -589,7 +589,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_11.png</key>
+            <key>TileRocher45.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{400,300},{100,50}}</string>
@@ -602,7 +602,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_12.png</key>
+            <key>TileRocher46.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,350},{100,50}}</string>
@@ -615,7 +615,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_13.png</key>
+            <key>TileRocher47.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,350},{100,50}}</string>
@@ -628,7 +628,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_14.png</key>
+            <key>TileRocher48.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,350},{100,50}}</string>
@@ -641,7 +641,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_15.png</key>
+            <key>TileRocher49.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{300,350},{100,50}}</string>
@@ -654,7 +654,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_16.png</key>
+            <key>TileRocher50.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{400,350},{100,50}}</string>
@@ -667,7 +667,7 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_17.png</key>
+            <key>TileRocher51.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,400},{50,50}}</string>
@@ -680,7 +680,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_18.png</key>
+            <key>TileRocher52.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,400},{50,50}}</string>
@@ -693,7 +693,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_20.png</key>
+            <key>TileRocher53.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,400},{50,50}}</string>
@@ -706,7 +706,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileHorizontal_Haut_22.png</key>
+            <key>TileRocher54.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,400},{50,50}}</string>
@@ -719,7 +719,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileVertical_Droite_01.png</key>
+            <key>TileRocher55.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,400},{50,100}}</string>
@@ -732,7 +732,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Droite_02.png</key>
+            <key>TileRocher56.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{250,400},{50,100}}</string>
@@ -745,7 +745,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Droite_03.png</key>
+            <key>TileRocher57.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{300,400},{50,100}}</string>
@@ -758,7 +758,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Droite_04.png</key>
+            <key>TileRocher58.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{350,400},{50,100}}</string>
@@ -771,7 +771,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Droite_05.png</key>
+            <key>TileRocher59.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{400,400},{50,100}}</string>
@@ -784,7 +784,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Droite_07.png</key>
+            <key>TileRocher60.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{450,400},{50,50}}</string>
@@ -797,7 +797,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>tileVertical_Gauche_01.png</key>
+            <key>TileRocher61.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,500},{50,100}}</string>
@@ -810,7 +810,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Gauche_02.png</key>
+            <key>TileRocher62.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,500},{50,100}}</string>
@@ -823,7 +823,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Gauche_03.png</key>
+            <key>TileRocher63.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,500},{50,100}}</string>
@@ -836,7 +836,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Gauche_04.png</key>
+            <key>TileRocher64.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,500},{50,100}}</string>
@@ -849,7 +849,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Gauche_05.png</key>
+            <key>TileRocher65.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,500},{50,100}}</string>
@@ -862,7 +862,7 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>tileVertical_Gauche_07.png</key>
+            <key>TileRocher66.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{250,500},{50,50}}</string>
@@ -885,7 +885,7 @@
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:37a2b2a35c8684c6cc7d0f9a08d4b3ff:b3ac78f8f7b37b471e05ef48eeb7141e:02390b263a3c2e6d800ba90a7d0f9b07$</string>
+            <string>$TexturePacker:SmartUpdate:916d3c6731e7e8df2a3c72d92ad3409b:62402b4c15cf1cf864b9845292a12dc1:02390b263a3c2e6d800ba90a7d0f9b07$</string>
             <key>textureFileName</key>
             <string>TileRocher.png</string>
         </dict>

@@ -369,13 +369,10 @@ public class Walker : Enemy {
 	}
 
 	private void GameStart () {
-<<<<<<< HEAD
-=======
 		if(FindObjectOfType(typeof(Walker)) && this != null) {
 			setIniState();
 			enabled = true;
 		}
->>>>>>> 410766a41ba5a1f138edec477ca7ad823650b74d
 	}
 	
 	private void GameOver () {

@@ -2,16 +2,30 @@
 <data version="1.0">
     <struct type="Settings">
         <key>fileFormatVersion</key>
-        <int>1</int>
-        <key>variation</key>
-        <string>main</string>
-        <key>verbose</key>
-        <false/>
+        <int>3</int>
+        <key>texturePackerVersion</key>
+        <string>3.2.1</string>
         <key>autoSDSettings</key>
-        <array/>
+        <array>
+            <struct type="AutoSDSettings">
+                <key>scale</key>
+                <double>1</double>
+                <key>extension</key>
+                <string></string>
+                <key>spriteFilter</key>
+                <string></string>
+                <key>acceptFractionalValues</key>
+                <false/>
+                <key>maxTextureSize</key>
+                <QSize>
+                    <key>width</key>
+                    <int>-1</int>
+                    <key>height</key>
+                    <int>-1</int>
+                </QSize>
+            </struct>
+        </array>
         <key>allowRotation</key>
-        <false/>
-        <key>quiet</key>
         <false/>
         <key>premultiplyAlpha</key>
         <false/>
@@ -98,8 +112,6 @@
             <enum type="AndEngine::MinFilter">Linear</enum>
             <key>packageName</key>
             <string>Texture</string>
-            <key>javaFileName</key>
-            <filename>../../../../../../../Resources/maps/tilesets/TileWood.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -110,12 +122,21 @@
             <key>magFilter</key>
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
-        <key>dataFileName</key>
-        <filename>../../../../../../../Resources/maps/tilesets/TileWood.xml</filename>
+        <key>dataFileNames</key>
+        <map type="GFileNameMap">
+            <key>data</key>
+            <struct type="DataFile">
+                <key>name</key>
+                <filename>../../../../../../../Resources/maps/tilesets/TileWood.xml</filename>
+            </struct>
+            <key>java</key>
+            <struct type="DataFile">
+                <key>name</key>
+                <filename>../../../../../../../Resources/maps/tilesets/TileWood.java</filename>
+            </struct>
+        </map>
         <key>multiPack</key>
         <false/>
-        <key>mainExtension</key>
-        <string></string>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -129,6 +150,8 @@
         <true/>
         <key>trimSpriteNames</key>
         <false/>
+        <key>cleanTransparentPixels</key>
+        <true/>
         <key>globalSpriteSettings</key>
         <struct type="SpriteSettings">
             <key>scale</key>
@@ -148,42 +171,28 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>Tile/env26wood.png</filename>
-            <filename>Tile/env27wood.png</filename>
-            <filename>Tile/env28wood.png</filename>
-            <filename>Tile/env29wood.png</filename>
-            <filename>Tile/env30wood.png</filename>
-            <filename>Tile/env31wood.png</filename>
-            <filename>Tile/env32wood.png</filename>
-            <filename>Tile/env33wood.png</filename>
-            <filename>Tile/env34wood.png</filename>
-            <filename>Tile/env35wood.png</filename>
-            <filename>Tile/env36wood.png</filename>
-            <filename>Tile/env01wood.png</filename>
-            <filename>Tile/env02wood.png</filename>
-            <filename>Tile/env03wood.png</filename>
-            <filename>Tile/env04wood.png</filename>
-            <filename>Tile/env05wood.png</filename>
-            <filename>Tile/env06wood.png</filename>
-            <filename>Tile/env07wood.png</filename>
-            <filename>Tile/env08wood.png</filename>
-            <filename>Tile/env09wood.png</filename>
-            <filename>Tile/env10wood.png</filename>
-            <filename>Tile/env11wood.png</filename>
-            <filename>Tile/env12wood.png</filename>
-            <filename>Tile/env13wood.png</filename>
-            <filename>Tile/env14wood.png</filename>
-            <filename>Tile/env15wood.png</filename>
-            <filename>Tile/env16wood.png</filename>
-            <filename>Tile/env17wood.png</filename>
-            <filename>Tile/env18wood.png</filename>
-            <filename>Tile/env19wood.png</filename>
-            <filename>Tile/env20wood.png</filename>
-            <filename>Tile/env21wood.png</filename>
-            <filename>Tile/env22wood.png</filename>
-            <filename>Tile/env23wood.png</filename>
-            <filename>Tile/env24wood.png</filename>
-            <filename>Tile/env25wood.png</filename>
+            <filename>Tile/WoodAngle2BotRight.png</filename>
+            <filename>Tile/WoodAngle2TopLeft.png</filename>
+            <filename>Tile/WoodAngle2TopRight.png</filename>
+            <filename>Tile/WoodAngle3Botleft.png</filename>
+            <filename>Tile/WoodAngle3BotRight.png</filename>
+            <filename>Tile/WoodAngle3Topleft.png</filename>
+            <filename>Tile/WoodAngle3TopRight.png</filename>
+            <filename>Tile/WoodAngleBotLeft.png</filename>
+            <filename>Tile/WoodAngleBotLeft2.png</filename>
+            <filename>Tile/WoodAngleBotRight.png</filename>
+            <filename>Tile/WoodAngleBotRight2.png</filename>
+            <filename>Tile/WoodAngleTopLeft.png</filename>
+            <filename>Tile/WoodAngleTopLeft2.png</filename>
+            <filename>Tile/WoodAngleTopRight.png</filename>
+            <filename>Tile/WoodAngleTopRight2.png</filename>
+            <filename>Tile/WoodBot.png</filename>
+            <filename>Tile/WoodLeft.png</filename>
+            <filename>Tile/WoodLeft2.png</filename>
+            <filename>Tile/WoodLeft3.png</filename>
+            <filename>Tile/WoodRight.png</filename>
+            <filename>Tile/WoodTop.png</filename>
+            <filename>Tile/WoodAngle2BotLeft.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

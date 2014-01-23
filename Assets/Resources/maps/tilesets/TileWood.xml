@@ -4,10 +4,23 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>env01wood.png</key>
+            <key>WoodAngle2BotLeft.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{51,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{51,50}}</string>
+                <key>sourceSize</key>
+                <string>{51,50}</string>
+            </dict>
+            <key>WoodAngle2BotRight.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{51,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -17,10 +30,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env02wood.png</key>
+            <key>WoodAngle2TopLeft.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,0},{50,50}}</string>
+                <string>{{101,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -30,10 +43,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env03wood.png</key>
+            <key>WoodAngle2TopRight.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,0},{50,50}}</string>
+                <string>{{151,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -43,10 +56,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env04wood.png</key>
+            <key>WoodAngle3BotRight.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,0},{50,50}}</string>
+                <string>{{201,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -56,20 +69,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env05wood.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{200,0},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>env06wood.png</key>
+            <key>WoodAngle3Botleft.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,50},{50,50}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env07wood.png</key>
+            <key>WoodAngle3TopRight.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,50},{50,50}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env08wood.png</key>
+            <key>WoodAngle3Topleft.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,50},{50,50}}</string>
@@ -108,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env09wood.png</key>
+            <key>WoodAngleBotLeft.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,50},{50,50}}</string>
@@ -121,7 +121,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env10wood.png</key>
+            <key>WoodAngleBotLeft2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,50},{50,50}}</string>
@@ -134,7 +134,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env11wood.png</key>
+            <key>WoodAngleBotRight.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,100},{50,50}}</string>
@@ -147,7 +147,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env12wood.png</key>
+            <key>WoodAngleBotRight2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,100},{50,50}}</string>
@@ -160,7 +160,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env13wood.png</key>
+            <key>WoodAngleTopLeft.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,100},{50,50}}</string>
@@ -173,7 +173,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env14wood.png</key>
+            <key>WoodAngleTopLeft2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,100},{50,50}}</string>
@@ -186,7 +186,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env15wood.png</key>
+            <key>WoodAngleTopRight.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,100},{50,50}}</string>
@@ -199,7 +199,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env16wood.png</key>
+            <key>WoodAngleTopRight2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,150},{50,50}}</string>
@@ -212,7 +212,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env17wood.png</key>
+            <key>WoodBot.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,150},{50,50}}</string>
@@ -225,20 +225,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env18wood.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{0,50},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>env19wood.png</key>
+            <key>WoodLeft.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,150},{50,50}}</string>
@@ -251,7 +238,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env20wood.png</key>
+            <key>WoodLeft2.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,150},{50,50}}</string>
@@ -264,7 +251,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env21wood.png</key>
+            <key>WoodLeft3.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,150},{50,50}}</string>
@@ -277,7 +264,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env22wood.png</key>
+            <key>WoodRight.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,200},{50,50}}</string>
@@ -290,179 +277,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>env23wood.png</key>
+            <key>WoodTop.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,200},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>env24wood.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{100,200},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>env25wood.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{150,200},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>env26wood.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{0,50},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>env27wood.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{200,200},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>env28wood.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{100,200},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>env29wood.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{0,250},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>env30wood.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{0,200},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>env31wood.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{50,250},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>env32wood.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{150,150},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>env33wood.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{100,250},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>env34wood.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{150,250},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>env35wood.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{200,250},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>env36wood.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{0,300},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -480,9 +298,9 @@
             <key>realTextureFileName</key>
             <string>TileWood.png</string>
             <key>size</key>
-            <string>{256,512}</string>
+            <string>{256,256}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:6ef7818a59b2fd995f2007a60127992d:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:933b1fd6399732be8927b8340141831f:cfdce4adfc84487b575c331c1273de88:85ad68c22a19d60e0daea5ecdc22f914$</string>
             <key>textureFileName</key>
             <string>TileWood.png</string>
         </dict>
