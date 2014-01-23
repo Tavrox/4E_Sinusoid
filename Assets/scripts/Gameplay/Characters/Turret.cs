@@ -61,14 +61,6 @@ public class Turret : LevelBrick {
 	{
 
 	}
-	private void calculateTrajectory(GameObject _target)
-	{
-		float projPosX = _projectile.transform.position.x;
-		float projPosY = _projectile.transform.position.y;
-
-		float tarPosX = _target.transform.position.x;
-		float tarPosY = _target.transform.position.y;
-	}
 	private void turn()
 	{
 		_rotating.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan((_target.transform.position.x-_rotating.transform.position.x)/Mathf.Abs(_rotating.transform.position.y-_target.transform.position.y))*Mathf.Rad2Deg);

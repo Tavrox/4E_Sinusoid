@@ -77,7 +77,7 @@ public class Drop : MonoBehaviour {
 //			else
 //			{
 //				Environment _env = other.gameObject.GetComponent<Environment>();
-			//	_DropSound.playSound(_env.typeList);
+			_DropSound.playDistancedSound();
 //			}
 		}
 	}

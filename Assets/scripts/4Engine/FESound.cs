@@ -9,6 +9,7 @@ public class FESound : MonoBehaviour {
 	[Range (0,1f)] public float Pitch = 1f;
 	public float RepeatRate = 0.6f;
 	private float distanceToPlayer = 0f;
+	public float distanceForFadeOut = 5f;
 	private Transform referralDistance;
 	private Transform distToTrack;
 
@@ -34,11 +35,19 @@ public class FESound : MonoBehaviour {
 			MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString(), Volume, Pitch, Delay);
 		}
 	}
-	public void playVariationSounds(Environment _enviro)
+	public void playVariationSound(Environment _enviro)
 	{
 		if (SoundGroup != null)
 		{
 			MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay, SoundGroup.name + "_" + _enviro.typeList.ToString() );
+		}
+	}
+	public void playVariationSound(string _variation)
+	{
+		if (SoundGroup != null)
+		{
+			MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay, SoundGroup.name + "_" + _variation);
+			print (SoundGroup.name + "_" + _variation);
 		}
 	}
 	public void playModulatedSound(float _var1, float _var2)
@@ -66,12 +75,25 @@ public class FESound : MonoBehaviour {
 		}
 //		Debug.Log(_psr.ActingVariation);
 	}
-	public void playDistancedSound()
+	public void playDistancedSound(string _var = null)
 	{
+		print ("enter distanced sound");
 		referralDistance = FETool.findWithinChildren(this.gameObject, "GameObject").transform;
 		distToTrack = GameObject.FindGameObjectWithTag("Player").transform;
+		if (_var != null)
+		{
+			MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay);
+		}
+		else
+		{
+			playVariationSound(_var);
+		}
 		InvokeRepeating("checkDistance", 0f, 0.1f); 
-//		MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay);
+	}
+
+	public void stopSound()
+	{
+		MasterAudio.StopAllOfSound(SoundGroup.name);
 	}
 
 	private void checkDistance()
@@ -83,7 +105,16 @@ public class FESound : MonoBehaviour {
 		Vector2 referralPos = new Vector2 (referralDistance.transform.position.x, referralDistance.transform.position.y);
 		Vector2 posToTrack = new Vector2 (distToTrack.position.x, distToTrack.position.y);
 //		distanceToPlayer = (Vector2.Distance(thisObjPos, referralPos)) / (Vector2.Distance(thisObjPos, posToTrack )) ;
-		distanceToPlayer = (Vector2.Distance(thisObjPos, posToTrack )) / (Vector2.Distance(thisObjPos, referralPos)) ;
+//		distanceToPlayer = (Vector2.Distance(thisObjPos, posToTrack )) / (Vector2.Distance(thisObjPos, referralPos)) ;
+		distanceToPlayer = Vector2.Distance(thisObjPos, posToTrack );
+		if (distanceToPlayer < 15f)
+		{
+			MasterAudio.FadeSoundGroupToVolume(SoundGroup.name, 1f, distanceForFadeOut);
+		}
+		else
+		{
+			MasterAudio.FadeSoundGroupToVolume(SoundGroup.name, 0f, distanceForFadeOut);
+		}
 //		Debug.Log(gameObject.name + thisObjPos);
 //		Debug.Log(referralDistance.name + referralPos);
 //		Debug.Log("PosToTrack" + posToTrack);

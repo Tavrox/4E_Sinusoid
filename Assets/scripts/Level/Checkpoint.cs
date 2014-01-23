@@ -15,7 +15,10 @@ public class Checkpoint : MonoBehaviour {
 	void Start () {
 		_player = GameObject.FindWithTag("Player").GetComponent<Player>();
 		_LevMan = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>();
-		IdleSound.playDistancedSound();
+		if (IdleSound != null)
+		{
+			IdleSound.playDistancedSound();
+		}
 
 	}
 
