@@ -4,7 +4,7 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>Tile01wood.png</key>
+            <key>TileWood2_01.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,0},{50,50}}</string>
@@ -17,7 +17,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile02wood.png</key>
+            <key>TileWood2_02.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,0},{50,50}}</string>
@@ -30,7 +30,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile03wood.png</key>
+            <key>TileWood2_03.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,0},{50,50}}</string>
@@ -43,7 +43,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile04wood.png</key>
+            <key>TileWood2_04.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,0},{50,50}}</string>
@@ -56,7 +56,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile05wood.png</key>
+            <key>TileWood2_05.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,0},{50,50}}</string>
@@ -69,7 +69,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile06wood.png</key>
+            <key>TileWood2_06.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,50},{50,50}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile07wood.png</key>
+            <key>TileWood2_07.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,50},{50,50}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile08wood.png</key>
+            <key>TileWood2_08.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,50},{50,50}}</string>
@@ -108,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile09wood.png</key>
+            <key>TileWood2_09.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,50},{50,50}}</string>
@@ -121,7 +121,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile10wood.png</key>
+            <key>TileWood2_10.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,50},{50,50}}</string>
@@ -134,7 +134,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile11wood.png</key>
+            <key>TileWood2_11.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,100},{50,50}}</string>
@@ -147,7 +147,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile12wood.png</key>
+            <key>TileWood2_12.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,100},{50,50}}</string>
@@ -160,7 +160,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile13wood.png</key>
+            <key>TileWood2_13.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,100},{50,50}}</string>
@@ -173,7 +173,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile14wood.png</key>
+            <key>TileWood2_14.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,100},{50,50}}</string>
@@ -186,7 +186,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile15wood.png</key>
+            <key>TileWood2_15.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,100},{50,50}}</string>
@@ -199,7 +199,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile16wood.png</key>
+            <key>TileWood2_16.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,150},{50,50}}</string>
@@ -212,7 +212,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile17wood.png</key>
+            <key>TileWood2_17.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,150},{50,50}}</string>
@@ -225,7 +225,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile18wood.png</key>
+            <key>TileWood2_18.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,150},{50,50}}</string>
@@ -238,7 +238,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile19wood.png</key>
+            <key>TileWood2_19.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,150},{50,50}}</string>
@@ -251,7 +251,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile20wood.png</key>
+            <key>TileWood2_20.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,150},{50,50}}</string>
@@ -264,7 +264,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile21wood.png</key>
+            <key>TileWood2_21.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,200},{50,50}}</string>
@@ -277,7 +277,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile22wood.png</key>
+            <key>TileWood2_22.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,200},{50,50}}</string>
@@ -290,7 +290,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile23wood.png</key>
+            <key>TileWood2_23.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,200},{50,50}}</string>
@@ -303,7 +303,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile24wood.png</key>
+            <key>TileWood2_24.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,200},{50,50}}</string>
@@ -316,7 +316,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile25wood.png</key>
+            <key>TileWood2_25.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,200},{50,50}}</string>
@@ -329,7 +329,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile26wood.png</key>
+            <key>TileWood2_26.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,250},{50,50}}</string>
@@ -342,7 +342,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile27wood.png</key>
+            <key>TileWood2_27.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,250},{50,50}}</string>
@@ -355,7 +355,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile28wood.png</key>
+            <key>TileWood2_28.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,250},{50,50}}</string>
@@ -368,7 +368,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile29wood.png</key>
+            <key>TileWood2_29.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,250},{50,50}}</string>
@@ -381,7 +381,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile30wood.png</key>
+            <key>TileWood2_30.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,250},{50,50}}</string>
@@ -394,7 +394,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile31wood.png</key>
+            <key>TileWood2_31.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,300},{50,50}}</string>
@@ -407,7 +407,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile32wood.png</key>
+            <key>TileWood2_32.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,300},{50,50}}</string>
@@ -430,7 +430,7 @@
             <key>size</key>
             <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:20ec3558ffe74b1f1097ffa4d629a46b:33f77b54d0b268ceeb7ba8e2ada50548:216ec9738b533cfc712e2fa9e6d92761$</string>
+            <string>$TexturePacker:SmartUpdate:d80a94336f7b526f893891b9a8595dc2:33f77b54d0b268ceeb7ba8e2ada50548:216ec9738b533cfc712e2fa9e6d92761$</string>
             <key>textureFileName</key>
             <string>TileWood2.png</string>
         </dict>

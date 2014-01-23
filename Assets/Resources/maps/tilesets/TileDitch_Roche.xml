@@ -4,23 +4,10 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>NewDitch50RocheLeft_02.png</key>
+            <key>TileDitch_Roche01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>NewDitch50RocheLeft_04.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{50,0},{50,100}}</string>
+                <string>{{0,0},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -30,153 +17,10 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>NewDitch50RocheLeft_05.png</key>
+            <key>TileDitch_Roche02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,0},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>NewDitch50RocheLeft_06.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{150,0},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>NewDitch50RocheLeft_07.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{250,0},{50,150}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,150}}</string>
-                <key>sourceSize</key>
-                <string>{50,150}</string>
-            </dict>
-            <key>NewDitch50RocheLeft_08.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{300,0},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>NewDitch50RocheLeft_09.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{350,0},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>NewDitch50RocheLeft_10.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{450,0},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>NewDitch50RocheLeft_11.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{500,0},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>NewDitch50RocheLeft_12.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{600,0},{50,150}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,150}}</string>
-                <key>sourceSize</key>
-                <string>{50,150}</string>
-            </dict>
-            <key>NewDitch50RocheLeft_13.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{650,0},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>NewDitch50RocheLeft_14.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{700,0},{50,150}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,150}}</string>
-                <key>sourceSize</key>
-                <string>{50,150}</string>
-            </dict>
-            <key>NewDitch50RocheLeft_15.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{750,0},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>NewDitch50RocheLeft_17.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{850,0},{100,100}}</string>
+                <string>{{50,0},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -186,49 +30,10 @@
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
-            <key>NewDitch50RocheLeft_18.png</key>
+            <key>TileDitch_Roche03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{950,0},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>NewDitch50RocheLeft_19.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{0,150},{100,150}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,150}}</string>
-                <key>sourceSize</key>
-                <string>{100,150}</string>
-            </dict>
-            <key>NewDitch50RocheLeft_20.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{100,150},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>NewDitch50RocheLeft_22.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{200,150},{100,100}}</string>
+                <string>{{150,0},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -238,49 +43,62 @@
                 <key>sourceSize</key>
                 <string>{100,100}</string>
             </dict>
-            <key>NewDitch50RocheLeft_23.png</key>
+            <key>TileDitch_Roche04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,150},{100,100}}</string>
+                <string>{{250,0},{150,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
+                <string>{{0,0},{150,100}}</string>
                 <key>sourceSize</key>
-                <string>{100,100}</string>
+                <string>{150,100}</string>
             </dict>
-            <key>NewDitch50RocheLeft_24.png</key>
+            <key>TileDitch_Roche05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,150},{100,150}}</string>
+                <string>{{400,0},{150,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,150}}</string>
+                <string>{{0,0},{150,100}}</string>
                 <key>sourceSize</key>
-                <string>{100,150}</string>
+                <string>{150,100}</string>
             </dict>
-            <key>NewDitch50RocheLeft_25.png</key>
+            <key>TileDitch_Roche06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{500,150},{100,150}}</string>
+                <string>{{550,0},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,150}}</string>
+                <string>{{0,0},{50,100}}</string>
                 <key>sourceSize</key>
-                <string>{100,150}</string>
+                <string>{50,100}</string>
             </dict>
-            <key>NewDitch50RocheLeft_26.png</key>
+            <key>TileDitch_Roche07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{600,150},{100,50}}</string>
+                <string>{{600,0},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileDitch_Roche08.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{650,0},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -290,49 +108,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>NewDitch50RochePlafond_05.png</key>
+            <key>TileDitch_Roche09.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{700,150},{50,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
-                <key>sourceSize</key>
-                <string>{50,100}</string>
-            </dict>
-            <key>NewDitch50RochePlafond_06.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{750,150},{50,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
-                <key>sourceSize</key>
-                <string>{50,100}</string>
-            </dict>
-            <key>NewDitch50RochePlafond_07.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{800,150},{50,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
-                <key>sourceSize</key>
-                <string>{50,100}</string>
-            </dict>
-            <key>NewDitch50RochePlafond_08.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{850,150},{50,50}}</string>
+                <string>{{750,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -342,10 +121,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>NewDitch50RochePlafond_09.png</key>
+            <key>TileDitch_Roche10.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{900,150},{50,50}}</string>
+                <string>{{800,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -355,10 +134,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>NewDitch50RochePlafond_10.png</key>
+            <key>TileDitch_Roche11.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,300},{150,50}}</string>
+                <string>{{850,0},{150,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -368,10 +147,10 @@
                 <key>sourceSize</key>
                 <string>{150,50}</string>
             </dict>
-            <key>NewDitch50RochePlafond_11.png</key>
+            <key>TileDitch_Roche12.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,300},{150,50}}</string>
+                <string>{{0,100},{150,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -381,10 +160,23 @@
                 <key>sourceSize</key>
                 <string>{150,50}</string>
             </dict>
-            <key>NewDitch50RochePlafond_12.png</key>
+            <key>TileDitch_Roche13.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,300},{50,100}}</string>
+                <string>{{150,100},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileDitch_Roche14.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{200,100},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -394,62 +186,10 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>NewDitch50RochePlafond_13.png</key>
+            <key>TileDitch_Roche15.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{350,300},{150,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{150,100}}</string>
-                <key>sourceSize</key>
-                <string>{150,100}</string>
-            </dict>
-            <key>NewDitch50RochePlafond_14.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{500,300},{150,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{150,100}}</string>
-                <key>sourceSize</key>
-                <string>{150,100}</string>
-            </dict>
-            <key>NewDitch50RochePlafond_15.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{650,300},{100,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>NewDitch50RochePlafond_16.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{750,300},{100,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>NewDitch50RochePlafond_17.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{850,300},{50,100}}</string>
+                <string>{{250,100},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -459,20 +199,319 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>NewDitch50RochePlafond_18.png</key>
+            <key>TileDitch_Roche16.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,400},{150,100}}</string>
+                <string>{{300,100},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{150,100}}</string>
+                <string>{{0,0},{50,100}}</string>
                 <key>sourceSize</key>
-                <string>{150,100}</string>
+                <string>{50,100}</string>
             </dict>
-            <key>NewDitch50RochePlafond_19.gif</key>
+            <key>TileDitch_Roche17.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{350,100},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileDitch_Roche18.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{400,100},{50,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,100}}</string>
+                <key>sourceSize</key>
+                <string>{50,100}</string>
+            </dict>
+            <key>TileDitch_Roche19.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{450,100},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileDitch_Roche20.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{500,100},{100,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,50}}</string>
+                <key>sourceSize</key>
+                <string>{100,50}</string>
+            </dict>
+            <key>TileDitch_Roche21.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{600,100},{50,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,150}}</string>
+                <key>sourceSize</key>
+                <string>{50,150}</string>
+            </dict>
+            <key>TileDitch_Roche22.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{650,100},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileDitch_Roche23.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{700,100},{100,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,50}}</string>
+                <key>sourceSize</key>
+                <string>{100,50}</string>
+            </dict>
+            <key>TileDitch_Roche24.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{800,100},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileDitch_Roche25.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{850,100},{100,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,50}}</string>
+                <key>sourceSize</key>
+                <string>{100,50}</string>
+            </dict>
+            <key>TileDitch_Roche26.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{950,100},{50,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,150}}</string>
+                <key>sourceSize</key>
+                <string>{50,150}</string>
+            </dict>
+            <key>TileDitch_Roche27.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,250},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileDitch_Roche28.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{50,250},{50,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,150}}</string>
+                <key>sourceSize</key>
+                <string>{50,150}</string>
+            </dict>
+            <key>TileDitch_Roche29.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{100,250},{100,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,50}}</string>
+                <key>sourceSize</key>
+                <string>{100,50}</string>
+            </dict>
+            <key>TileDitch_Roche30.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{200,250},{100,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,100}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>TileDitch_Roche31.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{300,250},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileDitch_Roche32.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{350,250},{100,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,150}}</string>
+                <key>sourceSize</key>
+                <string>{100,150}</string>
+            </dict>
+            <key>TileDitch_Roche33.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{450,250},{100,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,50}}</string>
+                <key>sourceSize</key>
+                <string>{100,50}</string>
+            </dict>
+            <key>TileDitch_Roche34.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{550,250},{100,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,100}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>TileDitch_Roche35.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{650,250},{100,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,100}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>TileDitch_Roche36.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{750,250},{100,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,150}}</string>
+                <key>sourceSize</key>
+                <string>{100,150}</string>
+            </dict>
+            <key>TileDitch_Roche37.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{850,250},{100,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,150}}</string>
+                <key>sourceSize</key>
+                <string>{100,150}</string>
+            </dict>
+            <key>TileDitch_Roche38.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,400},{100,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,50}}</string>
+                <key>sourceSize</key>
+                <string>{100,50}</string>
+            </dict>
+            <key>TileDitch_Roche39.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{100,400},{50,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,100}}</string>
+                <key>sourceSize</key>
+                <string>{50,100}</string>
+            </dict>
+            <key>TileDitch_Roche40.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,400},{50,100}}</string>
@@ -485,10 +524,23 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>NewDitch50RochePlafond_19.png</key>
+            <key>TileDitch_Roche41.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,400},{50,50}}</string>
+                <string>{{200,400},{50,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,100}}</string>
+                <key>sourceSize</key>
+                <string>{50,100}</string>
+            </dict>
+            <key>TileDitch_Roche42.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{250,400},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -498,10 +550,23 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>NewDitch50RochePlafond_20.png</key>
+            <key>TileDitch_Roche43.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{250,400},{150,50}}</string>
+                <string>{{300,400},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileDitch_Roche44.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{350,400},{150,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -511,10 +576,10 @@
                 <key>sourceSize</key>
                 <string>{150,50}</string>
             </dict>
-            <key>NewDitch50RochePlafond_21.png</key>
+            <key>TileDitch_Roche45.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,400},{150,50}}</string>
+                <string>{{500,400},{150,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -524,88 +589,10 @@
                 <key>sourceSize</key>
                 <string>{150,50}</string>
             </dict>
-            <key>NewDitch50RochePlafond_22.png</key>
+            <key>TileDitch_Roche46.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{550,400},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>NewDitch50RochePlafond_23.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{600,400},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>NewDitch50RochePlafond_24.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{650,400},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>NewDitch50RochePlafond_25.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{750,400},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>NewDitch50RocheRight_02.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{800,400},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>NewDitch50RocheRight_03.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{850,400},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>NewDitch50RocheRight_04.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{950,400},{50,100}}</string>
+                <string>{{650,400},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -615,296 +602,10 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>NewDitch50RocheRight_05.png</key>
+            <key>TileDitch_Roche47.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,500},{100,150}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,150}}</string>
-                <key>sourceSize</key>
-                <string>{100,150}</string>
-            </dict>
-            <key>NewDitch50RocheRight_06.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{100,500},{100,150}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,150}}</string>
-                <key>sourceSize</key>
-                <string>{100,150}</string>
-            </dict>
-            <key>NewDitch50RocheRight_07.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{200,500},{100,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>NewDitch50RocheRight_08.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{300,500},{100,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>NewDitch50RocheRight_09.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{400,500},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>NewDitch50RocheRight_12.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{500,500},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>NewDitch50RocheRight_13.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{550,500},{50,150}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,150}}</string>
-                <key>sourceSize</key>
-                <string>{50,150}</string>
-            </dict>
-            <key>NewDitch50RocheRight_16.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{600,500},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>NewDitch50RocheRight_17.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{700,500},{100,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>NewDitch50RocheRight_18.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{800,500},{50,150}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,150}}</string>
-                <key>sourceSize</key>
-                <string>{50,150}</string>
-            </dict>
-            <key>NewDitch50RocheRight_19.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{850,500},{100,150}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,150}}</string>
-                <key>sourceSize</key>
-                <string>{100,150}</string>
-            </dict>
-            <key>NewDitch50RocheRight_20.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{0,650},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>NewDitch50RocheRight_21.gif</key>
-            <dict>
-                <key>frame</key>
-                <string>{{100,650},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>NewDitch50RocheRight_21.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{200,650},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>NewDitch50RocheRight_22.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{250,650},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>NewDitch50RocheRight_23.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{350,650},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>NewDitch50RocheRight_24.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{400,650},{100,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,50}}</string>
-                <key>sourceSize</key>
-                <string>{100,50}</string>
-            </dict>
-            <key>NewDitch50RocheRight_25.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{500,650},{50,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
-                <key>sourceSize</key>
-                <string>{50,100}</string>
-            </dict>
-            <key>NewDitch50RocheRight_27.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{550,650},{50,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
-                <key>sourceSize</key>
-                <string>{50,50}</string>
-            </dict>
-            <key>NewDitch50Roche_03.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{600,650},{50,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
-                <key>sourceSize</key>
-                <string>{50,100}</string>
-            </dict>
-            <key>NewDitch50Roche_04.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{650,650},{100,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>NewDitch50Roche_05.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{750,650},{100,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{100,100}}</string>
-                <key>sourceSize</key>
-                <string>{100,100}</string>
-            </dict>
-            <key>NewDitch50Roche_06.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{850,650},{150,100}}</string>
+                <string>{{700,400},{150,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -914,10 +615,10 @@
                 <key>sourceSize</key>
                 <string>{150,100}</string>
             </dict>
-            <key>NewDitch50Roche_07.png</key>
+            <key>TileDitch_Roche48.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,750},{150,100}}</string>
+                <string>{{850,400},{150,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -927,10 +628,36 @@
                 <key>sourceSize</key>
                 <string>{150,100}</string>
             </dict>
-            <key>NewDitch50Roche_08.png</key>
+            <key>TileDitch_Roche49.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,750},{50,100}}</string>
+                <string>{{0,500},{100,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,100}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>TileDitch_Roche50.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{100,500},{100,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,100}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>TileDitch_Roche51.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{200,500},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -940,10 +667,23 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>NewDitch50Roche_10.png</key>
+            <key>TileDitch_Roche52.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,750},{50,50}}</string>
+                <string>{{250,500},{150,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{150,100}}</string>
+                <key>sourceSize</key>
+                <string>{150,100}</string>
+            </dict>
+            <key>TileDitch_Roche53.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{400,500},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -953,10 +693,62 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>NewDitch50Roche_11.png</key>
+            <key>TileDitch_Roche54.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{250,750},{100,50}}</string>
+                <string>{{450,500},{150,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{150,50}}</string>
+                <key>sourceSize</key>
+                <string>{150,50}</string>
+            </dict>
+            <key>TileDitch_Roche55.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{600,500},{150,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{150,50}}</string>
+                <key>sourceSize</key>
+                <string>{150,50}</string>
+            </dict>
+            <key>TileDitch_Roche56.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{750,500},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileDitch_Roche57.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{800,500},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileDitch_Roche58.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{850,500},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -966,10 +758,10 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
-            <key>NewDitch50Roche_12.png</key>
+            <key>TileDitch_Roche59.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{350,750},{50,50}}</string>
+                <string>{{950,500},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -979,7 +771,228 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>NewDitch50Roche_13.png</key>
+            <key>TileDitch_Roche60.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,600},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileDitch_Roche61.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{50,600},{100,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,50}}</string>
+                <key>sourceSize</key>
+                <string>{100,50}</string>
+            </dict>
+            <key>TileDitch_Roche62.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{150,600},{50,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,100}}</string>
+                <key>sourceSize</key>
+                <string>{50,100}</string>
+            </dict>
+            <key>TileDitch_Roche63.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{200,600},{100,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,150}}</string>
+                <key>sourceSize</key>
+                <string>{100,150}</string>
+            </dict>
+            <key>TileDitch_Roche64.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{300,600},{100,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,150}}</string>
+                <key>sourceSize</key>
+                <string>{100,150}</string>
+            </dict>
+            <key>TileDitch_Roche65.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{400,600},{100,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,100}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>TileDitch_Roche66.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{500,600},{100,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,100}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>TileDitch_Roche67.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{600,600},{100,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,50}}</string>
+                <key>sourceSize</key>
+                <string>{100,50}</string>
+            </dict>
+            <key>TileDitch_Roche68.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{700,600},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileDitch_Roche69.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{750,600},{50,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,150}}</string>
+                <key>sourceSize</key>
+                <string>{50,150}</string>
+            </dict>
+            <key>TileDitch_Roche70.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{800,600},{100,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,50}}</string>
+                <key>sourceSize</key>
+                <string>{100,50}</string>
+            </dict>
+            <key>TileDitch_Roche71.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{900,600},{100,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,100}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>TileDitch_Roche72.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,750},{50,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,150}}</string>
+                <key>sourceSize</key>
+                <string>{50,150}</string>
+            </dict>
+            <key>TileDitch_Roche73.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{50,750},{100,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,150}}</string>
+                <key>sourceSize</key>
+                <string>{100,150}</string>
+            </dict>
+            <key>TileDitch_Roche74.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{150,750},{100,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,50}}</string>
+                <key>sourceSize</key>
+                <string>{100,50}</string>
+            </dict>
+            <key>TileDitch_Roche75.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{250,750},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileDitch_Roche76.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{300,750},{100,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,50}}</string>
+                <key>sourceSize</key>
+                <string>{100,50}</string>
+            </dict>
+            <key>TileDitch_Roche77.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{400,750},{50,50}}</string>
@@ -992,36 +1005,36 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>NewDitch50Roche_14.png</key>
+            <key>TileDitch_Roche78.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{450,750},{150,50}}</string>
+                <string>{{450,750},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{150,50}}</string>
+                <string>{{0,0},{100,50}}</string>
                 <key>sourceSize</key>
-                <string>{150,50}</string>
+                <string>{100,50}</string>
             </dict>
-            <key>NewDitch50Roche_15.png</key>
+            <key>TileDitch_Roche79.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{600,750},{150,50}}</string>
+                <string>{{550,750},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{150,50}}</string>
+                <string>{{0,0},{50,100}}</string>
                 <key>sourceSize</key>
-                <string>{150,50}</string>
+                <string>{50,100}</string>
             </dict>
-            <key>NewDitch50Roche_16.png</key>
+            <key>TileDitch_Roche80.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{750,750},{50,50}}</string>
+                <string>{{600,750},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -1030,45 +1043,6 @@
                 <string>{{0,0},{50,50}}</string>
                 <key>sourceSize</key>
                 <string>{50,50}</string>
-            </dict>
-            <key>NewDitch50Roche_21.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{800,750},{50,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
-                <key>sourceSize</key>
-                <string>{50,100}</string>
-            </dict>
-            <key>NewDitch50Roche_22.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{850,750},{50,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
-                <key>sourceSize</key>
-                <string>{50,100}</string>
-            </dict>
-            <key>NewDitch50Roche_23.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{900,750},{50,100}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
-                <key>sourceSize</key>
-                <string>{50,100}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -1080,7 +1054,7 @@
             <key>size</key>
             <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:88d7e8981957ad51992964da01315de7:843afb3c4c1af2f8894579cc2f8306ca:fe5ee54705aba51530672711ce113f4d$</string>
+            <string>$TexturePacker:SmartUpdate:1b1ce085b4c0ef5a63a65fb9592c8017:21cf143436484081c5d903355e088d05:fe5ee54705aba51530672711ce113f4d$</string>
             <key>textureFileName</key>
             <string>TileDitch_Roche.png</string>
         </dict>
