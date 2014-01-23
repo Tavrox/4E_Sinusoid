@@ -10,7 +10,7 @@
         <key>autoSDSettings</key>
         <array/>
         <key>allowRotation</key>
-        <false/>
+        <true/>
         <key>quiet</key>
         <false/>
         <key>premultiplyAlpha</key>
@@ -22,7 +22,7 @@
         <key>dataFormat</key>
         <string>cocos2d</string>
         <key>textureFileName</key>
-        <filename>../../../../../gfx/Gameplay/Characters/player.png</filename>
+        <filename>player.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>ditherType</key>
@@ -74,7 +74,7 @@
             <key>freeSizeMode</key>
             <enum type="AlgorithmSettings::AlgorithmFreeSizeMode">Best</enum>
             <key>sizeConstraints</key>
-            <enum type="AlgorithmSettings::SizeConstraints">AnySize</enum>
+            <enum type="AlgorithmSettings::SizeConstraints">POT</enum>
             <key>forceSquared</key>
             <false/>
             <key>forceWordAligned</key>
@@ -87,7 +87,7 @@
             <key>basic</key>
             <struct type="AlgorithmBasicSettings">
                 <key>sortBy</key>
-                <enum type="AlgorithmBasicSettings::SortBy">Name</enum>
+                <enum type="AlgorithmBasicSettings::SortBy">Best</enum>
                 <key>order</key>
                 <enum type="AlgorithmBasicSettings::Order">Ascending</enum>
             </struct>
@@ -99,7 +99,7 @@
             <key>packageName</key>
             <string>Texture</string>
             <key>javaFileName</key>
-            <filename>../../../../../gfx/Gameplay/Characters/player.java</filename>
+            <filename>player.java</filename>
             <key>wrap</key>
             <struct type="AndEngineWrap">
                 <key>s</key>
@@ -111,7 +111,7 @@
             <enum type="AndEngine::MagFilter">MagLinear</enum>
         </struct>
         <key>dataFileName</key>
-        <filename>../../../../../gfx/Gameplay/Characters/player.xml</filename>
+        <filename>player.xml</filename>
         <key>multiPack</key>
         <false/>
         <key>mainExtension</key>
@@ -148,7 +148,28 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>../../../player00stand.png</filename>
+            <filename>frames/player00run.png</filename>
+            <filename>frames/player01run.png</filename>
+            <filename>frames/player02run.png</filename>
+            <filename>frames/player03run.png</filename>
+            <filename>frames/player04run.png</filename>
+            <filename>frames/player05run.png</filename>
+            <filename>frames/player06run.png</filename>
+            <filename>frames/player07run.png</filename>
+            <filename>frames/player08run.png</filename>
+            <filename>frames/player09run.png</filename>
+            <filename>frames/player10walk.png</filename>
+            <filename>frames/player11walk.png</filename>
+            <filename>frames/player12walk.png</filename>
+            <filename>frames/player13walk.png</filename>
+            <filename>frames/player14walk.png</filename>
+            <filename>frames/player15walk.png</filename>
+            <filename>frames/player16walk.png</filename>
+            <filename>frames/player17walk.png</filename>
+            <filename>frames/player18walk.png</filename>
+            <filename>frames/player19walk.png</filename>
+            <filename>frames/player20stand.png</filename>
+            <filename>frames/player21instru.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

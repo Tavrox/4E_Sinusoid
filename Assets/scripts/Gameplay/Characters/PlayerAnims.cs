@@ -16,6 +16,7 @@ public class PlayerAnims : MonoBehaviour
 		ShootLeft, ShootRight,
 		CrounchLeft, CrounchRight,
 		AttackLeft, AttackRight,
+		TakeInstru, PlayInstru
 	}
 	
 	public Transform spriteParent;
@@ -48,6 +49,7 @@ public class PlayerAnims : MonoBehaviour
 		Hurt();
 		Fall();
 		Paused();
+		PlayInstru();
 	}
 	private void Run()
 	{
@@ -56,7 +58,7 @@ public class PlayerAnims : MonoBehaviour
 			currentAnim = animDef.RunRight;
 			anim.fps = sprintFPS;
 			animSprite.Play("run");
-			NormalScaleSprite();;
+			NormalScaleSprite();
 		}
 		if(_character.isLeft && _character.grounded && currentAnim!=animDef.RunLeft && _player.isSprint)
 		{
@@ -74,7 +76,7 @@ public class PlayerAnims : MonoBehaviour
 			currentAnim = animDef.WalkRight;
 			animSprite.Play("walk");
 			anim.fps = normalFPS;
-			NormalScaleSprite();;
+			NormalScaleSprite();
 		}
 		if(_character.isLeft && _character.grounded && currentAnim!=animDef.WalkLeft && !_player.isSprint)
 		{
@@ -182,7 +184,40 @@ public class PlayerAnims : MonoBehaviour
 			animSprite.looping = false;
 		}
 	}
+
 	
+	private void PlayInstru()
+	{
+		if(_character.facingDir == Character.facing.Right && _character.grounded && currentAnim!=animDef.TakeInstru && _player.specialCast && _player.takingInstr)
+		{
+			currentAnim = animDef.TakeInstru;
+			animSprite.Play("takeInstru");
+			anim.fps = normalFPS;
+			NormalScaleSprite();
+		}
+		if(_character.facingDir == Character.facing.Left && _character.grounded && currentAnim!=animDef.TakeInstru && _player.specialCast && _player.takingInstr)
+		{
+			currentAnim = animDef.TakeInstru;
+			animSprite.Play("takeInstru");
+			anim.fps = normalFPS;
+			InvertSprite();
+		}
+		if(_character.facingDir == Character.facing.Right && _character.grounded && currentAnim!=animDef.PlayInstru && _player.specialCast && !_player.takingInstr)
+		{
+			currentAnim = animDef.PlayInstru;
+			animSprite.Play("instru");
+			anim.fps = normalFPS;
+			NormalScaleSprite();
+		}
+		if(_character.facingDir == Character.facing.Left && _character.grounded && currentAnim!=animDef.PlayInstru && _player.specialCast && !_player.takingInstr)
+		{
+			currentAnim = animDef.PlayInstru;
+			animSprite.Play("instru");
+			anim.fps = normalFPS;
+			InvertSprite();
+		}
+	}
+
 	private void AnimationFinished()
 	{
 		animPlaying = false;
