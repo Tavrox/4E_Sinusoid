@@ -242,7 +242,7 @@ public class Player : Character {
 			else if (GameEventManager.state == GameEventManager.GameState.Pause) GameEventManager.TriggerGameUnpause();
 		}
 		#endregion
-		if(checkingGrabPosition) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");}
+		if(grounded && checkingGrabPosition) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");}
 
 		if(grounded) {
 			if(!firstGrounded) {
