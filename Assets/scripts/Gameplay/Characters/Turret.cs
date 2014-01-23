@@ -20,6 +20,7 @@ public class Turret : LevelBrick {
 	
 	public FESound ShootSound;
 	public FESound ScanSound;
+	public FESound IdleSound;
 
 	// Use this for initialization
 	void Start () {
@@ -40,6 +41,7 @@ public class Turret : LevelBrick {
 
 		InvokeRepeating("shootAtPoint", 0f, shootRate);
 		InvokeRepeating("turn", 0f, turnRate);
+		InvokeRepeating("playIdleSound", 0f, IdleSound.RepeatRate);
 	}
 	
 	// Update is called once per frame
@@ -54,7 +56,8 @@ public class Turret : LevelBrick {
 	private void shootAtPoint()
 	{
 		_macaAnim.PlayOnce("macaghul");
-//		ShootSound.playSound();
+		ShootSound.playDistancedSound();
+		_projectile.resetProj();
 		_projectile.setupMove(_target, true);
 	}
 	private void shootAtTarget(GameObject _target)
@@ -74,6 +77,11 @@ public class Turret : LevelBrick {
 	public GameObject getTarget()
 	{
 		return _target;
+	}
+
+	private void playIdleSound()
+	{
+		IdleSound.playDistancedSound();
 	}
 
 }
