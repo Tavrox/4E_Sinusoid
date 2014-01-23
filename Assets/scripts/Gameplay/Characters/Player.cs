@@ -11,7 +11,7 @@ public class Player : Character {
 	private WaveCreator soundEmitt1, soundEmitt2, soundEmitt3, soundInstru1, soundInstru2; //waves footsteps 1, 2, 3 | intru 1, 2 so that the active wave is not destroyed when calling a another one 
 	private int cptWave=1, pebbleDirection = 1, pebbleMaxStrengh = 10;//cptWave = ID of the current displayed wave (from 1 to 3)| pebbleDirection = 1 or -1 -> right or left
 	private bool 	blockCoroutine, first, 		//block the footsteps coroutine|first instru wave or not
-					specialCast, playerDirLeft, checkingGrabPosition, //true when playing instru (locks player and footsteps) | player goes left or not (used for offsetting footwaves center point)
+					playerDirLeft, checkingGrabPosition, //player goes left or not (used for offsetting footwaves center point)
 					firstFalling,firstGrounded; //Check when player hits or leave the floor once
 	private Pebble pebble; //Throwable pebble
 	private float powerPebble; //Throwing force added to the pebble after cast
@@ -20,7 +20,7 @@ public class Player : Character {
 	public int pebbleCount = 1;
 //	private bool isSprint = false;
 
-	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
+	[HideInInspector] public bool isSprint,toSprint,toWalk, specialCast, takingInstr, launchPebble, preparePebble;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease | true when playing instru (locks player and footsteps)
 	[HideInInspector] public bool hasFallen;
 
 	private float crounchTime = 0.3f, footStepDelayINI;
@@ -111,6 +111,7 @@ public class Player : Character {
 		}
 		if (Input.GetKey(KeyCode.F)) { //Hold F to add power
 			if(powerPebble <= pebbleMaxStrengh && !pebble) { //Pebble max strenght
+				preparePebble = specialCast = true;
 				powerPebble += 0.2f;
 				pebbleBar.transform.localScale = new Vector3(powerPebble,0.3f,1f); //Resize powerBar
 				setPebbleBarPos();
@@ -118,10 +119,11 @@ public class Player : Character {
 		}
 		if (Input.GetKeyUp(KeyCode.F)) { //RELEASE THE PEBBLE !!
 			if(!pebble) { //If no pebble already existing
-
+				preparePebble = false;
+				launchPebble = true;
 				GOpebble = Instantiate(Resources.Load("Prefabs/04Gameplay/Pebble")) as GameObject;
 				pebble = GOpebble.GetComponent<Pebble>(); //Create Pebble
-				pebble.setPosition((transform.position.x-transform.localScale.x/2),transform.position.y, -6f); //Pebble ini position
+				pebble.setPosition((transform.position.x-transform.localScale.x/2),(transform.position.y+transform.localScale.y/2), -6f); //Pebble ini position
 				pebble.setCallerObject(thisTransform);
 				pebbleDirection = (facingDir == facing.Right) ? 1 : -1;	//Direction of the pebble
 				pebble.throwPebble(powerPebble, pebbleDirection); //Throw pebble function
@@ -334,8 +336,10 @@ public class Player : Character {
 	}
 	IEnumerator specialCircleCast() { //Instru management
 		specialCast = true; //Say "I AM PLAYING AN INTRUMENT" to the rest of the game (lock player)
-		yield return new WaitForSeconds(1f); //Cast time before playing the sound (the character has to take his intrument out of his ass)
-		
+		takingInstr = true;
+		yield return new WaitForSeconds(InstruSound.Delay); //Cast time before playing the sound (the character has to take his intrument out of his ass)
+		takingInstr = false;
+		yield return new WaitForSeconds(2.75f); //Cast time before playing the sound (the character has to take his intrument out of his ass)
 		if(first) {first=!first;soundInstru1.resetCircle();} //If it's the first time playing
 		else {first=!first;soundInstru2.resetCircle();} //If it's the second time playing (2 waves so that player can display both on screen if spamming music)
 		//yield return new WaitForSeconds(soundInstru1.getLifeTime());
