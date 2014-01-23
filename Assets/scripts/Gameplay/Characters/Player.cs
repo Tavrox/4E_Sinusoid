@@ -294,6 +294,7 @@ public class Player : Character {
 		if(col.transform.position.y-(thisTransform.position.y+halfMyY) > -0.5f) {
 			isGrab = true;
 			checkingGrabPosition = false;
+			print ("BABIGIGGUZFGIUO");
 		}
 		else {
 			StartCoroutine("checkGrabberPosition",col);
