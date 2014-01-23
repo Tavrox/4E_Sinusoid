@@ -53,7 +53,8 @@ public class Rusher : Enemy {
 		GameEventManager.GamePause += GamePause;
 		GameEventManager.GameUnpause += GameUnpause;
 
-		
+		spawnPos = transform.position;
+
 		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesEmitter")) as GameObject;
 		soundEmitt1 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt1.gameObject.name = "_footWaveRusher1";//footsteps wave 1
 		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesEmitter")) as GameObject;
@@ -261,7 +262,10 @@ public class Rusher : Enemy {
 	}
 
 	private void GameStart () {
-
+		if(FindObjectOfType(typeof(Walker)) && this != null) {
+			setIniState();
+			enabled = true;
+		}
 	}
 	
 	private void GameOver () {

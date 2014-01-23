@@ -67,7 +67,7 @@ public class Pebble : MonoBehaviour {
 //			else
 //			{
 //				Environment _env = other.gameObject.GetComponent<Environment>();
-//				_CollisionSound.playSound(_env);
+//				_CollisionSound.playSound(_enviro:);
 //			}
 		}
 		if(other.gameObject.CompareTag("Enemy") && !callerObj.CompareTag("Enemy") && other.GetComponent<Enemy>().getTarget().tag != "Pebble") {

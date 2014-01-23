@@ -9,11 +9,13 @@ public class Checkpoint : MonoBehaviour {
 
 	public FESound RespawnSound;
 	public FESound ReloadSound;
+	public FESound IdleSound;
 
 	// Use this for initialization
 	void Start () {
 		_player = GameObject.FindWithTag("Player").GetComponent<Player>();
 		_LevMan = GameObject.FindWithTag("LevelManager").GetComponent<LevelManager>();
+		IdleSound.playDistancedSound();
 
 	}
 
@@ -29,11 +31,15 @@ public class Checkpoint : MonoBehaviour {
 
 	public void playSoundRespawn()
 	{
-		ReloadSound.playSound();
+		RespawnSound.playSound();
 	}
 	public void playSoundReload()
 	{
 		ReloadSound.playSound();
+	}
+	public void playSoundIdle()
+	{
+		IdleSound.playDistancedSound();
 	}
 
 

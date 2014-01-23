@@ -50,7 +50,7 @@ public class Character : MonoBehaviour
 	public Environment leftEnvironment;
 	public Environment rightEnvironment;
 	
-	[Range (0,10)] 	public float 	moveVel = 4f;
+	[Range (0,10)] 	public float 	moveVel = 3f, moveVelSprint = 5.7f;
 	[Range (0,30)] 	public float 	jumpVel = 16f;
 	[Range (0,30)] 	private float 	jump2Vel = 14f;
 	[Range (1,2)] 	private int 		maxJumps = 1;
@@ -58,9 +58,10 @@ public class Character : MonoBehaviour
 	
 	[SerializeField] private int jumps = 0;
 	[SerializeField] private float gravityY;
+	[SerializeField] protected float moveVelINI;
 	[SerializeField] private float maxVelY = 0f;
 		
-	[SerializeField] private RaycastHit hitInfo;
+	[SerializeField] protected RaycastHit hitInfo;
 	[SerializeField] protected float halfMyX;
 	[SerializeField] protected float halfMyY;
 	
@@ -81,6 +82,7 @@ public class Character : MonoBehaviour
 	public virtual void Start () 
 	{
 		maxVelY = fallVel;
+		moveVelINI = moveVel;
 		vectorMove.y = 0;
 		halfMyX = GetComponentInChildren<Transform>().GetComponentInChildren<OTAnimatingSprite>().size.x * 0.5f - 0.5f;
 		halfMyY = GetComponentInChildren<Transform>().GetComponentInChildren<OTAnimatingSprite>().size.y * 0.5f + 0.2f;
@@ -90,7 +92,7 @@ public class Character : MonoBehaviour
 	IEnumerator StartGravity()
 	{
 		// wait for things to settle before applying gravity
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(0.5f);
 		gravityY = 52f;
 	}
 	
@@ -180,15 +182,14 @@ public class Character : MonoBehaviour
 
 		
 		Vector3 tst = new Vector3(mypos.x, mypos.y,0f);
-		Debug.DrawLine( tst , tst+Vector3.down, Color.green);
-		Debug.DrawLine( mypos , Vector3.down, Color.blue);
+//		Debug.DrawLine( tst , tst+Vector3.down, Color.green);
+//		Debug.DrawLine( mypos , Vector3.down, Color.blue);
 		
 		//BLOCKED TO DOWN
 		if (Physics.Raycast(mypos, mypos+Vector3.down, out hitInfo, halfMyY, platformMask))
 		{
 			Debug.DrawLine(thisTransform.position, hitInfo.point, Color.black);
-			BlockedDown();	
-			print (hitInfo.collider.gameObject.GetComponent<Environment>().typeList);
+			BlockedDown();
 		}
 		if (Physics.Raycast(mypos, Vector3.down, out hitInfo, halfMyY, groundMask))
 		{
@@ -196,15 +197,15 @@ public class Character : MonoBehaviour
 		}
 		else
 		{
-			aboveEnvironment = null;
+			onEnvironment = null;
 		}
 		
-		
+
 		// BLOCKED TO UP
 		if (Physics.Raycast(mypos, Vector3.up, out hitInfo, halfMyY, groundMask))
 		{
 			BlockedUp();
-			Debug.DrawLine (thisTransform.position, hitInfo.point, Color.red);
+			Debug.DrawLine (mypos, hitInfo.point, Color.red);
 		}
 		else
 		{
@@ -240,8 +241,6 @@ public class Character : MonoBehaviour
 
 	public virtual void BlockedUp()
 	{
-		if (hitInfo.collider.GetComponent<Environment>() != null)
-		{aboveEnvironment = hitInfo.collider.GetComponent<Environment>();}
 		if(vectorMove.y > 0)
 		{
 			vectorMove.y = 0f;
@@ -272,7 +271,7 @@ public class Character : MonoBehaviour
 				blockedRight = true;
 				vectorMove.x = 0f;
 				thisTransform.position = new Vector3(hitInfo.point.x-(halfMyX-0.01f),thisTransform.position.y, 0f); // .01 less than collision width.
-				Debug.LogWarning(isCrounch + " blockedRight");
+//				Debug.LogWarning(isCrounch + " blockedRight");
 			}
 		}
 	}
