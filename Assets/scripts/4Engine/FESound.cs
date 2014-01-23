@@ -47,7 +47,6 @@ public class FESound : MonoBehaviour {
 		if (SoundGroup != null)
 		{
 			MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay, SoundGroup.name + "_" + _variation);
-			print (SoundGroup.name + "_" + _variation);
 		}
 	}
 	public void playModulatedSound(float _var1, float _var2)
@@ -77,16 +76,15 @@ public class FESound : MonoBehaviour {
 	}
 	public void playDistancedSound(string _var = null)
 	{
-		print ("enter distanced sound");
-		referralDistance = FETool.findWithinChildren(this.gameObject, "GameObject").transform;
+		referralDistance = this.gameObject.transform;
 		distToTrack = GameObject.FindGameObjectWithTag("Player").transform;
-		if (_var != null)
+		if (_var == null)
 		{
 			MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay);
 		}
 		else
 		{
-			playVariationSound(_var);
+			MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay, SoundGroup.name + "_" + _var);
 		}
 		InvokeRepeating("checkDistance", 0f, 0.1f); 
 	}

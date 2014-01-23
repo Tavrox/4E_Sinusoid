@@ -92,7 +92,6 @@ public class Projectile : MonoBehaviour {
 		}
 		if (_other.CompareTag("soundStopper"))
  	    {
-
 			resetProj();
 		}
 
