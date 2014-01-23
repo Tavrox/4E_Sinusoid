@@ -242,7 +242,7 @@ public class Player : Character {
 			else if (GameEventManager.state == GameEventManager.GameState.Pause) GameEventManager.TriggerGameUnpause();
 		}
 		#endregion
-		if(checkingGrabPosition) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");}
+		if(grounded && checkingGrabPosition) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");}
 
 		if(grounded) {
 			if(!firstGrounded) {
@@ -294,7 +294,6 @@ public class Player : Character {
 		if(col.transform.position.y-(thisTransform.position.y+halfMyY) > -0.5f) {
 			isGrab = true;
 			checkingGrabPosition = false;
-			print ("BABIGIGGUZFGIUO");
 		}
 		else {
 			StartCoroutine("checkGrabberPosition",col);
