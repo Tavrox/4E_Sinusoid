@@ -52,6 +52,7 @@ public class Walker : Enemy {
 		GameEventManager.GamePause += GamePause;
 		GameEventManager.GameUnpause += GameUnpause;
 
+		spawnPos = transform.position;
 		
 		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesEmitter")) as GameObject;
 		soundEmitt1 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt1.gameObject.name = "_footWaveWalker1";//footsteps wave 1
@@ -355,7 +356,6 @@ public class Walker : Enemy {
 
 	private void GameStart () {
 		if(FindObjectOfType(typeof(Walker)) && this != null) {
-			//transform.localPosition = spawnPos;
 			setIniState();
 			enabled = true;
 		}

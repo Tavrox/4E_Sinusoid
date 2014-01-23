@@ -11,18 +11,19 @@ public class Player : Character {
 	private WaveCreator soundEmitt1, soundEmitt2, soundEmitt3, soundInstru1, soundInstru2; //waves footsteps 1, 2, 3 | intru 1, 2 so that the active wave is not destroyed when calling a another one 
 	private int cptWave=1, pebbleDirection = 1, pebbleMaxStrengh = 10;//cptWave = ID of the current displayed wave (from 1 to 3)| pebbleDirection = 1 or -1 -> right or left
 	private bool 	blockCoroutine, first, 		//block the footsteps coroutine|first instru wave or not
-					specialCast, playerDirLeft, checkingGrabPosition; //true when playing instru (locks player and footsteps) | player goes left or not (used for offsetting footwaves center point)
+					specialCast, playerDirLeft, checkingGrabPosition, //true when playing instru (locks player and footsteps) | player goes left or not (used for offsetting footwaves center point)
+					firstFalling,firstGrounded; //Check when player hits or leave the floor once
 	private Pebble pebble; //Throwable pebble
 	private float powerPebble; //Throwing force added to the pebble after cast
 	private GameObject pebbleBar; //UI Bar to tell the player the power of his shoot
-	public float footStepDelay;
+	public float footStepDelay = 0.8f, footStepDelayFall = 0.4f, footStepDelaySprint = 0.4f;
 	public int pebbleCount = 1;
 //	private bool isSprint = false;
 
 	[HideInInspector] public bool isSprint,toSprint,toWalk;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease
 	[HideInInspector] public bool hasFallen;
 
-	private float crounchTime = 0.3f;
+	private float crounchTime = 0.3f, footStepDelayINI;
 
 	public FESound WalkSound;
 	public FESound RunSound;
@@ -78,6 +79,10 @@ public class Player : Character {
 		soundInstru2.createCircle(thisTransform);soundInstru2.specialCircle();soundInstru2.setParent(thisTransform); //creating wave elements of INSTRU wave 2 & setting waves params to INSTRU
 	
 		pebbleBar = Instantiate(Resources.Load("Prefabs/04Gameplay/PebbleBar")) as GameObject; //Create UI power bar
+		footStepDelayINI = footStepDelay;
+	}
+	private void setIniState() {
+		moveVel = moveVelINI;
 	}
 
 	// Update is called once per frame
@@ -152,13 +157,13 @@ public class Player : Character {
 		#endregion
 		#region Sprint management (LeftShift)
 		if(Input.GetKeyDown("left shift")) {//OnPress
-			moveVel = 1.9f * moveVel; //Increase Player Speed
-			footStepDelay = footStepDelay / 2f; //Decrease FootStep Delay
+			moveVel = moveVelSprint; //Increase Player Speed
+			footStepDelay = footStepDelaySprint; //Decrease FootStep Delay
 			isSprint = true;
 		}
 		if(Input.GetKeyUp("left shift")) {//OnRelease
-			moveVel = moveVel / 1.9f; //Decrease Player Speed
-			footStepDelay = footStepDelay * 2f; //Increase FootStep Delay
+			moveVel = moveVelINI; //Decrease Player Speed
+			footStepDelay = footStepDelayINI; //Increase FootStep Delay
 			isSprint = false;
 		}
 		if(Input.GetKey("left shift")) {//LeftShift input
@@ -214,6 +219,7 @@ public class Player : Character {
 		if ((Input.GetKeyDown("up") || Input.GetKeyDown(KeyCode.Z))) {
 			if(isGrab) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");isGrab = false;}
 			isJump = true; 
+			grounded = false;
 		}
 		#endregion
 		#region Alpha (1), (2), (3)
@@ -233,9 +239,45 @@ public class Player : Character {
 			else if (GameEventManager.state == GameEventManager.GameState.Pause) GameEventManager.TriggerGameUnpause();
 		}
 		#endregion
-		if(grounded && checkingGrabPosition) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");}
-	}
+		if(checkingGrabPosition) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");}
 
+		if(grounded) {
+			if(!firstGrounded) {
+				//print("BEGIN BEING GROUNDED");
+				firstGrounded = true;
+				firstFalling = false;
+				//StopCoroutine("footStep");
+				footStepDelay=footStepDelayINI;
+				soundEmitt1.circleWalkToSprint();
+				soundEmitt1.resetCircle(transform.localScale.x/1.5f,playerDirLeft, true);
+				soundEmitt1.circleFallToGrounded();
+				soundEmitt2.circleFallToGrounded();
+				soundEmitt3.circleFallToGrounded();
+				playSoundFall();
+			}
+		}
+		else {
+			if(!firstFalling) {
+				//print("BEGIN FALLING");
+				StopCoroutine("footStep");
+				footStepDelay=footStepDelayFall;
+				firstFalling = true;
+				firstGrounded = false;
+			}
+			StartCoroutine("waitB4FallWave");
+		}
+		if(!grounded && !blockCoroutine) {/*footStepDelay=footStepDelayFall;StartCoroutine("waitB4FallWave");*/}
+		else if (grounded && !blockCoroutine) {
+			/**/
+		}
+	}
+	IEnumerator waitB4FallWave() { //Short Delay before the sprite actually touches the ground (edit when anim is finished)
+		yield return new WaitForSeconds(0.7f);
+		soundEmitt1.circleGroundedToFall();
+		soundEmitt2.circleGroundedToFall();
+		soundEmitt3.circleGroundedToFall();
+		if(!blockCoroutine && !grounded) StartCoroutine("footStep");
+	}
 	void OnTriggerEnter(Collider col) {
 		if(col.gameObject.CompareTag("platformGrabber") && !grounded) 
 		{
@@ -375,13 +417,18 @@ public class Player : Character {
 	{
 		JumpSound.playSound(onEnvironment);
 	}
+	private void playSoundFall()
+	{
+		//FallSound.playSound(onEnvironment);
+	}
 	#endregion
 
 
 	#region Game State Management - Events detection
 	private void GameStart () {
 		if(FindObjectOfType(typeof(Player)) && this != null) {
-			transform.localPosition = spawnPos;
+			//transform.localPosition = spawnPos;
+			setIniState();
 			enabled = true;
 		}
 	}

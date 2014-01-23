@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System;
 using System.Collections.Generic;
 
@@ -75,6 +75,16 @@ public class WaveCreator : MonoBehaviour {
 	public void circleSprintToWalk () {
 		foreach (WaveElt light in lights) {
 			light.setWalkState();
+		}
+	}
+	public void circleGroundedToFall () {
+		foreach (WaveElt light in lights) {
+			light.setFallState();
+		}
+	}
+	public void circleFallToGrounded () {
+		foreach (WaveElt light in lights) {
+			light.setGroundedState();
 		}
 	}
 	public float getLifeTime() {
