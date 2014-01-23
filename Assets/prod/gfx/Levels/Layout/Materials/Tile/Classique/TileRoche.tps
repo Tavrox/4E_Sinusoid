@@ -127,7 +127,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>TileRocher.xml</filename>
+                <filename>../../../../../../../Resources/maps/tilesets/TileRocher.xml</filename>
             </struct>
             <key>java</key>
             <struct type="DataFile">
@@ -171,11 +171,12 @@
         </struct>
         <key>fileList</key>
         <array>
+            <filename>Tile_Roche/tileAngle_BDroite_01.png</filename>
+            <filename>Tile_Roche/tileAngle_BDroite_02.png</filename>
             <filename>Tile_Roche/tileAngle_BDroite_03.png</filename>
             <filename>Tile_Roche/tileAngle_BDroite_04.png</filename>
             <filename>Tile_Roche/tileAngle_BDroite_05.png</filename>
             <filename>Tile_Roche/tileAngle_BDroite_05-46.png</filename>
-            <filename>Tile_Roche/tileAngle_BDroite_05-48.png</filename>
             <filename>Tile_Roche/tileAngle_BDroite_06.png</filename>
             <filename>Tile_Roche/tileAngle_BDroite_07.png</filename>
             <filename>Tile_Roche/tileAngle_BGauche_01.png</filename>
@@ -190,15 +191,14 @@
             <filename>Tile_Roche/tileAngle_HDroite_05.png</filename>
             <filename>Tile_Roche/tileAngle_HGauche_01.png</filename>
             <filename>Tile_Roche/tileAngle_HGauche_02.png</filename>
-            <filename>Tile_Roche/tileAngle_HGauche_03.png</filename>
-            <filename>Tile_Roche/tileAngle_HGauche_04.png</filename>
             <filename>Tile_Roche/tileAngle_HGauche_05.png</filename>
             <filename>Tile_Roche/tileAngle_HGauche_05-32.png</filename>
-            <filename>Tile_Roche/tileAngle_HGauche_05-34.png</filename>
             <filename>Tile_Roche/tileAngleInter_BasD_01.png</filename>
             <filename>Tile_Roche/tileAngleInter_BasG_01.png</filename>
             <filename>Tile_Roche/tileAngleInter_HautD_01.png</filename>
+            <filename>Tile_Roche/tileAngleInter_HautD_02.png</filename>
             <filename>Tile_Roche/tileAngleInter_HautG_01.png</filename>
+            <filename>Tile_Roche/tileAngleInter_HautG_02.png</filename>
             <filename>Tile_Roche/tileHorizontal_Bas_01.png</filename>
             <filename>Tile_Roche/tileHorizontal_Bas_02.png</filename>
             <filename>Tile_Roche/tileHorizontal_Bas_03.png</filename>
@@ -237,11 +237,7 @@
             <filename>Tile_Roche/tileVertical_Gauche_04.png</filename>
             <filename>Tile_Roche/tileVertical_Gauche_05.png</filename>
             <filename>Tile_Roche/tileVertical_Gauche_07.png</filename>
-            <filename>Tile_Roche/tileAngle_BDroite_01.png</filename>
-            <filename>Tile_Roche/tileAngle_BDroite_02.png</filename>
             <filename>Tile_Roche/black.png</filename>
-            <filename>Tile_Roche/tileAngleInter_HautD_02.png</filename>
-            <filename>Tile_Roche/tileAngleInter_HautG_02.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

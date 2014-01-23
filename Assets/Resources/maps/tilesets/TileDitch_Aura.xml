@@ -7,7 +7,7 @@
             <key>NewDitch50AutaLeft_02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,150},{50,50}}</string>
+                <string>{{0,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>NewDitch50AutaLeft_04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,250},{50,100}}</string>
+                <string>{{50,0},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>NewDitch50AutaLeft_05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,150},{50,50}}</string>
+                <string>{{100,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,20 +46,20 @@
             <key>NewDitch50AutaLeft_06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{450,100},{50,50}}</string>
+                <string>{{150,0},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{100,50}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{100,50}</string>
             </dict>
             <key>NewDitch50AutaLeft_07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{450,550},{50,150}}</string>
+                <string>{{250,0},{50,150}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,20 +72,20 @@
             <key>NewDitch50AutaLeft_08.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,700},{50,200}}</string>
+                <string>{{300,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,200}}</string>
+                <string>{{0,0},{50,50}}</string>
                 <key>sourceSize</key>
-                <string>{50,200}</string>
+                <string>{50,50}</string>
             </dict>
-            <key>NewDitch50AutaLeft_14.png</key>
+            <key>NewDitch50AutaLeft_09.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,150},{100,50}}</string>
+                <string>{{350,0},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -95,10 +95,62 @@
                 <key>sourceSize</key>
                 <string>{100,50}</string>
             </dict>
+            <key>NewDitch50AutaLeft_10.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{450,0},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>NewDitch50AutaLeft_11.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{500,0},{100,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,50}}</string>
+                <key>sourceSize</key>
+                <string>{100,50}</string>
+            </dict>
+            <key>NewDitch50AutaLeft_12.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{600,0},{50,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,150}}</string>
+                <key>sourceSize</key>
+                <string>{50,150}</string>
+            </dict>
+            <key>NewDitch50AutaLeft_14.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{650,0},{50,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,150}}</string>
+                <key>sourceSize</key>
+                <string>{50,150}</string>
+            </dict>
             <key>NewDitch50AutaLeft_16.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,250},{100,100}}</string>
+                <string>{{700,0},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +163,7 @@
             <key>NewDitch50AutaLeft_17.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{250,350},{100,100}}</string>
+                <string>{{800,0},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,20 +176,20 @@
             <key>NewDitch50AutaLeft_18.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,700},{100,150}}</string>
+                <string>{{900,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,150}}</string>
+                <string>{{0,0},{50,50}}</string>
                 <key>sourceSize</key>
-                <string>{100,150}</string>
+                <string>{50,50}</string>
             </dict>
             <key>NewDitch50AutaLeft_19.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{350,550},{100,150}}</string>
+                <string>{{0,150},{100,150}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,33 +202,98 @@
             <key>NewDitch50AutaLeft_20.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,150},{100,51}}</string>
+                <string>{{100,150},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,51}}</string>
+                <string>{{0,0},{100,50}}</string>
                 <key>sourceSize</key>
-                <string>{100,51}</string>
+                <string>{100,50}</string>
+            </dict>
+            <key>NewDitch50AutaLeft_22.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{200,150},{100,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,100}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>NewDitch50AutaLeft_23.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{300,150},{100,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,100}}</string>
+                <key>sourceSize</key>
+                <string>{100,100}</string>
+            </dict>
+            <key>NewDitch50AutaLeft_24.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{400,150},{100,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,150}}</string>
+                <key>sourceSize</key>
+                <string>{100,150}</string>
+            </dict>
+            <key>NewDitch50AutaLeft_25.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{500,150},{100,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,150}}</string>
+                <key>sourceSize</key>
+                <string>{100,150}</string>
+            </dict>
+            <key>NewDitch50AutaLeft_26.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{600,150},{100,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,50}}</string>
+                <key>sourceSize</key>
+                <string>{100,50}</string>
             </dict>
             <key>NewDitch50AutaRight_03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,150},{100,51}}</string>
+                <string>{{700,150},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{100,51}}</string>
+                <string>{{0,0},{100,50}}</string>
                 <key>sourceSize</key>
-                <string>{100,51}</string>
+                <string>{100,50}</string>
             </dict>
             <key>NewDitch50AutaRight_05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,700},{100,150}}</string>
+                <string>{{800,150},{100,150}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +306,7 @@
             <key>NewDitch50AutaRight_06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,550},{100,150}}</string>
+                <string>{{900,150},{100,150}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +319,7 @@
             <key>NewDitch50AutaRight_07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,350},{100,100}}</string>
+                <string>{{0,300},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -215,7 +332,7 @@
             <key>NewDitch50AutaRight_08.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,450},{100,100}}</string>
+                <string>{{100,300},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -228,7 +345,7 @@
             <key>NewDitch50AutaRight_09.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,0},{100,50}}</string>
+                <string>{{200,300},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -241,20 +358,33 @@
             <key>NewDitch50AutaRight_12.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{250,700},{50,200}}</string>
+                <string>{{300,300},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,200}}</string>
+                <string>{{0,0},{50,50}}</string>
                 <key>sourceSize</key>
-                <string>{50,200}</string>
+                <string>{50,50}</string>
+            </dict>
+            <key>NewDitch50AutaRight_13.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{350,300},{50,150}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,150}}</string>
+                <key>sourceSize</key>
+                <string>{50,150}</string>
             </dict>
             <key>NewDitch50AutaRight_17.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,550},{50,150}}</string>
+                <string>{{400,300},{50,150}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -267,20 +397,20 @@
             <key>NewDitch50AutaRight_18.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,50},{50,50}}</string>
+                <string>{{450,300},{50,150}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{50,150}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{50,150}</string>
             </dict>
             <key>NewDitch50AutaRight_19.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,50},{50,50}}</string>
+                <string>{{500,300},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -293,20 +423,20 @@
             <key>NewDitch50AutaRight_20.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,550},{50,100}}</string>
+                <string>{{550,300},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,100}}</string>
+                <string>{{0,0},{100,50}}</string>
                 <key>sourceSize</key>
-                <string>{50,100}</string>
+                <string>{100,50}</string>
             </dict>
             <key>NewDitch50AutaRight_21.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,50},{50,50}}</string>
+                <string>{{650,300},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -316,23 +446,114 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>NewDitch50AutaTop_07.png</key>
+            <key>NewDitch50AutaRight_22.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{350,350},{51,100}}</string>
+                <string>{{700,300},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{51,100}}</string>
+                <string>{{0,0},{100,50}}</string>
                 <key>sourceSize</key>
-                <string>{51,100}</string>
+                <string>{100,50}</string>
+            </dict>
+            <key>NewDitch50AutaRight_23.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{800,300},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>NewDitch50AutaRight_24.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{850,300},{100,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,50}}</string>
+                <key>sourceSize</key>
+                <string>{100,50}</string>
+            </dict>
+            <key>NewDitch50AutaRight_25.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{950,300},{50,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,100}}</string>
+                <key>sourceSize</key>
+                <string>{50,100}</string>
+            </dict>
+            <key>NewDitch50AutaRight_27.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,450},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>NewDitch50AutaTop_05.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{50,450},{50,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,100}}</string>
+                <key>sourceSize</key>
+                <string>{50,100}</string>
+            </dict>
+            <key>NewDitch50AutaTop_06.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{100,450},{50,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,100}}</string>
+                <key>sourceSize</key>
+                <string>{50,100}</string>
+            </dict>
+            <key>NewDitch50AutaTop_07.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{150,450},{50,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,100}}</string>
+                <key>sourceSize</key>
+                <string>{50,100}</string>
             </dict>
             <key>NewDitch50AutaTop_08.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,450},{150,100}}</string>
+                <string>{{200,450},{150,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -345,7 +566,7 @@
             <key>NewDitch50AutaTop_09.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{250,450},{150,100}}</string>
+                <string>{{350,450},{150,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -358,7 +579,7 @@
             <key>NewDitch50AutaTop_10.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,450},{100,100}}</string>
+                <string>{{500,450},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -371,7 +592,7 @@
             <key>NewDitch50AutaTop_11.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,550},{100,100}}</string>
+                <string>{{600,450},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -384,7 +605,7 @@
             <key>NewDitch50AutaTop_12.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,550},{50,100}}</string>
+                <string>{{700,450},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -394,62 +615,75 @@
                 <key>sourceSize</key>
                 <string>{50,100}</string>
             </dict>
-            <key>NewDitch50AutaTop_14.png</key>
+            <key>NewDitch50AutaTop_13.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{300,0},{200,50}}</string>
+                <string>{{750,450},{150,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{200,50}}</string>
+                <string>{{0,0},{150,100}}</string>
                 <key>sourceSize</key>
-                <string>{200,50}</string>
+                <string>{150,100}</string>
+            </dict>
+            <key>NewDitch50AutaTop_14.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,550},{150,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{150,100}}</string>
+                <key>sourceSize</key>
+                <string>{150,100}</string>
             </dict>
             <key>NewDitch50AutaTop_15.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,0},{150,50}}</string>
+                <string>{{150,550},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{150,50}}</string>
+                <string>{{0,0},{100,100}}</string>
                 <key>sourceSize</key>
-                <string>{150,50}</string>
+                <string>{100,100}</string>
             </dict>
             <key>NewDitch50AutaTop_16.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{250,550},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{100,100}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{100,100}</string>
             </dict>
             <key>NewDitch50AutaTop_17.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,50},{50,50}}</string>
+                <string>{{350,550},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{50,50}}</string>
+                <string>{{0,0},{50,100}}</string>
                 <key>sourceSize</key>
-                <string>{50,50}</string>
+                <string>{50,100}</string>
             </dict>
             <key>NewDitch50AutaTop_18.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,50},{100,50}}</string>
+                <string>{{400,550},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -462,7 +696,85 @@
             <key>NewDitch50AutaTop_19.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{100,100},{50,50}}</string>
+                <string>{{500,550},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>NewDitch50AutaTop_20.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{550,550},{150,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{150,50}}</string>
+                <key>sourceSize</key>
+                <string>{150,50}</string>
+            </dict>
+            <key>NewDitch50AutaTop_21.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{700,550},{150,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{150,50}}</string>
+                <key>sourceSize</key>
+                <string>{150,50}</string>
+            </dict>
+            <key>NewDitch50AutaTop_22.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{850,550},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>NewDitch50AutaTop_23.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{900,550},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>NewDitch50AutaTop_24.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,650},{100,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{100,50}}</string>
+                <key>sourceSize</key>
+                <string>{100,50}</string>
+            </dict>
+            <key>NewDitch50AutaTop_25.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{100,650},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -475,7 +787,7 @@
             <key>NewDitch50Auta_03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{451,150},{50,100}}</string>
+                <string>{{150,650},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -488,7 +800,7 @@
             <key>NewDitch50Auta_04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,250},{100,100}}</string>
+                <string>{{200,650},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -501,7 +813,7 @@
             <key>NewDitch50Auta_05.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{250,250},{100,100}}</string>
+                <string>{{300,650},{100,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -514,7 +826,7 @@
             <key>NewDitch50Auta_06.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,350},{150,100}}</string>
+                <string>{{400,650},{150,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -527,7 +839,7 @@
             <key>NewDitch50Auta_07.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{350,250},{150,100}}</string>
+                <string>{{550,650},{150,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -540,20 +852,20 @@
             <key>NewDitch50Auta_08.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{400,150},{51,100}}</string>
+                <string>{{700,650},{50,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{51,100}}</string>
+                <string>{{0,0},{50,100}}</string>
                 <key>sourceSize</key>
-                <string>{51,100}</string>
+                <string>{50,100}</string>
             </dict>
             <key>NewDitch50Auta_10.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{50,100},{50,50}}</string>
+                <string>{{750,650},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -566,7 +878,7 @@
             <key>NewDitch50Auta_11.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{150,100},{100,50}}</string>
+                <string>{{800,650},{100,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -579,7 +891,7 @@
             <key>NewDitch50Auta_12.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,100},{50,50}}</string>
+                <string>{{900,650},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -592,7 +904,7 @@
             <key>NewDitch50Auta_13.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{350,50},{50,50}}</string>
+                <string>{{950,650},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -605,7 +917,7 @@
             <key>NewDitch50Auta_14.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{200,50},{150,50}}</string>
+                <string>{{0,750},{150,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -618,15 +930,67 @@
             <key>NewDitch50Auta_15.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{250,100},{200,50}}</string>
+                <string>{{150,750},{150,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{200,50}}</string>
+                <string>{{0,0},{150,50}}</string>
                 <key>sourceSize</key>
-                <string>{200,50}</string>
+                <string>{150,50}</string>
+            </dict>
+            <key>NewDitch50Auta_16.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{300,750},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>NewDitch50Auta_21.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{350,750},{50,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,100}}</string>
+                <key>sourceSize</key>
+                <string>{50,100}</string>
+            </dict>
+            <key>NewDitch50Auta_22.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{400,750},{50,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,100}}</string>
+                <key>sourceSize</key>
+                <string>{50,100}</string>
+            </dict>
+            <key>NewDitch50Auta_23.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{450,750},{50,100}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,100}}</string>
+                <key>sourceSize</key>
+                <string>{50,100}</string>
             </dict>
         </dict>
         <key>metadata</key>
@@ -636,9 +1000,9 @@
             <key>realTextureFileName</key>
             <string>TileDitch_Aura.png</string>
             <key>size</key>
-            <string>{512,1024}</string>
+            <string>{1024,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:c1293fb33eb2096ca047ee1b24769631:ce7c4a22047653024673e771c549574a:12d05a2e3e151948bcc4be6c06123c78$</string>
+            <string>$TexturePacker:SmartUpdate:8d4f3e5c0a478f04eb8dbe42e8470203:b4ae434f6fe3b235ce32445b88abf5a9:12d05a2e3e151948bcc4be6c06123c78$</string>
             <key>textureFileName</key>
             <string>TileDitch_Aura.png</string>
         </dict>

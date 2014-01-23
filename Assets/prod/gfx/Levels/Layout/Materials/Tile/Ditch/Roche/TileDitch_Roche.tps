@@ -166,13 +166,12 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>Tile/NewDitch50RocheLeft_18.png</filename>
-            <filename>Tile/NewDitch50RocheLeft_19.png</filename>
             <filename>Tile/NewDitch50Roche_03.png</filename>
             <filename>Tile/NewDitch50Roche_04.png</filename>
             <filename>Tile/NewDitch50Roche_05.png</filename>
             <filename>Tile/NewDitch50Roche_06.png</filename>
             <filename>Tile/NewDitch50Roche_07.png</filename>
+            <filename>Tile/NewDitch50Roche_08.png</filename>
             <filename>Tile/NewDitch50Roche_10.png</filename>
             <filename>Tile/NewDitch50Roche_11.png</filename>
             <filename>Tile/NewDitch50Roche_12.png</filename>
@@ -180,6 +179,32 @@
             <filename>Tile/NewDitch50Roche_14.png</filename>
             <filename>Tile/NewDitch50Roche_15.png</filename>
             <filename>Tile/NewDitch50Roche_16.png</filename>
+            <filename>Tile/NewDitch50Roche_21.png</filename>
+            <filename>Tile/NewDitch50Roche_22.png</filename>
+            <filename>Tile/NewDitch50Roche_23.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_02.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_04.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_05.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_06.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_07.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_08.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_09.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_10.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_11.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_12.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_13.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_14.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_15.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_17.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_18.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_19.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_20.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_22.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_23.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_24.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_25.png</filename>
+            <filename>Tile/NewDitch50RocheLeft_26.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_05.png</filename>
             <filename>Tile/NewDitch50RochePlafond_06.png</filename>
             <filename>Tile/NewDitch50RochePlafond_07.png</filename>
             <filename>Tile/NewDitch50RochePlafond_08.png</filename>
@@ -187,34 +212,42 @@
             <filename>Tile/NewDitch50RochePlafond_10.png</filename>
             <filename>Tile/NewDitch50RochePlafond_11.png</filename>
             <filename>Tile/NewDitch50RochePlafond_12.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_13.png</filename>
             <filename>Tile/NewDitch50RochePlafond_14.png</filename>
             <filename>Tile/NewDitch50RochePlafond_15.png</filename>
             <filename>Tile/NewDitch50RochePlafond_16.png</filename>
             <filename>Tile/NewDitch50RochePlafond_17.png</filename>
             <filename>Tile/NewDitch50RochePlafond_18.png</filename>
             <filename>Tile/NewDitch50RochePlafond_19.gif</filename>
+            <filename>Tile/NewDitch50RochePlafond_19.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_20.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_21.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_22.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_23.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_24.png</filename>
+            <filename>Tile/NewDitch50RochePlafond_25.png</filename>
+            <filename>Tile/NewDitch50RocheRight_02.png</filename>
+            <filename>Tile/NewDitch50RocheRight_03.png</filename>
+            <filename>Tile/NewDitch50RocheRight_04.png</filename>
+            <filename>Tile/NewDitch50RocheRight_05.png</filename>
+            <filename>Tile/NewDitch50RocheRight_06.png</filename>
+            <filename>Tile/NewDitch50RocheRight_07.png</filename>
+            <filename>Tile/NewDitch50RocheRight_08.png</filename>
+            <filename>Tile/NewDitch50RocheRight_09.png</filename>
+            <filename>Tile/NewDitch50RocheRight_12.png</filename>
+            <filename>Tile/NewDitch50RocheRight_13.png</filename>
             <filename>Tile/NewDitch50RocheRight_16.png</filename>
             <filename>Tile/NewDitch50RocheRight_17.png</filename>
             <filename>Tile/NewDitch50RocheRight_18.png</filename>
             <filename>Tile/NewDitch50RocheRight_19.png</filename>
             <filename>Tile/NewDitch50RocheRight_20.png</filename>
             <filename>Tile/NewDitch50RocheRight_21.gif</filename>
-            <filename>Tile/NewDitch50RocheRight_02.png</filename>
-            <filename>Tile/NewDitch50RocheRight_04.png</filename>
-            <filename>Tile/NewDitch50RocheRight_05.png</filename>
-            <filename>Tile/NewDitch50RocheRight_06.png</filename>
-            <filename>Tile/NewDitch50RocheRight_07.png</filename>
-            <filename>Tile/NewDitch50RocheRight_08.png</filename>
-            <filename>Tile/NewDitch50RocheRight_12.png</filename>
-            <filename>Tile/NewDitch50RocheLeft_02.png</filename>
-            <filename>Tile/NewDitch50RocheLeft_04.png</filename>
-            <filename>Tile/NewDitch50RocheLeft_05.png</filename>
-            <filename>Tile/NewDitch50RocheLeft_06.png</filename>
-            <filename>Tile/NewDitch50RocheLeft_07.png</filename>
-            <filename>Tile/NewDitch50RocheLeft_08.png</filename>
-            <filename>Tile/NewDitch50RocheLeft_13.png</filename>
-            <filename>Tile/NewDitch50RocheLeft_15.png</filename>
-            <filename>Tile/NewDitch50RocheLeft_17.png</filename>
+            <filename>Tile/NewDitch50RocheRight_21.png</filename>
+            <filename>Tile/NewDitch50RocheRight_22.png</filename>
+            <filename>Tile/NewDitch50RocheRight_23.png</filename>
+            <filename>Tile/NewDitch50RocheRight_24.png</filename>
+            <filename>Tile/NewDitch50RocheRight_25.png</filename>
+            <filename>Tile/NewDitch50RocheRight_27.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

@@ -166,54 +166,82 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>Tile/NewDitch50Auta_06.png</filename>
-            <filename>Tile/NewDitch50Auta_07.png</filename>
-            <filename>Tile/NewDitch50Auta_08.png</filename>
-            <filename>Tile/NewDitch50Auta_10.png</filename>
-            <filename>Tile/NewDitch50Auta_11.png</filename>
-            <filename>Tile/NewDitch50Auta_12.png</filename>
-            <filename>Tile/NewDitch50Auta_13.png</filename>
-            <filename>Tile/NewDitch50Auta_14.png</filename>
-            <filename>Tile/NewDitch50Auta_15.png</filename>
-            <filename>Tile/NewDitch50Auta_03.png</filename>
-            <filename>Tile/NewDitch50Auta_04.png</filename>
-            <filename>Tile/NewDitch50Auta_05.png</filename>
-            <filename>Tile/NewDitch50AutaRight_03.png</filename>
-            <filename>Tile/NewDitch50AutaRight_05.png</filename>
-            <filename>Tile/NewDitch50AutaRight_06.png</filename>
-            <filename>Tile/NewDitch50AutaRight_07.png</filename>
-            <filename>Tile/NewDitch50AutaRight_08.png</filename>
-            <filename>Tile/NewDitch50AutaRight_09.png</filename>
-            <filename>Tile/NewDitch50AutaRight_12.png</filename>
-            <filename>Tile/NewDitch50AutaRight_17.png</filename>
-            <filename>Tile/NewDitch50AutaRight_18.png</filename>
-            <filename>Tile/NewDitch50AutaRight_19.png</filename>
-            <filename>Tile/NewDitch50AutaRight_20.png</filename>
-            <filename>Tile/NewDitch50AutaRight_21.png</filename>
-            <filename>Tile/NewDitch50AutaTop_07.png</filename>
-            <filename>Tile/NewDitch50AutaTop_08.png</filename>
-            <filename>Tile/NewDitch50AutaTop_09.png</filename>
-            <filename>Tile/NewDitch50AutaTop_10.png</filename>
-            <filename>Tile/NewDitch50AutaTop_11.png</filename>
-            <filename>Tile/NewDitch50AutaTop_12.png</filename>
-            <filename>Tile/NewDitch50AutaTop_14.png</filename>
-            <filename>Tile/NewDitch50AutaTop_15.png</filename>
-            <filename>Tile/NewDitch50AutaTop_16.png</filename>
-            <filename>Tile/NewDitch50AutaTop_17.png</filename>
-            <filename>Tile/NewDitch50AutaTop_18.png</filename>
-            <filename>Tile/NewDitch50AutaTop_19.png</filename>
-            <filename>Tile/NewDitch50AutaLeft_14.png</filename>
-            <filename>Tile/NewDitch50AutaLeft_16.png</filename>
-            <filename>Tile/NewDitch50AutaLeft_17.png</filename>
-            <filename>Tile/NewDitch50AutaLeft_18.png</filename>
-            <filename>Tile/NewDitch50AutaLeft_19.png</filename>
-            <filename>Tile/NewDitch50AutaLeft_20.png</filename>
-            <filename>Tile/NewDitch50AutaLeft_02.png</filename>
-            <filename>Tile/NewDitch50AutaLeft_04.png</filename>
-            <filename>Tile/NewDitch50AutaLeft_05.png</filename>
-            <filename>Tile/NewDitch50AutaLeft_06.png</filename>
-            <filename>Tile/NewDitch50AutaLeft_07.png</filename>
-            <filename>Tile/NewDitch50AutaLeft_08.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_03.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_04.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_05.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_06.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_07.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_08.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_10.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_11.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_12.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_13.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_14.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_15.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_16.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_21.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_22.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50Auta_23.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_02.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_04.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_05.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_06.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_07.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_08.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_09.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_10.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_11.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_12.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_14.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_16.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_17.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_18.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_19.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_20.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_22.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_23.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_24.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_25.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaLeft_26.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_03.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_05.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_06.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_07.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_08.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_09.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_12.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_13.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_17.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_18.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_19.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_20.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_21.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_22.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_23.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_24.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_25.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaRight_27.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_05.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_06.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_07.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_08.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_09.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_10.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_11.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_12.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_13.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_14.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_15.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_16.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_17.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_18.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_19.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_20.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_21.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_22.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_23.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_24.png</filename>
+            <filename>D:/Travail/4Edges Studio/Sinusoid/Assets/Photophop/Ditch/Aura/images/NewDitch50AutaTop_25.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
