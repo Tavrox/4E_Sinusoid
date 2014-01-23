@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour {
 	public Vector3 _target;
 	[HideInInspector] public bool moving;
 	private Vector3 _direction;
+	public FESound CollisionSound;
 
 	public Vector3 direction
 	{
@@ -91,6 +92,7 @@ public class Projectile : MonoBehaviour {
 		}
 		if (_other.CompareTag("soundStopper"))
  	    {
+
 			resetProj();
 		}
 

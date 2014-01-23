@@ -203,7 +203,7 @@ public class Player : Character {
 
 			if(isGrab) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");isGrab = false;}
 			else {
-				if ( onEnvironment.typeList == Environment.types.wood)
+				if ( onEnvironment != null && onEnvironment.typeList == Environment.types.wood)
 				{
 					isCrounch = true;
 					facingDir = facing.Down;
@@ -308,10 +308,11 @@ public class Player : Character {
 
 	public override void BlockedUp()
 	{
-		if (aboveEnvironment != null)
+		aboveEnvironment = hitInfo.collider.GetComponent<Environment>();
+		if(vectorMove.y > 0)
 		{
-			if(vectorMove.y > 0 && aboveEnvironment.typeList != Environment.types.wood)
-			{
+			if (aboveEnvironment.typeList != Environment.types.wood)
+   			{
 				vectorMove.y = 0f;
 				blockedUp = true;
 			}

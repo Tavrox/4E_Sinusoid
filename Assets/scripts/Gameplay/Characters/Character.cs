@@ -60,7 +60,7 @@ public class Character : MonoBehaviour
 	[SerializeField] private float gravityY;
 	[SerializeField] private float maxVelY = 0f;
 		
-	[SerializeField] private RaycastHit hitInfo;
+	[SerializeField] protected RaycastHit hitInfo;
 	[SerializeField] protected float halfMyX;
 	[SerializeField] protected float halfMyY;
 	
@@ -180,15 +180,14 @@ public class Character : MonoBehaviour
 
 		
 		Vector3 tst = new Vector3(mypos.x, mypos.y,0f);
-		Debug.DrawLine( tst , tst+Vector3.down, Color.green);
-		Debug.DrawLine( mypos , Vector3.down, Color.blue);
+//		Debug.DrawLine( tst , tst+Vector3.down, Color.green);
+//		Debug.DrawLine( mypos , Vector3.down, Color.blue);
 		
 		//BLOCKED TO DOWN
 		if (Physics.Raycast(mypos, mypos+Vector3.down, out hitInfo, halfMyY, platformMask))
 		{
 			Debug.DrawLine(thisTransform.position, hitInfo.point, Color.black);
-			BlockedDown();	
-			print (hitInfo.collider.gameObject.GetComponent<Environment>().typeList);
+			BlockedDown();
 		}
 		if (Physics.Raycast(mypos, Vector3.down, out hitInfo, halfMyY, groundMask))
 		{
@@ -196,15 +195,15 @@ public class Character : MonoBehaviour
 		}
 		else
 		{
-			aboveEnvironment = null;
+			onEnvironment = null;
 		}
 		
-		
+
 		// BLOCKED TO UP
 		if (Physics.Raycast(mypos, Vector3.up, out hitInfo, halfMyY, groundMask))
 		{
 			BlockedUp();
-			Debug.DrawLine (thisTransform.position, hitInfo.point, Color.red);
+			Debug.DrawLine (mypos, hitInfo.point, Color.red);
 		}
 		else
 		{
@@ -240,8 +239,6 @@ public class Character : MonoBehaviour
 
 	public virtual void BlockedUp()
 	{
-		if (hitInfo.collider.GetComponent<Environment>() != null)
-		{aboveEnvironment = hitInfo.collider.GetComponent<Environment>();}
 		if(vectorMove.y > 0)
 		{
 			vectorMove.y = 0f;

@@ -42,20 +42,39 @@ public class FESound : MonoBehaviour {
 	}
 	public void playDistancedSound()
 	{
-		referralDistance = GetComponentInChildren<Transform>();
+		referralDistance = FETool.findWithinChildren(this.gameObject, "GameObject").transform;
 		distToTrack = GameObject.FindGameObjectWithTag("Player").transform;
-		InvokeRepeating("checkDistance", 0f, 0.5f); 
+		InvokeRepeating("checkDistance", 0f, 0.1f); 
 //		MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay);
 	}
 
 	private void checkDistance()
 	{
-		Debug.DrawLine(gameObject.transform.position, distToTrack.position);
-		Debug.DrawLine(gameObject.transform.position, referralDistance.position);
+//		Debug.DrawLine(gameObject.transform.position, distToTrack.position, Color.blue);
+//		Debug.DrawLine(gameObject.transform.position, referralDistance.position, Color.black);
 		// WORK IN PROGRESS
 		Vector2 thisObjPos = new Vector2 (gameObject.transform.position.x, gameObject.transform.position.y);
-		Vector2 referralPos = new Vector2 (referralDistance.position.x, referralDistance.position.y);
+		Vector2 referralPos = new Vector2 (referralDistance.transform.position.x, referralDistance.transform.position.y);
 		Vector2 posToTrack = new Vector2 (distToTrack.position.x, distToTrack.position.y);
-		distanceToPlayer = Vector2.Distance(thisObjPos, posToTrack);
+//		distanceToPlayer = (Vector2.Distance(thisObjPos, referralPos)) / (Vector2.Distance(thisObjPos, posToTrack )) ;
+		distanceToPlayer = (Vector2.Distance(thisObjPos, posToTrack )) / (Vector2.Distance(thisObjPos, referralPos)) ;
+//		Debug.Log(gameObject.name + thisObjPos);
+//		Debug.Log(referralDistance.name + referralPos);
+//		Debug.Log("PosToTrack" + posToTrack);
+//		Debug.Log("ObjPos>>ReferralPos" + Vector2.Distance(thisObjPos, referralPos));
+//		Debug.Log("ObjPos>>Trackpos" + Vector2.Distance(thisObjPos, posToTrack));
+//		Debug.Log("Ratio" + distanceToPlayer);
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 }
