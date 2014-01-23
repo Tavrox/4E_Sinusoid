@@ -16,7 +16,8 @@ public class PlayerAnims : MonoBehaviour
 		ShootLeft, ShootRight,
 		CrounchLeft, CrounchRight,
 		AttackLeft, AttackRight,
-		TakeInstru, PlayInstru
+		TakeInstru, PlayInstru,
+		PreparePebble, LaunchPebble
 	}
 	
 	public Transform spriteParent;
@@ -49,6 +50,7 @@ public class PlayerAnims : MonoBehaviour
 		Hurt();
 		Fall();
 		Paused();
+		Pebble();
 		PlayInstru();
 	}
 	private void Run()
@@ -185,7 +187,47 @@ public class PlayerAnims : MonoBehaviour
 		}
 	}
 
-	
+	private void Pebble()
+	{
+		if(_character.facingDir == Character.facing.Right && _character.grounded && currentAnim!=animDef.PreparePebble && _player.specialCast && _player.preparePebble)
+		{
+			animPlaying = true;
+			currentAnim = animDef.PreparePebble;
+			animSprite.Play("preparePebble");
+			anim.fps = normalFPS;
+			NormalScaleSprite();
+		}
+		if(_character.facingDir == Character.facing.Left && _character.grounded && currentAnim!=animDef.PreparePebble && _player.specialCast && _player.preparePebble)
+		{
+			animPlaying = true;
+			currentAnim = animDef.PreparePebble;
+			animSprite.Play("preparePebble");
+			anim.fps = normalFPS;
+			InvertSprite();
+		}
+		if(_character.facingDir == Character.facing.Right && _character.grounded && currentAnim!=animDef.LaunchPebble && _player.specialCast && _player.launchPebble)
+		{
+			animPlaying = true;
+			currentAnim = animDef.LaunchPebble;
+			animSprite.Play("launchPebble");
+			anim.fps = normalFPS;
+			NormalScaleSprite();
+			StartCoroutine("WaitAfterPebble");
+		}
+		if(_character.facingDir == Character.facing.Left && _character.grounded && currentAnim!=animDef.LaunchPebble && _player.specialCast && _player.launchPebble)
+		{
+			animPlaying = true;
+			currentAnim = animDef.LaunchPebble;
+			animSprite.Play("launchPebble");
+			anim.fps = normalFPS;
+			InvertSprite();
+			StartCoroutine("WaitAfterPebble");
+		}
+	}
+	IEnumerator WaitAfterPebble() {
+		yield return new WaitForSeconds(0.1f);
+		animPlaying = _player.launchPebble = _player.specialCast = false;
+	}
 	private void PlayInstru()
 	{
 		if(_character.facingDir == Character.facing.Right && _character.grounded && currentAnim!=animDef.TakeInstru && _player.specialCast && _player.takingInstr)
@@ -202,14 +244,14 @@ public class PlayerAnims : MonoBehaviour
 			anim.fps = normalFPS;
 			InvertSprite();
 		}
-		if(_character.facingDir == Character.facing.Right && _character.grounded && currentAnim!=animDef.PlayInstru && _player.specialCast && !_player.takingInstr)
+		if(_character.facingDir == Character.facing.Right && _character.grounded && currentAnim!=animDef.PlayInstru && _player.specialCast && !_player.takingInstr && !_player.preparePebble && !_player.launchPebble)
 		{
 			currentAnim = animDef.PlayInstru;
 			animSprite.Play("instru");
 			anim.fps = normalFPS;
 			NormalScaleSprite();
 		}
-		if(_character.facingDir == Character.facing.Left && _character.grounded && currentAnim!=animDef.PlayInstru && _player.specialCast && !_player.takingInstr)
+		if(_character.facingDir == Character.facing.Left && _character.grounded && currentAnim!=animDef.PlayInstru && _player.specialCast && !_player.takingInstr && !_player.preparePebble && !_player.launchPebble)
 		{
 			currentAnim = animDef.PlayInstru;
 			animSprite.Play("instru");

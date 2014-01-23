@@ -290,6 +290,32 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
+            <key>player22launch.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{403,965},{200,240}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{200,240}}</string>
+                <key>sourceSize</key>
+                <string>{200,240}</string>
+            </dict>
+            <key>player23prepare.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{604,965},{200,240}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{200,240}}</string>
+                <key>sourceSize</key>
+                <string>{200,240}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -300,7 +326,7 @@
             <key>size</key>
             <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:1f75dd892870d5e633d8dac1598ba859:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:6463998f5550b3bf89fd8467584ee4c9:1/1$</string>
             <key>textureFileName</key>
             <string>player.png</string>
         </dict>

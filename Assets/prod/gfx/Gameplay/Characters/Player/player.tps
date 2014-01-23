@@ -170,6 +170,8 @@
             <filename>frames/player19walk.png</filename>
             <filename>frames/player20stand.png</filename>
             <filename>frames/player21instru.png</filename>
+            <filename>frames/player22launch.png</filename>
+            <filename>frames/player23prepare.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

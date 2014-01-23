@@ -20,7 +20,7 @@ public class Player : Character {
 	public int pebbleCount = 1;
 //	private bool isSprint = false;
 
-	[HideInInspector] public bool isSprint,toSprint,toWalk, specialCast, takingInstr;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease | true when playing instru (locks player and footsteps)
+	[HideInInspector] public bool isSprint,toSprint,toWalk, specialCast, takingInstr, launchPebble, preparePebble;//if true(left shift pressed) footwaves' speed velocity increase | if true(left shift not pressed) footwaves' speed velocity decrease | true when playing instru (locks player and footsteps)
 	[HideInInspector] public bool hasFallen;
 
 	private float crounchTime = 0.3f, footStepDelayINI;
@@ -111,6 +111,7 @@ public class Player : Character {
 		}
 		if (Input.GetKey(KeyCode.F)) { //Hold F to add power
 			if(powerPebble <= pebbleMaxStrengh && !pebble) { //Pebble max strenght
+				preparePebble = specialCast = true;
 				powerPebble += 0.2f;
 				pebbleBar.transform.localScale = new Vector3(powerPebble,0.3f,1f); //Resize powerBar
 				setPebbleBarPos();
@@ -118,10 +119,11 @@ public class Player : Character {
 		}
 		if (Input.GetKeyUp(KeyCode.F)) { //RELEASE THE PEBBLE !!
 			if(!pebble) { //If no pebble already existing
-
+				preparePebble = false;
+				launchPebble = true;
 				GOpebble = Instantiate(Resources.Load("Prefabs/04Gameplay/Pebble")) as GameObject;
 				pebble = GOpebble.GetComponent<Pebble>(); //Create Pebble
-				pebble.setPosition((transform.position.x-transform.localScale.x/2),transform.position.y, -6f); //Pebble ini position
+				pebble.setPosition((transform.position.x-transform.localScale.x/2),(transform.position.y+transform.localScale.y/2), -6f); //Pebble ini position
 				pebble.setCallerObject(thisTransform);
 				pebbleDirection = (facingDir == facing.Right) ? 1 : -1;	//Direction of the pebble
 				pebble.throwPebble(powerPebble, pebbleDirection); //Throw pebble function
