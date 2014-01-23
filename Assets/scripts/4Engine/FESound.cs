@@ -29,17 +29,26 @@ public class FESound : MonoBehaviour {
 	}
 	public void playSound(Environment _enviro)
 	{
-		MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString(), Volume, Pitch, Delay);
+		if (SoundGroup != null)
+		{
+			MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString(), Volume, Pitch, Delay);
+		}
 	}
 	public void playVariationSounds(Environment _enviro)
 	{
-		MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay, SoundGroup.name + "_" + _enviro.typeList.ToString() );
+		if (SoundGroup != null)
+		{
+			MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay, SoundGroup.name + "_" + _enviro.typeList.ToString() );
+		}
 	}
 	public void playModulatedSound(float _var1, float _var2)
 	{
-		float percent = (_var1 / _var2);	
-		Volume = percent;
-		MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay);
+		if (SoundGroup != null)
+		{
+			float percent = (_var1 / _var2);	
+			Volume = percent;
+			MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay);
+		}
 	}
 	public void playLeftSound(Environment _enviro)
 	{

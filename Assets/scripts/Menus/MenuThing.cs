@@ -11,7 +11,8 @@ public class MenuThing : MonoBehaviour {
 		Title,
 		None,
 		GoToAnchor,
-		MuteMusic
+		MuteMusic,
+		LeaveGame
 	};
 	public ListMenu menu;
 	public bool animate = false;
@@ -58,6 +59,11 @@ public class MenuThing : MonoBehaviour {
 			{spr.frameName = "nomusic";}
 			if (spr.frameName == "nomusic")
 			{spr.frameName = "music";}
+			break;
+		}
+		case (ListMenu.LeaveGame) :
+		{
+			Application.Quit();
 			break;
 		}
 			/*
