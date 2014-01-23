@@ -12,9 +12,20 @@ public class FESound : MonoBehaviour {
 	private Transform referralDistance;
 	private Transform distToTrack;
 
+	void Start()
+	{
+		if (SoundGroup == null)
+		{
+			Debug.LogWarning("the sound group " + gameObject.transform.parent.transform.parent.gameObject.name + "/" +  gameObject.transform.parent.gameObject.name + "/" + gameObject.name + " hasn't been attributed");
+		}
+	}
+
 	public void playSound()
 	{
-		MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay);
+		if (SoundGroup != null)
+		{
+			MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay);
+		}
 	}
 	public void playSound(Environment _enviro)
 	{
@@ -32,12 +43,18 @@ public class FESound : MonoBehaviour {
 	}
 	public void playLeftSound(Environment _enviro)
 	{
-		PlaySoundResult _psr = MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "L", Volume, Pitch, Delay);
+		if (_enviro != null && SoundGroup != null)
+		{
+			PlaySoundResult _psr = MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "L", Volume, Pitch, Delay);
+		}
 //		Debug.Log(_psr.ActingVariation);
 	}
 	public void playRightSound(Environment _enviro)
 	{
-		PlaySoundResult _psr = MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "R" , Volume, Pitch, Delay);
+		if (_enviro != null && SoundGroup != null)
+		{
+			PlaySoundResult _psr = MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "R" , Volume, Pitch, Delay);
+		}
 //		Debug.Log(_psr.ActingVariation);
 	}
 	public void playDistancedSound()

@@ -269,7 +269,6 @@ public class Character : MonoBehaviour
 				blockedRight = true;
 				vectorMove.x = 0f;
 				thisTransform.position = new Vector3(hitInfo.point.x-(halfMyX-0.01f),thisTransform.position.y, 0f); // .01 less than collision width.
-				Debug.LogWarning(isCrounch + " blockedRight");
 			}
 		}
 	}
