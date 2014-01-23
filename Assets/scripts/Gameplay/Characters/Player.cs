@@ -107,6 +107,7 @@ public class Player : Character {
 				powerPebble = 0f; //
 				setPebbleBarPos();
 				pebbleBar.transform.localScale = new Vector3(0f,1f,1f);
+				preparePebble = specialCast = true;
 			}
 		}
 		if (Input.GetKey(KeyCode.F)) { //Hold F to add power
