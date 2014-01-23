@@ -39,6 +39,9 @@ public class Walker : Enemy {
 //	private GameObject pebbleBar;
 	public float waypointDetectionWidth;
 	public LayerMask projectorMask;
+
+	public FESound WalkSound;
+	public FESound AttackSound;
 	
 	[HideInInspector] public bool paused = false;
 	
@@ -53,7 +56,7 @@ public class Walker : Enemy {
 		GameEventManager.GameUnpause += GameUnpause;
 
 		spawnPos = transform.position;
-		
+
 		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesEmitter")) as GameObject;
 		soundEmitt1 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt1.gameObject.name = "_footWaveWalker1";//footsteps wave 1
 		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesEmitter")) as GameObject;
@@ -62,6 +65,11 @@ public class Walker : Enemy {
 		soundInstru1 = GOinstInstruWave.GetComponent<WaveCreator>();soundInstru1.gameObject.name = "_instruWaveWalker1"; //intru wave 1
 
 		soundEmitt1.gameObject.transform.parent = soundEmitt2.gameObject.transform.parent = soundInstru1.gameObject.transform.parent = GameObject.Find("Level/Waves/").transform;
+
+		if (WalkSound != null)
+		{
+			InvokeRepeating("playFootstep",0f,WalkSound.RepeatRate);
+		}
 
 //		soundEmitt1 = Instantiate(instFootWave) as WaveCreator;
 //		soundEmitt2 = Instantiate(instFootWave) as WaveCreator;
@@ -330,6 +338,11 @@ public class Walker : Enemy {
 		soundEmitt2.setCharacterMoveOffset(vectorFixed.x);
 	}
 
+	private void playFootstep()
+	{
+		WalkSound.playSound();
+	}
+
 
 
 	private void checkInput()
@@ -349,6 +362,7 @@ public class Walker : Enemy {
 	{
 		if(other.gameObject.CompareTag("Player")) 
 		{
+			AttackSound.playSound();
 			GameEventManager.TriggerGameOver();
 			chasingPlayer = false;
 		}
