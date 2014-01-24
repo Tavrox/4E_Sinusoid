@@ -82,7 +82,7 @@ public class Character : MonoBehaviour
 	// Use this for initialization
 	public virtual void Start () 
 	{
-		maxVelY = 25f;//fallVel;
+		maxVelY = 19f;//fallVel;
 		moveVelINI = moveVel;
 		vectorMove.y = 0;
 		halfMyX = GetComponentInChildren<Transform>().GetComponentInChildren<OTAnimatingSprite>().size.x * 0.5f - 0.5f;
@@ -150,7 +150,7 @@ public class Character : MonoBehaviour
 		{
 			vectorMove.y -= gravityY * Time.deltaTime;
 		}
-		if(vectorMove.y < -20) fallFast = true;
+		if(vectorMove.y < -18) fallFast = true;
 		if(isGrab) {
 			vectorMove.x=0;
 			if(vectorMove.y<0)vectorMove.y=0;
