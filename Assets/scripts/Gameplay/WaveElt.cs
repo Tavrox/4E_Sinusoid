@@ -120,7 +120,7 @@ public class WaveElt : MonoBehaviour {
 //		else waveXOffset = callerObj.localScale.x/1.5f;
 		//print(callerObj.name);
 		gameObject.collider.isTrigger = true;
-		myTransform.parent.transform.position = new Vector3((callerObj.position.x/*+waveXOffset*/),callerObj.position.y,-15f);
+		myTransform.parent.transform.position = new Vector3((callerObj.position.x+waveXOffset),callerObj.position.y,-15f);
 		_mySprite.renderer.enabled = true;
 		if(rotated) {myTransform.parent.transform.transform.Rotate(new Vector3(0f,0f,-90f));rotated = false;}
 	//	instanceProj.transform.position = new Vector3((callerObj.position.x+waveXOffset),(callerObj.position.y/*-callerObj.localScale.y/2.3f*/),-15f);
@@ -294,10 +294,11 @@ public class WaveElt : MonoBehaviour {
 	public void setWalkState () {
 		lifeTime = lifeTimeIni;
 		speedSound = speedSoundIni;
+		//print(transform.parent.transform.parent.transform.name);
 	}
 	public void setSprintState () {
 		lifeTime = lifeTimeIni;
-		speedSound = speedSoundIni * 2;
+		speedSound = speedSoundIni * 2f;
 	}
 	public void setSpecial () {
 		numberOfAlphaStates = 6;
