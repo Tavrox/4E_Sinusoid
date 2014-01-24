@@ -33,6 +33,7 @@ public class Character : MonoBehaviour
 	[HideInInspector] public bool blockedLeft;
 	[HideInInspector] public bool blockedUp;
 	[HideInInspector] public bool blockedDown;
+	[HideInInspector] protected bool fallFast;
 	
 	[HideInInspector] public bool alive = true;
 	[HideInInspector] public Vector3 spawnPos;
@@ -59,7 +60,7 @@ public class Character : MonoBehaviour
 	[SerializeField] private int jumps = 0;
 	[SerializeField] private float gravityY;
 	[SerializeField] protected float moveVelINI;
-	[SerializeField] private float maxVelY = 0f;
+	[SerializeField] private float maxVelY = 50f;
 		
 	[SerializeField] protected RaycastHit hitInfo;
 	[SerializeField] protected float halfMyX;
@@ -81,7 +82,7 @@ public class Character : MonoBehaviour
 	// Use this for initialization
 	public virtual void Start () 
 	{
-		maxVelY = fallVel;
+		maxVelY = 25f;//fallVel;
 		moveVelINI = moveVel;
 		vectorMove.y = 0;
 		halfMyX = GetComponentInChildren<Transform>().GetComponentInChildren<OTAnimatingSprite>().size.x * 0.5f - 0.5f;
@@ -149,6 +150,7 @@ public class Character : MonoBehaviour
 		{
 			vectorMove.y -= gravityY * Time.deltaTime;
 		}
+		if(vectorMove.y < -20) fallFast = true;
 		if(isGrab) {
 			vectorMove.x=0;
 			if(vectorMove.y<0)vectorMove.y=0;

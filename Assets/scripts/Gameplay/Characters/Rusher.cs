@@ -18,17 +18,18 @@ public class Rusher : Enemy {
 	private Ray detectTargetLeft, detectTargetRight; //point de départ, direction
 	
 	private bool goLeft = true, defineRushDirection;
+
 	//private int waypointId = 0;
 	//public Transform[] waypoints;
 	//public List<Transform> waypoints= new List<Transform>(), endChaseArea= new List<Transform>();
 	//public float[] timePauseWP;
 	//private float timeToWait=0;
-
-	/***** ENNEMI END *****/
-//	public Pebble instPebble;
-//	public WaveCreator instFootWave,instInstruWave;
-	private GameObject GOinstFootWave, GOinstInstruWave;
+	//public Pebble instPebble;
+	//public WaveCreator instFootWave,instInstruWave;
 	//public GameObject instPebbleBar;
+	//private GameObject pebbleBar;
+
+	private GameObject GOinstFootWave, GOinstInstruWave;
 	public float footStepDelay = 0.6f;
 	
 	[SerializeField] private Rect hp_display;
@@ -37,11 +38,16 @@ public class Rusher : Enemy {
 	private bool blockCoroutine, first, toSprint, toWalk, specialCast, playerDirLeft, waypointReached;
 	private Pebble pebble1;
 	private float powerPebble;
-//	private GameObject pebbleBar;
 	private float waypointDetectionWidth;
 	public LayerMask projectorMask;
 	
 	[HideInInspector] public bool paused = false;
+	
+	public FESound AttackSound;
+	public FESound IdleSound;
+	public FESound RunSound;
+	public FESound StartSound;
+	public FESound StopSound;
 	
 	// Use this for initialization
 	public override void Start () 
@@ -73,6 +79,8 @@ public class Rusher : Enemy {
 		//enabled = false;
 
 		runSpeed = 0.5f;
+
+		IdleSound.playDistancedSound("idle");
 		
 		setTarget(transform); //target reset
 		patroling = true;
@@ -137,6 +145,8 @@ public class Rusher : Enemy {
 			if(hitInfo.collider.name == "Player" && !endChasingPlayer) {
 				setTarget(transform); //target reset
 				activeChasing();
+				StartSound.playVariationSound("attack");
+
 			}
 		}
 	}

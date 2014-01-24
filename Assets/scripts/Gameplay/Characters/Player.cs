@@ -161,33 +161,43 @@ public class Player : Character {
 		#region Sprint management (LeftShift)
 		if(Input.GetKeyDown("left shift")) {//OnPress
 			moveVel = moveVelSprint; //Increase Player Speed
-			footStepDelay = footStepDelaySprint; //Decrease FootStep Delay
+			//footStepDelay = footStepDelaySprint; //Decrease FootStep Delay
 			isSprint = true;
 		}
 		if(Input.GetKeyUp("left shift")) {//OnRelease
 			moveVel = moveVelINI; //Decrease Player Speed
-			footStepDelay = footStepDelayINI; //Increase FootStep Delay
+			//footStepDelay = footStepDelayINI; //Increase FootStep Delay
 			isSprint = false;
 		}
-		if(Input.GetKey("left shift")) {//LeftShift input
+		if(Input.GetKeyDown("left shift")) {//LeftShift input
 			toSprint=true;
 		}
-		else if(!Input.GetKey("left shift")) {//NO LeftShift input
+		else if(Input.GetKeyUp("left shift")) {//NO LeftShift input
 			toWalk=true;
 		}
 		/*if(!blockCoroutine) {*/
-			if(toSprint) {
-				if(soundEmitt1.getAlpha() <= 0f) soundEmitt1.circleWalkToSprint();
-				if(soundEmitt2.getAlpha() <= 0f) soundEmitt2.circleWalkToSprint();
-				if(soundEmitt3.getAlpha() <= 0f) soundEmitt3.circleWalkToSprint();
+		if(toSprint && grounded) {
+			StopCoroutine("queueWaveState");
+			StartCoroutine(queueWaveState("ToSprint",soundEmitt1));
+			//StartCoroutine(queueWaveState("ToSprint",soundEmitt2));
+			//StartCoroutine(queueWaveState("ToSprint",soundEmitt3));
+//				/*if(soundEmitt1.getAlpha() <= 0f)*/ soundEmitt1.circleWalkToSprint();
+//			/*if(soundEmitt2.getAlpha() <= 0f)*/ soundEmitt2.circleWalkToSprint();
+//			/*if(soundEmitt3.getAlpha() <= 0f)*/ soundEmitt3.circleWalkToSprint();
 				toSprint=false;
+			footStepDelay = footStepDelaySprint;
 			}
-			else if (toWalk) {
-				if(soundEmitt1.getAlpha() <= 0f) soundEmitt1.circleSprintToWalk();
-				if(soundEmitt2.getAlpha() <= 0f) soundEmitt2.circleSprintToWalk();
-				if(soundEmitt3.getAlpha() <= 0f) soundEmitt3.circleSprintToWalk();
-				toWalk=false;
-			}
+		else if (toWalk && grounded) {
+			StopCoroutine("queueWaveState");
+			StartCoroutine(queueWaveState("ToWalk",soundEmitt1));
+			//StartCoroutine(queueWaveState("ToWalk",soundEmitt2));
+			//StartCoroutine(queueWaveState("ToWalk",soundEmitt3));
+//			/*if(soundEmitt1.getAlpha() <= 0f)*/ soundEmitt1.circleSprintToWalk();
+//			/*if(soundEmitt2.getAlpha() <= 0f)*/ soundEmitt2.circleSprintToWalk();
+//			/*if(soundEmitt3.getAlpha() <= 0f)*/ soundEmitt3.circleSprintToWalk();
+			toWalk=false;
+			footStepDelay = footStepDelayINI;
+		}
 		/*}*/
 		#endregion
 		#region Movement (Left), (Right), (Up), (Down), (Space)
@@ -198,6 +208,12 @@ public class Player : Character {
 			if(!blockCoroutine && grounded) StartCoroutine("waitB4FootStep");
 		}
 		if(((Input.GetKeyUp("left") || Input.GetKeyUp(KeyCode.Q)) && !specialCast) || ((Input.GetKeyUp("right") || Input.GetKeyUp(KeyCode.D)) && !isLeft && !specialCast)) { 
+			StopCoroutine("footStep");
+			StopCoroutine("waitB4FootStep");
+			blockCoroutine = false;
+		}
+		if(((Input.GetKeyDown("left") || Input.GetKeyDown(KeyCode.Q)) && !specialCast) || ((Input.GetKeyDown("right") || Input.GetKeyDown(KeyCode.D)) && !isLeft && !specialCast)) { 
+			StopCoroutine("waitB4FootStep");
 			StopCoroutine("footStep");
 			blockCoroutine = false;
 		}
@@ -242,7 +258,7 @@ public class Player : Character {
 			else if (GameEventManager.state == GameEventManager.GameState.Pause) GameEventManager.TriggerGameUnpause();
 		}
 		#endregion
-		if(checkingGrabPosition) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");}
+		if(grounded && checkingGrabPosition) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");}
 
 		if(grounded) {
 			if(!firstGrounded) {
@@ -251,12 +267,20 @@ public class Player : Character {
 				firstFalling = false;
 				//StopCoroutine("footStep");
 				footStepDelay=footStepDelayINI;
-				soundEmitt1.circleWalkToSprint();
-				soundEmitt1.resetCircle(transform.localScale.x/1.5f,playerDirLeft, true);
-				soundEmitt1.circleFallToGrounded();
-				soundEmitt2.circleFallToGrounded();
-				soundEmitt3.circleFallToGrounded();
 				playSoundFall();
+				cptWave = 1;
+				if(fallFast) {
+					fallFast = false;
+					//soundEmitt3.circleWalkToSprint();
+					soundEmitt3.resetCircle(transform.localScale.x/1.5f,playerDirLeft, true);
+				}
+//				soundEmitt1.circleFallToGrounded();
+//				soundEmitt2.circleFallToGrounded();
+				//				soundEmitt3.circleFallToGrounded();
+				StopCoroutine("queueWaveState");
+				StartCoroutine(queueWaveState("ToGround",soundEmitt1));
+				//StartCoroutine(queueWaveState("ToGround",soundEmitt2));
+				//StartCoroutine(queueWaveState("ToGround",soundEmitt3));
 			}
 		}
 		else {
@@ -266,20 +290,48 @@ public class Player : Character {
 				footStepDelay=footStepDelayFall;
 				firstFalling = true;
 				firstGrounded = false;
+//				soundEmitt1.circleGroundedToFall();
+//				soundEmitt2.circleGroundedToFall();
+//				soundEmitt3.circleGroundedToFall();
+				StopCoroutine("queueWaveState");
+				StartCoroutine(queueWaveState("ToFall",soundEmitt1));
+				//StartCoroutine(queueWaveState("ToFall",soundEmitt2));
+				//StartCoroutine(queueWaveState("ToFall",soundEmitt3));
 			}
 			StartCoroutine("waitB4FallWave");
 		}
-		if(!grounded && !blockCoroutine) {/*footStepDelay=footStepDelayFall;StartCoroutine("waitB4FallWave");*/}
-		else if (grounded && !blockCoroutine) {
-			/**/
+//		print (vectorMove.y);
+//		if(!grounded && !blockCoroutine) {/*footStepDelay=footStepDelayFall;StartCoroutine("waitB4FallWave");*/}
+//		else if (grounded && !blockCoroutine) {
+//			/**/
+//		}
+	}
+	IEnumerator queueWaveState (string state, WaveCreator soundEmitt) {
+		yield return new WaitForSeconds(0.01f);
+		print(state+" "+soundEmitt.getAlpha()+" "+soundEmitt.name);
+		if(soundEmitt.getAlpha() <= 0.2f) {
+			switch (state) {
+			case "ToWalk":
+				soundEmitt.circleSprintToWalk();
+				break;
+			case "ToSprint":
+				soundEmitt.circleWalkToSprint();
+				break;
+			case "ToFall":
+				soundEmitt.circleGroundedToFall();
+				break;
+			case "ToGround":
+				soundEmitt.circleFallToGrounded();
+				break;
+			}
+		}
+		else {
+			StartCoroutine(queueWaveState(state,soundEmitt));
 		}
 	}
 	IEnumerator waitB4FallWave() { //Short Delay before the sprite actually touches the ground (edit when anim is finished)
 		yield return new WaitForSeconds(0.7f);
-		soundEmitt1.circleGroundedToFall();
-		soundEmitt2.circleGroundedToFall();
-		soundEmitt3.circleGroundedToFall();
-		if(!blockCoroutine && !grounded) StartCoroutine("footStep");
+		if(!blockCoroutine && !grounded && !isGrab) StartCoroutine("footStep");
 	}
 	void OnTriggerEnter(Collider col) {
 		if(col.gameObject.CompareTag("platformGrabber") && !grounded) 
@@ -309,12 +361,12 @@ public class Player : Character {
 		pebbleBar.transform.position = new Vector3((powerPebble/2)+thisTransform.position.x,thisTransform.position.y+2f,-30f); //Replace powerBar as resize is made from center expanding to each side
 	}
 	IEnumerator waitB4FootStep() { //Short Delay before the sprite actually touches the ground (edit when anim is finished)
-		yield return new WaitForSeconds(0.3f);
+		yield return new WaitForSeconds(0.5f);
 		if(!blockCoroutine && grounded) StartCoroutine("footStep");
 	}
 	IEnumerator footStep() { //Footsteps management
 		blockCoroutine =true;
-		
+		//print ("WAVE");
 		/*if(Input.GetKeyDown("left shift")) {
 //			moveVel = 2 * moveVel;
 //			footStepDelay = footStepDelay / 2;
@@ -358,7 +410,7 @@ public class Player : Character {
 		aboveEnvironment = hitInfo.collider.GetComponent<Environment>();
 		if(vectorMove.y > 0)
 		{
-			if (aboveEnvironment.typeList != Environment.types.wood)
+			if (aboveEnvironment.typeList !=null && Environment.types.wood !=null && aboveEnvironment.typeList != Environment.types.wood)
    			{
 				vectorMove.y = 0f;
 				blockedUp = true;

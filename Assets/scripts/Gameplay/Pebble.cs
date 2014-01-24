@@ -23,6 +23,11 @@ public class Pebble : MonoBehaviour {
 		//soundEmitt = Instantiate(instWave) as WaveCreator;
 		soundEmitt.createCircle(thisTransform);
 		soundEmitt.setParent(thisTransform);
+		_CollisionSound = GameObject.Find("Player/Sounds/Pebble").GetComponent<FESound>();
+		if (_CollisionSound == null)
+		{
+			Debug.LogError ("Error to find player, plz fix");
+		}
 	}
 	
 	void Update () {
@@ -67,7 +72,7 @@ public class Pebble : MonoBehaviour {
 //			else
 //			{
 //				Environment _env = other.gameObject.GetComponent<Environment>();
-//				_CollisionSound.playSound(_enviro:);
+				_CollisionSound.playSound();
 //			}
 		}
 		if(other.gameObject.CompareTag("Enemy") && !callerObj.CompareTag("Enemy") && other.GetComponent<Enemy>().getTarget().tag != "Pebble") {

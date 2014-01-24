@@ -14,8 +14,8 @@ public class Label : MonoBehaviour {
 		Box
 	};
 	public type typeList;
-	public float offsetX = 215f;
-	public float offsetY = -580f;
+	private float offsetX = 215f;
+	private float offsetY = -580f;
 
 	void OnGUI()
 	{

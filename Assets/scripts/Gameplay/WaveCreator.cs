@@ -68,23 +68,27 @@ public class WaveCreator : MonoBehaviour {
 	}
 	
 	public void circleWalkToSprint () {
+		//print ("setSPRINT");
 		foreach (WaveElt light in lights) {
 			light.setSprintState();
 		}
 	}
 	public void circleSprintToWalk () {
+		//print ("setWALK");
 		foreach (WaveElt light in lights) {
 			light.setWalkState();
 		}
 	}
 	public void circleGroundedToFall () {
+		//print ("setFALL");
 		foreach (WaveElt light in lights) {
-			light.setFallState();
+			//light.setFallState();
 		}
 	}
 	public void circleFallToGrounded () {
+		//print ("setGROUND");
 		foreach (WaveElt light in lights) {
-			light.setGroundedState();
+			//light.setGroundedState();
 		}
 	}
 	public float getLifeTime() {

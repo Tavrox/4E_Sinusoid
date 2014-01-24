@@ -172,6 +172,8 @@
             <filename>frames/player21instru.png</filename>
             <filename>frames/player22launch.png</filename>
             <filename>frames/player23prepare.png</filename>
+            <filename>frames/player25grip.png</filename>
+            <filename>frames/player24fall.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

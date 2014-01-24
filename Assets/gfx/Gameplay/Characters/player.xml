@@ -316,6 +316,32 @@
                 <key>sourceSize</key>
                 <string>{200,240}</string>
             </dict>
+            <key>player24fall.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{805,965},{200,240}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{200,240}}</string>
+                <key>sourceSize</key>
+                <string>{200,240}</string>
+            </dict>
+            <key>player25grip.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1,1206},{200,240}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{200,240}}</string>
+                <key>sourceSize</key>
+                <string>{200,240}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
@@ -326,7 +352,7 @@
             <key>size</key>
             <string>{1024,2048}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:6463998f5550b3bf89fd8467584ee4c9:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:e91dcdaf58c9e75f8b09ee34f11188fb:1/1$</string>
             <key>textureFileName</key>
             <string>player.png</string>
         </dict>
