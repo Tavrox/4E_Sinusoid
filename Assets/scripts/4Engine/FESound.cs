@@ -78,11 +78,11 @@ public class FESound : MonoBehaviour {
 	{
 		referralDistance = this.gameObject.transform;
 		distToTrack = GameObject.FindGameObjectWithTag("Player").transform;
-		if (_var == null)
+		if (_var == null && SoundGroup != null)
 		{
 			MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay);
 		}
-		else
+		else if (SoundGroup != null)
 		{
 			MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay, SoundGroup.name + "_" + _var);
 		}
@@ -91,7 +91,10 @@ public class FESound : MonoBehaviour {
 
 	public void stopSound()
 	{
-		MasterAudio.StopAllOfSound(SoundGroup.name);
+		if (SoundGroup != null)
+		{
+			MasterAudio.StopAllOfSound(SoundGroup.name);
+		}
 	}
 
 	private void checkDistance()
@@ -107,10 +110,12 @@ public class FESound : MonoBehaviour {
 		distanceToPlayer = Vector2.Distance(thisObjPos, posToTrack );
 		if (distanceToPlayer < 15f)
 		{
+			if(SoundGroup != null)
 			MasterAudio.FadeSoundGroupToVolume(SoundGroup.name, 1f, distanceForFadeOut);
 		}
 		else
 		{
+			if(SoundGroup != null)
 			MasterAudio.FadeSoundGroupToVolume(SoundGroup.name, 0f, distanceForFadeOut);
 		}
 //		Debug.Log(gameObject.name + thisObjPos);
