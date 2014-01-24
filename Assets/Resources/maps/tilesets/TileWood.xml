@@ -4,23 +4,10 @@
     <dict>
         <key>frames</key>
         <dict>
-            <key>WoodAngle2BotLeft.png</key>
+            <key>TileWood01.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,0},{51,50}}</string>
-                <key>offset</key>
-                <string>{0,0}</string>
-                <key>rotated</key>
-                <false/>
-                <key>sourceColorRect</key>
-                <string>{{0,0},{51,50}}</string>
-                <key>sourceSize</key>
-                <string>{51,50}</string>
-            </dict>
-            <key>WoodAngle2BotRight.png</key>
-            <dict>
-                <key>frame</key>
-                <string>{{51,0},{50,50}}</string>
+                <string>{{0,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -30,10 +17,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodAngle2TopLeft.png</key>
+            <key>TileWood02.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{101,0},{50,50}}</string>
+                <string>{{50,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -43,10 +30,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodAngle2TopRight.png</key>
+            <key>TileWood03.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{151,0},{50,50}}</string>
+                <string>{{100,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -56,10 +43,10 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodAngle3BotRight.png</key>
+            <key>TileWood04.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{201,0},{50,50}}</string>
+                <string>{{150,0},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -69,7 +56,20 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodAngle3Botleft.png</key>
+            <key>TileWood05.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{200,0},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileWood06.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,50},{50,50}}</string>
@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodAngle3TopRight.png</key>
+            <key>TileWood07.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,50},{50,50}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodAngle3Topleft.png</key>
+            <key>TileWood08.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,50},{50,50}}</string>
@@ -108,7 +108,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodAngleBotLeft.png</key>
+            <key>TileWood09.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,50},{50,50}}</string>
@@ -121,7 +121,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodAngleBotLeft2.png</key>
+            <key>TileWood10.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,50},{50,50}}</string>
@@ -134,7 +134,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodAngleBotRight.png</key>
+            <key>TileWood11.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,100},{50,50}}</string>
@@ -147,7 +147,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodAngleBotRight2.png</key>
+            <key>TileWood12.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,100},{50,50}}</string>
@@ -160,7 +160,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodAngleTopLeft.png</key>
+            <key>TileWood13.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,100},{50,50}}</string>
@@ -173,7 +173,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodAngleTopLeft2.png</key>
+            <key>TileWood14.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,100},{50,50}}</string>
@@ -186,7 +186,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodAngleTopRight.png</key>
+            <key>TileWood15.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,100},{50,50}}</string>
@@ -199,7 +199,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodAngleTopRight2.png</key>
+            <key>TileWood16.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,150},{50,50}}</string>
@@ -212,7 +212,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodBot.png</key>
+            <key>TileWood17.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,150},{50,50}}</string>
@@ -225,7 +225,20 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodLeft.png</key>
+            <key>TileWood18.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,50},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileWood19.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{100,150},{50,50}}</string>
@@ -238,7 +251,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodLeft2.png</key>
+            <key>TileWood20.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{150,150},{50,50}}</string>
@@ -251,7 +264,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodLeft3.png</key>
+            <key>TileWood21.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{200,150},{50,50}}</string>
@@ -264,7 +277,7 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodRight.png</key>
+            <key>TileWood22.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{0,200},{50,50}}</string>
@@ -277,10 +290,179 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>WoodTop.png</key>
+            <key>TileWood23.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{50,200},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileWood24.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{100,200},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileWood25.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{150,200},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileWood26.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,50},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileWood27.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{200,200},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileWood28.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{100,200},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileWood29.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,250},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileWood30.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,200},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileWood31.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{50,250},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileWood32.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{150,150},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileWood33.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{100,250},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileWood34.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{150,250},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileWood35.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{200,250},{50,50}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{50,50}}</string>
+                <key>sourceSize</key>
+                <string>{50,50}</string>
+            </dict>
+            <key>TileWood36.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{0,300},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -298,9 +480,9 @@
             <key>realTextureFileName</key>
             <string>TileWood.png</string>
             <key>size</key>
-            <string>{256,256}</string>
+            <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:933b1fd6399732be8927b8340141831f:cfdce4adfc84487b575c331c1273de88:85ad68c22a19d60e0daea5ecdc22f914$</string>
+            <string>$TexturePacker:SmartUpdate:ba33315e81e3f8570ba4210e05cb1387:d74e24548ad5be7ea0737463e618b8d2:85ad68c22a19d60e0daea5ecdc22f914$</string>
             <key>textureFileName</key>
             <string>TileWood.png</string>
         </dict>

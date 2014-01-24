@@ -171,28 +171,42 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>Tile/WoodAngle2BotRight.png</filename>
-            <filename>Tile/WoodAngle2TopLeft.png</filename>
-            <filename>Tile/WoodAngle2TopRight.png</filename>
-            <filename>Tile/WoodAngle3Botleft.png</filename>
-            <filename>Tile/WoodAngle3BotRight.png</filename>
-            <filename>Tile/WoodAngle3Topleft.png</filename>
-            <filename>Tile/WoodAngle3TopRight.png</filename>
-            <filename>Tile/WoodAngleBotLeft.png</filename>
-            <filename>Tile/WoodAngleBotLeft2.png</filename>
-            <filename>Tile/WoodAngleBotRight.png</filename>
-            <filename>Tile/WoodAngleBotRight2.png</filename>
-            <filename>Tile/WoodAngleTopLeft.png</filename>
-            <filename>Tile/WoodAngleTopLeft2.png</filename>
-            <filename>Tile/WoodAngleTopRight.png</filename>
-            <filename>Tile/WoodAngleTopRight2.png</filename>
-            <filename>Tile/WoodBot.png</filename>
-            <filename>Tile/WoodLeft.png</filename>
-            <filename>Tile/WoodLeft2.png</filename>
-            <filename>Tile/WoodLeft3.png</filename>
-            <filename>Tile/WoodRight.png</filename>
-            <filename>Tile/WoodTop.png</filename>
-            <filename>Tile/WoodAngle2BotLeft.png</filename>
+            <filename>Tile/TileWood02.png</filename>
+            <filename>Tile/TileWood03.png</filename>
+            <filename>Tile/TileWood04.png</filename>
+            <filename>Tile/TileWood05.png</filename>
+            <filename>Tile/TileWood06.png</filename>
+            <filename>Tile/TileWood07.png</filename>
+            <filename>Tile/TileWood08.png</filename>
+            <filename>Tile/TileWood09.png</filename>
+            <filename>Tile/TileWood10.png</filename>
+            <filename>Tile/TileWood11.png</filename>
+            <filename>Tile/TileWood12.png</filename>
+            <filename>Tile/TileWood13.png</filename>
+            <filename>Tile/TileWood14.png</filename>
+            <filename>Tile/TileWood15.png</filename>
+            <filename>Tile/TileWood16.png</filename>
+            <filename>Tile/TileWood17.png</filename>
+            <filename>Tile/TileWood18.png</filename>
+            <filename>Tile/TileWood19.png</filename>
+            <filename>Tile/TileWood20.png</filename>
+            <filename>Tile/TileWood21.png</filename>
+            <filename>Tile/TileWood22.png</filename>
+            <filename>Tile/TileWood23.png</filename>
+            <filename>Tile/TileWood24.png</filename>
+            <filename>Tile/TileWood25.png</filename>
+            <filename>Tile/TileWood26.png</filename>
+            <filename>Tile/TileWood27.png</filename>
+            <filename>Tile/TileWood28.png</filename>
+            <filename>Tile/TileWood29.png</filename>
+            <filename>Tile/TileWood30.png</filename>
+            <filename>Tile/TileWood31.png</filename>
+            <filename>Tile/TileWood32.png</filename>
+            <filename>Tile/TileWood33.png</filename>
+            <filename>Tile/TileWood34.png</filename>
+            <filename>Tile/TileWood35.png</filename>
+            <filename>Tile/TileWood36.png</filename>
+            <filename>Tile/TileWood01.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
