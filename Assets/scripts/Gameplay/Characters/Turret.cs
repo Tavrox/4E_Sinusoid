@@ -56,7 +56,10 @@ public class Turret : LevelBrick {
 	private void shootAtPoint()
 	{
 		_macaAnim.PlayOnce("macaghul");
-		ShootSound.playDistancedSound();
+		if (ShootSound != null)
+		{
+			ShootSound.playDistancedSound();
+		}
 		_projectile.resetProj();
 		_projectile.setupMove(_target, true);
 	}
