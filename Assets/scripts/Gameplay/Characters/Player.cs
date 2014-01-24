@@ -179,8 +179,8 @@ public class Player : Character {
 		if(toSprint && grounded) {
 			StopCoroutine("queueWaveState");
 			StartCoroutine(queueWaveState("ToSprint",soundEmitt1));
-			//StartCoroutine(queueWaveState("ToSprint",soundEmitt2));
-			//StartCoroutine(queueWaveState("ToSprint",soundEmitt3));
+			StartCoroutine(queueWaveState("ToSprint",soundEmitt2));
+			StartCoroutine(queueWaveState("ToSprint",soundEmitt3));
 //				/*if(soundEmitt1.getAlpha() <= 0f)*/ soundEmitt1.circleWalkToSprint();
 //			/*if(soundEmitt2.getAlpha() <= 0f)*/ soundEmitt2.circleWalkToSprint();
 //			/*if(soundEmitt3.getAlpha() <= 0f)*/ soundEmitt3.circleWalkToSprint();
@@ -190,8 +190,8 @@ public class Player : Character {
 		else if (toWalk && grounded) {
 			StopCoroutine("queueWaveState");
 			StartCoroutine(queueWaveState("ToWalk",soundEmitt1));
-			//StartCoroutine(queueWaveState("ToWalk",soundEmitt2));
-			//StartCoroutine(queueWaveState("ToWalk",soundEmitt3));
+			StartCoroutine(queueWaveState("ToWalk",soundEmitt2));
+			StartCoroutine(queueWaveState("ToWalk",soundEmitt3));
 //			/*if(soundEmitt1.getAlpha() <= 0f)*/ soundEmitt1.circleSprintToWalk();
 //			/*if(soundEmitt2.getAlpha() <= 0f)*/ soundEmitt2.circleSprintToWalk();
 //			/*if(soundEmitt3.getAlpha() <= 0f)*/ soundEmitt3.circleSprintToWalk();
@@ -266,9 +266,8 @@ public class Player : Character {
 				firstGrounded = true;
 				firstFalling = false;
 				//StopCoroutine("footStep");
-				footStepDelay=footStepDelayINI;
 				playSoundFall();
-				cptWave = 1;
+				//cptWave = 1;
 				if(fallFast) {
 					fallFast = false;
 					//soundEmitt3.circleWalkToSprint();
@@ -277,16 +276,31 @@ public class Player : Character {
 //				soundEmitt1.circleFallToGrounded();
 //				soundEmitt2.circleFallToGrounded();
 				//				soundEmitt3.circleFallToGrounded();
+				StopCoroutine("footStep");
+				StopCoroutine("waitB4FootStep");
+				blockCoroutine = false;
+				
 				StopCoroutine("queueWaveState");
-				StartCoroutine(queueWaveState("ToGround",soundEmitt1));
-				//StartCoroutine(queueWaveState("ToGround",soundEmitt2));
-				//StartCoroutine(queueWaveState("ToGround",soundEmitt3));
+				if(isSprint) { 
+					footStepDelay = footStepDelaySprint;
+					StartCoroutine(queueWaveState("ToSprint",soundEmitt1));
+					StartCoroutine(queueWaveState("ToSprint",soundEmitt2));
+					StartCoroutine(queueWaveState("ToSprint",soundEmitt3));
+				}
+				else {
+					footStepDelay=footStepDelayINI;
+					StartCoroutine(queueWaveState("ToGround",soundEmitt1));
+					StartCoroutine(queueWaveState("ToGround",soundEmitt2));
+					StartCoroutine(queueWaveState("ToGround",soundEmitt3));
+				}
 			}
 		}
 		else {
 			if(!firstFalling) {
 				//print("BEGIN FALLING");
 				StopCoroutine("footStep");
+				StopCoroutine("waitB4FootStep");
+				blockCoroutine = false;
 				footStepDelay=footStepDelayFall;
 				firstFalling = true;
 				firstGrounded = false;
@@ -295,8 +309,8 @@ public class Player : Character {
 //				soundEmitt3.circleGroundedToFall();
 				StopCoroutine("queueWaveState");
 				StartCoroutine(queueWaveState("ToFall",soundEmitt1));
-				//StartCoroutine(queueWaveState("ToFall",soundEmitt2));
-				//StartCoroutine(queueWaveState("ToFall",soundEmitt3));
+				StartCoroutine(queueWaveState("ToFall",soundEmitt2));
+				StartCoroutine(queueWaveState("ToFall",soundEmitt3));
 			}
 			StartCoroutine("waitB4FallWave");
 		}
@@ -308,8 +322,8 @@ public class Player : Character {
 	}
 	IEnumerator queueWaveState (string state, WaveCreator soundEmitt) {
 		yield return new WaitForSeconds(0.01f);
-		print(state+" "+soundEmitt.getAlpha()+" "+soundEmitt.name);
-		if(soundEmitt.getAlpha() <= 0.2f) {
+		//print(state+" "+soundEmitt.getAlpha()+" "+soundEmitt.name);
+		if(soundEmitt.getAlpha() <= 1f) {
 			switch (state) {
 			case "ToWalk":
 				soundEmitt.circleSprintToWalk();
@@ -366,7 +380,7 @@ public class Player : Character {
 	}
 	IEnumerator footStep() { //Footsteps management
 		blockCoroutine =true;
-		//print ("WAVE");
+		//print (footStepDelay);
 		/*if(Input.GetKeyDown("left shift")) {
 //			moveVel = 2 * moveVel;
 //			footStepDelay = footStepDelay / 2;
