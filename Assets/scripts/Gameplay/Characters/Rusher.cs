@@ -266,7 +266,7 @@ public class Rusher : Enemy {
 	{
 		if(other.gameObject.CompareTag("Player")) 
 		{
-			GameEventManager.TriggerGameOver();
+			GameEventManager.TriggerGameOver(gameObject);
 			chasingPlayer = false;
 		}
 	}

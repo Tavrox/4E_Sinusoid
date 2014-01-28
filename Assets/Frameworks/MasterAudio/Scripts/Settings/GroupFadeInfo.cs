@@ -4,8 +4,10 @@ using System.Collections;
 
 [Serializable]
 public class GroupFadeInfo  {
-	public string GroupName;
+	public MasterAudioGroup ActingGroup;
+	public string NameOfGroup;
 	public float TargetVolume;
 	public float VolumeStep;
 	public bool IsActive = true;
+	public System.Action completionAction;
 }

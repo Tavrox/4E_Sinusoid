@@ -15,14 +15,14 @@ public class Ditch : MonoBehaviour {
 	{
 		if(other.gameObject.CompareTag("Player")) 
 		{
-			GameEventManager.TriggerGameOver();
+			GameEventManager.TriggerGameOver(gameObject);
 		}
 	}
 	void OnTriggerStay(Collider other) 
 	{
 		if(other.gameObject.CompareTag("Player")) 
 		{
-			GameEventManager.TriggerGameOver();
+			GameEventManager.TriggerGameOver(gameObject);
 		}
 	}
 }

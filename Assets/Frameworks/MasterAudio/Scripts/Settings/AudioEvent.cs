@@ -23,6 +23,7 @@ public class AudioEvent {
 	public MasterAudio.PlaylistCommand currentPlaylistCommand = MasterAudio.PlaylistCommand.None;
 	public MasterAudio.SoundGroupCommand currentSoundGroupCommand = MasterAudio.SoundGroupCommand.None;
 	public MasterAudio.BusCommand currentBusCommand = MasterAudio.BusCommand.None;
+	public MasterAudio.CustomEventCommand currentCustomEventCommand = MasterAudio.CustomEventCommand.None;
 	public string busName = string.Empty;
 	public string playlistName = string.Empty;
 	public string playlistControllerName = string.Empty;
@@ -32,4 +33,8 @@ public class AudioEvent {
 	public string clipName = "[None]";
 	public EventSounds.VariationType variationType = EventSounds.VariationType.PlayRandom;
 	public string variationName = string.Empty;
+	
+	public bool customSoundActive = false; // for custom events only
+	public bool isCustomEvent = false;
+	public string customEventName = string.Empty;
 }

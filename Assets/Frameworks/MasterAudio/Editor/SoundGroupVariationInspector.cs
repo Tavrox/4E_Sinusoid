@@ -27,7 +27,7 @@ public class SoundGroupVariationInspector : Editor {
 		}	
 		GUILayout.FlexibleSpace();
 		GUI.contentColor = Color.white;
-
+		
 		var ma = MasterAudio.Instance;
 		if (ma != null) {
 			var buttonPressed = GUIHelper.AddVariationButtons(ma);
@@ -61,7 +61,7 @@ public class SoundGroupVariationInspector : Editor {
 		}
 		
 		EditorGUILayout.EndHorizontal();
-
+		
 		if (ma != null && !Application.isPlaying) {
 			GUIHelper.ShowColorWarning("*Fading & random settings are ignored by preview in edit mode.");
 		}
@@ -243,8 +243,8 @@ public class SoundGroupVariationInspector : Editor {
 		if (GUI.changed || isDirty) {
 			EditorUtility.SetDirty(target);
 		}	
-
-		GUIHelper.RepaintIfUndoOrRedo(this);
+		
+		this.Repaint();
 
 		//DrawDefaultInspector();
     }

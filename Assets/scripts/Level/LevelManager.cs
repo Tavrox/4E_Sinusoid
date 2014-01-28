@@ -17,21 +17,18 @@ public class LevelManager : MonoBehaviour {
 	{
 		GameEventManager.GameStart += GameStart;
 		GameEventManager.Respawn += Respawn;
-
+		GameEventManager.TriggerGameStart();
 		if (GameObject.FindWithTag("Player").GetComponent<Player>() != null)
 		{
 			_player = GameObject.FindWithTag("Player").GetComponent<Player>();
 		}
 		_hidingPlane = FETool.findWithinChildren(this.gameObject, "TopPlane");
-
-
-		GameEventManager.TriggerGameStart();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		FETool.anchorToObject(_hidingPlane, Camera.main.gameObject, "xy");
+		FETool.anchorToObject(_hidingPlane,Camera.main.gameObject, "xy");
 	}
 
 	public void setActivatedCheckpoint(Checkpoint _check)

@@ -94,48 +94,52 @@ public class PlaylistController : MonoBehaviour {
 			PlayNextOrRandom();
 		}
 		
-		StartCoroutine(this.CoStart());
-	}
-	
-	IEnumerator CoStart() {
-		while (true) {
-			yield return StartCoroutine(this.CoUpdate());
-		}
+		StartCoroutine(this.CoUpdate());
 	}
 	
 	IEnumerator CoUpdate() {
-		yield return new WaitForSeconds(MasterAudio.INNER_LOOP_CHECK_INTERVAL);
-		
-		// gradual fade code
-		if (curFadeMode != FadeMode.GradualFade) {
-			yield break;
-		}
-		
-		if (activeAudio == null) {
-			yield break; // paused or error in setup
-		}
-		
-		var newVolume = PlaylistVolume + slowFadeVolStep;
-		
-		if (slowFadeVolStep > 0f) {
-			newVolume = Math.Min(newVolume, slowFadeTargetVolume);	
-		} else {
-			newVolume = Math.Max(newVolume, slowFadeTargetVolume);	
-		}
-		
-		playlistVolume = newVolume;
-		UpdateMasterVolume();
-		
-		if (newVolume == slowFadeTargetVolume) {
-			if (fadeCompleteCallback != null) {
-				fadeCompleteCallback();
-				fadeCompleteCallback = null;
-			}
-			curFadeMode = FadeMode.None;
-		}
+        while (true)
+        {
+            yield return new WaitForSeconds(MasterAudio.INNER_LOOP_CHECK_INTERVAL);
+
+            // gradual fade code
+            if (curFadeMode != FadeMode.GradualFade)
+            {
+                continue;
+            }
+
+            if (activeAudio == null)
+            {
+                continue; // paused or error in setup
+            }
+
+            var newVolume = PlaylistVolume + slowFadeVolStep;
+
+            if (slowFadeVolStep > 0f)
+            {
+                newVolume = Math.Min(newVolume, slowFadeTargetVolume);
+            }
+            else
+            {
+                newVolume = Math.Max(newVolume, slowFadeTargetVolume);
+            }
+
+            playlistVolume = newVolume;
+            UpdateMasterVolume();
+
+            if (newVolume == slowFadeTargetVolume)
+            {
+                if (fadeCompleteCallback != null)
+                {
+                    fadeCompleteCallback();
+                    fadeCompleteCallback = null;
+                }
+                curFadeMode = FadeMode.None;
+            }
+        }
 	}
 	
-	void FixedUpdate() {
+	void Update() {
 		if (isCrossFading) {
 			// cross-fade code
 			if (activeAudio.volume >= activeAudioEndVolume) {
@@ -143,15 +147,14 @@ public class PlaylistController : MonoBehaviour {
 				isCrossFading = false;
 				SetDuckProperties(); // they now should read from a new audio source
 			}
-			
-			var ratioPassed = (Time.time - crossFadeStartTime) / MasterAudio.Instance.CrossFadeTime;
+
+			var ratioPassed = (Time.realtimeSinceStartup - crossFadeStartTime) / MasterAudio.Instance.CrossFadeTime;
 			
 			activeAudio.volume = ratioPassed * activeAudioEndVolume;
 			transitioningAudio.volume = transitioningAudioStartVolume * (1 - ratioPassed);
-			
 			// end cross-fading code
 		} 
-		
+
 		if (IsAutoAdvance && !activeAudio.loop && activeAudio.clip != null) {
 			var currentClipTime = activeAudio.clip.length - activeAudio.time - (MasterAudio.Instance.CrossFadeTime * activeAudio.pitch);
 			var clipFadeStartTime = Time.deltaTime * EventCalcSounds.FRAMES_EARLY_TO_TRIGGER * activeAudio.pitch;
@@ -163,8 +166,8 @@ public class PlaylistController : MonoBehaviour {
 		if (isCrossFading) {
 			return;
 		}
-		
-		this.AudioDucking();
+
+		this.AudioDucking();	
 	}
 	#endregion
 	
@@ -227,15 +230,18 @@ public class PlaylistController : MonoBehaviour {
 	}
 	
 	/// <summary>
-	/// This method will Stop the Playlist. Cross-fading will still happen (cross-fading to no new song).
+	/// This method will Stop the Playlist. 
 	/// </summary>
-	public void StopPlaylist() {
+	public void StopPlaylist(bool onlyFadingClip = false) {
 		if (!Application.isPlaying) {
 			return;
 		}
 		
 		currentSong = null;
-		CeaseAudioSource(this.activeAudio);
+		if (!onlyFadingClip) {
+			CeaseAudioSource(this.activeAudio);
+		}
+		
 		CeaseAudioSource(this.transitioningAudio);
 	}
 	
@@ -357,7 +363,9 @@ public class PlaylistController : MonoBehaviour {
 	public void ChangePlaylist(string playlistName, bool playFirstClip = true) {
 		startPlaylistName = playlistName;
 		
-		StopPlaylist();
+		if (IsCrossFading) {
+			StopPlaylist(true);
+		}
 		
 		InitializePlaylist();
 		
@@ -422,6 +430,17 @@ public class PlaylistController : MonoBehaviour {
 			Debug.LogError("PlaylistController prefab is not in your scene. Cannot play a song.");
 			return;
 		}
+
+		if (activeAudio.clip != null) {
+			var newClipName = string.Empty;
+			if (setting.clip != null) {
+				newClipName = setting.clip.name;
+			}
+			if (activeAudio.clip.name.Equals(newClipName)) {
+				// ignore, it's the same clip! Playing the same causes it to stop.
+				return;
+			}
+		}
 		
 		if (activeAudio.clip == null) {
 			audioClip = activeAudio;
@@ -431,7 +450,6 @@ public class PlaylistController : MonoBehaviour {
 			transClip = activeAudio;
 		} else {
 			// both are busy!
-			//Debug.LogWarning("Both audio sources are busy cross-fading. You may want to shorten your cross-fade time in Playlist Inspector.");
 			audioClip = transitioningAudio;
 			transClip = activeAudio;
 		}
@@ -448,7 +466,7 @@ public class PlaylistController : MonoBehaviour {
 		switch (setting.audLocation) {
 			case MasterAudio.AudioLocation.Clip:	
 				if (setting.clip == null) {
-					MasterAudio.LogMissingSoundFile("MasterAudio will not play empty Playlist clip for PlaylistController '" + this.transform.name + "'.");
+					MasterAudio.LogWarning("MasterAudio will not play empty Playlist clip for PlaylistController '" + this.transform.name + "'.");
 					return;
 				}
 			
@@ -465,7 +483,7 @@ public class PlaylistController : MonoBehaviour {
 		audioClip.clip = clipToPlay;
 		audioClip.pitch = setting.pitch;
 		
-		// set last know time for current song.
+		// set last known time for current song.
 		if (currentSong != null) {
 			currentSong.lastKnownTimePoint = activeAudio.timeSamples;
 		}
@@ -477,14 +495,16 @@ public class PlaylistController : MonoBehaviour {
 			audioClip.volume = 0f;
 			isCrossFading = true;
 			duckingMode = AudioDuckingMode.NotDucking;
-			crossFadeStartTime = Time.time;
+			crossFadeStartTime = Time.realtimeSinceStartup;
 		}
 		
 		SetDuckProperties();
 		
+		audioClip.Play(); // need to play before setting time or it sometimes resets back to zero.
+		
 		if (currentPlaylist != null) {
 			switch (currentPlaylist.songTransitionType) {
-				case MasterAudio.SongFadeInPosition.SynchronizeClips:
+				case MasterAudio.SongFadeInPosition.SynchronizeClips: 
 					transitioningAudio.timeSamples = activeAudio.timeSamples;
 					break;
 				case MasterAudio.SongFadeInPosition.NewClipFromLastKnownPosition:
@@ -507,13 +527,16 @@ public class PlaylistController : MonoBehaviour {
 			SongChanged(clipName);
 		}
 		
-		audioClip.Play();
-		
 		activeAudio = audioClip;
 		transitioningAudio = transClip;
 		
 		activeAudioEndVolume = setting.volume * PlaylistVolume;
-		transitioningAudioStartVolume = transitioningAudio.volume * PlaylistVolume;
+		var transStartVol =  transitioningAudio.volume;
+		if (currentSong != null) {
+			transStartVol = currentSong.volume;
+		}
+		
+		transitioningAudioStartVolume = transStartVol * PlaylistVolume;
 		currentSong = setting;
 	}
 	

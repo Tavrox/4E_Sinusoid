@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using UnityEditor;
 
 public class MasterAudioManager : EditorWindow {
-	Vector2 scrollPos = Vector2.zero;
+    public const string MasterAudioFolderPath = "Assets/DarkTonic/MasterAudio";
+
+    Vector2 scrollPos = Vector2.zero;
 	
 	[MenuItem("Window/Master Audio Manager")]
 	static void Init()
@@ -23,11 +25,11 @@ public class MasterAudioManager : EditorWindow {
 		var pcs = PlaylistController.Instances;
 		var plControllerInScene = pcs.Count > 0;
 
-		Texture header = (Texture) Resources.LoadAssetAtPath("Assets/MasterAudio/Sources/Textures/inspector_header_master_audio.png", typeof(Texture));
+		Texture header = (Texture) Resources.LoadAssetAtPath(MasterAudioFolderPath + "/Sources/Textures/inspector_header_master_audio.png", typeof(Texture));
 		if (header != null) {
 			GUIHelper.ShowHeaderTexture(header);
 		}
-		Texture settings = (Texture) Resources.LoadAssetAtPath("Assets/MasterAudio/Sources/Textures/gearIcon.png", typeof(Texture));
+        Texture settings = (Texture)Resources.LoadAssetAtPath(MasterAudioFolderPath + "/Sources/Textures/gearIcon.png", typeof(Texture));
 		
 		MasterAudio.Instance = null;
 		var ma = MasterAudio.Instance;
@@ -202,7 +204,7 @@ public class MasterAudioManager : EditorWindow {
 	}
 	
 	private void CreateMasterAudio() {
-		var ma = Resources.LoadAssetAtPath("Assets/DarkTonic/MasterAudio/Prefabs/MasterAudio.prefab", typeof(GameObject));
+        var ma = Resources.LoadAssetAtPath(MasterAudioFolderPath + "/Prefabs/MasterAudio.prefab", typeof(GameObject));
 		if (ma == null) {
 			Debug.LogError("Could not find MasterAudio prefab. Please drag it into the scene yourself. It is located under MasterAudio/Prefabs.");
 			return;
@@ -216,7 +218,7 @@ public class MasterAudioManager : EditorWindow {
 	}
 	
 	private void CreatePlaylistController() {
-		var pc = Resources.LoadAssetAtPath("Assets/DarkTonic/MasterAudio/Prefabs/PlaylistController.prefab", typeof(GameObject));
+        var pc = Resources.LoadAssetAtPath(MasterAudioFolderPath + "/Prefabs/PlaylistController.prefab", typeof(GameObject));
 		if (pc == null) {
 			Debug.LogError("Could not find PlaylistController prefab. Please drag it into the scene yourself. It is located under MasterAudio/Prefabs.");
 			return;
@@ -229,7 +231,7 @@ public class MasterAudioManager : EditorWindow {
 	}
 	
 	private void CreateDynamicSoundGroupCreator() {
-		var pc = Resources.LoadAssetAtPath("Assets/DarkTonic/MasterAudio/Prefabs/DynamicSoundGroupCreator.prefab", typeof(GameObject));
+        var pc = Resources.LoadAssetAtPath(MasterAudioFolderPath + "/Prefabs/DynamicSoundGroupCreator.prefab", typeof(GameObject));
 		if (pc == null) {
 			Debug.LogError("Could not find DynamicSoundGroupCreator prefab. Please drag it into the scene yourself. It is located under MasterAudio/Prefabs.");
 			return;

@@ -133,7 +133,7 @@ public class ButtonClickerInspector : Editor
 			EditorUtility.SetDirty(target);
 		}
 
-		GUIHelper.RepaintIfUndoOrRedo(this);
+		this.Repaint();
 
 		//DrawDefaultInspector();
 	}

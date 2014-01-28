@@ -46,10 +46,10 @@ public class EventCalcSounds : MonoBehaviour {
 		
 		switch (soundSpawnMode) {
 			case MasterAudio.SoundSpawnLocationMode.CallerLocation:
-				soundPlayed = MasterAudio.PlaySound3D(sType, this.trans, false, volume, pitch);
+				soundPlayed = MasterAudio.PlaySound3DAtTransform(sType, this.trans, volume, pitch);
 				break;
 			case MasterAudio.SoundSpawnLocationMode.AttachToCaller:
-				soundPlayed = MasterAudio.PlaySound3D(sType, this.trans, true, volume, pitch);
+				soundPlayed = MasterAudio.PlaySound3DFollowTransform(sType, this.trans, volume, pitch);
 				break;
 			case MasterAudio.SoundSpawnLocationMode.MasterAudioLocation:
 				soundPlayed = MasterAudio.PlaySound(sType, volume);

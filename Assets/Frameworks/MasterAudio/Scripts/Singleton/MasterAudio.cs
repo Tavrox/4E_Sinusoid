@@ -38,6 +38,8 @@ public class MasterAudio : MonoBehaviour {
 	public bool playlistsMuted = false;
 	
 	public string busFilter = string.Empty;
+	public bool useTextGroupFilter = false;
+	public string textGroupFilter = string.Empty;
 	public bool resourceClipsPauseDoNotUnload = false;
 	public Transform playlistControllerPrefab;
 	public bool persistBetweenScenes = false;
@@ -55,21 +57,31 @@ public class MasterAudio : MonoBehaviour {
 	}; 
 	
 	public float masterAudioVolume = 1.0f;
+	public bool prioritizeOnDistance = false;
+	public int rePrioritizeEverySecIndex = 0;
+	public bool useClipAgePriority = false;
 	public bool LogSounds = false;
+	public bool disableLogging = false;
 	public bool showMusicDucking = false;
 	public bool enableMusicDucking = true;
 	public List<DuckGroupInfo> musicDuckingSounds = new List<DuckGroupInfo>(); 
+	public float defaultRiseVolStart = .5f;
 	public float duckedVolumeMultiplier = .5f;
 	public float crossFadeTime = 1f;
 	public float masterPlaylistVolume = 1f;
 	
+	public string newEventName = "my event";
+	public bool showCustomEvents = true;
+	public List<CustomEvent> customEvents = new List<CustomEvent>();
+	
 	private Transform trans;
 	private bool soundsLoaded;
+	
 	#endregion
 	 
 	#region private variables
 
-	#if UNITY_WP8
+	#if UNITY_WP8 || UNITY_METRO
 		private static SortedDictionary<string, AudioGroupInfo> audioSourcesBySoundType = new SortedDictionary<string, AudioGroupInfo>();
 	#else
 		private static SortedList<string, AudioGroupInfo> audioSourcesBySoundType = new SortedList<string, AudioGroupInfo>();
@@ -79,11 +91,13 @@ public class MasterAudio : MonoBehaviour {
 	private static List<MasterAudioGroup> soloedGroups = new List<MasterAudioGroup>();
 	private static List<BusFadeInfo> busFades = new List<BusFadeInfo>();
 	private static List<GroupFadeInfo> groupFades = new List<GroupFadeInfo>();
+	private static Dictionary<ICustomEventReceiver, GameObject> eventReceivers = new Dictionary<ICustomEventReceiver, GameObject>();
 	
 	private static Dictionary<string, PlaylistController> playlistControllersByName = new Dictionary<string, PlaylistController>();
 	private static Dictionary<string, SoundGroupRefillInfo> lastTimeSoundGroupPlayed = new Dictionary<string, SoundGroupRefillInfo>();
 	private static MasterAudio _instance;
 	private static AudioSource _previewerInstance;
+	private static Transform _audListenerTrans;
 	private static bool appIsShuttingDown;
 	#endregion
 	
@@ -115,7 +129,8 @@ public class MasterAudio : MonoBehaviour {
 		PlaySound,
 		GroupControl,
 		BusControl,
-		PlaylistControl
+		PlaylistControl,
+		CustomEventControl
 	}
 	
 	public enum PlaylistCommand {
@@ -130,12 +145,11 @@ public class MasterAudio : MonoBehaviour {
 		Stop
 	}
 	
-	public enum SongFadeInPosition {
-		NewClipFromBeginning = 1,
-		NewClipFromLastKnownPosition = 3,
-		SynchronizeClips = 5,
+	public enum CustomEventCommand {
+		None,
+		FireEvent
 	}
-
+	
 	public enum SoundGroupCommand {
 		None,
 		FadeToVolume,
@@ -147,6 +161,12 @@ public class MasterAudio : MonoBehaviour {
 		Unmute,
 		Unpause,
 		Unsolo
+	}
+
+	public enum SongFadeInPosition {
+		NewClipFromBeginning = 1,
+		NewClipFromLastKnownPosition = 3,
+		SynchronizeClips = 5,
 	}
 	
 	public enum SoundSpawnLocationMode {
@@ -291,13 +311,6 @@ public class MasterAudio : MonoBehaviour {
 			SoundGroupVariation childVariation = null;
 			Transform child = null;
 			
-			AudioLowPassFilter lp = null;
-			AudioHighPassFilter hp = null;
-			AudioEchoFilter echo = null;
-			AudioDistortionFilter dist = null;
-			AudioReverbFilter reverb = null;
-			AudioChorusFilter chorus = null;
-			
 			for (int i = 0; i < parentGroup.childCount; i++) {
 				child = parentGroup.GetChild(i);
 				variation = child.GetComponent<SoundGroupVariation>();
@@ -307,130 +320,10 @@ public class MasterAudio : MonoBehaviour {
 				
 				for (var j = 0; j < weight; j++) {
 					if (j > 0) {
-						var extraChild = (GameObject) GameObject.Instantiate(soundGroupVariationTemplate.gameObject, parentGroup.transform.position, Quaternion.identity);
+						var extraChild = (GameObject) GameObject.Instantiate(child.gameObject, parentGroup.transform.position, Quaternion.identity);
+						extraChild.transform.name = child.gameObject.name;
 						childVariation = extraChild.GetComponent<SoundGroupVariation>();
-						
-						childVariation.audLocation = variation.audLocation;
-						childVariation.resourceFileName = variation.resourceFileName;
-						extraChild.name = child.name;
-						extraChild.audio.clip = source.audio.clip;
-						extraChild.audio.pitch = source.audio.pitch;
-						extraChild.audio.volume = source.volume;
-						extraChild.audio.loop = source.audio.loop;
-						
-						extraChild.audio.mute = source.audio.mute;
-						extraChild.audio.bypassEffects = source.audio.bypassEffects;
-						
-						#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5
-						// unsupported
-						#else
-						extraChild.audio.bypassListenerEffects = source.audio.bypassListenerEffects;
-						extraChild.audio.bypassReverbZones = source.audio.bypassReverbZones;
-						#endif
-						
-						extraChild.audio.playOnAwake = source.audio.playOnAwake;
-						extraChild.audio.priority = source.audio.priority;
-						
-						extraChild.audio.dopplerLevel = source.audio.dopplerLevel;
-						extraChild.audio.rolloffMode = source.audio.rolloffMode;
-						extraChild.audio.minDistance = source.audio.minDistance;
-						extraChild.audio.panLevel = source.audio.panLevel;
-						extraChild.audio.pan = source.audio.pan;
-						extraChild.audio.spread = source.audio.spread;
-						extraChild.audio.maxDistance = source.audio.maxDistance;
-						
-						childVariation.randomPitch = variation.randomPitch;
-						childVariation.randomVolume = variation.randomVolume;
-						childVariation.useFades = variation.useFades;
-						childVariation.fadeInTime = variation.fadeInTime;
-						childVariation.fadeOutTime = variation.fadeOutTime;
-						childVariation.fxTailTime = variation.fxTailTime;
-						
-						// Clone fx
-						if (lp != null && lp.enabled) {
-							var newLP = extraChild.GetComponent<AudioLowPassFilter>();
-							if (newLP == null) {
-								extraChild.AddComponent<AudioLowPassFilter>();
-								newLP = extraChild.GetComponent<AudioLowPassFilter>();
-							}
-							newLP.enabled = true;
-							newLP.lowpassResonaceQ = lp.lowpassResonaceQ;
-							newLP.cutoffFrequency = lp.cutoffFrequency;
-						}
-						
-						if (hp != null && hp.enabled) {
-							var newHP = extraChild.GetComponent<AudioHighPassFilter>();
-							if (newHP == null) {
-								extraChild.AddComponent<AudioHighPassFilter>();
-								newHP = extraChild.GetComponent<AudioHighPassFilter>();
-							}
-							newHP.enabled = true;
-							newHP.highpassResonaceQ = hp.highpassResonaceQ;
-							newHP.cutoffFrequency = hp.cutoffFrequency;
-						}
-						
-						if (echo != null && echo.enabled) {
-							var newEcho = extraChild.GetComponent<AudioEchoFilter>();
-							if (newEcho == null) {
-								extraChild.AddComponent<AudioEchoFilter>();
-								newEcho = extraChild.GetComponent<AudioEchoFilter>();
-							}
-							newEcho.enabled = true;
-							newEcho.delay = echo.delay;
-							newEcho.decayRatio = echo.decayRatio;
-							newEcho.wetMix = echo.wetMix;
-							newEcho.dryMix = echo.dryMix;
-						}
-						
-						if (dist != null && dist.enabled) {
-							var newDist = extraChild.GetComponent<AudioDistortionFilter>();
-							if (newDist == null) {
-								extraChild.AddComponent<AudioDistortionFilter>();
-								newDist = extraChild.GetComponent<AudioDistortionFilter>();
-							}
-							newDist.enabled = true;
-							newDist.distortionLevel = dist.distortionLevel;
-						}
-						
-						if (reverb != null && reverb.enabled) {
-							var newVerb = extraChild.GetComponent<AudioReverbFilter>();
-							if (newVerb == null) {
-								extraChild.AddComponent<AudioReverbFilter>();
-								newVerb = extraChild.GetComponent<AudioReverbFilter>();
-							}
-							newVerb.enabled = true;
-							newVerb.reverbPreset = reverb.reverbPreset;
-							newVerb.dryLevel = reverb.dryLevel;
-							newVerb.room = reverb.room;
-							newVerb.roomHF = reverb.roomHF;
-							newVerb.roomLF = reverb.roomLF;
-							newVerb.decayTime = reverb.decayTime;
-							newVerb.decayHFRatio = reverb.decayHFRatio;
-							newVerb.reflectionsLevel = reverb.reflectionsLevel;
-							newVerb.reflectionsDelay = reverb.reflectionsDelay;
-							newVerb.reverbLevel = reverb.reverbLevel;
-							newVerb.reverbDelay = reverb.reverbDelay;
-							newVerb.hfReference = reverb.hfReference;
-							newVerb.lFReference = reverb.lFReference;
-							newVerb.diffusion = reverb.diffusion;
-							newVerb.density = reverb.density;
-						}
-						
-						if (chorus != null && chorus.enabled) {
-							var newChorus = extraChild.GetComponent<AudioChorusFilter>();
-							if (newChorus == null) {
-								extraChild.AddComponent<AudioChorusFilter>();
-								newChorus = extraChild.GetComponent<AudioChorusFilter>();
-							}
-							newChorus.enabled = true;
-							newChorus.dryMix = chorus.dryMix;
-							newChorus.wetMix1 = chorus.wetMix1;
-							newChorus.wetMix2 = chorus.wetMix2;
-							newChorus.wetMix3 = chorus.wetMix3;
-							newChorus.delay = chorus.delay;
-							newChorus.rate = chorus.rate;
-							newChorus.depth = chorus.depth;
-						}
+						childVariation.weight = 1;
 						
 						newWeightedChildren.Add(extraChild.transform);
 						source = extraChild.audio;
@@ -446,13 +339,6 @@ public class MasterAudio : MonoBehaviour {
 						if (variation.audLocation == MasterAudio.AudioLocation.ResourceFile) {
 							AudioResourceOptimizer.AddTargetForClip(variation.resourceFileName, source);	
 						}
-						
-						lp = child.GetComponent<AudioLowPassFilter>();
-						hp = child.GetComponent<AudioHighPassFilter>();
-						echo = child.GetComponent<AudioEchoFilter>();
-						dist = child.GetComponent<AudioDistortionFilter>();
-						reverb = child.GetComponent<AudioReverbFilter>();
-						chorus = child.GetComponent<AudioChorusFilter>();
 					}
 				}
 			}
@@ -539,24 +425,20 @@ public class MasterAudio : MonoBehaviour {
 			Debug.Log("No Playlist Controllers exist in the Scene. Music will not play.");
 		}
 		
-		StartCoroutine(this.CoStart());
-	}
-	
-	IEnumerator CoStart() {
-		while (true) {
-			yield return StartCoroutine(this.CoUpdate());
-		}
+		StartCoroutine(this.CoUpdate());
 	}
 	
 	IEnumerator CoUpdate() {
-		yield return new WaitForSeconds(INNER_LOOP_CHECK_INTERVAL);
-		
-		// adjust for Inspector realtime slider.
-		PerformBusFades();
-		PerformGroupFades();
-		RefillInactiveGroupPools();
+		while (true) { 
+			yield return new WaitForSeconds(INNER_LOOP_CHECK_INTERVAL);
+			
+			// adjust for Inspector realtime slider.
+			PerformBusFades();
+			PerformGroupFades();
+			RefillInactiveGroupPools();
+		}
 	}
-
+	
 	private static void UpdateRefillTime(string sType, float inactivePeriodSeconds) {
 		if (!lastTimeSoundGroupPlayed.ContainsKey(sType)) {
 			lastTimeSoundGroupPlayed.Add(sType, new SoundGroupRefillInfo(Time.time, inactivePeriodSeconds));
@@ -592,9 +474,9 @@ public class MasterAudio : MonoBehaviour {
 				continue;
 			}
 			
-			aBus = GrabBusByName(aFader.BusName);
+			aBus = aFader.ActingBus;
 			if (aBus == null) {
-				Debug.Log("Could not find bus named '" + aFader.BusName + "' to fade it one step.");
+				Debug.Log("Could not find bus named '" + aFader.NameOfBus + "' to fade it one step.");
 				aFader.IsActive = false;
 				continue;
 			}
@@ -611,6 +493,9 @@ public class MasterAudio : MonoBehaviour {
 			
 			if (newVolume == aFader.TargetVolume) {
 				aFader.IsActive = false;
+				if (aFader.completionAction != null) {
+					aFader.completionAction();
+				}
 			}
 		}
 		
@@ -628,9 +513,9 @@ public class MasterAudio : MonoBehaviour {
 				continue;
 			}
 			
-			aGroup = GrabGroup(aFader.GroupName);
+			aGroup = aFader.ActingGroup;
 			if (aGroup == null) {
-				Debug.Log("Could not find Sound Group named '" + aFader.GroupName + "' to fade it one step.");
+				Debug.Log("Could not find Sound Group named '" + aFader.NameOfGroup + "' to fade it one step.");
 				aFader.IsActive = false;
 				continue;
 			}
@@ -647,6 +532,9 @@ public class MasterAudio : MonoBehaviour {
 			
 			if (newVolume == aFader.TargetVolume) {
 				aFader.IsActive = false;
+				if (aFader.completionAction != null) {
+					aFader.completionAction();
+				}
 			}
 		}
 		
@@ -663,28 +551,50 @@ public class MasterAudio : MonoBehaviour {
 	
 	#region Sound Playing / Stopping Methods
 	/// <summary>
-	/// This method allows you to play a sound in a Sound Group in a "2D sound" manner. 
+	/// This method allows you to play a sound in a Sound Group in the location of the Master Audio prefab. Returns nothing.
 	/// </summary>
 	/// <param name="sType">The name of the Sound Group to trigger a sound from.</param>
 	/// <param name="volumePercentage"><b>Optional</b> - used if you want to play the sound at a reduced volume (between 0 and 1).</param>
 	/// <param name="pitch"><b>Optional</b> - used if you want to play the sound at a specific pitch. If you do, it will override the pich and random pitch in the variation.</param>
 	/// <param name="delaySoundTime"><b>Optional</b> - used if you want to play the sound X seconds from now instead of immediately.</param>
 	/// <param name="variationName"><b>Optional</b> - used if you want to play a specific variation by name. Otherwise a random variation is played.</param>
-	/// <returns>PlaySoundResult - this object can be used to be notified when the clip is done playing and whether the sound successfully started playing or not.</returns>
-	public static PlaySoundResult PlaySound(string sType, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null) {	
+	public static void PlaySoundAndForget(string sType, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null) {	
 		if (!SceneHasMasterAudio) {
-			return new PlaySoundResult() {
-				ActingVariation = null,
-				SoundPlayed = false,
-				SoundScheduled = false
-			};
+			return;
 		}
 		
-		return PlaySound3D(sType, null, false, volumePercentage, pitch, delaySoundTime, variationName);
+		if (!SoundsReady) {
+			Debug.LogError ("MasterAudio not finished initializing sounds. Cannot play: " + sType);
+			return;
+		}
+		
+		PlaySoundAtVolume(sType, volumePercentage, Vector3.zero, pitch, null, variationName, false, delaySoundTime, false, false);
 	}
 
 	/// <summary>
-	/// This method allows you to play a sound in a Sound Group from a specific position.
+    /// This method allows you to play a sound in a Sound Group in the location of the Master Audio prefab. Returns a PlaySoundResult object.
+	/// </summary>
+	/// <param name="sType">The name of the Sound Group to trigger a sound from.</param>
+	/// <param name="volumePercentage"><b>Optional</b> - used if you want to play the sound at a reduced volume (between 0 and 1).</param>
+	/// <param name="pitch"><b>Optional</b> - used if you want to play the sound at a specific pitch. If you do, it will override the pich and random pitch in the variation.</param>
+	/// <param name="delaySoundTime"><b>Optional</b> - used if you want to play the sound X seconds from now instead of immediately.</param>
+	/// <param name="variationName"><b>Optional</b> - used if you want to play a specific variation by name. Otherwise a random variation is played.</param>
+	/// <returns>PlaySoundResult - this object can be used to read if the sound played or not and also gives access to the Variation object that was used.</returns>
+	public static PlaySoundResult PlaySound(string sType, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null) {	
+		if (!SceneHasMasterAudio) {
+			return null;
+		}
+
+		if (!SoundsReady) {
+			Debug.LogError ("MasterAudio not finished initializing sounds. Cannot play: " + sType);
+			return null;
+		}
+		
+		return PlaySoundAtVolume(sType, volumePercentage, Vector3.zero, pitch, null, variationName, false, delaySoundTime, false, true);
+	}
+
+	/// <summary>
+	/// This method allows you to play a sound in a Sound Group from a specific Vector 3 position. Returns nothing.
 	/// </summary>
 	/// <param name="sType">The name of the Sound Group to trigger a sound from.</param>
 	/// <param name="sourcePosition">The position you want the sound to eminate from. Required.</param>
@@ -692,27 +602,189 @@ public class MasterAudio : MonoBehaviour {
 	/// <param name="pitch"><b>Optional</b> - used if you want to play the sound at a specific pitch. If you do, it will override the pich and random pitch in the variation.</param>
 	/// <param name="delaySoundTime"><b>Optional</b> - used if you want to play the sound X seconds from now instead of immediately.</param>
 	/// <param name="variationName"><b>Optional</b> - used if you want to play a specific variation by name. Otherwise a random variation is played.</param>
-	/// <returns>PlaySoundResult - this object can be used to be notified when the clip is done playing and whether the sound successfully started playing or not.</returns>
-	public static PlaySoundResult PlaySound3D(string sType, Vector3 sourcePosition, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null)
+	public static void PlaySound3DAtVector3AndForget(string sType, Vector3 sourcePosition, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null)
 	{
 		if (!SceneHasMasterAudio) {
-			return new PlaySoundResult() {
-				ActingVariation = null,
-				SoundPlayed = false,
-				SoundScheduled = false
-			};
+			return;
 		}
 		
 		if (!SoundsReady) {
 			Debug.LogError ("MasterAudio not finished initializing sounds. Cannot play: " + sType);
-			return new PlaySoundResult();
+			return;
 		}
 		
-		return PlaySoundAtVolume(sType, volumePercentage, sourcePosition, pitch, null, variationName, false, delaySoundTime, true);
+		PlaySoundAtVolume(sType, volumePercentage, sourcePosition, pitch, null, variationName, false, delaySoundTime, true, false);
+	}
+
+	/// <summary>
+	/// This method allows you to play a sound in a Sound Group from a specific Vector3 position. Returns a PlaySoundResult object.
+	/// </summary>
+	/// <param name="sType">The name of the Sound Group to trigger a sound from.</param>
+	/// <param name="sourcePosition">The position you want the sound to eminate from. Required.</param>
+	/// <param name="volumePercentage"><b>Optional</b> - used if you want to play the sound at a reduced volume (between 0 and 1).</param>
+	/// <param name="pitch"><b>Optional</b> - used if you want to play the sound at a specific pitch. If you do, it will override the pich and random pitch in the variation.</param>
+	/// <param name="delaySoundTime"><b>Optional</b> - used if you want to play the sound X seconds from now instead of immediately.</param>
+	/// <param name="variationName"><b>Optional</b> - used if you want to play a specific variation by name. Otherwise a random variation is played.</param>
+    /// <returns>PlaySoundResult - this object can be used to read if the sound played or not and also gives access to the Variation object that was used.</returns>
+    public static PlaySoundResult PlaySound3DAtVector3(string sType, Vector3 sourcePosition, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null)
+	{
+		if (!SceneHasMasterAudio) {
+			return null;
+		}
+		
+		if (!SoundsReady) {
+			Debug.LogError ("MasterAudio not finished initializing sounds. Cannot play: " + sType);
+			return null;
+		}
+		
+		return PlaySoundAtVolume(sType, volumePercentage, sourcePosition, pitch, null, variationName, false, delaySoundTime, true, true);
 	}
 	
 	/// <summary>
-	/// This method allows you to play a sound in a Sound Group from a specific position.
+	/// This method allows you to play a sound in a Sound Group from a specific Vector3 position. Returns a PlaySoundResult object.
+	/// </summary>
+	/// <param name="sType">The name of the Sound Group to trigger a sound from.</param>
+	/// <param name="sourcePosition">The position you want the sound to eminate from. Required.</param>
+	/// <param name="volumePercentage"><b>Optional</b> - used if you want to play the sound at a reduced volume (between 0 and 1).</param>
+	/// <param name="pitch"><b>Optional</b> - used if you want to play the sound at a specific pitch. If you do, it will override the pich and random pitch in the variation.</param>
+	/// <param name="delaySoundTime"><b>Optional</b> - used if you want to play the sound X seconds from now instead of immediately.</param>
+	/// <param name="variationName"><b>Optional</b> - used if you want to play a specific variation by name. Otherwise a random variation is played.</param>
+    /// <returns>PlaySoundResult - this object can be used to read if the sound played or not and also gives access to the Variation object that was used.</returns>
+    [Obsolete("PlaySound3D is deprecated, please use PlaySoundResultAtVector3 instead.", true)]
+	public static PlaySoundResult PlaySound3D(string sType, Vector3 sourcePosition, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null)
+	{
+		if (!SceneHasMasterAudio) {
+			return null;
+		}
+		
+		if (!SoundsReady) {
+			Debug.LogError ("MasterAudio not finished initializing sounds. Cannot play: " + sType);
+			return null;
+		}
+		
+		return PlaySoundAtVolume(sType, volumePercentage, sourcePosition, pitch, null, variationName, false, delaySoundTime, true, true);
+	}
+
+	/// <summary>
+	/// This method allows you to play a sound in a Sound Group from a specific position - the position of a Transform you pass in. Returns nothing.
+	/// </summary>
+	/// <param name="sType">The name of the Sound Group to trigger a sound from.</param>
+	/// <param name="sourceTrans">The Transform whose position you want the sound to eminate from. Pass null if you want to play the sound 2D.</param>
+	/// <param name="volumePercentage"><b>Optional</b> - used if you want to play the sound at a reduced volume (between 0 and 1).</param>
+	/// <param name="pitch"><b>Optional</b> - used if you want to play the sound at a specific pitch. If you do, it will override the pich and random pitch in the variation.</param>
+	/// <param name="delaySoundTime"><b>Optional</b> - used if you want to play the sound X seconds from now instead of immediately.</param>
+	/// <param name="variationName"><b>Optional</b> - used if you want to play a specific variation by name. Otherwise a random variation is played.</param>
+	public static void PlaySound3DAtTransformAndForget(string sType, Transform sourceTrans = null, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null)
+	{
+		if (!SceneHasMasterAudio) {
+			return;
+		}
+		
+		if (!SoundsReady) {
+			Debug.LogError ("MasterAudio not finished initializing sounds. Cannot play: " + sType);
+			return;
+		}
+		
+		PlaySoundAtVolume(sType, volumePercentage, Vector3.zero, pitch, sourceTrans, variationName, false, delaySoundTime, false, false);
+	}
+
+	/// <summary>
+	/// This method allows you to play a sound in a Sound Group from a specific position - the position of a Transform you pass in. Returns nothing.
+	/// </summary>
+	/// <param name="sType">The name of the Sound Group to trigger a sound from.</param>
+	/// <param name="sourceTrans">The Transform whose position you want the sound to eminate from. Pass null if you want to play the sound 2D.</param>
+	/// <param name="volumePercentage"><b>Optional</b> - used if you want to play the sound at a reduced volume (between 0 and 1).</param>
+	/// <param name="pitch"><b>Optional</b> - used if you want to play the sound at a specific pitch. If you do, it will override the pich and random pitch in the variation.</param>
+	/// <param name="delaySoundTime"><b>Optional</b> - used if you want to play the sound X seconds from now instead of immediately.</param>
+	/// <param name="variationName"><b>Optional</b> - used if you want to play a specific variation by name. Otherwise a random variation is played.</param>
+    /// <returns>PlaySoundResult - this object can be used to read if the sound played or not and also gives access to the Variation object that was used.</returns>
+    public static PlaySoundResult PlaySound3DAtTransform(string sType, Transform sourceTrans = null, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null)
+	{
+		if (!SceneHasMasterAudio) {
+			return null;
+		}
+		
+		if (!SoundsReady) {
+			Debug.LogError ("MasterAudio not finished initializing sounds. Cannot play: " + sType);
+			return null;
+		}
+		
+		return PlaySoundAtVolume(sType, volumePercentage, Vector3.zero, pitch, sourceTrans, variationName, false, delaySoundTime, false, true);
+	}
+
+	/// <summary>
+	/// This method allows you to play a sound in a Sound Group from a specific position - a Transform you pass in. Returns nothing.
+	/// </summary>
+	/// <param name="sType">The name of the Sound Group to trigger a sound from.</param>
+	/// <param name="sourceTrans">The Transform whose position you want the sound to eminate from. Pass null if you want to play the sound 2D.</param>
+	/// <param name="volumePercentage"><b>Optional</b> - used if you want to play the sound at a reduced volume (between 0 and 1).</param>
+	/// <param name="pitch"><b>Optional</b> - used if you want to play the sound at a specific pitch. If you do, it will override the pich and random pitch in the variation.</param>
+	/// <param name="delaySoundTime"><b>Optional</b> - used if you want to play the sound X seconds from now instead of immediately.</param>
+	/// <param name="variationName"><b>Optional</b> - used if you want to play a specific variation by name. Otherwise a random variation is played.</param>
+	public static void PlaySound3DFollowTransformAndForget(string sType, Transform sourceTrans = null, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null)
+	{
+		if (!SceneHasMasterAudio) {
+			return;
+		}
+		
+		if (!SoundsReady) {
+			Debug.LogError ("MasterAudio not finished initializing sounds. Cannot play: " + sType);
+			return;
+		}
+		
+		PlaySoundAtVolume(sType, volumePercentage, Vector3.zero, pitch, sourceTrans, variationName, true, delaySoundTime, false, false);
+	}
+	
+	/// <summary>
+	/// This method allows you to play a sound in a Sound Group from a specific position - a Transform you pass in. Returns a PlaySoundResult.
+	/// </summary>
+	/// <param name="sType">The name of the Sound Group to trigger a sound from.</param>
+	/// <param name="sourceTrans">The Transform whose position you want the sound to eminate from. Pass null if you want to play the sound 2D.</param>
+	/// <param name="volumePercentage"><b>Optional</b> - used if you want to play the sound at a reduced volume (between 0 and 1).</param>
+	/// <param name="pitch"><b>Optional</b> - used if you want to play the sound at a specific pitch. If you do, it will override the pich and random pitch in the variation.</param>
+	/// <param name="delaySoundTime"><b>Optional</b> - used if you want to play the sound X seconds from now instead of immediately.</param>
+	/// <param name="variationName"><b>Optional</b> - used if you want to play a specific variation by name. Otherwise a random variation is played.</param>
+    /// <returns>PlaySoundResult - this object can be used to read if the sound played or not and also gives access to the Variation object that was used.</returns>
+    public static PlaySoundResult PlaySound3DFollowTransform(string sType, Transform sourceTrans = null, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null)
+	{
+		if (!SceneHasMasterAudio) {
+			return null;
+		}
+		
+		if (!SoundsReady) {
+			Debug.LogError ("MasterAudio not finished initializing sounds. Cannot play: " + sType);
+			return null;
+		}
+		
+		return PlaySoundAtVolume(sType, volumePercentage, Vector3.zero, pitch, sourceTrans, variationName, true, delaySoundTime, false, true);
+	}
+
+	/// <summary>
+	/// This method allows you to play a sound in a Sound Group from a specific position - a Transform you pass in. Returns nothing.
+	/// </summary>
+	/// <param name="sType">The name of the Sound Group to trigger a sound from.</param>
+	/// <param name="sourceTrans">The Transform whose position you want the sound to eminate from. Pass null if you want to play the sound 2D.</param>
+	/// <param name="attachToSource"><b>Optional</b> - defaults to False. If you specify true, and also passed a non-null value for sourceTrans, the Sound Variation will be attached to the sourceTrans object so that the sound can follow it.</param>
+	/// <param name="volumePercentage"><b>Optional</b> - used if you want to play the sound at a reduced volume (between 0 and 1).</param>
+	/// <param name="pitch"><b>Optional</b> - used if you want to play the sound at a specific pitch. If you do, it will override the pich and random pitch in the variation.</param>
+	/// <param name="delaySoundTime"><b>Optional</b> - used if you want to play the sound X seconds from now instead of immediately.</param>
+	/// <param name="variationName"><b>Optional</b> - used if you want to play a specific variation by name. Otherwise a random variation is played.</param>
+	public static void PlaySound3DAndForget(string sType, Transform sourceTrans = null, bool attachToSource = false, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null)
+	{
+		if (!SceneHasMasterAudio) {
+			return;
+		}
+		
+		if (!SoundsReady) {
+			Debug.LogError ("MasterAudio not finished initializing sounds. Cannot play: " + sType);
+			return;
+		}
+		
+		PlaySoundAtVolume(sType, volumePercentage, Vector3.zero, pitch, sourceTrans, variationName, attachToSource, delaySoundTime, false, false);
+	}
+	
+	/// <summary>
+	/// This method allows you to play a sound in a Sound Group from a specific position - a Transform you pass in. Returns a PlaySoundResult object.
 	/// </summary>
 	/// <param name="sType">The name of the Sound Group to trigger a sound from.</param>
 	/// <param name="sourceTrans">The Transform whose position you want the sound to eminate from. Pass null if you want to play the sound 2D.</param>
@@ -722,22 +794,19 @@ public class MasterAudio : MonoBehaviour {
 	/// <param name="delaySoundTime"><b>Optional</b> - used if you want to play the sound X seconds from now instead of immediately.</param>
 	/// <param name="variationName"><b>Optional</b> - used if you want to play a specific variation by name. Otherwise a random variation is played.</param>
 	/// <returns>PlaySoundResult - this object can be used to be notified when the clip is done playing and whether the sound successfully started playing or not.</returns>
+	[Obsolete("PlaySound3D is deprecated, please use PlaySoundResultAtVector3 or PlaySoundResultAtTransform instead.", true)]
 	public static PlaySoundResult PlaySound3D(string sType, Transform sourceTrans = null, bool attachToSource = false, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null)
 	{
 		if (!SceneHasMasterAudio) {
-			return new PlaySoundResult() {
-				ActingVariation = null,
-				SoundPlayed = false,
-				SoundScheduled = false
-			};
+			return null;
 		}
 		
 		if (!SoundsReady) {
 			Debug.LogError ("MasterAudio not finished initializing sounds. Cannot play: " + sType);
-			return new PlaySoundResult();
+			return null;
 		}
 		
-		return PlaySoundAtVolume(sType, volumePercentage, Vector3.zero, pitch, sourceTrans, variationName, attachToSource, delaySoundTime, false);
+		return PlaySoundAtVolume(sType, volumePercentage, Vector3.zero, pitch, sourceTrans, variationName, attachToSource, delaySoundTime, false, true);
 	}
 	
 	#region PlaySound methods by index (int) - only advised if you have an enum defined and can convert it to an int and keep track of the numbers.
@@ -752,11 +821,7 @@ public class MasterAudio : MonoBehaviour {
 	/// <returns>PlaySoundResult - this object can be used to be notified when the clip is done playing and whether the sound successfully started playing or not.</returns>
 	public static PlaySoundResult PlaySound(int soundGroupIndex, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null) {	
 		if (!SceneHasMasterAudio) {
-			return new PlaySoundResult() {
-				ActingVariation = null,
-				SoundPlayed = false,
-				SoundScheduled = false
-			};
+			return null;
 		}
 		
 		return PlaySound3D(soundGroupIndex, null, false, volumePercentage, pitch, delaySoundTime, variationName);
@@ -775,24 +840,20 @@ public class MasterAudio : MonoBehaviour {
 	public static PlaySoundResult PlaySound3D(int soundGroupIndex, Vector3 sourcePosition, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null)
 	{
 		if (!SceneHasMasterAudio) {
-			return new PlaySoundResult() {
-				ActingVariation = null,
-				SoundPlayed = false,
-				SoundScheduled = false
-			};
+			return null;
 		}
 		
 		if (!SoundsReady) {
 			Debug.LogError ("MasterAudio not finished initializing sounds. Cannot play soundGroupIndex: " + soundGroupIndex);
-			return new PlaySoundResult();
+			return null;
 		}
 		
 		if (soundGroupIndex > audioSourcesBySoundType.Keys.Count - 1) { 
 			Debug.LogError("Master Audio only has " + audioSourcesBySoundType.Keys.Count + " Sound Groups. Can't play index: " + soundGroupIndex);
-			return new PlaySoundResult();
+			return null;
 		}
 
-		#if UNITY_WP8
+		#if UNITY_WP8 || UNITY_METRO
 			var i = 0;
 	        var sType = "";
 	
@@ -807,7 +868,7 @@ public class MasterAudio : MonoBehaviour {
 			var sType = audioSourcesBySoundType.Keys[soundGroupIndex];
 		#endif
 		
-		return PlaySoundAtVolume(sType, volumePercentage, sourcePosition, pitch, null, variationName, false, delaySoundTime, true);
+		return PlaySoundAtVolume(sType, volumePercentage, sourcePosition, pitch, null, variationName, false, delaySoundTime, true, true);
 	}
 	
 	/// <summary>
@@ -824,24 +885,20 @@ public class MasterAudio : MonoBehaviour {
 	public static PlaySoundResult PlaySound3D(int soundGroupIndex, Transform sourceTrans = null, bool attachToSource = false, float volumePercentage = 1f, float? pitch = null, float delaySoundTime = 0f, string variationName = null)
 	{
 		if (!SceneHasMasterAudio) {
-			return new PlaySoundResult() {
-				ActingVariation = null,
-				SoundPlayed = false,
-				SoundScheduled = false
-			};
+			return null;
 		}
 		
 		if (!SoundsReady) {
 			Debug.LogError ("MasterAudio not finished initializing sounds. Cannot play soundGroupIndex: " + soundGroupIndex);
-			return new PlaySoundResult();
+			return null;
 		}
 		
 		if (soundGroupIndex > audioSourcesBySoundType.Keys.Count - 1) { 
 			Debug.LogError("Master Audio only has " + audioSourcesBySoundType.Keys.Count + " Sound Groups. Can't play index: " + soundGroupIndex);
-			return new PlaySoundResult();
+			return null;
 		}
 
-		#if UNITY_WP8
+		#if UNITY_WP8 || UNITY_METRO
 			var i = 0;
 	        var sType = "";
 	
@@ -856,24 +913,30 @@ public class MasterAudio : MonoBehaviour {
 			var sType = audioSourcesBySoundType.Keys[soundGroupIndex];
 		#endif
 			
-		return PlaySoundAtVolume(sType, volumePercentage, Vector3.zero, pitch, sourceTrans, variationName, attachToSource, delaySoundTime, false);
+		return PlaySoundAtVolume(sType, volumePercentage, Vector3.zero, pitch, sourceTrans, variationName, attachToSource, delaySoundTime, false, true);
 	}
 	
 	#endregion
 	
-	private static PlaySoundResult PlaySoundAtVolume(string sType, float volumePercentage, Vector3 sourcePosition, float? pitch = null, Transform sourceTrans = null, string variationName = null, 
-		bool attachToSource = false, float delaySoundTime = 0f, bool useVector3 = false) {
-		
-		var result = new PlaySoundResult();
-		
+	private static PlaySoundResult PlaySoundAtVolume(string sType, 
+			float volumePercentage, 
+			Vector3 sourcePosition, 
+			float? pitch = null, 
+			Transform sourceTrans = null, 
+			string variationName = null, 
+			bool attachToSource = false, 
+			float delaySoundTime = 0f, 
+			bool useVector3 = false, 
+			bool makePlaySoundResult = false) {
+
 		if (!SceneHasMasterAudio) { // No MA
-			return result;
+			return null;
 		}
 		
 		var ma = MasterAudio.Instance;
 		
 		if (!SoundsReady || sType == string.Empty || sType == NO_GROUP_NAME) {
-			return result; // not awake yet
+			return null; // not awake yet
 		}
 		
 		if (!audioSourcesBySoundType.ContainsKey(sType)) {
@@ -882,8 +945,8 @@ public class MasterAudio : MonoBehaviour {
 				msg += " Triggered by prefab: " + (sourceTrans == null ? "Unknown" : sourceTrans.name);
 			}
 			
-			LogMissingSoundFile(msg);
-			return result;
+			LogWarning(msg);
+			return null;
 		}
 		
 		AudioGroupInfo _group = audioSourcesBySoundType[sType];
@@ -891,15 +954,15 @@ public class MasterAudio : MonoBehaviour {
 		
 		if (MasterAudio.Instance.mixerMuted) {
 			LogIfLoggingEnabled("MasterAudio skipped playing sound: " + sType + " because the Mixer is muted.", sType);
-			return result;
+			return null;
 		}
 		if (maGroup.isMuted) {
 			LogIfLoggingEnabled("MasterAudio skipped playing sound: " + sType + " because the Group is muted.", sType);
-			return result;
+			return null;
 		}
 		if (soloedGroups.Count > 0 && !soloedGroups.Contains(maGroup)) {
 			LogIfLoggingEnabled("MasterAudio skipped playing sound: " + sType + " because there are one or more Groups soloed. This one is not.", sType);
-			return result;
+			return null;
 		}
 		
 		switch (maGroup.limitMode) {
@@ -907,7 +970,7 @@ public class MasterAudio : MonoBehaviour {
 			if (maGroup.minimumTimeBetween > 0) {
 				if (Time.time < (_group._lastTimePlayed + maGroup.minimumTimeBetween)) {
 					LogIfLoggingEnabled("MasterAudio skipped playing sound: " + sType + " due to Group's Min Seconds setting.", sType);
-					return result;
+					return null;
 				}
 				
 				_group._lastTimePlayed = Time.time;
@@ -916,7 +979,7 @@ public class MasterAudio : MonoBehaviour {
 		case MasterAudioGroup.LimitMode.FrameBased:
 			if (Time.frameCount - _group._lastFramePlayed < maGroup.limitPerXFrames) {
 				LogIfLoggingEnabled("Master Audio skipped playing sound: " + sType + " due to Group's Per Frame Limit.", sType);
-				return result;
+				return null;
 			}
 			
 			_group._lastFramePlayed = Time.frameCount;
@@ -933,7 +996,7 @@ public class MasterAudio : MonoBehaviour {
 		
 		if (sources.Count == 0) {
 			Debug.Log("Sound Group {" + sType + "} has no active variations."); 
-			return result;
+			return null;
 		}
 		
 		if (_group._group.limitPolyphony) {
@@ -950,14 +1013,14 @@ public class MasterAudio : MonoBehaviour {
 				busyVoices++;
 				if (busyVoices >= maxVoices) {
 					LogIfLoggingEnabled("Polyphony limit of group: " + _group._group.name + " exceeded. Will not play this sound for this instance.", sType);
-					return result;
+					return null;
 				}
 			}
 		}
 		
 		if (!_group._group.HasVoicesRemaining) {
 			LogIfLoggingEnabled("Bus voice limit has been reached. Cannot play the sound: " + _group._group.name + " until one voice has stopped playing.", sType);
-			return result;
+			return null;
 		}
 
 		AudioInfo randomSource = null; 
@@ -974,7 +1037,7 @@ public class MasterAudio : MonoBehaviour {
 		if (randomSource == null) { // we must get a non-busy random source!
 			if (!randomizer.ContainsKey(sType)) {
 				Debug.Log("Sound Group {" + sType + "} has no active variations."); 
-				return result;
+				return null;
 			}
 			
 			if (isNonSpecific) {
@@ -1016,10 +1079,10 @@ public class MasterAudio : MonoBehaviour {
 				
 				if (!isFound) {
 					if (matchesFound == 0) {
-						LogMissingSoundFile("Can't find variation {" + variationName + "} of " + sType);
+						LogWarning("Can't find variation {" + variationName + "} of " + sType);
 					}
 					
-					return result;
+					return null;
 				}
 			}
 		}
@@ -1028,75 +1091,89 @@ public class MasterAudio : MonoBehaviour {
 		bool playedSound = false;
 		
 		do {
-			playedState = PlaySoundIfAvailable(randomSource, sourcePosition, volumePercentage, pitch, _group, sourceTrans, attachToSource, delaySoundTime, useVector3);
-			
-			if (playedState.SoundPlayed || playedState.SoundScheduled) {
-				playedSound = true;
-	
-				if (isNonSpecific && randomIndex.HasValue) { // only if successfully played!
-					choices.RemoveAt(randomIndex.Value);			
-					
-					if (choices.Count == 0) {
-						LogIfLoggingEnabled("Reloading sound: " + sType, sType);
-						
-						RefillSoundGroupPool(sType);
-					}
-				} 
+			playedState = PlaySoundIfAvailable(randomSource, sourcePosition, volumePercentage, pitch, _group, sourceTrans, attachToSource, delaySoundTime, useVector3, makePlaySoundResult);
 
-				if (_group._group.curVariationSequence == MasterAudioGroup.VariationSequence.TopToBottom && _group._group.useInactivePeriodPoolRefill) {
-					UpdateRefillTime(sType, _group._group.inactivePeriodSeconds);
+			if (makePlaySoundResult) {
+				if (playedState != null && (playedState.SoundPlayed || playedState.SoundScheduled)) {
+					playedSound = true;
+		
+					if (isNonSpecific && randomIndex.HasValue) { // only if successfully played!
+						choices.RemoveAt(randomIndex.Value);			
+						
+						if (choices.Count == 0) {
+							LogIfLoggingEnabled("Reloading sound: " + sType, sType);
+							
+							RefillSoundGroupPool(sType);
+						}
+					} 
+
+					if (_group._group.curVariationSequence == MasterAudioGroup.VariationSequence.TopToBottom && _group._group.useInactivePeriodPoolRefill) {
+						UpdateRefillTime(sType, _group._group.inactivePeriodSeconds);
+					}
+				} else if (isNonSpecific) {
+					// try the other ones
+					if (otherChoices.Count > 0) {
+						randomSource = sources[otherChoices[0]];
+						LogIfLoggingEnabled("Child was busy. Cueing child {" + sources[otherChoices[0]].source.name + "} of " + sType, sType);
+						otherChoices.RemoveAt(0);
+					}
 				}
-			} else if (isNonSpecific) {
-				// try the other ones
-				if (otherChoices.Count > 0) {
-					randomSource = sources[otherChoices[0]];
-					LogIfLoggingEnabled("Child was busy. Cueing child {" + sources[otherChoices[0]] + "} of " + sType, sType);
-					otherChoices.RemoveAt(0);
-				}
+			} else {
+				playedSound = true; // assume success (TODO: Indent above)
 			}
 		}
 		while (!playedSound && otherChoices.Count > 0); // repeat until you've either played the sound or exhausted all possibilities.
 		
-		
-		if (playedState.SoundPlayed) {
-			// sound play worked! Duck music if a ducking sound.
-			var matchingDuck = ma.musicDuckingSounds.Find(delegate(DuckGroupInfo obj) {
-				return obj.soundType == sType;
-			});
-			
-			if (ma.EnableMusicDucking && matchingDuck != null) {
-				// duck music
-				var duckLength = randomSource.source.audio.clip.length;
-				var duckPitch = randomSource.source.pitch;
-				
-				var pcs = PlaylistController.Instances;
-				for (var i = 0; i < pcs.Count; i++) {
-					pcs[i].DuckMusicForTime(duckLength, duckPitch, matchingDuck.riseVolStart);
+		if (makePlaySoundResult) {
+			if (playedState != null) {
+				if (playedState.SoundPlayed) {
+					// sound play worked! Duck music if a ducking sound.
+					var matchingDuck = ma.musicDuckingSounds.Find(delegate(DuckGroupInfo obj) {
+						return obj.soundType == sType;
+					});
+					
+					if (ma.EnableMusicDucking && matchingDuck != null) {
+						// duck music
+						var duckLength = randomSource.source.audio.clip.length;
+						var duckPitch = randomSource.source.pitch;
+						
+						var pcs = PlaylistController.Instances;
+						for (var i = 0; i < pcs.Count; i++) {
+							pcs[i].DuckMusicForTime(duckLength, duckPitch, matchingDuck.riseVolStart);
+						}
+						
+						if (pcs.Count == 0) {
+							Debug.LogWarning("Playlist Controller is not in the Scene. Cannot duck music.");
+						}
+					}
+					
+					return playedState;
 				}
-				
-				if (pcs.Count == 0) {
-					Debug.LogWarning("Playlist Controller is not in the Scene. Cannot duck music.");
+			} else {
+				if (otherChoices.Count == 0) {
+					LogIfLoggingEnabled("All children of " + sType + " were busy. Will not play this sound for this instance.", sType);
 				}
 			}
-			
-			return playedState;
-		}
-		
-		if (!playedState.SoundScheduled) {
-			LogIfLoggingEnabled("All children of " + sType + " were busy. Will not play this sound for this instance.", sType);
 		}
 		
 		return playedState;
+		
 	}
 	
-	private static PlaySoundResult PlaySoundIfAvailable(AudioInfo info, Vector3 sourcePosition, float volumePercentage, float? pitch = null, AudioGroupInfo audioGroup = null, Transform sourceTrans = null, 
-		bool attachToSource = false, float delaySoundTime = 0f, bool useVector3 = false) {
-		
-		var result = new PlaySoundResult();
+	private static PlaySoundResult PlaySoundIfAvailable(AudioInfo info, 
+			Vector3 sourcePosition, 
+			float volumePercentage, 
+			float? pitch = null, 
+			AudioGroupInfo audioGroup = null, 
+			Transform sourceTrans = null, 
+			bool attachToSource = false, 
+			float delaySoundTime = 0f, 
+			bool useVector3 = false, 
+			bool makePlaySoundResult = false) {
 		
 		if (info.source == null) {
 			// this avoids false errors when stopping the game (from became invisible event callers)
-			return result;	
+			return null;	
 		}
 		
 		MasterAudioGroup maGroup = audioGroup._group;
@@ -1106,7 +1183,7 @@ public class MasterAudio : MonoBehaviour {
 			var retriggerPercent = maGroup.retriggerPercentage;
 			
 			if (playedPercentage < retriggerPercent) {
-				return result; // wait for this to stop playing or play further.
+				return null; // wait for this to stop playing or play further.
 			}
 		}
 		
@@ -1115,13 +1192,24 @@ public class MasterAudio : MonoBehaviour {
 		
 		if (useVector3) {
 			info.source.transform.position = sourcePosition;
+			if (MasterAudio.Instance.prioritizeOnDistance) {
+				AudioPrioritizer.Set3dPriority(info.source);
+			}
 		} else if (sourceTrans != null) {
 			if (attachToSource) {
 				info.variation.ObjectToFollow = sourceTrans;
 			} else {
 				info.source.transform.position = sourceTrans.position;
 			}
+
+			if (MasterAudio.Instance.prioritizeOnDistance) {
+				AudioPrioritizer.Set3dPriority(info.source);
+			}
 		} else {
+			// "2d manner"
+			if (MasterAudio.Instance.prioritizeOnDistance) {
+				AudioPrioritizer.Set2dSoundPriority(info.source);
+			}
 			info.source.transform.localPosition = Vector3.zero; // put it back in MA prefab position after being detached.
 		}
 		
@@ -1156,15 +1244,20 @@ public class MasterAudio : MonoBehaviour {
 		#endif
 		
 		if (!isActive) {
-			return result;
+			return null;
 		}
 		
-		result.ActingVariation = info.variation;
+		PlaySoundResult result = null;
 		
-		if (delaySoundTime > 0f) {
-			result.SoundScheduled = true;
-		} else {
-			result.SoundPlayed = true;
+		if (makePlaySoundResult) {
+			result = new PlaySoundResult();
+			result.ActingVariation = info.variation;
+			
+			if (delaySoundTime > 0f) {
+				result.SoundScheduled = true;
+			} else {
+				result.SoundPlayed = true;
+			}
 		}
 		
 		var playSoundParams = new SoundGroupVariation.PlaySoundParams(maGroup.name, 
@@ -1208,7 +1301,7 @@ public class MasterAudio : MonoBehaviour {
 		var stopEndDetector = _grp != null && _grp.curVariationMode == MasterAudioGroup.VariationMode.LoopedChain;
 		
 		foreach (AudioInfo audio in sources) {
-			audio.variation.Stop(stopEndDetector);
+            audio.variation.Stop(stopEndDetector);
 		}
 	}
 	
@@ -1303,7 +1396,7 @@ public class MasterAudio : MonoBehaviour {
 		var aClip = Resources.Load(resourceFileName) as AudioClip;
 		
 		if (aClip == null) {
-			LogMissingSoundFile("Resource file '" + resourceFileName + "' could not be located.");
+			LogWarning("Resource file '" + resourceFileName + "' could not be located.");
 			return;
 		}
 		
@@ -1379,8 +1472,8 @@ public class MasterAudio : MonoBehaviour {
 	/// <returns>Returns the index of the SoundGroup if it exists, otherwise -1</returns>
 	public static int GetSoundGroupIndex(string sType)
 	{
-		#if UNITY_WP8
-			var i = -1;
+		#if UNITY_WP8 || UNITY_METRO
+ 			var i = -1;
 
 			var counter = 0;
 
@@ -1452,7 +1545,8 @@ public class MasterAudio : MonoBehaviour {
 	/// <param name="sType">The name of the Sound Group to fade.</param>
 	/// <param name="newVolume">The target volume of the Sound Group.</param>
 	/// <param name="fadeTime">The amount of time the fade will take.</param>
-	public static void FadeSoundGroupToVolume(string sType, float newVolume, float fadeTime) {
+	/// <param name="completionCallback">(Optional) - a method to execute when the fade has completed.</param>
+	public static void FadeSoundGroupToVolume(string sType, float newVolume, float fadeTime, System.Action completionCallback = null) {
 		if (fadeTime <= INNER_LOOP_CHECK_INTERVAL) {
 			SetGroupVolume(sType, newVolume); // time really short, just do it at once.
 			return;
@@ -1471,7 +1565,7 @@ public class MasterAudio : MonoBehaviour {
 		
 		// make sure no other group fades for this group are happenning.
 		var matchingFade = groupFades.Find(delegate(GroupFadeInfo obj) {
-			return obj.GroupName == sType;
+			return obj.NameOfGroup == sType;
 		});
 		
 		if (matchingFade != null) {
@@ -1481,10 +1575,15 @@ public class MasterAudio : MonoBehaviour {
 		var volStep = (newVolume - aGroup.groupMasterVolume) / (fadeTime / INNER_LOOP_CHECK_INTERVAL);
 		
 		var groupFade = new GroupFadeInfo() {
-			GroupName = sType,
+			NameOfGroup = sType,
+			ActingGroup = aGroup,
 			VolumeStep = volStep,
 			TargetVolume = newVolume
 		};
+		
+		if (completionCallback != null) {
+			groupFade.completionAction = completionCallback;
+		}
 		
 		groupFades.Add(groupFade);
 	}
@@ -1536,7 +1635,7 @@ public class MasterAudio : MonoBehaviour {
 	/// <param name="gInfo">The object containing all variations and group info.</param>
 	/// <param name="creatorObjectName">The name of the object creating this group (for debug).</param>
 	/// <returns>Whether or not the Sound Group was created.</returns>
-	public static Transform CreateNewSoundGroup(DynamicSoundGroupInfo gInfo, string creatorObjectName)
+	public static Transform CreateNewSoundGroup(DynamicSoundGroup aGroup, string creatorObjectName)
 	{
 		if (!SceneHasMasterAudio) {
 			return null;
@@ -1547,7 +1646,7 @@ public class MasterAudio : MonoBehaviour {
 			return null;
 		}
 		
-		var groupName = gInfo.groupName;
+		var groupName = aGroup.transform.name;
 		
 		var ma = MasterAudio.Instance;
 		
@@ -1564,22 +1663,32 @@ public class MasterAudio : MonoBehaviour {
 		groupTrans.parent = MasterAudio.Instance.trans;
 		
 		SoundGroupVariation variation = null;
-		DynamicSoundGroupVariation aVariation = null;
+		DynamicGroupVariation aVariation = null;
 		AudioClip clip = null;
 		
-		for (var i = 0; i < gInfo.variations.Count; i++) {
-			aVariation = gInfo.variations[i];
+		for (var i = 0; i < aGroup.groupVariations.Count; i++) {
+			aVariation = aGroup.groupVariations[i];
 			
 			for (var j = 0; j < aVariation.weight; j++) {
-				GameObject newVariation = (GameObject) GameObject.Instantiate(ma.soundGroupVariationTemplate.gameObject, groupTrans.position, Quaternion.identity);		
+				GameObject newVariation = (GameObject) GameObject.Instantiate(aVariation.gameObject, groupTrans.position, Quaternion.identity);		
+				newVariation.transform.parent = groupTrans;
 				
+				// remove dynamic group variation script.
+				GameObject.Destroy(newVariation.GetComponent<DynamicGroupVariation>());
+				
+				newVariation.AddComponent<SoundGroupVariation>();
 				variation = newVariation.GetComponent<SoundGroupVariation>();
 				
-				var clipName = UtilStrings.TrimSpace(aVariation.clipName);
+				var clipName = string.Empty;
+				if (aVariation.audLocation == AudioLocation.Clip) {
+					clipName = aVariation.audio.clip == null ? string.Empty : UtilStrings.TrimSpace(aVariation.audio.clip.name);
+				} else {
+					clipName = UtilStrings.TrimSpace(aVariation.resourceFileName);
+				}
 				
 				switch (aVariation.audLocation) {
 				case MasterAudio.AudioLocation.Clip:
-					clip = aVariation.clip;
+					clip = aVariation.audio.clip;
 					if (clip == null) {
 						Debug.LogWarning("No clip specified in DynamicSoundGroupCreator '" + creatorObjectName + "' - skipping this item.");
 						continue;
@@ -1592,28 +1701,34 @@ public class MasterAudio : MonoBehaviour {
 					variation.resourceFileName = aVariation.resourceFileName;
 					break;
 				}
-				
-				variation.audio.volume = aVariation.volume;
-				variation.audio.pitch = aVariation.pitch;
-				variation.audio.loop = aVariation.loopClip;
-				variation.original_Pitch = aVariation.pitch;
-				
-				// 3D settings
-				if (aVariation.showAudio3DSettings) {
-					variation.audio.dopplerLevel = aVariation.audDopplerLevel;
-					variation.audio.rolloffMode = aVariation.audRollOffMode;
-					variation.audio.minDistance = aVariation.audMinDistance;
-					variation.audio.spread = aVariation.audSpread;
-					variation.audio.maxDistance = aVariation.audMaxDistance;
-				}
-				
+
+				variation.original_Pitch = aVariation.audio.pitch;
 				variation.transform.name = clipName;
-				variation.transform.parent = groupTrans;
 				variation.randomPitch = aVariation.randomPitch;
 				variation.randomVolume = aVariation.randomVolume;
 				variation.useFades = aVariation.useFades;
 				variation.fadeInTime = aVariation.fadeInTime;
 				variation.fadeOutTime = aVariation.fadeOutTime;
+				
+				// remove unused filter FX
+				if (variation.LowPassFilter != null && !variation.LowPassFilter.enabled) {
+					GameObject.Destroy(variation.LowPassFilter);
+				}
+				if (variation.HighPassFilter != null && !variation.HighPassFilter.enabled) {
+					GameObject.Destroy(variation.HighPassFilter);
+				}
+				if (variation.DistortionFilter != null && !variation.DistortionFilter.enabled) {
+					GameObject.Destroy(variation.DistortionFilter);
+				}
+				if (variation.ChorusFilter != null && !variation.ChorusFilter.enabled) {
+					GameObject.Destroy(variation.ChorusFilter);
+				}
+				if (variation.EchoFilter != null && !variation.EchoFilter.enabled) {
+					GameObject.Destroy(variation.EchoFilter);
+				}
+				if (variation.ReverbFilter != null && !variation.ReverbFilter.enabled) {
+					GameObject.Destroy(variation.ReverbFilter);
+				}
 			}
 		}
 		// added to Hierarchy!
@@ -1621,17 +1736,17 @@ public class MasterAudio : MonoBehaviour {
 		// populate sounds for playing!
 		var groupScript = newGroup.GetComponent<MasterAudioGroup>();
 		// populate other properties.
-		groupScript.retriggerPercentage = gInfo.retriggerPercentage;
-		groupScript.groupMasterVolume = gInfo.groupMasterVolume;
-		groupScript.limitMode = gInfo.limitMode;
-		groupScript.limitPerXFrames = gInfo.limitPerXFrames;
-		groupScript.minimumTimeBetween = gInfo.minimumTimeBetween;
-		groupScript.limitPolyphony = gInfo.limitPolyphony;
-		groupScript.voiceLimitCount = gInfo.voiceLimitCount;
-		groupScript.curVariationSequence = gInfo.curVariationSequence;
-		groupScript.useInactivePeriodPoolRefill = gInfo.useInactivePeriodPoolRefill;
-		groupScript.inactivePeriodSeconds = gInfo.inactivePeriodSeconds;
-		groupScript.curVariationMode = gInfo.curVariationMode;
+		groupScript.retriggerPercentage = aGroup.retriggerPercentage;
+		groupScript.groupMasterVolume = aGroup.groupMasterVolume;
+		groupScript.limitMode = aGroup.limitMode;
+		groupScript.limitPerXFrames = aGroup.limitPerXFrames;
+		groupScript.minimumTimeBetween = aGroup.minimumTimeBetween;
+		groupScript.limitPolyphony = aGroup.limitPolyphony;
+		groupScript.voiceLimitCount = aGroup.voiceLimitCount;
+		groupScript.curVariationSequence = aGroup.curVariationSequence;
+		groupScript.useInactivePeriodPoolRefill = aGroup.useInactivePeriodPoolRefill;
+		groupScript.inactivePeriodSeconds = aGroup.inactivePeriodSeconds;
+		groupScript.curVariationMode = aGroup.curVariationMode;
 		
 		var sources = new List<AudioInfo>();
 		Transform aChild;
@@ -1650,27 +1765,9 @@ public class MasterAudio : MonoBehaviour {
 		
 		// fill up randomizer
 		randomizer.Add(groupName, playedStatuses);
-		
-		if (gInfo.duckSound) {
-			AddSoundGroupToDuckList(gInfo.groupName);
-		}
-		
-		switch (gInfo.busMode) {
-		case DynamicSoundGroupInfo.BusMode.CreateNew:
-			var index = GetBusIndex(gInfo.busName, false); // check if another Dynamic created this already.
-			if (index < 0) {
-				CreateBus(gInfo.busName);
-				index = GetBusIndex(gInfo.busName, false);
-			} 
-			groupScript.busIndex = index;
-			break;
-		case DynamicSoundGroupInfo.BusMode.UseExisting:
-			var busIndex = GetBusIndex(gInfo.busName, true);
-			if (busIndex < 0) {
-				Debug.LogWarning("Could not find bus named '" + gInfo.busName + "' to assign to new Sound Group '" + gInfo.groupName + "'.");
-			}
-			groupScript.busIndex = busIndex;
-			break;
+
+		if (!string.IsNullOrEmpty(aGroup.busName)) {
+			groupScript.busIndex = GetBusIndex(aGroup.busName, true);
 		}
 		
 		return groupTrans;
@@ -1847,7 +1944,7 @@ public class MasterAudio : MonoBehaviour {
 		}
 		
 		if (alertMissing) {
-			LogMissingSoundFile("Could not find bus '" + busName + "'.");
+			LogWarning("Could not find bus '" + busName + "'.");
 		}
 		
 		return -1;
@@ -2074,11 +2171,21 @@ public class MasterAudio : MonoBehaviour {
 	/// This method will create a new bus with the name you specify.
 	/// </summary>
 	/// <param name="busName">The name of the new bus.</param>
-	public static void CreateBus(string busName) {
+	public static bool CreateBus(string busName) {
+		var match = GroupBuses.FindAll(delegate(GroupBus obj) {
+			return obj.busName == busName;	
+		});
+		
+		if (match.Count > 0) {
+			LogWarning("You already have a bus named '" + busName + "'. Not creating a second one.");
+			return false;
+		}
+		
 		var newBus = new GroupBus();
 		newBus.busName = busName;
 		
 		GroupBuses.Add(newBus);
+		return true;
 	}
 	
 	/// <summary>
@@ -2132,7 +2239,8 @@ public class MasterAudio : MonoBehaviour {
 	/// <param name="busName">The name of the bus to fade.</param>
 	/// <param name="newVolume">The target volume of the bus.</param>
 	/// <param name="fadeTime">The amount of time the fade will take.</param>
-	public static void FadeBusToVolume(string busName, float newVolume, float fadeTime) {
+	/// <param name="completionCallback">(Optional) - a method to execute when the fade has completed.</param>
+	public static void FadeBusToVolume(string busName, float newVolume, float fadeTime, System.Action completionCallback = null) {
 		if (fadeTime <= INNER_LOOP_CHECK_INTERVAL) {
 			SetBusVolumeByName(busName, newVolume); // time really short, just do it at once.
 			return;
@@ -2152,7 +2260,7 @@ public class MasterAudio : MonoBehaviour {
 		
 		// make sure no other bus fades for this bus are happenning.
 		var matchingFade = busFades.Find(delegate(BusFadeInfo obj) {
-			return obj.BusName == busName;
+			return obj.NameOfBus == busName;
 		});
 		
 		if (matchingFade != null) {
@@ -2162,10 +2270,15 @@ public class MasterAudio : MonoBehaviour {
 		var volStep = (newVolume - bus.volume) / (fadeTime / INNER_LOOP_CHECK_INTERVAL);
 		
 		var busFade = new BusFadeInfo() {
-			BusName = busName,
+			NameOfBus = busName,
+			ActingBus = bus,
 			VolumeStep = volStep,
 			TargetVolume = newVolume
 		};
+		
+		if (completionCallback != null) {
+			busFade.completionAction = completionCallback;
+		}
 		
 		busFades.Add(busFade);
 	}
@@ -2237,7 +2350,7 @@ public class MasterAudio : MonoBehaviour {
 	/// This method will allow you to add a Sound Group to the list of sounds that cause music in the Playlist to duck.
 	/// </summary>
 	/// <param name="sType">The name of the Sound Group.</param>
-	public static void AddSoundGroupToDuckList(string sType) {
+	public static void AddSoundGroupToDuckList(string sType, float riseVolumeStart) {
 		var ma = MasterAudio.Instance;
 		
 		var matchingDuck = ma.musicDuckingSounds.Find(delegate(DuckGroupInfo obj) {
@@ -2249,7 +2362,8 @@ public class MasterAudio : MonoBehaviour {
 		}
 		
 		ma.musicDuckingSounds.Add(new DuckGroupInfo() {
-			soundType = sType
+			soundType = sType,
+			riseVolStart = riseVolumeStart
 		});
 	}
 	
@@ -2733,153 +2847,127 @@ public class MasterAudio : MonoBehaviour {
 	
 	#endregion
 	
-	#region Properties
+	#region Custom Events
 	/// <summary>
-	/// This property returns a reference to the Singleton instance of MasterAudio.
+	/// This method is used by MasterAudio to keep track of enabled CustomEventReceivers automatically. This is called when then CustomEventReceiver prefab is enabled.
 	/// </summary>
-	public static MasterAudio Instance {
-		get {
-			if (_instance == null) {
-				_instance = (MasterAudio) GameObject.FindObjectOfType(typeof(MasterAudio));
-				if (_instance == null && Application.isPlaying) {
-					Debug.LogError("There is no Master Audio prefab in this Scene. Subsequent method calls will fail.");
-				}
+	public static void AddCustomEventReceiver(ICustomEventReceiver receiver, GameObject gameObj) {
+		if (AppIsShuttingDown) {
+			return;
+		}
+
+		if (eventReceivers.ContainsKey(receiver)) {
+			return;
+		}
+		
+		eventReceivers.Add(receiver, gameObj);
+	}
+	
+	/// <summary>
+	/// This method is used by MasterAudio to keep track of enabled CustomEventReceivers automatically. This is called when then CustomEventReceiver prefab is disabled.
+	/// </summary>
+	public static void RemoveCustomEventReceiver(ICustomEventReceiver receiver) {
+		if (AppIsShuttingDown) {
+			return;
+		}
+
+		eventReceivers.Remove(receiver);
+	}
+	
+	public static List<GameObject> ReceiversForEvent(string customEventName) {
+		var receivers = new List<GameObject>();
+		
+		foreach (var receiver in eventReceivers.Keys) {
+			if (receiver.SubscribesToEvent(customEventName)) {
+				receivers.Add(eventReceivers[receiver]);
+			}
+		}
+		
+		return receivers;
+	}
+	
+	/// <summary>
+	/// This method is used to create a Custom Event at runtime.
+	/// </summary>
+	public static void CreateCustomEvent(string customEventName) {
+		if (AppIsShuttingDown) {
+			return;
+		}
+
+		if (MasterAudio.Instance.customEvents.FindAll(delegate(CustomEvent obj) {
+			return obj.EventName == customEventName;
+		}).Count > 0) {
+			Debug.LogError("You already have a Custom Event named '" + customEventName + "'. No need to add it again.");
+			return;
+		}
+		
+		MasterAudio.Instance.customEvents.Add(new CustomEvent(customEventName));
+	}
+
+	/// <summary>
+	/// This method is used to delete a temporary Custom Event at runtime.
+	/// </summary>
+	public static void DeleteCustomEvent(string customEventName) {
+		if (AppIsShuttingDown) {
+			return;
+		}
+
+		MasterAudio.Instance.customEvents.RemoveAll(delegate(CustomEvent obj) {
+			return obj.EventName == customEventName;	
+		});
+	}
+	
+	/// <summary>
+	/// Calling this method will fire a Custom Event. All CustomEventReceivers with the named event specified will do whatever action is assigned to them.
+	/// </summary>
+	public static void FireCustomEvent(string customEventName) {
+		if (AppIsShuttingDown) {
+			return;
+		}
+		
+		if (!CustomEventExists(customEventName)) {
+			Debug.LogError("Custom Event '" + customEventName + "' was not found in Master Audio.");
+			return;
+		}
+		
+		foreach (var receiver in eventReceivers.Keys) {
+			if (!receiver.SubscribesToEvent(customEventName)) {
+				continue;
 			}
 			
-			return _instance;
-		}
-		set {
-			_instance = null; // to not cache for Inspectors
-		}
-	}
-	
-	public static AudioSource PreviewerInstance {
-		get {
-			if (_previewerInstance == null) {
-				_previewerInstance = MasterAudio.Instance.GetComponent<AudioSource>();
-				if (_previewerInstance == null) {
-					MasterAudio.Instance.gameObject.AddComponent<AudioSource>();
-					_previewerInstance = MasterAudio.Instance.GetComponent<AudioSource>();
-				}
-				
-				_previewerInstance.playOnAwake = false;
-			}
-			
-			return _previewerInstance;
-		}
-	}
-	
-	/// <summary>
-	/// This returns true if MasterAudio is initialized and ready to use, false otherwise.
-	/// </summary>
-	public static bool SoundsReady {
-		get {
-			return MasterAudio.Instance != null && MasterAudio.Instance.soundsLoaded;
-		}
-	}
-	
-	/// <summary>
-	/// This property is used to prevent bogus Unity errors while the editor is stopping play. You should never need to read or set this.
-	/// </summary>
-	public static bool AppIsShuttingDown {
-		get {
-			return appIsShuttingDown;
-		}
-		set {
-			appIsShuttingDown = value;
-		}
-	}
-	
-	/// <summary>
-	/// This will return a list of all the Sound Group names.
-	/// </summary>
-	public List<string> GroupNames {
-		get {
-			var groupNames = new List<string>();
-			groupNames.Add(DYNAMIC_GROUP_NAME);
-			groupNames.Add(NO_GROUP_NAME);
-			
-			for (var i = 0; i < this.transform.childCount; i++) {
-				groupNames.Add(this.transform.GetChild(i).name);
-			}
-			
-			return groupNames;
-		}
-	}
-	
-	/// <summary>
-	/// This will return a list of all the Bus names, including the selectors for "type in" and "no bus".
-	/// </summary>
-	public List<string> BusNames {
-		get {
-			var busNames = new List<string>();
-			
-			busNames.Add(DYNAMIC_GROUP_NAME);
-			busNames.Add(NO_GROUP_NAME);
-			
-			for (var i = 0; i < groupBuses.Count; i++) {
-				busNames.Add(groupBuses[i].busName);
-			}
-			
-			return busNames;
-		}
-	}
-	
-	/// <summary>
-	/// This will return a list of all the Playlists, including the selectors for "type in" and "no bus".
-	/// </summary>
-	public List<string> PlaylistNames {
-		get {
-			var playlistNames = new List<string>();
-			
-			playlistNames.Add(DYNAMIC_GROUP_NAME);
-			playlistNames.Add(NO_GROUP_NAME);
-			
-			for (var i = 0; i < musicPlaylists.Count; i++) {
-				playlistNames.Add(musicPlaylists[i].playlistName);
-			}
-			
-			return playlistNames;
+			receiver.ReceiveEvent(customEventName);
 		}
 	}
 	
 	/// <summary>
-	/// This is the overall master volume level which can change the relative volume of all buses and Sound Groups - not Playlist Controller songs though, they have their own master volume.
+	/// Calling this method will return whether or not the specified Custom Event exists.
 	/// </summary>
-	public static float MasterVolumeLevel {
-		get {
-			return MasterAudio.Instance.masterAudioVolume;
+	public static bool CustomEventExists(string customEventName) {
+		if (AppIsShuttingDown) {
+			return true;
 		}
-		set {
-			MasterAudio.Instance.masterAudioVolume = value;
-			
-			if (!Application.isPlaying) {
-				return;
-			}
-			
-			// change all currently playing sound volumes!
-			var sources = audioSourcesBySoundType.GetEnumerator();
-			MasterAudioGroup _group = null;
-			while(sources.MoveNext()) {
-				_group = sources.Current.Value._group;
-				SetGroupVolume(_group.name, _group.groupMasterVolume); // set to same volume, but it recalcs based on master volume level.
-			}
-		}
-	}
-	
-	private static bool SceneHasMasterAudio {
-		get {
-			return MasterAudio.Instance != null;
-		}
+		
+		return MasterAudio.Instance.customEvents.FindAll(delegate(CustomEvent obj) {
+			return obj.EventName == customEventName;
+		}).Count > 0;
 	}
 	
 	#endregion
 	
 	#region Logging (only when turned on via Inspector)
 	private static void LogIfLoggingEnabled(string message, string soundGroupName) {
+		if (MasterAudio.Instance.disableLogging) {
+			return;
+		}
+		
+		if (MasterAudio.Instance.LogSounds) {
+			Debug.LogError("T: " + Time.time + " - MasterAudio " + message);
+			return;
+		}
+		
 		MasterAudioGroup groupToPlay = GrabGroup(soundGroupName, false);
 		
-		if (MasterAudio.Instance.LogSounds || (groupToPlay != null && groupToPlay.logSound)) {
+		if (groupToPlay != null && groupToPlay.logSound) {
 			Debug.LogError("T: " + Time.time + " - MasterAudio " + message);
 		}
 	}
@@ -2893,6 +2981,51 @@ public class MasterAudio : MonoBehaviour {
 		}
 		set {
 			MasterAudio.Instance.LogSounds = value;
+		}
+	}
+	
+	public static void LogWarning(string msg) {
+		if (MasterAudio.Instance.disableLogging) {
+			return;
+		}
+		
+		Debug.LogWarning(msg);
+	}
+
+	public static void LogError(string msg) {
+		if (MasterAudio.Instance.disableLogging) {
+			return;
+		}
+		
+		Debug.LogError(msg);
+	}
+	
+	public static void LogNoPlaylist(string playlistControllerName, string methodName) {
+		LogWarning("There is currently no Playlist assigned to Playlist Controller '" + playlistControllerName + "'. Cannot call '" + methodName + "' method.");
+	}
+	
+	private static bool IsOkToCallOnlyPlaylistMethod(List<PlaylistController> pcs, string methodName) {
+		if (pcs.Count == 0) {
+			LogError(string.Format("You have no Playlist Controllers in the Scene. You cannot '{0}'.", methodName));
+			return false;
+		} else if (pcs.Count > 1) {
+			LogError(string.Format("You cannot call '{0}' without specifying a playlist name when you have more than one Playlist Controller.", methodName));
+			return false;
+		} 
+		
+		return true;
+	}
+	#endregion
+	
+	#region Properties
+	public static Transform AudioListenerTransform {
+		get {
+			if (_audListenerTrans == null) {
+				var audListener = (AudioListener) GameObject.FindObjectOfType(typeof(AudioListener));
+				_audListenerTrans = audListener.transform;
+			}
+			
+			return _audListenerTrans;
 		}
 	}
 	
@@ -3021,24 +3154,164 @@ public class MasterAudio : MonoBehaviour {
 		}
 	}
 	
-	public static void LogMissingSoundFile(string msg) {
-		Debug.LogWarning(msg);
+	/// <summary>
+	/// This property returns a reference to the Singleton instance of MasterAudio.
+	/// </summary>
+	public static MasterAudio Instance {
+		get {
+			if (_instance == null) {
+				_instance = (MasterAudio) GameObject.FindObjectOfType(typeof(MasterAudio));
+				if (_instance == null && Application.isPlaying) {
+					Debug.LogError("There is no Master Audio prefab in this Scene. Subsequent method calls will fail.");
+				}
+			}
+			
+			return _instance;
+		}
+		set {
+			_instance = null; // to not cache for Inspectors
+		}
 	}
 	
-	public static void LogNoPlaylist(string playlistControllerName, string methodName) {
-		Debug.LogWarning("There is currently no Playlist assigned to Playlist Controller '" + playlistControllerName + "'. Cannot call '" + methodName + "' method.");
+	public static AudioSource PreviewerInstance {
+		get {
+			if (_previewerInstance == null) {
+				_previewerInstance = MasterAudio.Instance.GetComponent<AudioSource>();
+				if (_previewerInstance == null) {
+					MasterAudio.Instance.gameObject.AddComponent<AudioSource>();
+					_previewerInstance = MasterAudio.Instance.GetComponent<AudioSource>();
+					_previewerInstance.priority = AudioPrioritizer.MAX_PRIORITY;
+				}
+				
+				_previewerInstance.playOnAwake = false;
+			}
+			
+			return _previewerInstance;
+		}
 	}
 	
-	private static bool IsOkToCallOnlyPlaylistMethod(List<PlaylistController> pcs, string methodName) {
-		if (pcs.Count == 0) {
-			Debug.LogError(string.Format("You have no Playlist Controllers in the Scene. You cannot '{0}'.", methodName));
-			return false;
-		} else if (pcs.Count > 1) {
-			Debug.LogError(string.Format("You cannot call '{0}' without specifying a playlist name when you have more than one Playlist Controller.", methodName));
-			return false;
-		} 
-		
-		return true;
+	/// <summary>
+	/// This returns true if MasterAudio is initialized and ready to use, false otherwise.
+	/// </summary>
+	public static bool SoundsReady {
+		get {
+			return MasterAudio.Instance != null && MasterAudio.Instance.soundsLoaded;
+		}
+	}
+	
+	/// <summary>
+	/// This property is used to prevent bogus Unity errors while the editor is stopping play. You should never need to read or set this.
+	/// </summary>
+	public static bool AppIsShuttingDown {
+		get {
+			return appIsShuttingDown;
+		}
+		set {
+			appIsShuttingDown = value;
+		}
+	}
+	
+	/// <summary>
+	/// This will return a list of all the Sound Group names.
+	/// </summary>
+	public List<string> GroupNames {
+		get {
+			var groupNames = new List<string>();
+			groupNames.Add(DYNAMIC_GROUP_NAME);
+			groupNames.Add(NO_GROUP_NAME);
+			
+			for (var i = 0; i < this.transform.childCount; i++) {
+				groupNames.Add(this.transform.GetChild(i).name);
+			}
+			
+			return groupNames;
+		}
+	}
+	
+	/// <summary>
+	/// This will return a list of all the Bus names, including the selectors for "type in" and "no bus".
+	/// </summary>
+	public List<string> BusNames {
+		get {
+			var busNames = new List<string>();
+			
+			busNames.Add(DYNAMIC_GROUP_NAME);
+			busNames.Add(NO_GROUP_NAME);
+			
+			for (var i = 0; i < groupBuses.Count; i++) {
+				busNames.Add(groupBuses[i].busName);
+			}
+			
+			return busNames;
+		}
+	}
+	
+	/// <summary>
+	/// This will return a list of all the Playlists, including the selectors for "type in" and "no bus".
+	/// </summary>
+	public List<string> PlaylistNames {
+		get {
+			var playlistNames = new List<string>();
+			
+			playlistNames.Add(DYNAMIC_GROUP_NAME);
+			playlistNames.Add(NO_GROUP_NAME);
+			
+			for (var i = 0; i < musicPlaylists.Count; i++) {
+				playlistNames.Add(musicPlaylists[i].playlistName);
+			}
+			
+			return playlistNames;
+		}
+	}
+
+	/// <summary>
+	/// This will return a list of all the Custom Events you have defined, including the selectors for "type in" and "none".
+	/// </summary>
+	public List<string> CustomEventNames {
+		get {
+			var customEventNames = new List<string>();
+			
+			customEventNames.Add(DYNAMIC_GROUP_NAME);
+			customEventNames.Add(NO_GROUP_NAME);
+			
+			var custEvents = MasterAudio.Instance.customEvents;
+			
+			for (var i = 0; i < custEvents.Count; i++) {
+				customEventNames.Add(custEvents[i].EventName);
+			}
+				
+			return customEventNames;
+		}
+	}
+	
+	/// <summary>
+	/// This is the overall master volume level which can change the relative volume of all buses and Sound Groups - not Playlist Controller songs though, they have their own master volume.
+	/// </summary>
+	public static float MasterVolumeLevel {
+		get {
+			return MasterAudio.Instance.masterAudioVolume;
+		}
+		set {
+			MasterAudio.Instance.masterAudioVolume = value;
+			
+			if (!Application.isPlaying) {
+				return;
+			}
+			
+			// change all currently playing sound volumes!
+			var sources = audioSourcesBySoundType.GetEnumerator();
+			MasterAudioGroup _group = null;
+			while(sources.MoveNext()) {
+				_group = sources.Current.Value._group;
+				SetGroupVolume(_group.name, _group.groupMasterVolume); // set to same volume, but it recalcs based on master volume level.
+			}
+		}
+	}
+	
+	private static bool SceneHasMasterAudio {
+		get {
+			return MasterAudio.Instance != null;
+		}
 	}
 	
 	#endregion

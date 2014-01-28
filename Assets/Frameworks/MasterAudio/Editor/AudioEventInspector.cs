@@ -11,6 +11,7 @@ public class AudioEventInspector : Editor
 	private List<string> busNames = null;
 	private List<string> playlistNames = null;
 	private List<string> playlistControllerNames = null;
+	private List<string> customEventNames = null;
 	private bool maInScene;
 	private MasterAudio ma;
 	private EventSounds sounds;
@@ -18,6 +19,8 @@ public class AudioEventInspector : Editor
 	public override void OnInspectorGUI()
 	{
 		EditorGUIUtility.LookLikeControls(); 
+		
+		MasterAudio.Instance = null;
 		
 		ma = MasterAudio.Instance;
 		if (ma != null) {
@@ -31,6 +34,7 @@ public class AudioEventInspector : Editor
 			groupNames = ma.GroupNames;
 			busNames = ma.BusNames;
 			playlistNames = ma.PlaylistNames;
+			customEventNames = ma.CustomEventNames;
 		}
 		
 		playlistControllerNames = new List<string>();
@@ -98,7 +102,9 @@ public class AudioEventInspector : Editor
 		if (!sounds.useDespawnedSound && sounds.showPoolManager) {
 			unusedEventTypes.Add("Despawned");
 		}
-
+		
+		unusedEventTypes.Add("Custom Event");
+		
 		var newDisable = EditorGUILayout.Toggle("Disable Sounds", sounds.disableSounds);
 		if (newDisable != sounds.disableSounds) {
 			UndoHelper.RecordObjectPropertyForUndo(sounds, "toggle Disable Sounds");
@@ -118,9 +124,9 @@ public class AudioEventInspector : Editor
 				sounds.showGizmo = newGiz;
 			}
 
-			var newPM = EditorGUILayout.Toggle("PoolManager Events", sounds.showPoolManager);
+			var newPM = EditorGUILayout.Toggle("Pooling Events", sounds.showPoolManager);
 			if (newPM != sounds.showPoolManager) {
-				UndoHelper.RecordObjectPropertyForUndo(sounds, "toggle PoolManager Events");
+				UndoHelper.RecordObjectPropertyForUndo(sounds, "toggle Pooling Events");
 				sounds.showPoolManager = newPM;
 			}
 
@@ -129,11 +135,19 @@ public class AudioEventInspector : Editor
 				UndoHelper.RecordObjectPropertyForUndo(sounds, "toggle Hide Unused Events");
 				sounds.hideUnused = newUnused;
 			}
-
+			
+   			var newLogMissing = EditorGUILayout.Toggle("Log Missing Events", sounds.logMissingEvents);
+	        if (newLogMissing != sounds.logMissingEvents) {
+ 			    UndoHelper.RecordObjectPropertyForUndo(sounds, "toggle Log Missing Events");
+		        sounds.logMissingEvents = newLogMissing;
+			}
+			
 			if (sounds.hideUnused) {
 				var newEventIndex = EditorGUILayout.Popup("Event To Activate", -1, unusedEventTypes.ToArray());
 				if (newEventIndex > -1) {
 					var selectedEvent = unusedEventTypes[newEventIndex];
+					UndoHelper.RecordObjectPropertyForUndo(sounds, "Active Event");
+					
 					switch (selectedEvent) {
 						case "Start":
 							sounds.useStartSound = true;
@@ -183,8 +197,23 @@ public class AudioEventInspector : Editor
 						case "Despawned":
 							sounds.useDespawnedSound = true;
 							break;
+						case "Custom Event":
+							CreateCustomEvent(false);
+							break;
+						default:
+							Debug.LogError("Add code for event type: " + selectedEvent);
+							break;
 					} 
 				}
+			} else {
+				EditorGUILayout.BeginHorizontal();
+				GUILayout.Space(154);
+				GUI.contentColor = Color.green;
+				if (GUILayout.Button("Add Custom Event", EditorStyles.toolbarButton, GUILayout.Width(110))) {
+					CreateCustomEvent(true);
+				}
+				GUI.contentColor = Color.white;
+				EditorGUILayout.EndHorizontal();
 			}
 		}
 
@@ -207,6 +236,7 @@ public class AudioEventInspector : Editor
 		// trigger sounds
 		if (!sounds.hideUnused || sounds.useStartSound) {
 			EditorGUI.indentLevel = 0;
+			GUI.color = sounds.useStartSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 			EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
 
 			var newUseStart = EditorGUILayout.Toggle("Start" + disabledText, sounds.useStartSound);
@@ -215,6 +245,7 @@ public class AudioEventInspector : Editor
 				sounds.useStartSound = newUseStart;
 			}
 			EditorGUILayout.EndHorizontal();
+			GUI.color = Color.white;
 			if (sounds.useStartSound && !sounds.disableSounds) {
 				changedList.Add(RenderAudioEvent(sounds.startSound, EventSounds.EventType.OnStart));
 			}
@@ -222,6 +253,7 @@ public class AudioEventInspector : Editor
 		
 		if (!sounds.hideUnused || sounds.useEnableSound) {
 			EditorGUI.indentLevel = 0;
+			GUI.color = sounds.useEnableSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 			EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
 			var newUseEnable = EditorGUILayout.Toggle("Enable" + disabledText, sounds.useEnableSound);
 			if (newUseEnable != sounds.useEnableSound) {
@@ -229,6 +261,7 @@ public class AudioEventInspector : Editor
 				sounds.useEnableSound = newUseEnable;
 			}
 			EditorGUILayout.EndHorizontal();
+			GUI.color = Color.white;
 			if (sounds.useEnableSound && !sounds.disableSounds) {
 				changedList.Add(RenderAudioEvent(sounds.enableSound, EventSounds.EventType.OnEnable));
 			}
@@ -236,6 +269,7 @@ public class AudioEventInspector : Editor
 
 		if (!sounds.hideUnused || sounds.useDisableSound) {
 			EditorGUI.indentLevel = 0;
+			GUI.color = sounds.useDisableSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 			EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
 			var newDisableSound = EditorGUILayout.Toggle("Disable" + disabledText, sounds.useDisableSound);
 			if (newDisableSound != sounds.useDisableSound) {
@@ -243,6 +277,7 @@ public class AudioEventInspector : Editor
 				sounds.useDisableSound = newDisableSound;
 			}
 			EditorGUILayout.EndHorizontal();
+			GUI.color = Color.white;
 			if (sounds.useDisableSound && !sounds.disableSounds) {
 				changedList.Add(RenderAudioEvent(sounds.disableSound, EventSounds.EventType.OnDisable));
 			}
@@ -250,6 +285,7 @@ public class AudioEventInspector : Editor
 
 		if (!sounds.hideUnused || sounds.useVisibleSound) {
 			EditorGUI.indentLevel = 0;
+			GUI.color = sounds.useVisibleSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 			EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
 			var newVisible = EditorGUILayout.Toggle("Visible" + disabledText, sounds.useVisibleSound);
 			if (newVisible != sounds.useVisibleSound) {
@@ -257,6 +293,7 @@ public class AudioEventInspector : Editor
 				sounds.useVisibleSound = newVisible;
 			}
 			EditorGUILayout.EndHorizontal();
+			GUI.color = Color.white;
 			if (sounds.useVisibleSound && !sounds.disableSounds) {
 				changedList.Add(RenderAudioEvent(sounds.visibleSound, EventSounds.EventType.OnVisible));
 			}
@@ -264,6 +301,7 @@ public class AudioEventInspector : Editor
 
 		if (!sounds.hideUnused || sounds.useInvisibleSound) {
 			EditorGUI.indentLevel = 0;
+			GUI.color = sounds.useInvisibleSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 			EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
 			var newInvis = EditorGUILayout.Toggle("Invisible" + disabledText, sounds.useInvisibleSound);
 			if (newInvis != sounds.useInvisibleSound) {
@@ -271,6 +309,7 @@ public class AudioEventInspector : Editor
 				sounds.useInvisibleSound = newInvis;
 			}
 			EditorGUILayout.EndHorizontal();
+			GUI.color = Color.white;
 			if (sounds.useInvisibleSound && !sounds.disableSounds) {
 				changedList.Add(RenderAudioEvent(sounds.invisibleSound, EventSounds.EventType.OnInvisible));
 			}
@@ -281,6 +320,7 @@ public class AudioEventInspector : Editor
 		#else 
 			if (!sounds.hideUnused || sounds.useCollision2dSound) {
 				EditorGUI.indentLevel = 0;
+				GUI.color = sounds.useCollision2dSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 				EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
 				var newCollision2d = EditorGUILayout.Toggle("2D Collision" + disabledText, sounds.useCollision2dSound);
 				if (newCollision2d != sounds.useCollision2dSound) {
@@ -288,6 +328,7 @@ public class AudioEventInspector : Editor
 					sounds.useCollision2dSound = newCollision2d;
 				}
 				EditorGUILayout.EndHorizontal();
+				GUI.color = Color.white;
 				if (sounds.useCollision2dSound && !sounds.disableSounds) {
 					changedList.Add(RenderAudioEvent(sounds.collision2dSound, EventSounds.EventType.OnCollision2D));
 				}
@@ -295,6 +336,7 @@ public class AudioEventInspector : Editor
 
 			if (!sounds.hideUnused || sounds.useTriggerEnter2dSound) {
 				EditorGUI.indentLevel = 0;
+				GUI.color = sounds.useTriggerEnter2dSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 				EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
 				var newTrigger2d = EditorGUILayout.Toggle("2D Trigger Enter" + disabledText, sounds.useTriggerEnter2dSound);
 				if (newTrigger2d != sounds.useTriggerEnter2dSound) {
@@ -302,6 +344,7 @@ public class AudioEventInspector : Editor
 					sounds.useTriggerEnter2dSound = newTrigger2d;
 				}
 				EditorGUILayout.EndHorizontal();
+				GUI.color = Color.white;
 				if (sounds.useTriggerEnter2dSound && !sounds.disableSounds) {
 					changedList.Add(RenderAudioEvent(sounds.triggerEnter2dSound, EventSounds.EventType.OnTriggerEnter2D));
 				}
@@ -309,6 +352,7 @@ public class AudioEventInspector : Editor
 
 			if (!sounds.hideUnused || sounds.useTriggerExit2dSound) {
 				EditorGUI.indentLevel = 0;
+				GUI.color = sounds.useTriggerExit2dSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 				EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
 				var newTriggerExit2d = EditorGUILayout.Toggle("2D Trigger Exit" + disabledText, sounds.useTriggerExit2dSound);
 				if (newTriggerExit2d != sounds.useTriggerExit2dSound) {
@@ -316,6 +360,7 @@ public class AudioEventInspector : Editor
 					sounds.useTriggerExit2dSound = newTriggerExit2d;
 				}
 				EditorGUILayout.EndHorizontal();
+				GUI.color = Color.white;
 				if (sounds.useTriggerExit2dSound && !sounds.disableSounds) {
 					changedList.Add(RenderAudioEvent(sounds.triggerExit2dSound, EventSounds.EventType.OnTriggerExit2D));
 				}
@@ -324,6 +369,7 @@ public class AudioEventInspector : Editor
 
 		if (!sounds.hideUnused || sounds.useCollisionSound) {
 			EditorGUI.indentLevel = 0;
+			GUI.color = sounds.useCollisionSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 			EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
 			var newCollision = EditorGUILayout.Toggle("Collision" + disabledText, sounds.useCollisionSound);
 			if (newCollision != sounds.useCollisionSound) {
@@ -331,6 +377,7 @@ public class AudioEventInspector : Editor
 				sounds.useCollisionSound = newCollision;
 			}
 			EditorGUILayout.EndHorizontal();
+			GUI.color = Color.white;
 			if (sounds.useCollisionSound && !sounds.disableSounds) {
 				changedList.Add(RenderAudioEvent(sounds.collisionSound, EventSounds.EventType.OnCollision));
 			}
@@ -338,6 +385,7 @@ public class AudioEventInspector : Editor
 
 		if (!sounds.hideUnused || sounds.useTriggerEnterSound) {
 			EditorGUI.indentLevel = 0;
+			GUI.color = sounds.useTriggerEnterSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 			EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
 			var newTrigger = EditorGUILayout.Toggle("Trigger Enter" + disabledText, sounds.useTriggerEnterSound);
 			if (newTrigger != sounds.useTriggerEnterSound) {
@@ -345,6 +393,7 @@ public class AudioEventInspector : Editor
 				sounds.useTriggerEnterSound = newTrigger;
 			}
 			EditorGUILayout.EndHorizontal();
+			GUI.color = Color.white;
 			if (sounds.useTriggerEnterSound && !sounds.disableSounds) {
 				changedList.Add(RenderAudioEvent(sounds.triggerSound, EventSounds.EventType.OnTriggerEnter));
 			}
@@ -352,6 +401,7 @@ public class AudioEventInspector : Editor
 
 		if (!sounds.hideUnused || sounds.useTriggerExitSound) {
 			EditorGUI.indentLevel = 0;
+			GUI.color = sounds.useTriggerExitSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 			EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
 			var newTriggerExit = EditorGUILayout.Toggle("Trigger Exit" + disabledText, sounds.useTriggerExitSound);
 			if (newTriggerExit != sounds.useTriggerExitSound) {
@@ -359,6 +409,7 @@ public class AudioEventInspector : Editor
 				sounds.useTriggerExitSound = newTriggerExit;
 			}
 			EditorGUILayout.EndHorizontal();
+			GUI.color = Color.white;
 			if (sounds.useTriggerExitSound && !sounds.disableSounds) {
 				changedList.Add(RenderAudioEvent(sounds.triggerExitSound, EventSounds.EventType.OnTriggerExit));
 			}
@@ -366,6 +417,7 @@ public class AudioEventInspector : Editor
 		
 		if (!sounds.hideUnused || sounds.useParticleCollisionSound) {
 			EditorGUI.indentLevel = 0;
+			GUI.color = sounds.useParticleCollisionSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 			EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
 			var newCollision = EditorGUILayout.Toggle("Particle Collision" + disabledText, sounds.useParticleCollisionSound);
 			if (newCollision != sounds.useParticleCollisionSound) {
@@ -373,6 +425,7 @@ public class AudioEventInspector : Editor
 				sounds.useParticleCollisionSound = newCollision;
 			}
 			EditorGUILayout.EndHorizontal();
+			GUI.color = Color.white;
 			if (sounds.useParticleCollisionSound && !sounds.disableSounds) {
 				changedList.Add(RenderAudioEvent(sounds.particleCollisionSound, EventSounds.EventType.OnParticleCollision));
 			}
@@ -380,6 +433,7 @@ public class AudioEventInspector : Editor
 		
 		if (!sounds.hideUnused || sounds.useMouseEnterSound) {
 			EditorGUI.indentLevel = 0;
+			GUI.color = sounds.useMouseEnterSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 			EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
 			var newMouseEnter = EditorGUILayout.Toggle("Mouse Enter" + disabledText, sounds.useMouseEnterSound);
 			if (newMouseEnter != sounds.useMouseEnterSound) {
@@ -387,6 +441,7 @@ public class AudioEventInspector : Editor
 				sounds.useMouseEnterSound = newMouseEnter;
 			}
 			EditorGUILayout.EndHorizontal();
+			GUI.color = Color.white;
 			if (sounds.useMouseEnterSound && !sounds.disableSounds) {
 				changedList.Add(RenderAudioEvent(sounds.mouseEnterSound, EventSounds.EventType.OnMouseEnter));
 			}
@@ -394,12 +449,14 @@ public class AudioEventInspector : Editor
 
 		if (!sounds.hideUnused || sounds.useMouseClickSound) {
 			EditorGUI.indentLevel = 0;
+			GUI.color = sounds.useMouseClickSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 			EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
 			var newMouseClick = EditorGUILayout.Toggle("Mouse Click" + disabledText, sounds.useMouseClickSound);
 			if (newMouseClick != sounds.useMouseClickSound) {
 				sounds.useMouseClickSound = newMouseClick;
 			}
 			EditorGUILayout.EndHorizontal();
+			GUI.color = Color.white;
 			if (sounds.useMouseClickSound && !sounds.disableSounds) {
 				UndoHelper.RecordObjectPropertyForUndo(sounds, "toggle Mouse Click Sound");
 				changedList.Add(RenderAudioEvent(sounds.mouseClickSound, EventSounds.EventType.OnMouseClick));
@@ -409,13 +466,15 @@ public class AudioEventInspector : Editor
 		if (sounds.showPoolManager) {
 			if (!sounds.hideUnused || sounds.useSpawnedSound) {
 				EditorGUI.indentLevel = 0;
+				GUI.color = sounds.useSpawnedSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 				EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
-				var newSpawned = EditorGUILayout.Toggle("Spawned (PoolManager)" + disabledText, sounds.useSpawnedSound);
+				var newSpawned = EditorGUILayout.Toggle("Spawned (Pooling)" + disabledText, sounds.useSpawnedSound);
 				if (newSpawned != sounds.useSpawnedSound) {
 					UndoHelper.RecordObjectPropertyForUndo(sounds, "toggle Spawned Sound");
 					sounds.useSpawnedSound = newSpawned;
 				}
 				EditorGUILayout.EndHorizontal();
+				GUI.color = Color.white;
 				if (sounds.useSpawnedSound && !sounds.disableSounds) {
 					changedList.Add(RenderAudioEvent(sounds.spawnedSound, EventSounds.EventType.OnSpawned));
 				}
@@ -423,24 +482,64 @@ public class AudioEventInspector : Editor
 
 			if (!sounds.hideUnused || sounds.useDespawnedSound) {
 				EditorGUI.indentLevel = 0;
+				GUI.color = sounds.useDespawnedSound ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
 				EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
-				var newDespawned = EditorGUILayout.Toggle("Despawned (PoolManager)" + disabledText, sounds.useDespawnedSound);
+				var newDespawned = EditorGUILayout.Toggle("Despawned (Pooling)" + disabledText, sounds.useDespawnedSound);
 				if (newDespawned != sounds.useDespawnedSound) {
 					UndoHelper.RecordObjectPropertyForUndo(sounds, "toggle Despawned Sound");
 					sounds.useDespawnedSound = newDespawned;
 				}
 				EditorGUILayout.EndHorizontal();
+				GUI.color = Color.white;
 				if (sounds.useDespawnedSound && !sounds.disableSounds) {
 					changedList.Add(RenderAudioEvent(sounds.despawnedSound, EventSounds.EventType.OnDespawned));
 				}
 			}
 		}
-
+		
+		if (sounds.userDefinedSounds.Count > 0) {
+			EditorGUI.indentLevel = 0;
+			
+			int? eventToDelete = null;
+			
+			for (var i = 0; i < sounds.userDefinedSounds.Count; i++) {
+				var customEvent = sounds.userDefinedSounds[i];
+				
+				GUI.color = customEvent.customSoundActive ? MasterAudioInspector.activeClr : MasterAudioInspector.inactiveClr;
+				EditorGUILayout.BeginHorizontal(EditorStyles.objectFieldThumb);
+				var newUse = EditorGUILayout.Toggle("Custom Event " + disabledText, customEvent.customSoundActive);
+				if (newUse != customEvent.customSoundActive) {
+					UndoHelper.RecordObjectPropertyForUndo(sounds, "toggle Custom Event active");
+					customEvent.customSoundActive = newUse;
+				}
+				
+				var buttonPressed = GUIHelper.AddCustomEventDeleteIcon(false);
+				switch (buttonPressed) {
+					case GUIHelper.DTFunctionButtons.Remove:
+						eventToDelete = i;
+						break;
+				}
+					
+				EditorGUILayout.EndHorizontal();
+				GUI.color = Color.white;
+				
+				if (customEvent.customSoundActive && !sounds.disableSounds) {
+					UndoHelper.RecordObjectPropertyForUndo(sounds, "toggle Custom Event Sound");
+					changedList.Add(RenderAudioEvent(customEvent, EventSounds.EventType.UserDefinedEvent));
+				}
+			}
+			
+			if (eventToDelete.HasValue) {
+				UndoHelper.RecordObjectPropertyForUndo(sounds, "delete Custom Event Sound");
+				sounds.userDefinedSounds.RemoveAt(eventToDelete.Value);
+			}
+		}
+		
 		if (GUI.changed || changedList.Contains(true)) {
 			EditorUtility.SetDirty(target);
 		}
 
-		GUIHelper.RepaintIfUndoOrRedo(this);
+		this.Repaint();
 
 		//DrawDefaultInspector();
 	}
@@ -456,7 +555,65 @@ public class AudioEventInspector : Editor
 		if (eType == EventSounds.EventType.OnEnable) {
 			GUIHelper.ShowColorWarning("*If this prefab is in the scene at startup, use Start event instead.");
 		}
+		
+		if (eType == EventSounds.EventType.UserDefinedEvent) {
+			if (maInScene) {
+				var existingIndex = customEventNames.IndexOf(aEvent.customEventName);
+	
+				int? customEventIndex = null;
 
+				EditorGUI.indentLevel = 0;
+			
+				var noEvent = false;
+				var noMatch = false;
+			
+				if (existingIndex >= 1) {
+					customEventIndex = EditorGUILayout.Popup("Custom Event Name", existingIndex, customEventNames.ToArray());
+					if (existingIndex == 1) {
+						noEvent = true;
+					}
+				} else if (existingIndex == -1 && aEvent.soundType == MasterAudio.NO_GROUP_NAME) {
+					customEventIndex = EditorGUILayout.Popup("Custom Event Name", existingIndex, customEventNames.ToArray());
+				} else { // non-match
+					noMatch = true;
+					var newEventName = EditorGUILayout.TextField("Custom Event Name", aEvent.customEventName);
+					if (newEventName != aEvent.customEventName) {
+						UndoHelper.RecordObjectPropertyForUndo(sounds, "change Custom Event Name");
+						aEvent.customEventName = newEventName;
+					}
+
+					var newIndex = EditorGUILayout.Popup("All Custom Events", -1, customEventNames.ToArray());
+					if (newIndex >= 0) {
+						customEventIndex = newIndex;
+					}
+				}
+				
+				if (noEvent) {	
+					GUIHelper.ShowRedError("No Custom Event specified. This section will do nothing.");					
+				} else if (noMatch) {
+					GUIHelper.ShowRedError("Custom Event found no match. Type in or choose one.");
+				}
+				
+				if (customEventIndex.HasValue) {
+					if (existingIndex != customEventIndex.Value) {
+						UndoHelper.RecordObjectPropertyForUndo(sounds, "change Custom Event");
+					}
+					if (customEventIndex.Value == -1) {
+						aEvent.customEventName = MasterAudio.NO_GROUP_NAME;
+					} else {
+						aEvent.customEventName = customEventNames[customEventIndex.Value];
+					}
+				}
+			} else {
+				var newCustomEvent = EditorGUILayout.TextField("Custom Event Name", aEvent.customEventName);
+				if (newCustomEvent != aEvent.customEventName) {
+					UndoHelper.RecordObjectPropertyForUndo(sounds, "Custom Event Name");
+					aEvent.customEventName = newCustomEvent;
+				}
+			}
+			
+		}
+		
 		var newSoundType = (MasterAudio.EventSoundFunctionType) EditorGUILayout.EnumPopup("Action Type", aEvent.currentSoundFunctionType);
 		if (newSoundType != aEvent.currentSoundFunctionType) {
 			UndoHelper.RecordObjectPropertyForUndo(sounds, "change Action Type"); 
@@ -946,6 +1103,80 @@ public class AudioEventInspector : Editor
 				}
 				
 				break;
+			case MasterAudio.EventSoundFunctionType.CustomEventControl:
+				if (eType == EventSounds.EventType.UserDefinedEvent) {
+					GUIHelper.ShowRedError("Custom Event Receivers cannot fire events. Select another Action Type.");
+					break;
+				}	
+				
+				var newEventCmd = (MasterAudio.CustomEventCommand) EditorGUILayout.EnumPopup("Custom Event Command", aEvent.currentCustomEventCommand);
+				if (newEventCmd != aEvent.currentCustomEventCommand) {
+					UndoHelper.RecordObjectPropertyForUndo(sounds, "change Custom Event Command");
+					aEvent.currentCustomEventCommand = newEventCmd;
+				}
+				EditorGUI.indentLevel = 1;
+			
+				switch (aEvent.currentCustomEventCommand) {
+					case MasterAudio.CustomEventCommand.FireEvent:
+						if (maInScene) {
+							var existingIndex = customEventNames.IndexOf(aEvent.customEventName);
+				
+							int? customEventIndex = null;
+			
+							EditorGUI.indentLevel = 1;
+						
+							var noEvent = false;
+							var noMatch = false;
+						
+							if (existingIndex >= 1) {
+								customEventIndex = EditorGUILayout.Popup("Custom Event Name", existingIndex, customEventNames.ToArray());
+								if (existingIndex == 1) {
+									noEvent = true;
+								}
+							} else if (existingIndex == -1 && aEvent.soundType == MasterAudio.NO_GROUP_NAME) {
+								customEventIndex = EditorGUILayout.Popup("Custom Event Name", existingIndex, customEventNames.ToArray());
+							} else { // non-match
+								noMatch = true;
+								var newEventName = EditorGUILayout.TextField("Custom Event Name", aEvent.customEventName);
+								if (newEventName != aEvent.customEventName) {
+									UndoHelper.RecordObjectPropertyForUndo(sounds, "change Custom Event Name");
+									aEvent.customEventName = newEventName;
+								}
+			
+								var newIndex = EditorGUILayout.Popup("All Custom Events", -1, customEventNames.ToArray());
+								if (newIndex >= 0) {
+									customEventIndex = newIndex;
+								}
+							}
+							
+							if (noEvent) {	
+								GUIHelper.ShowRedError("No Custom Event specified. This section will do nothing.");					
+							} else if (noMatch) {
+								GUIHelper.ShowRedError("Custom Event found no match. Type in or choose one.");
+							}
+							
+							if (customEventIndex.HasValue) {
+								if (existingIndex != customEventIndex.Value) {
+									UndoHelper.RecordObjectPropertyForUndo(sounds, "change Custom Event");
+								}
+								if (customEventIndex.Value == -1) {
+									aEvent.customEventName = MasterAudio.NO_GROUP_NAME;
+								} else {
+									aEvent.customEventName = customEventNames[customEventIndex.Value];
+								}
+							}
+						} else {
+							var newCustomEvent = EditorGUILayout.TextField("Custom Event Name", aEvent.customEventName);
+							if (newCustomEvent != aEvent.customEventName) {
+								UndoHelper.RecordObjectPropertyForUndo(sounds, "Custom Event Name");
+								aEvent.customEventName = newCustomEvent;
+							}
+						}
+
+						break;
+				}
+			
+				break;			
 		}
 		
 		EditorGUI.indentLevel = 0;
@@ -1030,5 +1261,17 @@ public class AudioEventInspector : Editor
 		}
 
 		return isDirty;
+	}
+	
+	private void CreateCustomEvent(bool recordUndo) {
+		var newEvent = new AudioEvent();
+		newEvent.isCustomEvent = true;
+		newEvent.customSoundActive = true;
+		
+		if (recordUndo) {
+			UndoHelper.RecordObjectPropertyForUndo(sounds, "add Custom Event Sound");
+		}
+		
+		sounds.userDefinedSounds.Add(newEvent);
 	}
 }

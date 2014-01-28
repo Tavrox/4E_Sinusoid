@@ -2,6 +2,67 @@ MASTER AUDIO PLUGIN - By DarkTonic, Inc. (c) 2012-2013
 
 - Code by Brian Hunsaker
 
+-V 3.3.7 - Fixed bug where calling a PlaySound "AndForget" method would play all Variations!
+	 - Fixed mislabeled "Hierarchy View" warnings that were actually Project View.
+	 - Fixed "Windows App Store" compilation error hopefully.
+
+-V 3.3.6 - Fixed bug (again) where Calling MasterAudio.StopAllOfSound would not cancel scheduled sounds that haven't started playing (delay parameter > 0).
+	 - Fixed it so that when you change playlists on a Playlist Controller, cross-fading still works.
+	 - Fixed Dynamic SGC so that in Project view you cannot click "Upgrade data" or drag-create groups, since those don't work there. It tells you to drag the prefab into the scene instead, when selected.
+	 - Fixed MasterAudio prefabs so that in Project view you cannot click "Upgrade data" or drag-create groups, since those don't work there. It tells you to drag the prefab into the scene instead, when selected.
+
+-V 3.3.5 - Fixed bug where Chained Loop Groups no longer worked properly after V 3.3.4
+	 - Added Clip change delay min & max for Chained Loop groups. This will specify a range for random pausing between the chained clips. 
+
+-V 3.3.4 - Upgraded the optional AudioSource prioritizer to include clip age (time since clip started) in priority calculation. This is all optional, and settable per Sound Group.
+	 - Added an optional callback method to MasterAudio.FadeSoundGroupToVolume so you can execute code when the fade is finished.
+	 - Added an optional callback method to MasterAudio.FadeBusToVolume so you can execute code when the fade is finished.
+	 - Added a Text Group Filter field to the mixer section so you can type a wildcard part of a Sound Group name and filter all results to only those that match.
+	 - Added many new PlaySound methods: PlaySoundAndForget, PlaySound3DAndForget, PlaySoundAtTransform, PlaySoundAtTransformAndForget, PlaySoundFollowTransform, PlaySoundFollowTransformAndForget. The "AndForget" methods don't create a PlaySoundResult (return type is void). Marked PlaySound3D methods as deprecated. You will need to change those to PlaySoundAtTransform or PlaySoundFollowTransform to be able to compile.
+	 - Updated EventSounds and Playmaker Custom Actions to use the new PlaySound methods.
+	 - Performance upgrade, got rid of repeatedly called CoRoutine in PlaylistController. Now there are no more of these in MA.
+	 - Added checkbox for "Log Missing Events" on EventSounds. Defaults to on. If you are creating Custom Events during, turn this off if you want to use them in that EventSounds script.
+	 - Fixed bug where manually calling CreateItems on Dynamic SGC would not do anything in certain cases.
+	 - Fixed example scene so that the Dynamic Sound Group Creator clip is not missing.
+	 - Added Disable Logging checkbox for release builds.
+	 - Calling MasterAudio.StopAllOfSound now will cancel scheduled sounds that haven't started playing as well (delay parameter > 0).
+
+-V 3.3.3 - Added numerous performance upgrades. Note: you now need to check if PlaySoundResult is not null before checking it's SoundPlayed, SoundScheduled and ActingVariation properties or you will get a null reference error.
+
+-V 3.3.2 - Added button at top of Dynamic SGC Group to go back to Dynamic SGC (quick navigation).
+
+-V 3.3.1 - Breaking Change: If you don't want to start from scratch with your Dynamic SGCS by deleting them and recreating from Master Audio Manager window, switch to debug mode in the upper right of the Inspector, then drag the 2 "Dymamic" templates from Sources/Prefab into the debug mode of Dynamic Sound Group Creator prefabs you are using. While you're at it, drag the 4 new icons to their places. Delete Texture field = Sources/Textures/deleteIcon, Settings Texture field = Sources/Textures/gearIcon, Play Texture field = Sources/Textures/speakerIcon, Stop Track Texture = Sources/Textures/stopIcon, Group Template field = Sources/Prefabs/DynamicSoundGroup, Variation Template field = Sources/Prefabs/DynamicGroupVariation. Then switch back to normal mode and you're good without losing your work.
+	 - Added full bus controls to Dynamic Sound Group Creator.
+ 	 - Added full 3-level hierarchy to Dynamic Sound Group Creator, just like the Master Audio prefab. Now you can specify filter FX per Variation. 
+	 - Old configuration for Dynamic Sound Group Creator is no longer shown or used. However there is a "Upgrade Data" button to migrate it into the new format.
+	 - Also logging a red error in the console if you attempt to run with "old data" Dynamic SGC telling you to click "Upgrade Data" to fix it.
+	 - Fixed Dynamic Sound Group Creator and Sound Group Variations so that custom rolloff curves work with the weight property. Previously this was broken.
+	 - Made all "previewing-only audio sources" lowest priority always.
+
+-V 3.3 - Cranked up AudioSource priority of PlaylistController's 2 to the max. Music should never be muted by SFX. Ducking can handle "soft muting".
+       - Added Experimental feature "auto-prioritize by distance" added. It defaults to off. Turning it on means sounds played 2D and PlaylistController Audio is top priority. Everything else (3D SFX) is given a sliding priority based on distance from AudioListener so Unity can decide to mute the lower-priority sounds when more than 32 voices are playing (Unity limit). 
+       - Added a control for how often sounds that are following a "sound-maker" are re-evaluated for priority. That defaults to 0.1 seconds and can go up to 1 second.
+
+-V 3.2 - Added Custom Events to MasterAudio. You can receive or send the events with EventSounds or any other script, any number of receivers. No coding required if using EventSounds!
+       - Fixed incorrectly pathed images in Master Audio Manager window.
+       - Fixed bug where EventSounds didn't allow Unity 3 users to use delay sound.
+       - Fixed bug where cross-fade "fading clip" would jump down in level suddenly if Master Playlist Volume or Playlist Controller volume were not full.
+       - Added per-Scene Custom Events to Dynamic Sound Group Creator.
+       - Added missing pan level 3D setting into Dynamic Sound Group Creator.
+       - Added constant variable for path to MasterAudio folder for people who move it around. Changing this in one place (MasterAudioManager.cs) will ensure everything works fine.
+       - Added MasterAudio icon to the Hierarchy to find MasterAudio prefab quickly.
+       - Changed color of collapsible section and made it different colors when expanded or collapsed. More intuitive.
+
+-V 3.1.9 - Fixed broken Add Duck Group Playmaker Custom Action.
+	 - Fixed bug where playing the same clip in a Playlist Controller would cause the Playlist to stop after cross-fading.
+	 - Fixed bug where crossfading wouldn't work right after a couple crossfades. This was introduced in V3.1.8 accidentally.
+	 - Fixed bug where changing synchronized Playlist clip during a cross-fade wouldn't keep the time in the new clip.
+	 - Added JumpToTime method to SoundGroupVariation to jump to a specific time in an already playing Audio Clip.
+
+-V 3.1.8 - Fixed bug where Playlist auto-advance to the next song didn't work when timeScale is set to zero.
+	 - Added setting for default begin ducking percentage, which will be used for any new groups you add to Ducking.
+	 - Added configurable begin ducking time in Dynamic Sound Group Creator groups, defaults to the default begin unduck percentage if MA prefab can be located in the Scene.
+
 -V 3.1.7 - Added Resource file support to Playlists! Automatic memory management, same as Sound Groups. Drag and drop!
 	 - Fixed unneccessary error in Playlist Controller when no Playlist is set up.
 	 - Fixed bug where a looped Sound Group Variation would fade out before looping. Looped clips should ignore fade out time. Also put a note in the UI so the user knows this.

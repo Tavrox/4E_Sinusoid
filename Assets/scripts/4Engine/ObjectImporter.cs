@@ -19,7 +19,7 @@ public class ObjectImporter : MonoBehaviour {
 	private XmlNodeList tilesetNodes;
 	private XmlNodeList itemNodes;
 	private LevelManager _LevMan;
-	public LevelBrick.brickEnum specificBrickToImport;
+	public LevelBrick specificBrickToImport;
 	 
 	private enum tileList
 	{
@@ -132,7 +132,6 @@ public class ObjectImporter : MonoBehaviour {
 	#endregion
 
 
-	[ContextMenu ("Setup Objects")]
 	private void setupObjects()
 	{
 		initXML();

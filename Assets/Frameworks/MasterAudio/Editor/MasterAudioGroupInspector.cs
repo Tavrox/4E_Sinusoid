@@ -25,6 +25,8 @@ public class MasterAudioGroupInspector : Editor {
 			return;
 		}
 		
+		var isInProjectView = GUIHelper.IsPrefabInProjectView(_group);
+		
 		if (_group.logoTexture != null) {
 			GUIHelper.ShowHeaderTexture(_group.logoTexture);
 		}
@@ -71,6 +73,38 @@ public class MasterAudioGroupInspector : Editor {
 			_group.curVariationMode = newVarMode;
 		}
 		
+		if (_group.curVariationMode == MasterAudioGroup.VariationMode.LoopedChain) {
+			EditorGUI.indentLevel = 1;
+			
+			var newDelayMin = EditorGUILayout.Slider("Clip Change Delay Min", _group.chainLoopDelayMin, 0f, 20f);
+			if (newDelayMin != _group.chainLoopDelayMin) {
+				if (_group.chainLoopDelayMax < newDelayMin) {
+					_group.chainLoopDelayMax = newDelayMin;
+				}
+				UndoHelper.RecordObjectPropertyForUndo(_group, "change Chained Clip Delay Min");
+				_group.chainLoopDelayMin = newDelayMin;
+			}
+			
+			var newDelayMax = EditorGUILayout.Slider("Clip Change Delay Max", _group.chainLoopDelayMax, 0f, 20f);
+			if (newDelayMax != _group.chainLoopDelayMax) {
+				if (newDelayMax < _group.chainLoopDelayMin) {
+					newDelayMax = _group.chainLoopDelayMin;
+				}
+				UndoHelper.RecordObjectPropertyForUndo(_group, "change Chained Clip Delay Max");
+				_group.chainLoopDelayMax = newDelayMax;
+			}
+			
+		}
+		
+		EditorGUI.indentLevel = 0;
+		if (MasterAudio.Instance.prioritizeOnDistance) {
+			var newContinual = EditorGUILayout.Toggle("Use Clip Age Priority", _group.useClipAgePriority);
+			if (newContinual != _group.useClipAgePriority) {
+				UndoHelper.RecordObjectPropertyForUndo(_group, "toggle Use Clip Age Priority");
+				_group.useClipAgePriority = newContinual;
+			}
+		}
+
 		if (_group.curVariationMode == MasterAudioGroup.VariationMode.Normal) {
 			var newLimitPoly = EditorGUILayout.Toggle("Limit Polyphony", _group.limitPolyphony);
 			if (newLimitPoly != _group.limitPolyphony) {
@@ -141,7 +175,7 @@ public class MasterAudioGroupInspector : Editor {
 			GUILayout.Label("Actions", EditorStyles.wordWrappedLabel, GUILayout.Width(50f));
 			GUILayout.Space(96);
 			GUI.contentColor = Color.green;
-			if (GUILayout.Button(new GUIContent("Equalize Weights", "Reset Weights to zero"), EditorStyles.toolbarButton, GUILayout.Width(120))) {
+			if (GUILayout.Button(new GUIContent("Equalize Weights", "Reset Weights to one"), EditorStyles.toolbarButton, GUILayout.Width(120))) {
 				isDirty = true;
 				EqualizeWeights(_group);
 			}	
@@ -163,34 +197,39 @@ public class MasterAudioGroupInspector : Editor {
 			
 			GUI.color = Color.yellow;
 			
-			var dragArea = GUILayoutUtility.GetRect(0f,35f,GUILayout.ExpandWidth(true));
-			GUI.Box (dragArea, "Drag Audio clips here to create Variations!");
-			
-			GUI.color = Color.white;
-			
-			switch (anEvent.type) {
-			case EventType.DragUpdated:
-			case EventType.DragPerform:
-				if(!dragArea.Contains(anEvent.mousePosition)) {
+			if (isInProjectView) {
+				GUIHelper.ShowLargeBarAlert("*You are in Project View and cannot create Variations.");
+				GUIHelper.ShowLargeBarAlert("*Pull this prefab into the Scene to create Variations.");
+			} else {
+				var dragArea = GUILayoutUtility.GetRect(0f,35f,GUILayout.ExpandWidth(true));
+				GUI.Box (dragArea, "Drag Audio clips here to create Variations!");
+				
+				GUI.color = Color.white;
+				
+				switch (anEvent.type) {
+				case EventType.DragUpdated:
+				case EventType.DragPerform:
+					if(!dragArea.Contains(anEvent.mousePosition)) {
+						break;
+					}
+					
+					DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
+					
+					if(anEvent.type == EventType.DragPerform) {
+						DragAndDrop.AcceptDrag();
+						
+						foreach (var dragged in DragAndDrop.objectReferences) {
+							var aClip = dragged as AudioClip;
+							if(aClip == null) {
+								continue;
+							}
+							
+							CreateVariation(_group, ma, aClip);
+						}
+					}
+					Event.current.Use();
 					break;
 				}
-				
-				DragAndDrop.visualMode = DragAndDropVisualMode.Copy;
-				
-				if(anEvent.type == EventType.DragPerform) {
-					DragAndDrop.AcceptDrag();
-					
-					foreach (var dragged in DragAndDrop.objectReferences) {
-						var aClip = dragged as AudioClip;
-						if(aClip == null) {
-							continue;
-						}
-						
-						CreateVariation(_group, ma, aClip);
-					}
-				}
-				Event.current.Use();
-				break;
 			}
 			EditorGUILayout.EndVertical();
 			// end new variation settings
@@ -406,7 +445,7 @@ public class MasterAudioGroupInspector : Editor {
 			EditorUtility.SetDirty(target);
 		}
 		
-		GUIHelper.RepaintIfUndoOrRedo(this);
+		this.Repaint();
 		
 		//DrawDefaultInspector();
 	}

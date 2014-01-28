@@ -14,6 +14,10 @@ public class MasterAudioGroup : MonoBehaviour {
 	public float groupMasterVolume = 1f;
 	public int retriggerPercentage = 50;
 	public VariationMode curVariationMode = VariationMode.Normal;
+
+	public float chainLoopDelayMin;
+	public float chainLoopDelayMax;
+	
 	public VariationSequence curVariationSequence = VariationSequence.Randomized;
 	public bool useInactivePeriodPoolRefill = false;
 	public float inactivePeriodSeconds = 5f;
@@ -24,6 +28,7 @@ public class MasterAudioGroup : MonoBehaviour {
 	public LimitMode limitMode = LimitMode.None;
 	public int limitPerXFrames = 1;
 	public float minimumTimeBetween = 0.1f;
+	public bool useClipAgePriority = false;
 	
 	public bool limitPolyphony = false;
 	public int voiceLimitCount = 1;

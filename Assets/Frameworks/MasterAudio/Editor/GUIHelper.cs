@@ -27,7 +27,8 @@ public static class GUIHelper {
 		ShiftUp,
 		ShiftDown,
 		Play,
-		Stop
+		Stop,
+		Rename
 	}
 
 	public static void ShowHeaderTexture(Texture tex) {
@@ -48,11 +49,37 @@ public static class GUIHelper {
 		}
 	}
 
-	public static bool AddDeleteIcon(MasterAudio sounds) {
+	public static DTFunctionButtons AddCustomEventDeleteIcon(bool showRenameButton) {
+		GUI.contentColor = Color.green;
+		
+		var shouldRename = false;
+		if (showRenameButton) {
+			shouldRename = GUILayout.Button(new GUIContent("Rename", "Click to rename Custom Event"), EditorStyles.toolbarButton, GUILayout.MaxWidth(50));
+		}
+		
+		var shouldDelete = GUILayout.Button(new GUIContent("Delete", "Click to delete Custom Event"), EditorStyles.toolbarButton, GUILayout.MaxWidth(50));
+		GUI.contentColor = Color.white;
+		
+		if (shouldDelete) {
+			return DTFunctionButtons.Remove;
+		}
+		if (shouldRename) {
+			return DTFunctionButtons.Rename;
+		}
+		
+		return DTFunctionButtons.None;
+	}
+	
+	public static bool AddDeleteIcon(MasterAudio sounds, string itemName) {
 		var deleteIcon = sounds.deleteTexture;
-		return GUILayout.Button(new GUIContent(deleteIcon, "Click to delete Duck Sound"), EditorStyles.toolbarButton, GUILayout.MaxWidth(30));
+		return GUILayout.Button(new GUIContent(deleteIcon, "Click to delete " + itemName), EditorStyles.toolbarButton, GUILayout.MaxWidth(30));
 	}
 
+	public static bool AddDynamicDeleteIcon(DynamicSoundGroupCreator creator, string itemName) {
+		var deleteIcon = creator.deleteTexture;
+		return GUILayout.Button(new GUIContent(deleteIcon, "Click to delete " + itemName), EditorStyles.toolbarButton, GUILayout.MaxWidth(30));
+	}
+	
 	public static JukeboxButtons AddJukeboxIcons(MasterAudio sounds) {
 		JukeboxButtons buttonPressed = JukeboxButtons.None;
 		
@@ -100,6 +127,57 @@ public static class GUIHelper {
 		return buttonPressed;
 	}
 	
+	public static DTFunctionButtons AddDynamicGroupButtons(DynamicSoundGroupCreator creator) {
+		GUIContent deleteIcon;
+		GUIContent settingsIcon;
+		GUIContent previewIcon;
+		GUIContent stopPreviewIcon;
+		
+		if (creator.deleteTexture != null) {
+			deleteIcon = new GUIContent(creator.deleteTexture, "Click to delete Group");
+		} else {
+			deleteIcon = new GUIContent("Delete", "Click to delete Group");
+		}
+		
+		if (creator.settingsTexture != null) {
+			settingsIcon = new GUIContent(creator.settingsTexture, "Click to edit Group");
+		} else {
+			settingsIcon = new GUIContent("Edit", "Click to edit Group");
+		}
+		
+		if (creator.playTexture != null) {
+			previewIcon = new GUIContent(creator.playTexture, "Click to preview Group");
+		} else {
+			previewIcon = new GUIContent("Preview", "Click to preview Group");
+		}
+
+		if (creator.stopTrackTexture != null) {
+			stopPreviewIcon = new GUIContent(creator.stopTrackTexture, "Click to stop previewing Group");
+		} else {
+			stopPreviewIcon = new GUIContent("End Preview", "Click to stop previewing Group");
+		}
+		
+        if (GUILayout.Button(settingsIcon, EditorStyles.toolbarButton)) {
+			return DTFunctionButtons.Go;
+		}
+	
+		if (GUILayout.Button(previewIcon, EditorStyles.toolbarButton)) {
+			return DTFunctionButtons.Play;
+		}
+
+		if (GUILayout.Button(stopPreviewIcon, EditorStyles.toolbarButton)) {
+			return DTFunctionButtons.Stop;			
+		}
+
+		if (!Application.isPlaying) {
+			if (GUILayout.Button(deleteIcon, EditorStyles.toolbarButton)) {				
+				return DTFunctionButtons.Remove;
+			}
+		}
+		
+		return DTFunctionButtons.None;
+	}
+	
 	public static DTFunctionButtons AddMixerBusButtons(GroupBus gb, MasterAudio sounds) {
 		var deleteIcon = sounds.deleteTexture;
 		
@@ -137,6 +215,30 @@ public static class GUIHelper {
 			return DTFunctionButtons.Mute;
 		}
 
+		return DTFunctionButtons.None;
+	}
+
+	public static DTFunctionButtons AddDynamicVariationButtons(DynamicGroupVariation _variation) {
+		if (GUILayout.Button(new GUIContent(_variation.playTexture, "Click to preview Variation"), EditorStyles.toolbarButton, GUILayout.Width(40))) {
+			return DTFunctionButtons.Play;
+		}
+
+		if (GUILayout.Button(new GUIContent(_variation.stopTrackTexture, "Click to stop audio preview"), EditorStyles.toolbarButton, GUILayout.Width(40))) {
+			return DTFunctionButtons.Stop;
+		}
+		
+		return DTFunctionButtons.None;
+	}
+	
+	public static DTFunctionButtons AddDynamicGroupButtons(DynamicSoundGroup _group) {
+		if (GUILayout.Button(new GUIContent(_group.playTexture, "Click to preview Variation"), EditorStyles.toolbarButton, GUILayout.Width(40))) {
+			return DTFunctionButtons.Play;
+		}
+
+		if (GUILayout.Button(new GUIContent(_group.stopTrackTexture, "Click to stop audio preview"), EditorStyles.toolbarButton, GUILayout.Width(40))) {
+			return DTFunctionButtons.Stop;
+		}
+		
 		return DTFunctionButtons.None;
 	}
 	
@@ -390,6 +492,12 @@ public static class GUIHelper {
 		EditorGUILayout.LabelField(errorText, EditorStyles.toolbarButton);
 		GUI.color = Color.white;
 	}
+
+	public static void ShowLargeBarAlert(string errorText) {
+		GUI.color = Color.yellow;
+		EditorGUILayout.LabelField(errorText, EditorStyles.toolbarButton);
+		GUI.color = Color.white;
+	}
 	
 	public static void ShowAlert(string text) {
 		if (Application.isPlaying) {
@@ -400,14 +508,6 @@ public static class GUIHelper {
 		}
 	}
 
-	public static void RepaintIfUndoOrRedo(Editor editor) {
-		if (Event.current.type == EventType.ValidateCommand) {
-			if (Event.current.commandName == "UndoRedoPerformed") {
-				editor.Repaint();
-			}
-		}
-	}
-	
 	public static string GetResourcePath(AudioClip audioClip) {
 		var fullPath = AssetDatabase.GetAssetPath(audioClip);
 		var index = fullPath.ToLower().IndexOf("/resources/");
@@ -423,5 +523,13 @@ public static class GUIHelper {
 			shortPath = shortPath.Substring(0, dotIndex);
 		}
 		return shortPath;
+	}
+	
+	private static PrefabType GetPrefabType(Object gObject) {
+		return PrefabUtility.GetPrefabType(gObject);
+	}
+	
+	public static bool IsPrefabInProjectView(Object gObject) {
+		return GetPrefabType(gObject) == PrefabType.Prefab;
 	}
 }

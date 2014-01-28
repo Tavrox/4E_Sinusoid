@@ -363,7 +363,7 @@ public class Walker : Enemy {
 		if(other.gameObject.CompareTag("Player")) 
 		{
 			AttackSound.playSound();
-			GameEventManager.TriggerGameOver();
+			GameEventManager.TriggerGameOver(gameObject);
 			chasingPlayer = false;
 		}
 	}

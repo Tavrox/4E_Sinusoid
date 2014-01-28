@@ -4,13 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 [AddComponentMenu("Dark Tonic/Master Audio/EventSounds")]
-public class EventSounds : MonoBehaviour {
+public class EventSounds : MonoBehaviour, ICustomEventReceiver {
 	public bool showGizmo = true;
 	public MasterAudio.SoundSpawnLocationMode soundSpawnMode = MasterAudio.SoundSpawnLocationMode.CallerLocation;
 	public bool disableSounds = false;
 	public bool hideUnused = false;
 	public bool showPoolManager = false;
-
+	public bool logMissingEvents = true;
+	
 	public enum EventType {
 		OnStart,
 		OnVisible,
@@ -27,7 +28,8 @@ public class EventSounds : MonoBehaviour {
 		OnCollision2D,
 		OnTriggerEnter2D,
 		OnTriggerExit2D,
-		OnParticleCollision
+		OnParticleCollision,
+		UserDefinedEvent
 	}
 	
 	public enum VariationType {
@@ -70,6 +72,7 @@ public class EventSounds : MonoBehaviour {
 	public AudioEvent triggerEnter2dSound;
 	public AudioEvent triggerExit2dSound;
 	public AudioEvent particleCollisionSound;
+	public List<AudioEvent> userDefinedSounds = new List<AudioEvent>();
 	
 	public bool useStartSound = false;
 	public bool useVisibleSound = false;
@@ -91,9 +94,11 @@ public class EventSounds : MonoBehaviour {
 	private bool isVisible;
 	
 	private Transform trans;
+	private GameObject go;
 	
 	void Awake() {
 		this.trans = this.transform;
+		this.go = this.gameObject;
 		this.SpawnedOrAwake();
 	}
 	
@@ -102,6 +107,8 @@ public class EventSounds : MonoBehaviour {
 	}
 	
 	void Start() {
+		CheckForIllegalCustomEvents();
+
 		if (this.useStartSound) {
 			PlaySound(startSound, EventType.OnStart);
 		}
@@ -122,12 +129,16 @@ public class EventSounds : MonoBehaviour {
 	}
 	
 	void OnEnable() {
+		RegisterReceiver();
+		
 		if (this.useEnableSound) {
 			PlaySound(enableSound, EventType.OnEnable);
 		}
 	}
 	
 	void OnDisable() {
+		UnregisterReceiver();
+		
 		if (!this.useDisableSound || MasterAudio.AppIsShuttingDown) {
 			return;
 		}
@@ -307,10 +318,6 @@ public class EventSounds : MonoBehaviour {
 			return null;
 		}
 		
-		#if UNITY_3_0 || UNITY_3_1 || UNITY_3_2 || UNITY_3_3 || UNITY_3_4 || UNITY_3_5
-		aEvent.delaySound = 0f;
-		#endif
-		
 		float volume = aEvent.volume;
 		string sType = aEvent.soundType;
 		float? pitch = aEvent.pitch;
@@ -339,10 +346,10 @@ public class EventSounds : MonoBehaviour {
 		            switch (soundSpawnModeToUse)
 		            {
 		                case MasterAudio.SoundSpawnLocationMode.CallerLocation:
-		                    soundPlayed = MasterAudio.PlaySound3D(sType, this.trans, false, volume, pitch, aEvent.delaySound, variationName);
+		                    soundPlayed = MasterAudio.PlaySound3DAtTransform(sType, this.trans, volume, pitch, aEvent.delaySound, variationName);
 		                    break;
 		                case MasterAudio.SoundSpawnLocationMode.AttachToCaller:
-		                    soundPlayed = MasterAudio.PlaySound3D(sType, this.trans, true, volume, pitch, aEvent.delaySound, variationName);
+		                    soundPlayed = MasterAudio.PlaySound3DFollowTransform(sType, this.trans, volume, pitch, aEvent.delaySound, variationName);
 		                    break;
 		                case MasterAudio.SoundSpawnLocationMode.MasterAudioLocation:
 		                    soundPlayed = MasterAudio.PlaySound(sType, volume, pitch, aEvent.delaySound, variationName);
@@ -552,6 +559,23 @@ public class EventSounds : MonoBehaviour {
 				}
 
 				break;
+			case MasterAudio.EventSoundFunctionType.CustomEventControl:
+				soundPlayed = new PlaySoundResult() {	
+					ActingVariation = null,
+					SoundPlayed = false,
+					SoundScheduled = false
+				};
+				
+				if (eType == EventType.UserDefinedEvent) {
+					Debug.LogError("Custom Event Receivers cannot fire events. Occured in Transform '" + this.name + "'.");
+					break;
+				}
+				switch (aEvent.currentCustomEventCommand) {
+					case MasterAudio.CustomEventCommand.FireEvent:
+						MasterAudio.FireCustomEvent(aEvent.customEventName);
+						break;
+				}
+				break;
 		}
 		
 		if (aEvent.emitParticles && soundPlayed != null && (soundPlayed.SoundPlayed || soundPlayed.SoundScheduled)) {
@@ -560,4 +584,120 @@ public class EventSounds : MonoBehaviour {
 		
 		return soundPlayed;
 	}
+	
+	private void LogIfCustomEventMissing(AudioEvent aEvent) {
+ 		if (!logMissingEvents) {
+  	       return;
+        }
+		
+		if (aEvent.isCustomEvent) {
+			if (!aEvent.customSoundActive || string.IsNullOrEmpty(aEvent.customEventName)) {
+				return;
+			}
+		} else {
+			if (aEvent.currentSoundFunctionType != MasterAudio.EventSoundFunctionType.CustomEventControl) {
+				return;
+			}
+		}
+
+		string customEventName = aEvent.customEventName;
+		if (!MasterAudio.CustomEventExists(customEventName)) {
+			MasterAudio.LogWarning("Transform '" + this.name + "' is set up to receive or fire Custom Event '" + customEventName + "', which does not exist in Master Audio.");
+		}
+	}
+
+	#region ICustomEventReceiver methods
+	public void CheckForIllegalCustomEvents() {
+		if (useStartSound) {
+			LogIfCustomEventMissing(startSound);
+		}
+		if (useVisibleSound) {
+			LogIfCustomEventMissing(visibleSound);
+		}
+		if (useInvisibleSound) {
+			LogIfCustomEventMissing(invisibleSound);
+		}
+		if (useCollisionSound) {
+			LogIfCustomEventMissing(collisionSound);
+		}
+		if (useTriggerEnterSound) {
+			LogIfCustomEventMissing(triggerSound);
+		}
+		if (useTriggerExitSound) {
+			LogIfCustomEventMissing(triggerExitSound);
+		}
+		if (useMouseEnterSound) {
+			LogIfCustomEventMissing(mouseEnterSound);
+		}
+		if (useMouseClickSound) {
+			LogIfCustomEventMissing(mouseClickSound);
+		}
+		if (useSpawnedSound) {
+			LogIfCustomEventMissing(spawnedSound);
+		}
+		if (useDespawnedSound) {
+			LogIfCustomEventMissing(despawnedSound);
+		}
+		if (useEnableSound) {
+			LogIfCustomEventMissing(enableSound);
+		}
+		if (useDisableSound) {
+			LogIfCustomEventMissing(disableSound);
+		}
+		if (useCollision2dSound) {
+			LogIfCustomEventMissing(collision2dSound);
+		}
+		if (useTriggerEnter2dSound) {
+			LogIfCustomEventMissing(triggerEnter2dSound);
+		}
+		if (useTriggerExit2dSound) {
+			LogIfCustomEventMissing(triggerExit2dSound);
+		}
+		if (useParticleCollisionSound) {
+			LogIfCustomEventMissing(particleCollisionSound);
+		}
+
+		for (var i = 0; i <  userDefinedSounds.Count; i++) {
+			var custEvent = userDefinedSounds[i];
+
+			LogIfCustomEventMissing(custEvent);
+		}
+	}
+
+	public void ReceiveEvent(string customEventName) {
+		for (var i = 0; i < userDefinedSounds.Count; i++) {
+			var userDefined = userDefinedSounds[i];
+			if (!userDefined.customSoundActive || string.IsNullOrEmpty(userDefined.customEventName)) {
+				continue;
+			}
+			
+			if (userDefined.customEventName.Equals(customEventName)) {
+				PlaySound(userDefined, EventType.UserDefinedEvent);
+			}
+		}
+	}
+	
+	public bool SubscribesToEvent(string customEventName) {
+		for (var i = 0; i < userDefinedSounds.Count; i++) {
+			var custom = userDefinedSounds[i];
+			if (custom.customSoundActive && !string.IsNullOrEmpty(custom.customEventName) && custom.customEventName.Equals(customEventName)) {
+				return true;
+			}
+		}
+	
+		return false;
+	}
+
+	public void RegisterReceiver() {
+		if (userDefinedSounds.Count > 0) {
+			MasterAudio.AddCustomEventReceiver(this, go);
+		}
+	}
+	
+	public void UnregisterReceiver() {
+		if (userDefinedSounds.Count > 0) {
+			MasterAudio.RemoveCustomEventReceiver(this);
+		}
+	}
+	#endregion
 }

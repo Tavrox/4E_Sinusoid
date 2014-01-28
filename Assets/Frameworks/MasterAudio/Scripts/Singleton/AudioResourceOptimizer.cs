@@ -22,7 +22,7 @@ public static class AudioResourceOptimizer {
 		var	resAudioClip = Resources.Load(songResourceName) as AudioClip;
 
 		if (resAudioClip == null) {
-			MasterAudio.LogMissingSoundFile("Resource file '" + songResourceName + "' could not be located from Playlist '" + playlistName + "'.");
+			MasterAudio.LogWarning("Resource file '" + songResourceName + "' could not be located from Playlist '" + playlistName + "'.");
 			return null;
 		}
 		
@@ -45,7 +45,7 @@ public static class AudioResourceOptimizer {
 		var	resAudioClip = Resources.Load(clipName) as AudioClip;
 
 		if (resAudioClip == null) {
-			MasterAudio.LogMissingSoundFile("Resource file '" + clipName + "' could not be located.");
+			MasterAudio.LogWarning("Resource file '" + clipName + "' could not be located.");
 			return;
 		}
 		

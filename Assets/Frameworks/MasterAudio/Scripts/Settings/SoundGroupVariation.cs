@@ -28,13 +28,20 @@ public class SoundGroupVariation : MonoBehaviour
     private AudioLowPassFilter lpFilter;
     private AudioReverbFilter reverbFilter;
     private AudioChorusFilter chorusFilter;
+    private bool isWaitingForDelay = false;
 
     public delegate void SoundFinishedEventHandler();
+
+	/// <summary>
+    /// Subscribe to this event to be notified when the sound stops playing.
+    /// </summary>
     public event SoundFinishedEventHandler SoundFinished;
 	
 	private Transform trans;
 	private Transform objectToFollow = null;
 	private MasterAudioGroup parentGroupScript;
+	private int timesLocationUpdated = 0;
+	private bool attachToSource = false;
 	
     public class PlaySoundParams
     {
@@ -122,6 +129,7 @@ public class SoundGroupVariation : MonoBehaviour
     public void Play(float? pitch, float maxVolume, PlaySoundParams playParams = null)
     {
         SoundFinished = null; // clear it out so subscribers don't have to clean up
+        isWaitingForDelay = false;
         playSndParams = playParams;
 
         // compute pitch
@@ -150,7 +158,8 @@ public class SoundGroupVariation : MonoBehaviour
         }
 
         StopAllCoroutines();
-
+		timesLocationUpdated = 0;
+		
         if (!_audio.isPlaying && _audio.time > 0f)
         {
             // paused. Do nothing except Play
@@ -170,11 +179,29 @@ public class SoundGroupVariation : MonoBehaviour
 		ParentGroup.AddActiveAudioSourceId(this);
 		
         StartCoroutine(DetectSoundFinished(playParams.delaySoundTime));
-		if (playParams.attachToSource) {
+		
+		attachToSource = false;
+		
+		bool useClipAgePriority = MasterAudio.Instance.prioritizeOnDistance && (MasterAudio.Instance.useClipAgePriority || ParentGroup.useClipAgePriority);
+		if (playParams.attachToSource || useClipAgePriority) {
+			attachToSource = playParams.attachToSource;
 			StartCoroutine(FollowSoundMaker());
 		}
     }
-
+	
+    /// <summary>
+    /// This method allows you to jump to a specific time in an already playing or just triggered Audio Clip.
+    /// </summary>
+    /// <param name="timeToJumpTo">The time in seconds to jump to.</param>
+	public void JumpToTime(float timeToJumpTo) {
+        if (!audio.isPlaying || playSndParams == null)
+        {
+            return;
+        }
+		
+		audio.time = timeToJumpTo;
+	}
+	
     /// <summary>
     /// This method allows you to adjust the volume of an already playing clip, accounting for bus volume, mixer volume and group volume.
     /// </summary>
@@ -222,7 +249,7 @@ public class SoundGroupVariation : MonoBehaviour
     /// </summary>
     public void Stop(bool stopEndDetection = false)
     {
-        if (stopEndDetection)
+        if (stopEndDetection || isWaitingForDelay)
         {
             curDetectEndMode = DetectEndMode.None; // turn off the chain loop endless repeat
         }
@@ -410,19 +437,32 @@ public class SoundGroupVariation : MonoBehaviour
         curFadeMode = FadeMode.None;
     }
 	
-	private void UpdateAudioLocation() {
-		if (objectToFollow != null) {
+	private void UpdateAudioLocationAndPriority(bool rePrioritize, bool updateLocation) {
+		// update location
+		if (updateLocation && objectToFollow != null) {
 			this.trans.position = objectToFollow.position;
 		} 
+		
+		// re-set priority
+		if (!MasterAudio.Instance.prioritizeOnDistance || !rePrioritize) {
+			return;
+		}
+		
+		timesLocationUpdated++;
+
+		if (timesLocationUpdated > MasterAudio.Instance.rePrioritizeEverySecIndex) {
+			AudioPrioritizer.Set3dPriority(_audio);
+			timesLocationUpdated = 0;
+		}
 	}
 	
 	private IEnumerator FollowSoundMaker() {
-		UpdateAudioLocation();
+		UpdateAudioLocationAndPriority(false, attachToSource);
 
 		while (curDetectEndMode == DetectEndMode.DetectEnd) {
 			yield return new WaitForSeconds(MasterAudio.INNER_LOOP_CHECK_INTERVAL);
 			
-			UpdateAudioLocation();
+			UpdateAudioLocationAndPriority(true, attachToSource);
 		}
 	}
 	
@@ -430,7 +470,14 @@ public class SoundGroupVariation : MonoBehaviour
     {
         if (delaySound > 0f)
         {
+            isWaitingForDelay = true;
             yield return new WaitForSeconds(delaySound);
+            isWaitingForDelay = false;
+        }
+		
+        if (curDetectEndMode != DetectEndMode.DetectEnd)
+        {
+            yield break;
         }
 		
         _audio.Play();
@@ -456,13 +503,23 @@ public class SoundGroupVariation : MonoBehaviour
 
         if (playSnd != null && playSnd.isChainLoop)
         {
+			var rndDelay = playSnd.delaySoundTime;
+			if (ParentGroup.chainLoopDelayMin > 0f || ParentGroup.chainLoopDelayMax > 0f) {
+				rndDelay = UnityEngine.Random.Range(ParentGroup.chainLoopDelayMin, ParentGroup.chainLoopDelayMax);
+			}
+			
+			// cannot use "AndForget" methods! Chain loop needs to check the status.
             if (playSnd.attachToSource || playSnd.sourceTrans != null)
             {
-                MasterAudio.PlaySound3D(playSnd.soundType, playSnd.sourceTrans, playSnd.attachToSource, playSnd.volumePercentage, playSnd.pitch, playSnd.delaySoundTime);
+                if (playSnd.attachToSource) {
+					MasterAudio.PlaySound3DFollowTransform(playSnd.soundType, playSnd.sourceTrans, playSnd.volumePercentage, playSnd.pitch, rndDelay);
+				} else {
+					MasterAudio.PlaySound3DAtTransform(playSnd.soundType, playSnd.sourceTrans, playSnd.volumePercentage, playSnd.pitch, rndDelay);
+				}
             }
             else
             {
-                MasterAudio.PlaySound(playSnd.soundType, playSnd.volumePercentage, playSnd.pitch, playSnd.delaySoundTime);
+                MasterAudio.PlaySound(playSnd.soundType, playSnd.volumePercentage, playSnd.pitch, rndDelay);
             }
         }
     }

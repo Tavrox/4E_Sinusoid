@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FESound : MonoBehaviour {
 
-	public MasterAudioGroup SoundGroup;
+	public DynamicSoundGroup SoundGroup;
 	[Range (0,10f)] public float Delay = 0f;
 	[Range (0,1f)] public float Volume = 1f;
 	[Range (0,1f)] public float Pitch = 1f;
@@ -17,7 +17,7 @@ public class FESound : MonoBehaviour {
 	{
 		if (SoundGroup == null)
 		{
-			Debug.LogWarning("the sound group " + gameObject.transform.parent.transform.parent.gameObject.name + "/" +  gameObject.transform.parent.gameObject.name + "/" + gameObject.name + " hasn't been attributed");
+//			Debug.LogWarning("the sound group " + gameObject.transform.parent.transform.parent.gameObject.name + "/" +  gameObject.transform.parent.gameObject.name + "/" + gameObject.name + " hasn't been attributed");
 		}
 	}
 
@@ -125,14 +125,6 @@ public class FESound : MonoBehaviour {
 //		Debug.Log("ObjPos>>Trackpos" + Vector2.Distance(thisObjPos, posToTrack));
 //		Debug.Log("Ratio" + distanceToPlayer);
 	}
-
-
-
-
-
-
-
-
 
 
 

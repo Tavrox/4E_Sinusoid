@@ -24,10 +24,10 @@ public static class GameEventManager {
 		}
 	}
 
-	public static void TriggerGameOver(){
+	public static void TriggerGameOver(GameObject _killer){
 		if(GameOver != null && state != GameState.GameOver)
 		{
-			Debug.LogWarning("GAMEOVER");
+			Debug.LogWarning("GAMEOVER " + _killer.name );
 			state = GameState.GameOver;
 			GameOver();
 		}

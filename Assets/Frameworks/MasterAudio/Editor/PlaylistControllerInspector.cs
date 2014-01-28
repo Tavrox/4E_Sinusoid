@@ -93,11 +93,11 @@ public class PlaylistControllerInspector : Editor {
 		
 		GUIHelper.ShowColorWarning("*Note: auto advance will not advance past a looped track.");
 
-		GUIHelper.RepaintIfUndoOrRedo(this);
-		
 		if (GUI.changed) {
 			EditorUtility.SetDirty(target);
 		}
+		
+		this.Repaint();
 		
 		//DrawDefaultInspector();
 	}

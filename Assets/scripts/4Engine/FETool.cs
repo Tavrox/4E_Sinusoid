@@ -7,8 +7,9 @@ public class FETool : MonoBehaviour {
 	{
 		GameObject result = GameObject.Find(_go.name + "/" + _fetch);
 		if (result == null)
-		{Debug.LogWarning("The object "+  _fetch + " couldn't be found.");
-			return new GameObject(_fetch + "NOTFOUND");
+		{
+			Debug.LogWarning("The object "+  _fetch + " couldn't be found.");
+//			return new GameObject(_fetch + "NOTFOUND");
 		}
 		return result;
 	}

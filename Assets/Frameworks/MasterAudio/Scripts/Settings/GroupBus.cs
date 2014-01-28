@@ -10,4 +10,5 @@ public class GroupBus {
 	public bool isSoloed = false;
 	public bool isMuted = false;
 	public int voiceLimit = -1;
+	public bool isExisting = false; // for Dynamic Sound Group - referenced Buses
 }
