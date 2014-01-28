@@ -19,7 +19,6 @@ public class Turret : LevelBrick {
 	public float turnRate = 0.1f;
 	
 	public FESound ShootSound;
-	public FESound ScanSound;
 	public FESound IdleSound;
 
 	// Use this for initialization
