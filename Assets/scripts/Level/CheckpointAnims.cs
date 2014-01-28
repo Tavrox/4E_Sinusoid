@@ -5,18 +5,18 @@ using System.Collections;
 public class CheckpointAnims : MonoBehaviour {
 		
 	private OTAnimatingSprite animWaterfall, animWater, animGround;
-	private OTAnimatingSprite[] spritesTab;
+	private Transform[] spriteParentsTab;
 
 	// Use this for initialization
 	void Start () {
 		//playAnimDef();
-		spritesTab = gameObject.GetComponentsInChildren<OTAnimatingSprite>();
+		spriteParentsTab = gameObject.GetComponentsInChildren<Transform>();
 		//animWaterfall = animWater = animGround = spritesTab[0];
 
-		foreach (OTAnimatingSprite sprite in spritesTab) {
-			if(sprite.name=="spriteCPWaterFall") animWaterfall = sprite;
-			if(sprite.name=="spriteCPWater") animWater = sprite;
-			if(sprite.name=="spriteCPGround") animGround = sprite;
+		foreach (Transform spriteParent in spriteParentsTab) {
+			if(spriteParent.name=="spriteParentCPWaterFall") animWaterfall = spriteParent.GetComponentInChildren<OTAnimatingSprite>();
+			if(spriteParent.name=="spriteParentCPWater") animWater = spriteParent.GetComponentInChildren<OTAnimatingSprite>();
+			if(spriteParent.name=="spriteParentCPGround") animGround = spriteParent.GetComponentInChildren<OTAnimatingSprite>();
 		}
 		animWaterfall.Play("waterfall");
 		animWater.Play("water");

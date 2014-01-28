@@ -223,7 +223,7 @@ public class Player : Character {
 			shootLeft = false;
 			if(!blockCoroutine && grounded) StartCoroutine("waitB4FootStep");
 		}
-		if ((Input.GetKeyDown("down") || Input.GetKeyDown(KeyCode.S))) {
+		if ((Input.GetKeyDown("down") || Input.GetKeyDown(KeyCode.S)) && !specialCast && grounded) {
 
 			if(isGrab) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");isGrab = false;}
 			else {
@@ -235,7 +235,7 @@ public class Player : Character {
 				}
 			}
 		}
-		if ((Input.GetKeyDown("up") || Input.GetKeyDown(KeyCode.Z))) {
+		if ((Input.GetKeyDown("up") || Input.GetKeyDown(KeyCode.Z)) && !specialCast && grounded) {
 			if(isGrab) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");isGrab = false;}
 			isJump = true; 
 			grounded = false;
