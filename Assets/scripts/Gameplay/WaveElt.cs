@@ -193,6 +193,9 @@ public class WaveElt : MonoBehaviour {
 	public void setSin(float value) {
 		_sin = _sinIni = value;
 	}
+	public void setAlpha(float value) {
+		_alpha = value;
+	}
 	public void setPosition(Vector3 vector) {
 		myTransform.parent.transform.position = new Vector3(vector.x, vector.y, vector.z);
 	}
@@ -274,7 +277,7 @@ public class WaveElt : MonoBehaviour {
 			_alpha = 0f;
 			endLife();
 		}
-		if(other.gameObject.CompareTag("Enemy") && !callerObj.CompareTag("Enemy")) {
+		if(other.gameObject.CompareTag("Enemy") && !callerObj.CompareTag("Enemy") && callerObj.name!="spriteParentDrop") {
 			if(callerObj.CompareTag("Pebble") && callerObj.GetComponent<Pebble>().getCallerObject().CompareTag("Player")) {
 				//print ("I HEAR A PLAYER'S PEBBLE");
 				pebblePositionSave.transform.position = new Vector3(callerObj.gameObject.transform.position.x, callerObj.gameObject.transform.position.y, callerObj.gameObject.transform.position.z);

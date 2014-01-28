@@ -322,8 +322,9 @@ public class Player : Character {
 	}
 	IEnumerator queueWaveState (string state, WaveCreator soundEmitt) {
 		yield return new WaitForSeconds(0.01f);
+		soundEmitt.setAlpha();
 		//print(state+" "+soundEmitt.getAlpha()+" "+soundEmitt.name);
-		if(soundEmitt.getAlpha() <= 1f) {
+		if(soundEmitt.getAlpha() <= 0f) {
 			switch (state) {
 			case "ToWalk":
 				soundEmitt.circleSprintToWalk();
