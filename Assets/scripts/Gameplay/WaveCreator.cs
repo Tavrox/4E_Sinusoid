@@ -82,13 +82,13 @@ public class WaveCreator : MonoBehaviour {
 	public void circleGroundedToFall () {
 		//print ("setFALL");
 		foreach (WaveElt light in lights) {
-			//light.setFallState();
+			light.setFallState();
 		}
 	}
 	public void circleFallToGrounded () {
 		//print ("setGROUND");
 		foreach (WaveElt light in lights) {
-			//light.setGroundedState();
+			light.setGroundedState();
 		}
 	}
 	public float getLifeTime() {
@@ -96,6 +96,11 @@ public class WaveCreator : MonoBehaviour {
 	}
 	public float getAlpha() {
 		return lights[0].getAlpha();
+	}
+	public void setAlpha() {
+		foreach (WaveElt light in lights) {
+			light.setAlpha(0f);
+		}
 	}
 	public void setCharacterMoveOffset (float offsetValue) {
 		foreach (WaveElt light in lights) {

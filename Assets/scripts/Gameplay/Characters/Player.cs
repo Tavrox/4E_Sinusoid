@@ -223,7 +223,7 @@ public class Player : Character {
 			shootLeft = false;
 			if(!blockCoroutine && grounded) StartCoroutine("waitB4FootStep");
 		}
-		if ((Input.GetKeyDown("down") || Input.GetKeyDown(KeyCode.S))) {
+		if ((Input.GetKeyDown("down") || Input.GetKeyDown(KeyCode.S)) && !specialCast && grounded) {
 
 			if(isGrab) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");isGrab = false;}
 			else {
@@ -235,7 +235,7 @@ public class Player : Character {
 				}
 			}
 		}
-		if ((Input.GetKeyDown("up") || Input.GetKeyDown(KeyCode.Z))) {
+		if ((Input.GetKeyDown("up") || Input.GetKeyDown(KeyCode.Z)) && !specialCast && grounded) {
 			if(isGrab) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");isGrab = false;}
 			isJump = true; 
 			grounded = false;
@@ -322,8 +322,9 @@ public class Player : Character {
 	}
 	IEnumerator queueWaveState (string state, WaveCreator soundEmitt) {
 		yield return new WaitForSeconds(0.01f);
+		soundEmitt.setAlpha();
 		//print(state+" "+soundEmitt.getAlpha()+" "+soundEmitt.name);
-		if(soundEmitt.getAlpha() <= 1f) {
+		if(soundEmitt.getAlpha() <= 0f) {
 			switch (state) {
 			case "ToWalk":
 				soundEmitt.circleSprintToWalk();
