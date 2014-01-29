@@ -12,6 +12,7 @@ public class WaveCreator : MonoBehaviour {
 	//public Vector3 startPosition;
 	
 	private float angleUnitaire, rayon;
+	private bool testAlive;
 	private int nbObjectsToAdd;
 	private WaveElt instanceWaveElt;
 	public List<WaveElt> lights = new List<WaveElt>();
@@ -101,6 +102,16 @@ public class WaveCreator : MonoBehaviour {
 		foreach (WaveElt light in lights) {
 			light.setAlpha(0f);
 		}
+	}
+	public bool isActive() {
+		testAlive = false;
+		foreach (WaveElt light in lights) {
+			if(light.alive == true) {
+				testAlive = true;
+				break;
+			}
+		}
+		return testAlive;
 	}
 	public void setCharacterMoveOffset (float offsetValue) {
 		foreach (WaveElt light in lights) {

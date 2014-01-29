@@ -26,7 +26,7 @@ public class WaveElt : MonoBehaviour {
 	[Range(0.01f, 100)] public float enlargeRatioSpeed = 0.07f;
 	public float maximumRatio = 5f;
 	private Transform callerObj;
-	//public bool calledByCharacter;
+	public bool alive;
 
 	/** INSTRU-FALL VARIABLES **/
 	public float sprintSpeedCoeff = 2f, instruLifeTime = 8f, instruSpeedSound = 8f, instruProjDiameterIni = 1f, 
@@ -104,6 +104,7 @@ public class WaveElt : MonoBehaviour {
 		StopCoroutine("myUpdate");
 		StopCoroutine("reduceAlpha");
 		reducingAlpha = false;
+		alive = false;
 		gameObject.collider.isTrigger = false;
 		gameObject.collider.enabled=false;
 		_mySprite.GetComponent<OTSprite>().alpha = 0f;
@@ -121,6 +122,7 @@ public class WaveElt : MonoBehaviour {
 		StopCoroutine("reduceAlpha");
 		_alpha/*this.GetComponentInChildren<OTSprite>().alpha*/ = 0f;
 		enabled = true;
+		alive = true;
 		lightened = false;
 		reducingAlpha = false;
 //		if(callerObj.isLeft) waveXOffset = -callerObj.localScale.x/1.5f;
@@ -174,6 +176,7 @@ public class WaveElt : MonoBehaviour {
 	IEnumerator lightsOff() {
 		StopCoroutine("myUpdate");
 		ligthOffing = true;
+		alive = false;
 				//print ("*****beginLIGHTOFF");
 		yield return new WaitForSeconds(0.1f);
 		//print(instanceProj.aspectRatio);

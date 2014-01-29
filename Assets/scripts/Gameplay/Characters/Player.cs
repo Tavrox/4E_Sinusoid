@@ -319,9 +319,9 @@ public class Player : Character {
 	}
 	IEnumerator queueWaveState (string state, WaveCreator soundEmitt) {
 		yield return new WaitForSeconds(0.01f);
-		soundEmitt.setAlpha();
+		//soundEmitt.setAlpha();
 		//print(state+" "+soundEmitt.getAlpha()+" "+soundEmitt.name);
-		if(soundEmitt.getAlpha() <= 0f) {
+		if(soundEmitt.isActive()==false) {
 			switch (state) {
 			case "ToWalk":
 				soundEmitt.circleSprintToWalk();
@@ -343,7 +343,7 @@ public class Player : Character {
 	}
 	IEnumerator waitB4FallWave() { //Short Delay before the sprite actually touches the ground (edit when anim is finished)
 		blockFallWavesCorout = true;
-		yield return new WaitForSeconds(delayB4FallWaves);print(delayB4FallWaves);
+		yield return new WaitForSeconds(delayB4FallWaves);
 		if(!blockCoroutine && !grounded && !isGrab) StartCoroutine("footStep");
 		blockFallWavesCorout = false;
 	}
