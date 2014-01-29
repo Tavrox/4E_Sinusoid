@@ -224,6 +224,9 @@ public class WaveElt : MonoBehaviour {
 	public void setOffset (float value) {
 		offset = value;
 	}	
+	public void setSpeed(float newSpeed) {
+		speedSound = newSpeed;
+	}
 	public void setCallerObject (Transform obj) {
 		callerObj = obj;
 		//print (callerObj.name);
