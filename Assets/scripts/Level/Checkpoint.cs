@@ -7,8 +7,6 @@ public class Checkpoint : MonoBehaviour {
 	private LevelManager _LevMan;
 	public bool isActivated;
 
-	public FESound RespawnSound;
-	public FESound ReloadSound;
 	public FESound IdleSound;
 
 	// Use this for initialization
@@ -36,14 +34,6 @@ public class Checkpoint : MonoBehaviour {
 		}
 	}
 
-	public void playSoundRespawn()
-	{
-		RespawnSound.playSound();
-	}
-	public void playSoundReload()
-	{
-		ReloadSound.playSound();
-	}
 	public void playSoundIdle()
 	{
 		IdleSound.playDistancedSound();

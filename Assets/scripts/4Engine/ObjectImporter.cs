@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using System;
+using UnityEditor;
 
 public class ObjectImporter : MonoBehaviour {
 	
@@ -176,7 +177,7 @@ public class ObjectImporter : MonoBehaviour {
 					string childType = children.Attributes.GetNamedItem("type").Value;
 					if (Resources.Load(path + childType) != null)
 					{
-						GameObject _instance = Instantiate(Resources.Load(path + childType)) as GameObject;
+						GameObject _instance = PrefabUtility.InstantiatePrefab(Resources.Load(path + childType)) as GameObject ;
 						if (objectContainer.name != "BUG")
 						{ _instance.transform.parent = objectContainer.transform;}
 						float _posX = float.Parse(children.Attributes.GetNamedItem("x").Value) / 50f;
@@ -228,7 +229,7 @@ public class ObjectImporter : MonoBehaviour {
 						string childType = children.Attributes.GetNamedItem("type").Value;
 						if (Resources.Load(path + childType) != null)
 						{
-							GameObject _instance = Instantiate(Resources.Load(path + childType)) as GameObject;
+							GameObject _instance = PrefabUtility.InstantiatePrefab(Resources.Load(path + childType)) as GameObject ;
 							_instance.transform.parent = objectContainer.transform;
 							float _posX = float.Parse(children.Attributes.GetNamedItem("x").Value) + 50;
 							float _posY = float.Parse(children.Attributes.GetNamedItem("y").Value) - 50;

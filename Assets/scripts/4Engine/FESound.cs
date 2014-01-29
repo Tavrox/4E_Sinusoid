@@ -3,7 +3,7 @@ using System.Collections;
 
 public class FESound : MonoBehaviour {
 
-	public DynamicSoundGroup SoundGroup;
+	public MasterAudioGroup SoundGroup;
 	[Range (0,10f)] public float Delay = 0f;
 	[Range (0,1f)] public float Volume = 1f;
 	[Range (0,1f)] public float Pitch = 1f;
