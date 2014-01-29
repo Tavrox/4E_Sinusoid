@@ -27,13 +27,8 @@ public class Player : Character {
 
 	public FESound WalkSound;
 	public FESound RunSound;
-	public FESound PrepareRockThrowSound;
-	public FESound LaunchRockThrowSound;
 	public FESound InstruSound;
 	public FESound FallSound;
-	public FESound JumpSound;
-	public FESound StandUpSound;
-	public FESound HideSound;
 
 	[HideInInspector] public bool paused = false;
 	
@@ -41,7 +36,6 @@ public class Player : Character {
 	public override void Start () {
 		base.Start();
 
-		
 		GameEventManager.GameStart += GameStart;
 		GameEventManager.GameOver += GameOver;
 		GameEventManager.GamePause += GamePause;
@@ -56,6 +50,7 @@ public class Player : Character {
 			InvokeRepeating("playRunstepLeft",0f,RunSound.RepeatRate);
 			InvokeRepeating("playRunstepRight",WalkSound.Delay,RunSound.RepeatRate);
 		}
+
 
 		//Creating waves game objects
 		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesEmitter")) as GameObject; //footsteps wave 1
@@ -468,33 +463,13 @@ public class Player : Character {
 			RunSound.playLeftSound(onEnvironment);
 		}
 	}
-	private void playSoundPrepareRockThrow()
-	{
-
-	}
-	private void playSoundLaunchRockThrow()
-	{
-		
-	}
 	private void playSoundGrip()
 	{
 		
 	}
-	private void playSoundHide()
-	{
-		HideSound.playSound(onEnvironment);
-	}
 	private void playSoundInstru()
 	{
 		InstruSound.playSound();
-	}
-	private void playSoundStandUp()
-	{
-		StandUpSound.playSound(onEnvironment);
-	}
-	private void playSoundJump()
-	{
-		JumpSound.playSound(onEnvironment);
 	}
 	private void playSoundFall()
 	{
