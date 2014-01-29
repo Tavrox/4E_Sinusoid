@@ -51,15 +51,14 @@ public class TiledMapComponent : MonoBehaviour {
 	{
 		for (int i = 0; i < CollidersLayerName.Length; i++)
 		{
+			GameObject _parent = new GameObject(CollidersLayerName[i]);
+			_parent.transform.parent = gameObject.transform;
 			MapObjectLayer collisionLayer = (MapObjectLayer)tiledMap.GetLayer(CollidersLayerName[i]);
 			if (collisionLayer != null)
 			{
 				List<MapObject> colliders = collisionLayer.Objects;
 				foreach (MapObject collider in colliders)
 				{
-					print (collider.Name);
-					print (collisionLayer.Name);
-					Debug.Log(collider.MapObjectType);
 					switch (collider.MapObjectType)
 					{
 					case MapObjectType.Box :
@@ -68,13 +67,16 @@ public class TiledMapComponent : MonoBehaviour {
 						{
 						case ("GroundColl") :
 						{
-							tiledMap.GenerateBoxCollider(collider, CollidersZDepth[i], CollidersWidth[i]);
-							tiledMap.GeneratePebbleCollider(collider, CollidersZDepth[i], CollidersWidth[i]);
+							GameObject result = tiledMap.GenerateBoxCollider(collider, CollidersZDepth[i], CollidersWidth[i]);
+							result.transform.parent = _parent.transform;
+							GameObject pebResult = tiledMap.GeneratePebbleCollider(collider, CollidersZDepth[i], CollidersWidth[i]);
+							pebResult.transform.parent = _parent.transform;
 							break;
 						}
 						default :
 						{
-							tiledMap.GenerateSpecialCollider(collider, collisionLayer.Name, CollidersZDepth[i], CollidersWidth[i]);
+							GameObject result = tiledMap.GenerateSpecialCollider(collider, collisionLayer.Name, CollidersZDepth[i], CollidersWidth[i]);
+							result.transform.parent = _parent.transform;
 							break;
 						}
 						}

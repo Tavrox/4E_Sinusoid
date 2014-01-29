@@ -71,7 +71,7 @@ public class Character : MonoBehaviour
 	
 	// layer masks
 	protected int groundMask = 1 << 8 | 1 << 9; // Ground, Block
-	protected int platformMask = 1 << 9; //Block
+	protected int waveEltMask = 1 << 8; //Block
 	private float pfPassSpeed = 2.8f;
 	
 	public virtual void Awake()
@@ -188,13 +188,9 @@ public class Character : MonoBehaviour
 //		Debug.DrawLine( mypos , Vector3.down, Color.blue);
 		
 		//BLOCKED TO DOWN
-		if (Physics.Raycast(mypos, mypos+Vector3.down, out hitInfo, halfMyY, platformMask))
-		{
-			Debug.DrawLine(thisTransform.position, hitInfo.point, Color.black);
-			BlockedDown();
-		}
 		if (Physics.Raycast(mypos, Vector3.down, out hitInfo, halfMyY, groundMask))
 		{
+			Debug.DrawLine(thisTransform.position, hitInfo.point, Color.black);
 			BlockedDown();
 		}
 		else
@@ -215,9 +211,9 @@ public class Character : MonoBehaviour
 		}
 		
 		// Blocked on right
-		if( Physics.Raycast(mypos, Vector3.right, out hitInfo, halfMyX, groundMask) 
-			|| Physics.Raycast(mypos, new Vector3(1f,0.8f,0) , out hitInfo, halfMyX, groundMask)
-			|| Physics.Raycast(mypos, new Vector3(1f,-0.8f,0), out hitInfo, halfMyX, groundMask))
+		if( Physics.Raycast(mypos, Vector3.right, out hitInfo, halfMyX, waveEltMask) 
+		   || Physics.Raycast(mypos, new Vector3(1f,0.8f,0) , out hitInfo, halfMyX, waveEltMask)
+		   || Physics.Raycast(mypos, new Vector3(1f,-0.8f,0), out hitInfo, halfMyX, waveEltMask))
 		{
 			BlockedRight();
 			Debug.DrawRay(mypos, Vector3.right, Color.cyan);
@@ -228,9 +224,9 @@ public class Character : MonoBehaviour
 		}
 		
 		// Blocked on left
-		if(	Physics.Raycast(mypos, Vector3.left, out hitInfo, halfMyX, groundMask)
-			|| Physics.Raycast(mypos, new Vector3(-1f,0.8f,0), out hitInfo, halfMyX, groundMask)
-			|| Physics.Raycast(mypos, new Vector3(-1f,0.8f,0), out hitInfo, halfMyX, groundMask))
+		if(	Physics.Raycast(mypos, Vector3.left, out hitInfo, halfMyX, waveEltMask)
+		   || Physics.Raycast(mypos, new Vector3(-1f,0.8f,0), out hitInfo, halfMyX, waveEltMask)
+		   || Physics.Raycast(mypos, new Vector3(-1f,0.8f,0), out hitInfo, halfMyX, waveEltMask))
 		{
 			BlockedLeft();
 			Debug.DrawRay(mypos, Vector3.left, Color.yellow);
@@ -266,7 +262,7 @@ public class Character : MonoBehaviour
 		if (hitInfo.collider.GetComponent<Environment>() != null)
 		{rightEnvironment = hitInfo.collider.GetComponent<Environment>();}
 
-		if( isRight != null && rightEnvironment != null && rightEnvironment.typeList != Environment.types.wood && isCrounch == false)
+		if( isRight != null && rightEnvironment != null && rightEnvironment.typeList != Environment.types.wood)
 		{
 			if(facingDir == facing.Right || movingDir == moving.Right)
 			{
@@ -284,7 +280,7 @@ public class Character : MonoBehaviour
 		{leftEnvironment = hitInfo.collider.GetComponent<Environment>();}
 		if(facingDir == facing.Left || movingDir == moving.Left)
 		{
-			if( leftEnvironment != null && leftEnvironment.typeList != Environment.types.wood && isCrounch != true)
+			if( leftEnvironment != null && leftEnvironment.typeList != Environment.types.wood)
 			{
 				blockedLeft = true;
 				vectorMove.x = 0f;

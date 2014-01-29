@@ -504,10 +504,12 @@ namespace X_UniTMX
 			{
 				Environment _env = boxCollider.AddComponent<Environment>();
 				_env.typeList = Environment.types.wood;
+				boxCollider.layer = 9;
 			}
 			if (ColliderType == "DitchColl")
 			{
 				Ditch _ditch = boxCollider.AddComponent<Ditch>();
+				boxCollider.layer = 0;
 			}
 			if (ColliderType == "GrabColl")
 			{

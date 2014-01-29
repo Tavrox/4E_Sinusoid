@@ -1651,7 +1651,7 @@ public class MasterAudio : MonoBehaviour {
 		var ma = MasterAudio.Instance;
 		
 		if (MasterAudio.Instance.trans.FindChild(groupName) != null) {
-			Debug.LogError("Cannot add a new Sound Group named '" + groupName + "' because there is already a Sound Group of that name.");
+//			Debug.LogError("Cannot add a new Sound Group named '" + groupName + "' because there is already a Sound Group of that name.");
 			return null;
 		}
 		
