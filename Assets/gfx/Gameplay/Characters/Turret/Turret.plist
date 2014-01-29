@@ -7,7 +7,7 @@
             <key>Turret00idle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{5,5},{70,100}}</string>
+                <string>{{8,8},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -20,7 +20,7 @@
             <key>Turret01idle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{80,5},{70,100}}</string>
+                <string>{{90,8},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -33,7 +33,7 @@
             <key>Turret02idle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{155,5},{70,100}}</string>
+                <string>{{172,8},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -46,7 +46,7 @@
             <key>Turret03idle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{5,110},{70,100}}</string>
+                <string>{{8,120},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,7 +59,7 @@
             <key>Turret04idle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{80,110},{70,100}}</string>
+                <string>{{90,120},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -72,7 +72,7 @@
             <key>Turret05idle.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{155,110},{70,100}}</string>
+                <string>{{172,120},{70,100}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +85,7 @@
             <key>Turret06contract.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{5,215},{35,40}}</string>
+                <string>{{8,232},{35,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -98,7 +98,7 @@
             <key>Turret07contract.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{45,215},{35,40}}</string>
+                <string>{{55,232},{35,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -111,7 +111,7 @@
             <key>Turret08contract.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{85,215},{35,40}}</string>
+                <string>{{102,232},{35,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +124,7 @@
             <key>Turret09old.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{125,215},{35,40}}</string>
+                <string>{{149,232},{35,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +137,7 @@
             <key>Turret10old.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{165,215},{35,40}}</string>
+                <string>{{196,232},{35,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -150,7 +150,7 @@
             <key>Turret11deContract.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{205,215},{35,40}}</string>
+                <string>{{8,284},{35,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -163,7 +163,7 @@
             <key>Turret12deContract.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{5,260},{35,40}}</string>
+                <string>{{55,284},{35,40}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -176,7 +176,7 @@
             <key>Turret13shoot.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{45,260},{20,30}}</string>
+                <string>{{102,284},{20,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -189,7 +189,7 @@
             <key>Turret14shoot.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{70,260},{20,30}}</string>
+                <string>{{134,284},{20,30}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -202,7 +202,7 @@
             <key>Turret15projectile.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{95,260},{6,20}}</string>
+                <string>{{166,284},{6,20}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -222,7 +222,7 @@
             <key>size</key>
             <string>{256,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:2f0346d89337b9ed0f0665c512403ddf:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:75f48ace95330f97956960e84d881189:1/1$</string>
             <key>textureFileName</key>
             <string>Turret.png</string>
         </dict>
