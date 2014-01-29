@@ -408,10 +408,19 @@ public class Player : Character {
 		yield return new WaitForSeconds(InstruSound.Delay); //Cast time before playing the sound (the character has to take his intrument out of his ass)
 		takingInstr = false;
 		 //Cast time before playing the sound (the character has to take his intrument out of his ass)
-		if(first) {first=!first;StartCoroutine("specialCirclePlay",soundInstru1);/*soundInstru1.resetCircle();*/} //If it's the first time playing
-		else {first=!first;StartCoroutine("specialCirclePlay",soundInstru1);/*soundInstru2.resetCircle();*/} //If it's the second time playing (2 waves so that player can display both on screen if spamming music)
+		if(first) {first=!first;/*StartCoroutine("specialCirclePlay",soundInstru1);*/soundInstru1.resetCircle();} //If it's the first time playing
+		else {first=!first;/*StartCoroutine("specialCirclePlay",soundInstru2);*/soundInstru2.resetCircle();} //If it's the second time playing (2 waves so that player can display both on screen if spamming music)
 		//yield return new WaitForSeconds(soundInstru1.getLifeTime());
+		yield return new WaitForSeconds(0.8f);
+		soundInstru1.addSpeed(1f);soundInstru2.addSpeed(1f);
+		yield return new WaitForSeconds(0.5f);
+		soundInstru1.addSpeed(1f);soundInstru2.addSpeed(1f);
+		yield return new WaitForSeconds(0.3f);
+		soundInstru1.addSpeed(1f);soundInstru2.addSpeed(1f);
+		yield return new WaitForSeconds(0.3f);
+		soundInstru1.addSpeed(1f);soundInstru2.addSpeed(1f);
 		yield return new WaitForSeconds(2.75f);
+		soundInstru1.addSpeed(0.25f);soundInstru2.addSpeed(-4f);
 		StopCoroutine("specialCirclePlay");
 		specialCast = false; //Not playing anymore, can move again
 	}

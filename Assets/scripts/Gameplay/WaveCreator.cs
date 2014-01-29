@@ -103,6 +103,11 @@ public class WaveCreator : MonoBehaviour {
 			light.setAlpha(0f);
 		}
 	}
+	public void addSpeed(float multiplier) {
+		foreach (WaveElt light in lights) {
+			light.setSpeed(light.speedSound+multiplier);
+		}
+	}
 	public bool isActive() {
 		testAlive = false;
 		foreach (WaveElt light in lights) {
