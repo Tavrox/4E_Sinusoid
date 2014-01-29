@@ -51,7 +51,7 @@ public class Character : MonoBehaviour
 	public Environment leftEnvironment;
 	public Environment rightEnvironment;
 	
-	[Range (0,10)] 	public float 	moveVel = 3f, moveVelSprint = 5.7f;
+	[Range (0,10)] 	public float 	moveVel = 3f, moveVelSprint = 5.7f, moveVelJump = 5f, moveVelJumpSprint = 8f;
 	[Range (0,30)] 	public float 	jumpVel = 16f;
 	[Range (0,30)] 	private float 	jump2Vel = 14f;
 	[Range (1,2)] 	private int 		maxJumps = 1;
@@ -59,7 +59,7 @@ public class Character : MonoBehaviour
 	
 	[SerializeField] private int jumps = 0;
 	[SerializeField] private float gravityY;
-	[SerializeField] protected float moveVelINI;
+	[SerializeField] protected float moveVelINI, moveVelSprintINI;
 	[SerializeField] private float maxVelY = 50f;
 		
 	[SerializeField] protected RaycastHit hitInfo;
@@ -84,6 +84,7 @@ public class Character : MonoBehaviour
 	{
 		maxVelY = 19f;//fallVel;
 		moveVelINI = moveVel;
+		moveVelSprintINI = moveVelSprint;
 		vectorMove.y = 0;
 		halfMyX = GetComponentInChildren<Transform>().GetComponentInChildren<OTAnimatingSprite>().size.x * 0.5f - 0.5f;
 		halfMyY = GetComponentInChildren<Transform>().GetComponentInChildren<OTAnimatingSprite>().size.y * 0.5f + 0.2f;

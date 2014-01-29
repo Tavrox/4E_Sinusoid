@@ -262,6 +262,10 @@ public class Player : Character {
 				firstFalling = false;
 				//StopCoroutine("footStep");
 				playSoundFall();
+				
+				moveVelSprint = moveVelSprintINI;
+				if(isSprint) moveVel = moveVelSprint;
+				else moveVel = moveVelINI;
 				//cptWave = 1;
 				if(fallFast) {
 					fallFast = false;
@@ -301,6 +305,9 @@ public class Player : Character {
 				firstFalling = true;
 				delayB4FallWaves = 0.7f;
 				firstGrounded = false;
+				moveVelSprint = moveVelJumpSprint;
+				if(isSprint) moveVel = moveVelSprint;
+				else moveVel = moveVelJump;
 //				soundEmitt1.circleGroundedToFall();
 //				soundEmitt2.circleGroundedToFall();
 //				soundEmitt3.circleGroundedToFall();
