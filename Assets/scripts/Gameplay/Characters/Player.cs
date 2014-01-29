@@ -12,9 +12,10 @@ public class Player : Character {
 	private int cptWave=1, pebbleDirection = 1, pebbleMaxStrengh = 10;//cptWave = ID of the current displayed wave (from 1 to 3)| pebbleDirection = 1 or -1 -> right or left
 	private bool 	blockCoroutine, first, 		//block the footsteps coroutine|first instru wave or not
 					playerDirLeft, checkingGrabPosition, //player goes left or not (used for offsetting footwaves center point)
-					firstFalling,firstGrounded; //Check when player hits or leave the floor once
+					firstFalling,firstGrounded, //Check when player hits or leave the floor once
+					blockFallWavesCorout; 
 	private Pebble pebble; //Throwable pebble
-	private float powerPebble; //Throwing force added to the pebble after cast
+	private float powerPebble, delayB4FallWaves; //Throwing force added to the pebble after cast
 	private GameObject pebbleBar; //UI Bar to tell the player the power of his shoot
 	public float footStepDelay = 0.8f, footStepDelayFall = 0.4f, footStepDelaySprint = 0.4f;
 	public int pebbleCount = 1;
@@ -272,7 +273,8 @@ public class Player : Character {
 				//				soundEmitt3.circleFallToGrounded();
 				StopCoroutine("footStep");
 				StopCoroutine("waitB4FootStep");
-				blockCoroutine = false;
+				StopCoroutine("waitB4FallWave");
+				blockFallWavesCorout = blockCoroutine = false;
 				
 				StopCoroutine("queueWaveState");
 				if(isSprint) { 
@@ -297,6 +299,7 @@ public class Player : Character {
 				blockCoroutine = false;
 				footStepDelay=footStepDelayFall;
 				firstFalling = true;
+				delayB4FallWaves = 0.7f;
 				firstGrounded = false;
 //				soundEmitt1.circleGroundedToFall();
 //				soundEmitt2.circleGroundedToFall();
@@ -306,7 +309,7 @@ public class Player : Character {
 				StartCoroutine(queueWaveState("ToFall",soundEmitt2));
 				StartCoroutine(queueWaveState("ToFall",soundEmitt3));
 			}
-			StartCoroutine("waitB4FallWave");
+			if(!blockCoroutine && !blockFallWavesCorout && !isGrab) {/*StopCoroutine("waitB4FallWave");*/StartCoroutine("waitB4FallWave");}
 		}
 //		print (vectorMove.y);
 //		if(!grounded && !blockCoroutine) {/*footStepDelay=footStepDelayFall;StartCoroutine("waitB4FallWave");*/}
@@ -339,8 +342,10 @@ public class Player : Character {
 		}
 	}
 	IEnumerator waitB4FallWave() { //Short Delay before the sprite actually touches the ground (edit when anim is finished)
-		yield return new WaitForSeconds(0.7f);
+		blockFallWavesCorout = true;
+		yield return new WaitForSeconds(delayB4FallWaves);print(delayB4FallWaves);
 		if(!blockCoroutine && !grounded && !isGrab) StartCoroutine("footStep");
+		blockFallWavesCorout = false;
 	}
 	void OnTriggerEnter(Collider col) {
 		if(col.gameObject.CompareTag("platformGrabber") && !grounded) 
@@ -375,6 +380,7 @@ public class Player : Character {
 	}
 	IEnumerator footStep() { //Footsteps management
 		blockCoroutine =true;
+		delayB4FallWaves = 0f;
 		//print (footStepDelay);
 		/*if(Input.GetKeyDown("left shift")) {
 //			moveVel = 2 * moveVel;
