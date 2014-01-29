@@ -340,7 +340,10 @@
  </layer>
  <objectgroup name="LevelBricks" width="60" height="60">
   <object name="cp" type="Turret" x="1073" y="1321" width="149" height="94"/>
-  <object name="Turret" type="Checkpoint" x="1646" y="970" width="104" height="178"/>
+  <object name="Turret" type="Turret" x="1646" y="970" width="104" height="178"/>
+  <object name="Turret" type="Checkpoint" x="1910" y="1160" width="104" height="178"/>
+  <object name="Turret" type="WalkerPoints" x="616" y="1046" width="104" height="178"/>
+  <object name="Turret" type="Rusher" x="1058" y="1690" width="104" height="178"/>
  </objectgroup>
  <objectgroup color="#1870ff" name="GroundColl" width="60" height="60">
   <properties>
