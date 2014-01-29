@@ -27,13 +27,8 @@ public class Player : Character {
 
 	public FESound WalkSound;
 	public FESound RunSound;
-	public FESound PrepareRockThrowSound;
-	public FESound LaunchRockThrowSound;
 	public FESound InstruSound;
 	public FESound FallSound;
-	public FESound JumpSound;
-	public FESound StandUpSound;
-	public FESound HideSound;
 
 	[HideInInspector] public bool paused = false;
 	
@@ -41,7 +36,6 @@ public class Player : Character {
 	public override void Start () {
 		base.Start();
 
-		
 		GameEventManager.GameStart += GameStart;
 		GameEventManager.GameOver += GameOver;
 		GameEventManager.GamePause += GamePause;
@@ -56,6 +50,7 @@ public class Player : Character {
 			InvokeRepeating("playRunstepLeft",0f,RunSound.RepeatRate);
 			InvokeRepeating("playRunstepRight",WalkSound.Delay,RunSound.RepeatRate);
 		}
+
 
 		//Creating waves game objects
 		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesEmitter")) as GameObject; //footsteps wave 1
@@ -223,7 +218,7 @@ public class Player : Character {
 			shootLeft = false;
 			if(!blockCoroutine && grounded) StartCoroutine("waitB4FootStep");
 		}
-		if ((Input.GetKeyDown("down") || Input.GetKeyDown(KeyCode.S)) && !specialCast && grounded) {
+		if ((Input.GetKeyDown("down") || Input.GetKeyDown(KeyCode.S)) && !specialCast && (grounded || isGrab)) {
 
 			if(isGrab) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");isGrab = false;}
 			else {
@@ -235,7 +230,7 @@ public class Player : Character {
 				}
 			}
 		}
-		if ((Input.GetKeyDown("up") || Input.GetKeyDown(KeyCode.Z)) && !specialCast && grounded) {
+		if ((Input.GetKeyDown("up") || Input.GetKeyDown(KeyCode.Z)) && !specialCast && (grounded || isGrab)) {
 			if(isGrab) {checkingGrabPosition = false;StopCoroutine("checkGrabberPosition");isGrab = false;}
 			isJump = true; 
 			grounded = false;
@@ -407,13 +402,19 @@ public class Player : Character {
 		takingInstr = true;
 		yield return new WaitForSeconds(InstruSound.Delay); //Cast time before playing the sound (the character has to take his intrument out of his ass)
 		takingInstr = false;
-		yield return new WaitForSeconds(2.75f); //Cast time before playing the sound (the character has to take his intrument out of his ass)
-		if(first) {first=!first;soundInstru1.resetCircle();} //If it's the first time playing
-		else {first=!first;soundInstru2.resetCircle();} //If it's the second time playing (2 waves so that player can display both on screen if spamming music)
+		 //Cast time before playing the sound (the character has to take his intrument out of his ass)
+		if(first) {first=!first;StartCoroutine("specialCirclePlay",soundInstru1);/*soundInstru1.resetCircle();*/} //If it's the first time playing
+		else {first=!first;StartCoroutine("specialCirclePlay",soundInstru1);/*soundInstru2.resetCircle();*/} //If it's the second time playing (2 waves so that player can display both on screen if spamming music)
 		//yield return new WaitForSeconds(soundInstru1.getLifeTime());
+		yield return new WaitForSeconds(2.75f);
+		StopCoroutine("specialCirclePlay");
 		specialCast = false; //Not playing anymore, can move again
 	}
-
+	IEnumerator specialCirclePlay(WaveCreator soundInstru) {
+		soundInstru.resetCircle();
+		yield return new WaitForSeconds(0.5f);
+		StartCoroutine("specialCirclePlay",soundInstru);
+	}
 	IEnumerator CrounchMode()
 	{
 		yield return new WaitForSeconds(crounchTime);
@@ -462,33 +463,13 @@ public class Player : Character {
 			RunSound.playLeftSound(onEnvironment);
 		}
 	}
-	private void playSoundPrepareRockThrow()
-	{
-
-	}
-	private void playSoundLaunchRockThrow()
-	{
-		
-	}
 	private void playSoundGrip()
 	{
 		
 	}
-	private void playSoundHide()
-	{
-		HideSound.playSound(onEnvironment);
-	}
 	private void playSoundInstru()
 	{
 		InstruSound.playSound();
-	}
-	private void playSoundStandUp()
-	{
-		StandUpSound.playSound(onEnvironment);
-	}
-	private void playSoundJump()
-	{
-		JumpSound.playSound(onEnvironment);
 	}
 	private void playSoundFall()
 	{

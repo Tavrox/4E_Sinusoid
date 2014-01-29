@@ -11,7 +11,7 @@ public class CheckpointAnims : MonoBehaviour {
 	void Start () {
 		//playAnimDef();
 		spriteParentsTab = gameObject.GetComponentsInChildren<Transform>();
-		//animWaterfall = animWater = animGround = spritesTab[0];
+		animWaterfall = animWater = animGround = spriteParentsTab[0].GetComponentInChildren<OTAnimatingSprite>();
 
 		foreach (Transform spriteParent in spriteParentsTab) {
 			if(spriteParent.name=="spriteParentCPWaterFall") animWaterfall = spriteParent.GetComponentInChildren<OTAnimatingSprite>();

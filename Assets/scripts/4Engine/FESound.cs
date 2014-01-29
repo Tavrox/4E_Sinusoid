@@ -12,12 +12,13 @@ public class FESound : MonoBehaviour {
 	public float distanceForFadeOut = 5f;
 	private Transform referralDistance;
 	private Transform distToTrack;
+	private bool playOnce;
 
 	void Start()
 	{
 		if (SoundGroup == null)
 		{
-//			Debug.LogWarning("the sound group " + gameObject.transform.parent.transform.parent.gameObject.name + "/" +  gameObject.transform.parent.gameObject.name + "/" + gameObject.name + " hasn't been attributed");
+			Debug.LogWarning("the sound group " + gameObject.transform.parent.transform.parent.gameObject.name + "/" +  gameObject.transform.parent.gameObject.name + "/" + gameObject.name + " hasn't been attributed");
 		}
 	}
 
@@ -33,6 +34,14 @@ public class FESound : MonoBehaviour {
 		if (SoundGroup != null)
 		{
 			MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString(), Volume, Pitch, Delay);
+		}
+	}
+	public void playSound(bool _isOneShot)
+	{
+		if (SoundGroup != null && playOnce != true)
+		{
+			playOnce = true;
+			MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay);
 		}
 	}
 	public void playVariationSound(Environment _enviro)
@@ -62,15 +71,17 @@ public class FESound : MonoBehaviour {
 	{
 		if (_enviro != null && SoundGroup != null)
 		{
-			PlaySoundResult _psr = MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "L", Volume, Pitch, Delay);
+			PlaySoundResult _psr = MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "_L", Volume, Pitch, Delay);
+//			PlaySoundResult _psr = MasterAudio.PlaySound(SoundGroup.name, Volume, Pitch, Delay);
 		}
-//		Debug.Log(_psr.ActingVariation);
+//		Debug.Log(_psr);
 	}
 	public void playRightSound(Environment _enviro)
 	{
 		if (_enviro != null && SoundGroup != null)
 		{
-			PlaySoundResult _psr = MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "R" , Volume, Pitch, Delay);
+			PlaySoundResult _psr = MasterAudio.PlaySound(SoundGroup.name + "_" + _enviro.typeList.ToString() + "_R" , Volume, Pitch, Delay);
+//			PlaySoundResult _psr = MasterAudio.PlaySound(SoundGroup.name , Volume, Pitch, Delay);
 		}
 //		Debug.Log(_psr.ActingVariation);
 	}
