@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/sfx/Gameplay/Bricks/drop/drop_4.mp3.meta
 guid: 83668558b58041e46b39f7d4373d4bac
-=======
-guid: cd67e47c7164a4e4ea04f8ef55dceac4
->>>>>>> b0b17f726672ce61b3bd72d43efa0e8d7c32b10f:Assets/sfx/Gameplay/Bricks/drop/drop_4.mp3.meta
 AudioImporter:
   serializedVersion: 4
   format: 0
