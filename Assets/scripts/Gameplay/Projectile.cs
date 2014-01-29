@@ -88,7 +88,7 @@ public class Projectile : MonoBehaviour {
 	{
 		if (_other.CompareTag("Player"))
 	    {
-			GameEventManager.TriggerGameOver();
+			GameEventManager.TriggerGameOver(gameObject);
 		}
 		if (_other.CompareTag("soundStopper"))
  	    {
