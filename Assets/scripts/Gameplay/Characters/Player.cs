@@ -225,7 +225,6 @@ public class Player : Character {
 				if ( onEnvironment != null && onEnvironment.typeList == Environment.types.wood)
 				{
 					isCrounch = true;
-					facingDir = facing.Down;
 					StartCoroutine("CrounchMode");
 				}
 			}

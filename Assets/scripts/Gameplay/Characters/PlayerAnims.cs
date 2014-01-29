@@ -72,7 +72,6 @@ public class PlayerAnims : MonoBehaviour
 	}
 	private void Walk()
 	{
-		
 		if(_character.isRight && _character.grounded && currentAnim!=animDef.WalkRight && !_player.isSprint)
 		{
 			currentAnim = animDef.WalkRight;
@@ -90,6 +89,11 @@ public class PlayerAnims : MonoBehaviour
 	}
 	private void Stand()
 	{	
+		print ("CHECK RIGHT" + _character.isRight);
+		print ("CHECK GROUND" + _character.grounded);
+		print ("CHECK ANIM " + currentAnim);
+		print ("CHECK FACING" + _character.facingDir);
+		print ("CHECK PLAYING" + animPlaying);
 		if(!_character.isLeft && _character.grounded == true && currentAnim != animDef.StandLeft && _character.facingDir == Character.facing.Left && animPlaying == false)
 		{
 			currentAnim = animDef.StandLeft;
