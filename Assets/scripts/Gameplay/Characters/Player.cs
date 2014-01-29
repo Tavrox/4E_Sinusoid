@@ -225,8 +225,8 @@ public class Player : Character {
 			else {
 				if ( onEnvironment != null && onEnvironment.typeList == Environment.types.wood)
 				{
-					isCrounch = true;
-					StartCoroutine("CrounchMode");
+					onEnvironment.GetComponent<BoxCollider>().enabled = false;
+					StartCoroutine(EnableCollider(onEnvironment.GetComponent<BoxCollider>()));
 				}
 			}
 		}
@@ -262,10 +262,6 @@ public class Player : Character {
 				firstFalling = false;
 				//StopCoroutine("footStep");
 				playSoundFall();
-				
-				moveVelSprint = moveVelSprintINI;
-				if(isSprint) moveVel = moveVelSprint;
-				else moveVel = moveVelINI;
 				//cptWave = 1;
 				if(fallFast) {
 					fallFast = false;
@@ -305,9 +301,6 @@ public class Player : Character {
 				firstFalling = true;
 				delayB4FallWaves = 0.7f;
 				firstGrounded = false;
-				moveVelSprint = moveVelJumpSprint;
-				if(isSprint) moveVel = moveVelSprint;
-				else moveVel = moveVelJump;
 //				soundEmitt1.circleGroundedToFall();
 //				soundEmitt2.circleGroundedToFall();
 //				soundEmitt3.circleGroundedToFall();
@@ -427,10 +420,10 @@ public class Player : Character {
 		yield return new WaitForSeconds(0.5f);
 		StartCoroutine("specialCirclePlay",soundInstru);
 	}
-	IEnumerator CrounchMode()
+	IEnumerator EnableCollider(BoxCollider _coll)
 	{
 		yield return new WaitForSeconds(crounchTime);
-		isCrounch = false;
+		_coll.enabled = true;
 	}
 
 	public override void BlockedUp()
