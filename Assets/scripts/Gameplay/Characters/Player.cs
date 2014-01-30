@@ -225,8 +225,8 @@ public class Player : Character {
 			else {
 				if ( onEnvironment != null && onEnvironment.typeList == Environment.types.wood)
 				{
-					isCrounch = true;
-					StartCoroutine("CrounchMode");
+					onEnvironment.GetComponent<BoxCollider>().enabled = false;
+					StartCoroutine(EnableCollider(onEnvironment.GetComponent<BoxCollider>()));
 				}
 			}
 		}
@@ -262,10 +262,6 @@ public class Player : Character {
 				firstFalling = false;
 				//StopCoroutine("footStep");
 				playSoundFall();
-				
-				moveVelSprint = moveVelSprintINI;
-				if(isSprint) moveVel = moveVelSprint;
-				else moveVel = moveVelINI;
 				//cptWave = 1;
 				if(fallFast) {
 					fallFast = false;
@@ -305,9 +301,6 @@ public class Player : Character {
 				firstFalling = true;
 				delayB4FallWaves = 0.7f;
 				firstGrounded = false;
-				moveVelSprint = moveVelJumpSprint;
-				if(isSprint) moveVel = moveVelSprint;
-				else moveVel = moveVelJump;
 //				soundEmitt1.circleGroundedToFall();
 //				soundEmitt2.circleGroundedToFall();
 //				soundEmitt3.circleGroundedToFall();
@@ -415,10 +408,19 @@ public class Player : Character {
 		yield return new WaitForSeconds(InstruSound.Delay); //Cast time before playing the sound (the character has to take his intrument out of his ass)
 		takingInstr = false;
 		 //Cast time before playing the sound (the character has to take his intrument out of his ass)
-		if(first) {first=!first;StartCoroutine("specialCirclePlay",soundInstru1);/*soundInstru1.resetCircle();*/} //If it's the first time playing
-		else {first=!first;StartCoroutine("specialCirclePlay",soundInstru1);/*soundInstru2.resetCircle();*/} //If it's the second time playing (2 waves so that player can display both on screen if spamming music)
+		if(first) {first=!first;/*StartCoroutine("specialCirclePlay",soundInstru1);*/soundInstru1.resetCircle();} //If it's the first time playing
+		else {first=!first;/*StartCoroutine("specialCirclePlay",soundInstru2);*/soundInstru2.resetCircle();} //If it's the second time playing (2 waves so that player can display both on screen if spamming music)
 		//yield return new WaitForSeconds(soundInstru1.getLifeTime());
+		yield return new WaitForSeconds(0.8f);
+		soundInstru1.addSpeed(1f);soundInstru2.addSpeed(1f);
+		yield return new WaitForSeconds(0.5f);
+		soundInstru1.addSpeed(1f);soundInstru2.addSpeed(1f);
+		yield return new WaitForSeconds(0.3f);
+		soundInstru1.addSpeed(1f);soundInstru2.addSpeed(1f);
+		yield return new WaitForSeconds(0.3f);
+		soundInstru1.addSpeed(1f);soundInstru2.addSpeed(1f);
 		yield return new WaitForSeconds(2.75f);
+		soundInstru1.addSpeed(0.25f);soundInstru2.addSpeed(-4f);
 		StopCoroutine("specialCirclePlay");
 		specialCast = false; //Not playing anymore, can move again
 	}
@@ -427,10 +429,10 @@ public class Player : Character {
 		yield return new WaitForSeconds(0.5f);
 		StartCoroutine("specialCirclePlay",soundInstru);
 	}
-	IEnumerator CrounchMode()
+	IEnumerator EnableCollider(BoxCollider _coll)
 	{
 		yield return new WaitForSeconds(crounchTime);
-		isCrounch = false;
+		_coll.enabled = true;
 	}
 
 	public override void BlockedUp()
