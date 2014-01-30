@@ -242,6 +242,18 @@
             <filename>Tile/TileDitch_Aura03.png</filename>
             <filename>Tile/TileDitch_Aura04.png</filename>
             <filename>Tile/TileDitch_Aura05.png</filename>
+            <filename>Tile/TileDitch_Aura83.png</filename>
+            <filename>Tile/TileDitch_Aura84.png</filename>
+            <filename>Tile/TileDitch_Aura85.png</filename>
+            <filename>Tile/TileDitch_Aura86.png</filename>
+            <filename>Tile/TileDitch_Aura87.png</filename>
+            <filename>Tile/TileDitch_Aura88.png</filename>
+            <filename>Tile/TileDitch_Aura77.png</filename>
+            <filename>Tile/TileDitch_Aura78.png</filename>
+            <filename>Tile/TileDitch_Aura79.png</filename>
+            <filename>Tile/TileDitch_Aura80.png</filename>
+            <filename>Tile/TileDitch_Aura81.png</filename>
+            <filename>Tile/TileDitch_Aura82.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

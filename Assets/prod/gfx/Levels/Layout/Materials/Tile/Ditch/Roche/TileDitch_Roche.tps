@@ -246,6 +246,18 @@
             <filename>Tile/TileDitch_Roche02.png</filename>
             <filename>Tile/TileDitch_Roche03.png</filename>
             <filename>Tile/TileDitch_Roche04.png</filename>
+            <filename>Tile/TileDitch_Roche82.png</filename>
+            <filename>Tile/TileDitch_Roche83.png</filename>
+            <filename>Tile/TileDitch_Roche84.png</filename>
+            <filename>Tile/TileDitch_Roche85.png</filename>
+            <filename>Tile/TileDitch_Roche86.png</filename>
+            <filename>Tile/TileDitch_Roche87.png</filename>
+            <filename>Tile/TileDitch_Roche88.png</filename>
+            <filename>Tile/TileDitch_Roche89.png</filename>
+            <filename>Tile/TileDitch_Roche90.png</filename>
+            <filename>Tile/TileDitch_Roche91.png</filename>
+            <filename>Tile/TileDitch_Roche92.png</filename>
+            <filename>Tile/TileDitch_Roche81.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
