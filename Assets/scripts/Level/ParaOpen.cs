@@ -13,7 +13,7 @@ public class ParaOpen : MonoBehaviour {
 		RaycastHit hitInfo;
 		Ray landingRay = new Ray(transform.position, Vector3.down);
 		
-		Debug.DrawRay(parachute.transform.position, Vector3.down*deployHeight);
+//		Debug.DrawRay(parachute.transform.position, Vector3.down*deployHeight);
 		
 		if(!deployed) {
 			if (Physics.Raycast(landingRay, out hitInfo, deployHeight)) {

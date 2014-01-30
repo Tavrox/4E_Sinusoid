@@ -83,7 +83,7 @@ public class Walker : Enemy {
 
 		setTarget(transform); //target
 		patroling = true;
-		waypointDetectionWidth = thisTransform.gameObject.GetComponentInChildren<Transform>().GetComponentInChildren<OTSprite>().transform.localScale.x/2;//transform.localScale.x;
+		waypointDetectionWidth = thisTransform.gameObject.GetComponentInChildren<Transform>().GetComponentInChildren<OTSprite>().transform.localScale.x/4;//transform.localScale.x;
 		StartCoroutine("goToWaypoint",waypointId);
 	}
 	private void setIniState() {
@@ -145,15 +145,25 @@ public class Walker : Enemy {
 	private void detectPlayer() {
 		detectTargetLeft = new Ray(thisTransform.position, Vector3.left);
 		detectTargetRight = new Ray(thisTransform.position, Vector3.right);
-		Debug.DrawRay(thisTransform.position, Vector3.left*targetDetectionArea);
-		Debug.DrawRay(thisTransform.position, Vector3.right*targetDetectionArea);
+//		Debug.DrawRay(thisTransform.position, Vector3.left*targetDetectionArea);
+//		Debug.DrawRay(thisTransform.position, Vector3.right*targetDetectionArea);
 
-		if (Physics.Raycast(detectTargetLeft, out hitInfo, targetDetectionArea, projectorMask) || Physics.Raycast(detectTargetRight, out hitInfo, targetDetectionArea, projectorMask)) {
+		if (Physics.Raycast(detectTargetLeft, out hitInfo, targetDetectionArea) || Physics.Raycast(detectTargetRight, out hitInfo, targetDetectionArea)) {
 			if(hitInfo.collider.name == "Player") {
 				setTarget(GameObject.FindWithTag("Player").transform);
 				activeChasing();
 			}
 		}
+		
+//		Debug.DrawRay(thisTransform.position, Vector3.left*3, Color.red);
+//		Debug.DrawRay(thisTransform.position, Vector3.right*3, Color.red);
+		if (Physics.Raycast(detectTargetLeft, out hitInfo, 3) || Physics.Raycast(detectTargetRight, out hitInfo, 3)) {
+			if(hitInfo.collider.name == "Player") {
+				attacking = true;
+			}
+			else attacking = false;
+		}
+		else attacking = false;
 	}
 	private void detectEndChaseArea() {
 		foreach(Transform chaseAreaLimit in endChaseArea) {

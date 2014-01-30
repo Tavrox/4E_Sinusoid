@@ -4,7 +4,7 @@ using System.Collections;
 public class Enemy : Character {
 	
 	public Transform target; //the enemy's target
-	protected bool chasingPlayer, endChasingPlayer, patroling, endPFReached;
+	protected bool chasingPlayer, endChasingPlayer, patroling, endPFReached, attacking;
 	
 	public void setTarget(Transform obj) {
 		target = obj;
@@ -29,5 +29,8 @@ public class Enemy : Character {
 	}
 	public bool getEndPFReached () {
 		return endPFReached;
+	}
+	public bool getAttacking () {
+		return attacking;
 	}
 }
