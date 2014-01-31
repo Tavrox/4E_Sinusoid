@@ -578,14 +578,6 @@ namespace X_UniTMX
 			cc.radius = obj.Bounds.width / TileWidth / 2;
 			cc.height = obj.Bounds.height * colliderWidth;
 
-			capsuleCollider.isStatic = true;
-			capsuleCollider.tag = "soundStopper";
-			capsuleCollider.layer = 8;
-			Rigidbody _rigid = capsuleCollider.AddComponent<Rigidbody>();
-			_rigid.isKinematic = false;
-			_rigid.useGravity = false;
-			_rigid.constraints = RigidbodyConstraints.FreezeAll;
-
 			return capsuleCollider;
 		}
 
@@ -677,18 +669,128 @@ namespace X_UniTMX
 
 			mc.sharedMesh = colliderMesh;
 
-			/*
 			polygonCollider.isStatic = true;
 			polygonCollider.tag = "soundStopper";
 			polygonCollider.layer = 8;
+			Debug.Log("lolsssss");
+			
 			Rigidbody _rigid = polygonCollider.AddComponent<Rigidbody>();
 			_rigid.isKinematic = false;
+			_rigid.useGravity = true;
+			_rigid.constraints = RigidbodyConstraints.FreezeAll;
+			_rigid.angularDrag = 0.000001f;
+			_rigid.mass = 0.000001f;
+			
+			Environment _env = polygonCollider.AddComponent<Environment>();
+			_env.typeImport = obj.GetPropertyAsString("env");
+
+			return polygonCollider;
+		}
+
+		/// <summary>
+		/// Generate a Polygon collider mesh
+		/// </summary>
+		/// <param name="obj">Object which properties will be used to generate this collider.</param>
+		/// <param name="zDepth">Z Depth of the collider.</param>
+		/// <param name="colliderWidth">Width of the collider.</param>
+		/// <param name="innerCollision">If true, calculate normals facing the center of the collider (inside collisions), else, outside collisions.</param>
+		/// <returns>Generated Game Object containing the Collider.</returns>
+		public GameObject GeneratePolygonPebble(MapObject obj, float zDepth = 0, float colliderWidth = 1.0f, bool innerCollision = false)
+		{
+			GameObject polygonCollider = new GameObject(obj.Name);
+			polygonCollider.transform.parent = this.Parent.transform;
+			
+			Mesh colliderMesh = new Mesh();
+			colliderMesh.name = "Pebble_" + obj.Name;
+			MeshCollider mc = polygonCollider.AddComponent<MeshCollider>();
+			
+			List<Vector3> vertices = new List<Vector3>();
+			List<int> triangles = new List<int>();
+			
+			Vector3 firstPoint = (Vector3)obj.Points[0];
+			Vector3 secondPoint, firstFront, firstBack, secondFront, secondBack;
+			for (int i = 1; i < obj.Points.Count; i++)
+			{
+				secondPoint = (Vector3)obj.Points[i];
+				firstFront = new Vector3(obj.Bounds.center.x + firstPoint.x, -obj.Bounds.center.y - firstPoint.y, zDepth - colliderWidth);
+				firstBack = new Vector3(obj.Bounds.center.x + firstPoint.x, -obj.Bounds.center.y - firstPoint.y, zDepth + colliderWidth);
+				secondFront = new Vector3(obj.Bounds.center.x + secondPoint.x, -obj.Bounds.center.y - secondPoint.y, zDepth - colliderWidth);
+				secondBack = new Vector3(obj.Bounds.center.x + secondPoint.x, -obj.Bounds.center.y - secondPoint.y, zDepth + colliderWidth);
+				if (innerCollision)
+				{
+					vertices.Add(firstBack); // 3
+					vertices.Add(firstFront); // 2
+					vertices.Add(secondBack); // 1
+					vertices.Add(secondFront); // 0
+				}
+				else
+				{
+					vertices.Add(firstFront); // 3
+					vertices.Add(firstBack); // 2
+					vertices.Add(secondFront); // 1
+					vertices.Add(secondBack); // 2
+				}
+				triangles.Add((i - 1) * 4 + 3);
+				triangles.Add((i - 1) * 4 + 2);
+				triangles.Add((i - 1) * 4 + 0);
+				
+				triangles.Add((i - 1) * 4 + 0);
+				triangles.Add((i - 1) * 4 + 1);
+				triangles.Add((i - 1) * 4 + 3);
+				
+				firstPoint = secondPoint;
+			}
+			// Connect last point with first point
+			secondPoint = (Vector3)obj.Points[0];
+			firstFront = new Vector3(obj.Bounds.center.x + firstPoint.x, -obj.Bounds.center.y - firstPoint.y, zDepth - colliderWidth);
+			firstBack = new Vector3(obj.Bounds.center.x + firstPoint.x, -obj.Bounds.center.y - firstPoint.y, zDepth + colliderWidth);
+			secondFront = new Vector3(obj.Bounds.center.x + secondPoint.x, -obj.Bounds.center.y - secondPoint.y, zDepth - colliderWidth);
+			secondBack = new Vector3(obj.Bounds.center.x + secondPoint.x, -obj.Bounds.center.y - secondPoint.y, zDepth + colliderWidth);
+			if (innerCollision)
+			{
+				vertices.Add(firstBack); // 3
+				vertices.Add(firstFront); // 2
+				vertices.Add(secondBack); // 1
+				vertices.Add(secondFront); // 0
+			}
+			else
+			{
+				vertices.Add(firstFront); // 3
+				vertices.Add(firstBack); // 2
+				vertices.Add(secondFront); // 1
+				vertices.Add(secondBack); // 2
+			}
+			
+			triangles.Add((obj.Points.Count - 1) * 4 + 3);
+			triangles.Add((obj.Points.Count - 1) * 4 + 2);
+			triangles.Add((obj.Points.Count - 1) * 4 + 0);
+			
+			triangles.Add((obj.Points.Count - 1) * 4 + 0);
+			triangles.Add((obj.Points.Count - 1) * 4 + 1);
+			triangles.Add((obj.Points.Count - 1) * 4 + 3);
+			
+			colliderMesh.vertices = vertices.ToArray();
+			colliderMesh.triangles = triangles.ToArray();
+			colliderMesh.RecalculateNormals();
+
+			Mesh meshColl2 = new Mesh();
+			MeshCollider mc2 = polygonCollider.AddComponent<MeshCollider>();
+			Rigidbody _rigid = polygonCollider.AddComponent<Rigidbody>();
+			_rigid.isKinematic = true;
 			_rigid.useGravity = false;
 			_rigid.constraints = RigidbodyConstraints.FreezeAll;
-			*/
 
-			polygonCollider.AddComponent<Ditch>();
+			mc.sharedMesh = colliderMesh;
+			mc2.sharedMesh = colliderMesh;
+			mc2.isTrigger = true;
 
+			polygonCollider.isStatic = true;
+			polygonCollider.tag = "pebbleKiller";
+			polygonCollider.layer = 8;
+//			
+			Environment _env = polygonCollider.AddComponent<Environment>();
+			_env.typeImport = obj.GetPropertyAsString("env");
+			
 			return polygonCollider;
 		}
 
@@ -756,8 +858,13 @@ namespace X_UniTMX
 
 			Rigidbody _rigid = polylineCollider.AddComponent<Rigidbody>();
 			_rigid.isKinematic = false;
-			_rigid.useGravity = false;
+			_rigid.useGravity = true;
 			_rigid.constraints = RigidbodyConstraints.FreezeAll;
+			_rigid.angularDrag = 0.000001f;
+			_rigid.mass = 0.000001f;
+			
+			Environment _env = polylineCollider.AddComponent<Environment>();
+			_env.typeImport = obj.GetPropertyAsString("env");
 
 			return polylineCollider;
 		}

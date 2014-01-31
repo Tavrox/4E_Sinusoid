@@ -74,7 +74,7 @@ public class Projectile : MonoBehaviour {
 	}
 	public void moveProj()
 	{
-		Debug.DrawRay(initPosProj, direction);
+//		Debug.DrawRay(initPosProj, direction);
 //		direction = (_target - initPosProj).normalized;
 		gameObject.transform.position += new Vector3 ( speedX * _direction.x, speedX * _direction.y, 0f);
 	}

@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour {
 	public int previousLvlID;
 	public Checkpoint lastCheckpointValidated;
 	private Player _player;
-	private List<GameObject> gameplayObjects;
+	public List<GameObject> gameplayObjects;
 	private GameObject _hidingPlane;
 
 	// Use this for initialization

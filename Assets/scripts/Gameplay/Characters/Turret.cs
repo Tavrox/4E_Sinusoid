@@ -21,8 +21,10 @@ public class Turret : LevelBrick {
 	public FESound ShootSound;
 	public FESound IdleSound;
 
+	public Vector3 _rotPos;
+
 	// Use this for initialization
-	void Start () {
+	public override void Start () {
 		brickType = brickEnum.Turret;
 		_base = FETool.findWithinChildren(this.gameObject, "Base");
 		_maca = FETool.findWithinChildren(this.gameObject, "Maca");
@@ -30,7 +32,9 @@ public class Turret : LevelBrick {
 		_target = FETool.findWithinChildren(this.gameObject, "Target");
 		_projectile = FETool.findWithinChildren(this.gameObject, "Projectile").GetComponent<Projectile>();
 		_projectile.owner = this;
-		_projectile.Setup(_target, shootRate);
+
+		resetTurret();
+
 		_triggerArea = FETool.findWithinChildren(this.gameObject, "TriggerArea").GetComponent<BoxCollider>();
 
 		_baseAnim = _base.GetComponentInChildren<OTAnimatingSprite>();
@@ -42,16 +46,7 @@ public class Turret : LevelBrick {
 		InvokeRepeating("turn", 0f, turnRate);
 		InvokeRepeating("playIdleSound", 0f, IdleSound.RepeatRate);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 
-	}
-	private void scanPlace()
-	{
-
-	}
 	private void shootAtPoint()
 	{
 		_macaAnim.PlayOnce("macaghul");
@@ -62,13 +57,15 @@ public class Turret : LevelBrick {
 		_projectile.resetProj();
 		_projectile.setupMove(_target, true);
 	}
-	private void shootAtTarget(GameObject _target)
+	public void resetTurret()
 	{
+		_projectile.Setup(_target, shootRate);
+		_rotPos = _rotating.transform.position;
 
 	}
 	private void turn()
 	{
-		_rotating.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan((_target.transform.position.x-_rotating.transform.position.x)/Mathf.Abs(_rotating.transform.position.y-_target.transform.position.y))*Mathf.Rad2Deg);
+		_rotating.transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan((_target.transform.position.x-_rotPos.x)/Mathf.Abs(_rotPos.y-_target.transform.position.y))*Mathf.Rad2Deg);
 	
 	}
 	public void changeTarget(GameObject _newTarget)

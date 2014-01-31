@@ -76,7 +76,7 @@ public class TiledMapComponent : MonoBehaviour {
 						default :
 						{
 							GameObject result = tiledMap.GenerateSpecialCollider(collider, collisionLayer.Name, CollidersZDepth[i], CollidersWidth[i]);
-							result.transform.parent = _parent.transform;
+							affectColliders( result, _parent);
 							break;
 						}
 						}
@@ -89,7 +89,8 @@ public class TiledMapComponent : MonoBehaviour {
 					}	
 					case MapObjectType.Polygon:
 					{
-						tiledMap.GeneratePolygonCollider(collider, CollidersZDepth[i], CollidersWidth[i], CollidersIsInner[i]);
+						GameObject res1 = tiledMap.GeneratePolygonCollider(collider, CollidersZDepth[i], CollidersWidth[i], CollidersIsInner[i]);
+						GameObject res2 = tiledMap.GeneratePolygonPebble(collider, CollidersZDepth[i], CollidersWidth[i], CollidersIsInner[i]);
 						break;
 					}
 					case MapObjectType.Polyline:
@@ -106,5 +107,10 @@ public class TiledMapComponent : MonoBehaviour {
 			}
 		}
 		
+	}
+
+	public void affectColliders(GameObject _gameo, GameObject _parent)
+	{
+		_gameo.transform.parent = _parent.transform;
 	}
 }

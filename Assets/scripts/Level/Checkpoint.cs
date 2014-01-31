@@ -17,10 +17,6 @@ public class Checkpoint : MonoBehaviour {
 		{
 			IdleSound.playDistancedSound();
 		}
-		else
-		{
-			print ("omg");
-		}
 
 	}
 
