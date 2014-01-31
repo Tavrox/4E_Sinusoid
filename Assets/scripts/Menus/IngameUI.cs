@@ -18,12 +18,6 @@ public class IngameUI : MonoBehaviour {
 		subUIObjects.Add("Pause", FETool.findWithinChildren(this.gameObject, "Pause"));
 		subUIObjects.Add("Ingame", FETool.findWithinChildren(this.gameObject, "Ingame"));
 	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-
-	}
 
 	private void GameStart () 
 	{

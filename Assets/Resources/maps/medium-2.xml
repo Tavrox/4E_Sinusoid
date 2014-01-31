@@ -338,14 +338,14 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="LevelBricks" width="60" height="60" visible="0">
-  <object name="LevelEntry" type="LevelEntry" x="1047" y="716" width="162" height="106"/>
-  <object name="TurretBottom" type="Turret" x="2045" y="2410" width="162" height="106"/>
-  <object name="Checkpoint" type="Checkpoint" x="400" y="1150" width="150" height="350"/>
-  <object name="TurretTop" type="Turret" x="1349" y="60" width="162" height="106"/>
-  <object name="WalkerEnding" type="WalkerPoints" x="731" y="2510" width="162" height="106"/>
-  <object name="WalkerMiddle" type="WalkerPoints" x="1337" y="1462" width="162" height="106"/>
-  <object name="LevelExit" type="LevelExit" x="84" y="1926" width="130" height="132"/>
+ <objectgroup name="LevelBricks" width="60" height="60">
+  <object name="LevelEntry" type="spLevelEntry" x="1047" y="716" width="162" height="106"/>
+  <object name="TurretBottom" type="spTurret" x="2045" y="2410" width="162" height="106"/>
+  <object name="Checkpoint" type="spCheckpoint" x="400" y="1150" width="150" height="350"/>
+  <object name="TurretTop" type="spTurret" x="1349" y="60" width="162" height="106"/>
+  <object name="WalkerEnding" type="spWalkerPoints" x="731" y="2510" width="162" height="106"/>
+  <object name="WalkerMiddle" type="spWalkerPoints" x="1337" y="1462" width="162" height="106"/>
+  <object name="LevelExit" type="spLevelExit" x="84" y="1926" width="130" height="132"/>
  </objectgroup>
  <objectgroup color="#1870ff" name="GroundColl" width="60" height="60">
   <properties>
