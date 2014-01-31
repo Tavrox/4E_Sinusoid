@@ -76,16 +76,20 @@ public class WalkerAnims : MonoBehaviour
 			//_walker.collider.enabled = false;
 			//_walker.collider.bounds.center.Set(0,0,0);
 			//_walker.collider.bounds.size.Set(0,0,0);
-			_walker.setBxTailPosition(1.8f, -0.1f);
+			if(_character.isRight) _walker.setBxTailPosition(1.8f, -0.1f);
+			else _walker.setBxTailPosition(-1.8f, -0.1f);
 		}
 		else if(animTail.frameIndex==38) {
-			_walker.setBxTailPosition(2.3f, -0.15f);
+			if(_character.isRight) _walker.setBxTailPosition(2.3f, -0.15f);
+			else _walker.setBxTailPosition(-2.3f, -0.15f);
 		}
 		else if(animTail.frameIndex==45) {
-			_walker.setBxTailPosition(1.65f, 0.3f);
+				if(_character.isRight) _walker.setBxTailPosition(1.65f, -0.3f);
+				else _walker.setBxTailPosition(-1.65f, -0.3f);
 		}
 		else if(animTail.frameIndex==47) {
-			_walker.setBxTailPosition(1.5f, 1.1f);
+				if(_character.isRight) _walker.setBxTailPosition(1.5f, -1.1f);
+				else _walker.setBxTailPosition(-1.5f, -1.1f);
 		}
 		else if(animTail.frameIndex==50) {
 			_walker.setBxTailPosition(0f, 0f);

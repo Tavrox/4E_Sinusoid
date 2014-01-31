@@ -9,6 +9,7 @@ public class PlayerAnims : MonoBehaviour
 		WalkLeft, WalkRight,
 		RunLeft, RunRight,
 		RopeLeft, RopeRight,
+		JumpLeft, JumpRight,
 		Climb, ClimbStop,
 		StandLeft, StandRight,
 		HangLeft, HangRight,
@@ -17,7 +18,8 @@ public class PlayerAnims : MonoBehaviour
 		CrounchLeft, CrounchRight,
 		AttackLeft, AttackRight,
 		TakeInstru, PlayInstru,
-		PreparePebble, LaunchPebble
+		PreparePebble, LaunchPebble,
+		GrabLeft, GrabRight
 	}
 	
 	public Transform spriteParent;
@@ -41,6 +43,8 @@ public class PlayerAnims : MonoBehaviour
 	{
 		animSprite.looping = true;
 		// Order of action matters, they need to have priorities. //
+		Fall();
+		Grab ();
 		Run();
 		Walk();
 		Stand();
@@ -48,21 +52,36 @@ public class PlayerAnims : MonoBehaviour
 		Jump();
 		Attack();
 		Hurt();
-		Fall();
 		Paused();
 		Pebble();
 		PlayInstru();
 	}
+	private void Grab() {
+		if(_player.isGrab && currentAnim!=animDef.GrabRight && _character.facingDir == Character.facing.Right /*&& !_player.isFall*/)
+		{
+			currentAnim = animDef.GrabRight;
+			anim.fps = normalFPS;
+			animSprite.Play("grab");
+			NormalScaleSprite();
+		}
+		if(_player.isGrab && currentAnim!=animDef.GrabLeft && _character.facingDir == Character.facing.Left /*&& !_player.isFall*/)
+		{
+			currentAnim = animDef.GrabLeft;
+			anim.fps = normalFPS;
+			animSprite.Play("grab");
+			InvertSprite();
+		}
+	}
 	private void Run()
 	{
-		if(_character.isRight && _character.grounded && currentAnim!=animDef.RunRight && _player.isSprint)
+		if(_character.isRight && _character.grounded && currentAnim!=animDef.RunRight && _player.isSprint && currentAnim!=animDef.GrabRight)
 		{
 			currentAnim = animDef.RunRight;
 			anim.fps = sprintFPS;
 			animSprite.Play("run");
 			NormalScaleSprite();
 		}
-		if(_character.isLeft && _character.grounded && currentAnim!=animDef.RunLeft && _player.isSprint)
+		if(_character.isLeft && _character.grounded && currentAnim!=animDef.RunLeft && _player.isSprint && currentAnim!=animDef.GrabLeft)
 		{
 			currentAnim = animDef.RunLeft;
 			anim.fps = sprintFPS;
@@ -115,19 +134,36 @@ public class PlayerAnims : MonoBehaviour
 	}
 	private void Jump()
 	{
-		if(_character.grounded == false && currentAnim != animDef.FallLeft && _character.facingDir == Character.facing.Left)
+		if(_character.grounded == false && currentAnim != animDef.JumpLeft && _character.facingDir == Character.facing.Left && !_player.isGrab && !_player.isFall)
 		{
-			currentAnim = animDef.FallLeft;
+			currentAnim = animDef.JumpLeft;
 			animSprite.Play("jump"); // fall left
 			anim.fps = normalFPS;
 			InvertSprite();
 		}
-		if(_character.grounded == false && currentAnim != animDef.FallRight && _character.facingDir == Character.facing.Right)
+		if(_character.grounded == false && currentAnim != animDef.JumpRight && _character.facingDir == Character.facing.Right && !_player.isGrab && !_player.isFall)
 		{
-			currentAnim = animDef.FallRight;
+			currentAnim = animDef.JumpRight;
 			animSprite.Play("jump"); // fall right
 			anim.fps = normalFPS;
 			NormalScaleSprite();
+		}
+	}
+	private void Fall()
+	{
+		if(_player.isFall && currentAnim!=animDef.FallRight && _character.facingDir == Character.facing.Right)
+		{
+			currentAnim = animDef.FallRight;
+			anim.fps = normalFPS;
+			animSprite.Play("fall");
+			NormalScaleSprite();
+		}
+		if(_player.isFall && currentAnim!=animDef.FallLeft && _character.facingDir == Character.facing.Left)
+		{
+			currentAnim = animDef.FallLeft;
+			anim.fps = normalFPS;
+			animSprite.Play("fall");
+			InvertSprite();
 		}
 	}
 	private void Attack()
@@ -172,10 +208,6 @@ public class PlayerAnims : MonoBehaviour
 			StartCoroutine( WaitAndCallback( anim.GetDuration(anim.framesets[2]) ) );
 			NormalScaleSprite();
 		}
-	}
-	private void Fall()
-	{
-		
 	}
 	private void Paused()
 	{
