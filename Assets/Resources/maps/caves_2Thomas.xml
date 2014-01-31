@@ -540,79 +540,63 @@
 </data>
  </layer>
  <objectgroup color="#ffffff" name="GroundColl" width="60" height="60">
-  <object x="880" y="1382" width="442" height="270"/>
-  <object x="1429" y="1382" width="91" height="325"/>
-  <object x="1631" y="1384" width="90" height="325"/>
-  <object x="1830" y="1384" width="91" height="329"/>
-  <object x="2030" y="1384" width="90" height="279"/>
-  <object x="2282" y="1383" width="189" height="328"/>
-  <object x="2631" y="1382" width="135" height="66"/>
-  <object x="2466" y="1454" width="155" height="104"/>
-  <object x="2978" y="1060" width="72" height="696"/>
-  <object x="2632" y="1733" width="422" height="168"/>
-  <object x="2480" y="832" width="524" height="227"/>
-  <object x="2530" y="581" width="68" height="268"/>
-  <object x="696" y="522" width="1948" height="89"/>
-  <object x="1130" y="832" width="1040" height="76"/>
-  <object x="354" y="833" width="615" height="83"/>
-  <object x="596" y="794" width="183" height="40"/>
-  <object x="504" y="514" width="98" height="328"/>
-  <object x="442" y="590" width="333" height="60"/>
-  <object x="929" y="1083" width="239" height="78"/>
-  <object x="272" y="866" width="94" height="612"/>
-  <object x="323" y="1382" width="296" height="534"/>
-  <object x="592" y="1884" width="328" height="132"/>
-  <object x="706" y="1982" width="66" height="367"/>
-  <object x="654" y="2282" width="212" height="427"/>
-  <object x="985" y="2283" width="131" height="473"/>
-  <object x="1095" y="2283" width="525" height="26"/>
-  <object x="1133" y="1883" width="487" height="34"/>
-  <object x="1580" y="1918" width="40" height="392"/>
-  <object x="1134" y="1908" width="38" height="154"/>
-  <object x="1287" y="2484" width="530" height="260"/>
-  <object x="1732" y="1884" width="285" height="675"/>
-  <object x="2003" y="2183" width="530" height="372"/>
-  <object x="2431" y="2031" width="163" height="167"/>
-  <object x="2531" y="1881" width="131" height="197"/>
-  <object x="2282" y="1711" width="90" height="147"/>
-  <object x="2137" y="1883" width="186" height="123"/>
-  <object x="2282" y="1857" width="40" height="79"/>
-  <object x="1111" y="2632" width="184" height="97"/>
-  <object x="889" y="1885" width="81" height="37"/>
-  <object x="1080" y="2032" width="78" height="29"/>
-  <object x="1027" y="2233" width="48" height="69"/>
-  <object x="2501" y="1396" width="146" height="52"/>
-  <object x="2471" y="1384" width="52" height="77"/>
+  <object x="10" y="9">
+   <polygon points="0,0 2968,-4 2996,2976 -12,2980 12,88 584,781 734,781 755,781 755,819 956,819 955,901 355,901 356,1371 606,1371 608,1871 951,1869 952,1905 902,1906 904,1997 757,1996 758,2271 856,2271 855,2694 969,2695 962,2268 1013,2268 1014,2221 1055,2221 1056,2269 1562,2270 1562,1898 1154,1896 1153,2043 1064,2042 1063,2019 1113,2018 1114,1872 1605,1871 1605,2298 1102,2297 1105,2621 1143,2620 1143,2689 1235,2689 1235,2619 1265,2619 1265,2471 1714,2471 1713,1874 2005,1873 2005,2171 2415,2173 2414,2025 2515,2024 2515,1871 2610,1871 2611,1724 2961,1726 2958,1051 2461,1051 2462,818 2511,818 2511,604 755,602 755,641 585,640 584,770"/>
+  </object>
+  <object x="927" y="1080">
+   <polygon points="0,0 245,1 245,87 0,87"/>
+  </object>
+  <object x="1132" y="831">
+   <polygon points="-6,0 1040,3 1041,88 -7,85"/>
+  </object>
+  <object x="878" y="1379">
+   <polygon points="0,0 445,2 445,285 -4,286"/>
+  </object>
+  <object x="1429" y="1381">
+   <polygon points="0,0 94,0 92,330 0,332"/>
+  </object>
+  <object x="1629" y="1382">
+   <polygon points="0,0 94,-1 94,332 0,334"/>
+  </object>
+  <object x="1829" y="1382">
+   <polygon points="0,0 93,0 91,331 -2,331"/>
+  </object>
+  <object x="2028" y="1380">
+   <polygon points="0,0 94,0 92,283 0,283"/>
+  </object>
+  <object x="2127" y="1884">
+   <polygon points="0,0 148,0 150,-499 645,-502 644,-422 495,-423 495,-322 344,-322 343,-175 242,-174 238,-29 191,-28 189,127 -2,127"/>
+  </object>
  </objectgroup>
  <objectgroup color="#00ffff" name="GrabColl" width="60" height="60">
-  <object x="879" y="1385" width="15" height="6"/>
+  <object x="874" y="1384" width="15" height="6"/>
   <object x="578" y="1386" width="42" height="6"/>
-  <object x="1281" y="1386" width="42" height="6"/>
-  <object x="1428" y="1387" width="93" height="5"/>
-  <object x="1630" y="1387" width="92" height="6"/>
-  <object x="1829" y="1388" width="92" height="3"/>
-  <object x="2029" y="1388" width="91" height="6"/>
-  <object x="2281" y="1388" width="42" height="6"/>
-  <object x="2726" y="1388" width="42" height="6"/>
-  <object x="2632" y="1737" width="42" height="6"/>
-  <object x="2531" y="1887" width="42" height="6"/>
-  <object x="2430" y="2037" width="42" height="6"/>
+  <object x="1283" y="1385" width="42" height="6"/>
+  <object x="1427" y="1386" width="98" height="5"/>
+  <object x="1628" y="1387" width="96" height="6"/>
+  <object x="1827" y="1387" width="96" height="3"/>
+  <object x="2026" y="1385" width="98" height="6"/>
+  <object x="2274" y="1388" width="42" height="6"/>
+  <object x="2732" y="1385" width="42" height="6"/>
+  <object x="2619" y="1738" width="42" height="6"/>
+  <object x="2522" y="1887" width="42" height="6"/>
+  <object x="2421" y="2037" width="42" height="6"/>
   <object x="1976" y="1889" width="42" height="6"/>
-  <object x="2137" y="1889" width="42" height="6"/>
-  <object x="1579" y="1886" width="42" height="6"/>
-  <object x="1132" y="1886" width="42" height="6"/>
-  <object x="929" y="1890" width="42" height="6"/>
-  <object x="984" y="2290" width="42" height="6"/>
+  <object x="2124" y="1888" width="42" height="6"/>
+  <object x="1575" y="1883" width="42" height="6"/>
+  <object x="1120" y="1887" width="42" height="6"/>
+  <object x="922" y="1883" width="42" height="6"/>
+  <object x="967" y="2284" width="42" height="6"/>
   <object x="825" y="2290" width="42" height="6"/>
-  <object x="1286" y="2489" width="42" height="6"/>
-  <object x="1731" y="1892" width="42" height="6"/>
+  <object x="1271" y="2488" width="42" height="6"/>
+  <object x="1720" y="1888" width="42" height="6"/>
   <object x="928" y="1087" width="42" height="6"/>
-  <object x="1127" y="1087" width="42" height="6"/>
+  <object x="1134" y="1085" width="42" height="6"/>
   <object x="928" y="836" width="42" height="6"/>
-  <object x="1129" y="836" width="42" height="6"/>
+  <object x="1123" y="836" width="42" height="6"/>
   <object x="2132" y="834" width="42" height="6"/>
-  <object x="2480" y="837" width="42" height="6"/>
-  <object x="1080" y="2035" width="42" height="6"/>
+  <object x="2469" y="834" width="42" height="6"/>
+  <object x="1071" y="2036" width="42" height="6"/>
  </objectgroup>
  <objectgroup color="#aa0000" name="DitchColl" width="60" height="60">
   <object x="1805" y="1455" width="51" height="38"/>
@@ -631,14 +615,14 @@
   <object x="905" y="2587" width="40" height="85"/>
  </objectgroup>
  <objectgroup name="LevelBricks" width="60" height="60">
-  <object type="Checkpoint" x="2500" y="1100" width="150" height="300"/>
-  <object type="Drop" x="1350" y="2270" width="50" height="29"/>
-  <object type="Drop" x="1452" y="2268" width="50" height="29"/>
-  <object type="Drop" x="1250" y="2271" width="50" height="29"/>
   <object type="LevelExit" x="1159" y="2557" width="87" height="75"/>
   <object type="LevelEntry" x="618" y="682" width="100" height="87"/>
-  <object type="WalkerPoints" x="1024" y="1267" width="160" height="104"/>
-  <object type="Turret" x="1903" y="617" width="47" height="100"/>
+  <object type="Checkpoint" x="2500" y="1098" width="152" height="288"/>
+  <object type="spWalkerPoints" x="990" y="1266" width="202" height="110"/>
+  <object type="Drop" x="1148" y="2280" width="62" height="36"/>
+  <object type="Drop" x="1276" y="2284" width="64" height="28"/>
+  <object type="Drop" x="1392" y="2280" width="68" height="32"/>
+  <object type="spTurret" x="2000" y="606" width="52" height="114"/>
  </objectgroup>
  <objectgroup color="#ffaa00" name="WoodColl" width="60" height="60">
   <object x="2096" y="1480" width="195" height="3"/>
@@ -646,11 +630,9 @@
   <object x="2619" y="1580" width="374" height="3"/>
   <object x="2763" y="1429" width="227" height="5"/>
   <object x="613" y="1429" width="286" height="5"/>
-  <object x="602" y="1578" width="289" height="5"/>
   <object x="365" y="1229" width="229" height="5"/>
   <object x="359" y="1079" width="581" height="4"/>
-  <object x="602" y="1578" width="289" height="5"/>
-  <object x="615" y="1727" width="289" height="5"/>
-  <object x="615" y="1727" width="315" height="5"/>
+  <object x="603" y="1579" width="289" height="3"/>
+  <object x="624" y="1729" width="289" height="5"/>
  </objectgroup>
 </map>

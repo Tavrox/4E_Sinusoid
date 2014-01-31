@@ -7,4 +7,5 @@
  <objecttype name="LevelEntry" color="#8ea460"/>
  <objecttype name="LevelExit" color="#70a472"/>
  <objecttype name="spTurret" color="#a49d76"/>
+ <objecttype name="WalkerWp" color="#69a450"/>
 </objecttypes>

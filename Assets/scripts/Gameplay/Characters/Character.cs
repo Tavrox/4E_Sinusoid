@@ -46,6 +46,10 @@ public class Character : MonoBehaviour
 	
 	[HideInInspector] public Vector3 vectorFixed;
 	protected Vector3 vectorMove;
+	private Vector3 vecBotleft;
+	private Vector3 vecTopleft;
+	private Vector3 vecTopRight;
+	private Vector3 vecBotRight;
 	private Vector3 mypos;
 	public Environment onEnvironment;
 	public Environment aboveEnvironment;
@@ -91,7 +95,7 @@ public class Character : MonoBehaviour
 		halfMyY = GetComponentInChildren<Transform>().GetComponentInChildren<OTAnimatingSprite>().size.y * 0.5f + 0.2f;
 		StartCoroutine(StartGravity());
 	}
-	
+
 	IEnumerator StartGravity()
 	{
 		// wait for things to settle before applying gravity
@@ -188,14 +192,14 @@ public class Character : MonoBehaviour
 //		absVel2Y = Mathf.Abs(vectorFixed.y);
 
 		
-		Vector3 tst = new Vector3(mypos.x, mypos.y,0f);
+//		Vector3 tst = new Vector3(mypos.x, mypos.y,0f);
 //		Debug.DrawLine( tst , tst+Vector3.down, Color.green);
 //		Debug.DrawLine( mypos , Vector3.down, Color.blue);
 		
 		//BLOCKED TO DOWN
 		if (Physics.Raycast(mypos, Vector3.down, out hitInfo, halfMyY, groundMask))
 		{
-			Debug.DrawLine(thisTransform.position, hitInfo.point, Color.black);
+			Debug.DrawLine(thisTransform.position, hitInfo.point, Color.red);
 			BlockedDown();
 		}
 		else
@@ -208,7 +212,7 @@ public class Character : MonoBehaviour
 		if (Physics.Raycast(mypos, Vector3.up, out hitInfo, halfMyY, groundMask))
 		{
 			BlockedUp();
-			Debug.DrawLine (mypos, hitInfo.point, Color.red);
+			Debug.DrawLine(thisTransform.position, hitInfo.point, Color.blue);
 		}
 		else
 		{
@@ -221,7 +225,7 @@ public class Character : MonoBehaviour
 		   || Physics.Raycast(mypos, new Vector3(1f,-0.8f,0), out hitInfo, halfMyX, waveEltMask))
 		{
 			BlockedRight();
-//			Debug.DrawRay(mypos, Vector3.right, Color.cyan);
+			Debug.DrawLine(thisTransform.position, hitInfo.point, Color.red);
 		}
 		else
 		{
@@ -234,7 +238,7 @@ public class Character : MonoBehaviour
 		   || Physics.Raycast(mypos, new Vector3(-1f,0.8f,0), out hitInfo, halfMyX, waveEltMask))
 		{
 			BlockedLeft();
-//			Debug.DrawRay(mypos, Vector3.left, Color.yellow);
+			Debug.DrawLine(thisTransform.position, hitInfo.point, Color.red);
 		}
 		else
 		{

@@ -753,9 +753,11 @@
  </objectgroup>
  <objectgroup name="LevelBricks" width="60" height="60">
   <object type="Checkpoint" x="1401" y="1201" width="146" height="299"/>
-  <object type="Rusher" x="699" y="1410" width="156" height="69"/>
-  <object type="WalkerPoints" x="504" y="530" width="148" height="97"/>
-  <object type="WalkerPoints" x="1949" y="1152" width="199" height="124"/>
+  <object type="spRusher" x="699" y="1410" width="156" height="69"/>
+  <object type="spWalkerPoints" x="504" y="530" width="148" height="97"/>
+  <object type="spWalkerPoints" x="1949" y="1152" width="199" height="124"/>
+  <object type="LevelExit" x="2884" y="2038" width="86" height="100"/>
+  <object type="LevelEntry" x="8" y="116" width="76" height="110"/>
  </objectgroup>
  <objectgroup color="#ffaa00" name="WoodColl" width="60" height="60">
   <object x="2014" y="429" width="224" height="3"/>

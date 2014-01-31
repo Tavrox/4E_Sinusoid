@@ -7,21 +7,25 @@ public class DistanceChecker : MonoBehaviour {
 	public float distanceForFadeOut = 15f;
 	private Transform referralDistance;
 	private Transform distToTrack;
-	private LevelBrick _brick;
+	public LevelBrick _brick;
 	public LevelBrick.brickEnum brickType;
 	public bool brickActivated;
 	private bool brickOccupied;
-	public Waypoint[] waypoints;
+	public Transform[] waypoints;
 
 	// Use this for initialization
 	void Start () 
 	{
 		referralDistance = gameObject.transform;
 		distToTrack = GameObject.FindGameObjectWithTag("Player").transform;
-		_brick = GameObject.Find("Level/ObjectsImporter/Pool/"+ brickType.ToString()).GetComponent<LevelBrick>();
+		print (gameObject.name + "VS" + _brick.name);
 		if (_brick == null)
 		{
 			Debug.LogError("An object hasn't been found" + "Level/ObjectsImporter/Pool/"+ brickType.ToString() );
+			if (brickType == LevelBrick.brickEnum.WalkerPoints)
+			{
+//				_brick
+			}
 		}
 		InvokeRepeating("checkDistance", 0f, 1f);
 	}
