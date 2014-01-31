@@ -766,5 +766,12 @@
   <object x="1028" y="766" width="237" height="5"/>
   <object x="1030" y="904" width="278" height="5"/>
   <object x="2281" y="729" width="537" height="4"/>
+  <object x="1029" y="771" width="4" height="275"/>
+  <object x="1305" y="867" width="2" height="42"/>
+  <object x="2141" y="584" width="5" height="301"/>
+  <object x="2280" y="503" width="3" height="229"/>
+  <object x="2404" y="501" width="3" height="69"/>
+  <object x="2791" y="429" width="4" height="55"/>
+  <object x="2816" y="615" width="4" height="118"/>
  </objectgroup>
 </map>

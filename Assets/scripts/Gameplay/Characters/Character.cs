@@ -217,7 +217,7 @@ public class Character : MonoBehaviour
 		   || Physics.Raycast(mypos, new Vector3(1f,-0.8f,0), out hitInfo, halfMyX, waveEltMask))
 		{
 			BlockedRight();
-			Debug.DrawRay(mypos, Vector3.right, Color.cyan);
+//			Debug.DrawRay(mypos, Vector3.right, Color.cyan);
 		}
 		else
 		{
@@ -230,7 +230,7 @@ public class Character : MonoBehaviour
 		   || Physics.Raycast(mypos, new Vector3(-1f,0.8f,0), out hitInfo, halfMyX, waveEltMask))
 		{
 			BlockedLeft();
-			Debug.DrawRay(mypos, Vector3.left, Color.yellow);
+//			Debug.DrawRay(mypos, Vector3.left, Color.yellow);
 		}
 		else
 		{

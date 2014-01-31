@@ -238,6 +238,12 @@
             <filename>Tile_Roche/TileRocher64.png</filename>
             <filename>Tile_Roche/TileRocher65.png</filename>
             <filename>Tile_Roche/TileRocher66.png</filename>
+            <filename>Tile_Roche/TileRocher70.png</filename>
+            <filename>Tile_Roche/TileRocher71.png</filename>
+            <filename>Tile_Roche/TileRocher72.png</filename>
+            <filename>Tile_Roche/TileRocher73.png</filename>
+            <filename>Tile_Roche/TileRocher74.png</filename>
+            <filename>Tile_Roche/TileRocher75.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>

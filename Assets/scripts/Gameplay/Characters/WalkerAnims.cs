@@ -17,9 +17,9 @@ public class WalkerAnims : MonoBehaviour
 		AttackLeft, AttackRight,
 	}
 	
-	public Transform spriteParent;
-	public OTAnimatingSprite animSprite;
-	public OTAnimation anim;
+	//public Transform spriteParent;
+	//public OTAnimatingSprite animSprite;
+	//public OTAnimation anim;
 	
 	private animDef currentAnim;
 	private Character _character;
@@ -27,6 +27,9 @@ public class WalkerAnims : MonoBehaviour
 	private Walker _walker;
 	
 	private bool animPlaying = false;
+
+	private OTAnimatingSprite animBody, animTail, animMecha;
+	private Transform[] spriteParentsTab;
 	
 	// Use this for initialization
 	void Start () 
@@ -34,34 +37,58 @@ public class WalkerAnims : MonoBehaviour
 		_character 	= GetComponent<Character>();
 		_walker = GetComponent<Walker>();
 		_player 	= GameObject.FindObjectOfType<Player>();
-		animSprite.Play("stand");
+		//animSprite.Play("stand");
+
+		spriteParentsTab = gameObject.GetComponentsInChildren<Transform>();
+		animBody = animMecha = animTail = spriteParentsTab[0].GetComponentInChildren<OTAnimatingSprite>();
+		
+		foreach (Transform spriteParent in spriteParentsTab) {
+			if(spriteParent.name=="spriteParentBody") {animBody = spriteParent.GetComponentInChildren<OTAnimatingSprite>();}
+			if(spriteParent.name=="spriteParentMecha") animMecha = spriteParent.GetComponentInChildren<OTAnimatingSprite>();
+			if(spriteParent.name=="spriteParentTail") animTail = spriteParent.GetComponentInChildren<OTAnimatingSprite>();
+		}
+		animBody.looping = animMecha.looping = animTail.looping = true;
+		
+		animBody.Play("standBody");
+		animMecha.Play("standMecha");
+		animTail.Play("standTail");		
 	}
 	void Update() 
 	{
-		animSprite.looping = true;
+		//animSprite.looping = true;
 		// Order of action matters, they need to have priorities. //
 		Run();
-		Walk();
+		//Walk();
 		Stand();
 		Crounch();
-		Jump();
+		//Jump();
 		Attack();
-		Hurt();
-		Fall();
+		//Hurt();
+		//Fall();
 		Paused();
+//		animBody.size.Set(5.599997f,3.599998f);
+//		animMecha.size.Set(5.599997f,3.599998f);
+//		animTail.size.Set(5.599997f,3.599998f);
+//		animBody.gameObject.transform.localScale.Set(5.599997f,3.599998f,0f);
+//		animMecha.gameObject.transform.localScale.Set(5.599997f,3.599998f,0f);
+//		animTail.gameObject.transform.localScale.Set(5.599997f,3.599998f,0f);
 	}
 	private void Run()
 	{
-		if(_character.isRight && _character.grounded && currentAnim!=animDef.WalkRight && !_walker.getEndPFReached())
+		if(_character.isRight && _character.grounded && currentAnim!=animDef.WalkRight && !_walker.getEndPFReached() && !_walker.getAttacking())
 		{
 			currentAnim = animDef.WalkRight;
-			animSprite.Play("run");
-			NormalScaleSprite();;
+			animBody.Play("runBody");
+			animMecha.Play("runMecha");
+			animTail.Play("runTail");
+			NormalScaleSprite();
 		}
-		if(_character.isLeft && _character.grounded && currentAnim!=animDef.WalkLeft && !_walker.getEndPFReached())
+		if(_character.isLeft && _character.grounded && currentAnim!=animDef.WalkLeft && !_walker.getEndPFReached() && !_walker.getAttacking())
 		{
 			currentAnim = animDef.WalkLeft;
-			animSprite.Play("run");
+			animBody.Play("runBody");
+			animMecha.Play("runMecha");
+			animTail.Play("runTail");
 			InvertSprite();
 		}
 	}
@@ -73,18 +100,24 @@ public class WalkerAnims : MonoBehaviour
 	{	
 		if(_walker.getEndPFReached()) {
 			currentAnim = animDef.StandLeft;
-			animSprite.Play("stand");
+			animBody.Play("standBody");
+			animMecha.Play("standMecha");
+			animTail.Play("standTail");
 		}
 		if(!_character.isLeft && _character.grounded == true && currentAnim != animDef.StandLeft && _character.facingDir == Character.facing.Left && animPlaying == false)
 		{
 			currentAnim = animDef.StandLeft;
-			animSprite.Play("stand"); // stand left
+			animBody.Play("standBody");
+			animMecha.Play("standMecha");
+			animTail.Play("standTail");
 			InvertSprite();
 		}
 		if(!_character.isRight && _character.grounded && currentAnim != animDef.StandRight && _character.facingDir == Character.facing.Right && animPlaying == false)
 		{
 			currentAnim = animDef.StandRight;
-			animSprite.Play("stand"); // stand left
+			animBody.Play("standBody");
+			animMecha.Play("standMecha");
+			animTail.Play("standTail");
 			NormalScaleSprite();
 		}
 	}
@@ -93,49 +126,55 @@ public class WalkerAnims : MonoBehaviour
 		if (_character.isCrounch == true)
 		{
 			currentAnim = animDef.CrounchLeft;
-			animSprite.Play("crounch");
+			//animSprite.Play("crounch");
 		}
 	}
 	private void Jump()
 	{
-		if(_character.grounded == false && currentAnim != animDef.FallLeft && _character.facingDir == Character.facing.Left)
+		if(_character.grounded == false && currentAnim != animDef.FallLeft && _character.facingDir == Character.facing.Left && !_walker.getAttacking())
 		{
 			currentAnim = animDef.FallLeft;
-			animSprite.Play("jump"); // fall left
+			animBody.Play("standBody");
+			animMecha.Play("standMecha");
+			animTail.Play("standTail");
 			InvertSprite();
 		}
-		if(_character.grounded == false && currentAnim != animDef.FallRight && _character.facingDir == Character.facing.Right)
+		if(_character.grounded == false && currentAnim != animDef.FallRight && _character.facingDir == Character.facing.Right && !_walker.getAttacking())
 		{
 			currentAnim = animDef.FallRight;
-			animSprite.Play("jump"); // fall right
+			animBody.Play("standBody");
+			animMecha.Play("standMecha");
+			animTail.Play("standTail");
 			NormalScaleSprite();
 		}
 	}
 	private void Attack()
 	{
-		/*
-		if (_player.shootingKnife == true  && _character.facingDir == Character.facing.Left)
+		if (_walker.getAttacking() == true && currentAnim != animDef.ShootLeft && _character.facingDir == Character.facing.Left)
 		{
 			animPlaying = true;
-			currentAnim = animDef.ShootRight;
-			animSprite.Play("throw_knife");
+			currentAnim = animDef.ShootLeft;
+			animBody.Play("attackBody");
+			animMecha.Play("runMecha");
+			animTail.Play("attackTail");
 			InvertSprite();
-			StartCoroutine( WaitAndCallback( anim.GetDuration(anim.framesets[3]) ) );
+			//StartCoroutine( WaitAndCallback( anim.GetDuration(anim.framesets[3]) ) );
 		}
-		if (_player.shootingKnife == true && _character.facingDir == Character.facing.Right)
+		if (_walker.getAttacking() == true && currentAnim != animDef.ShootRight && _character.facingDir == Character.facing.Right)
 		{
 			animPlaying = true;
 			currentAnim = animDef.ShootRight;
-			animSprite.Play("throw_knife");
+			animBody.Play("attackBody");
+			animMecha.Play("runMecha");
+			animTail.Play("attackTail");
 			NormalScaleSprite();
-			StartCoroutine( WaitAndCallback( anim.GetDuration(anim.framesets[3]) ) );
+			//StartCoroutine( WaitAndCallback( anim.GetDuration(anim.framesets[3]) ) );
 		}
-		*/
 	}
 	private void Hurt()
 	{
 		//ENEMIES SPECIFIC ANIMS
-		if (_character.isShot == true && _character.facingDir == Character.facing.Left)
+		/*if (_character.isShot == true && _character.facingDir == Character.facing.Left)
 		{
 			animPlaying = true;
 			animSprite.Play("hurt");
@@ -148,7 +187,7 @@ public class WalkerAnims : MonoBehaviour
 			animSprite.Play("hurt");
 			StartCoroutine( WaitAndCallback( anim.GetDuration(anim.framesets[2]) ) );
 			NormalScaleSprite();
-		}
+		}*/
 	}
 	private void Fall()
 	{
@@ -159,7 +198,10 @@ public class WalkerAnims : MonoBehaviour
 		if (_player.paused == true)
 		{
 			currentAnim = animDef.None;
-			animSprite.looping = false;
+			
+			animBody.looping = false;
+			animMecha.looping = false;
+			animTail.looping = false;
 		}
 	}
 	
@@ -169,11 +211,17 @@ public class WalkerAnims : MonoBehaviour
 	}
 	private void InvertSprite()
 	{
-		spriteParent.localScale = new Vector3(-1,1,1);
+		//spriteParent.localScale = new Vector3(-1,1,1);
+		foreach (Transform spriteParent in spriteParentsTab) {
+			if(spriteParent.name=="spriteParentBody" || spriteParent.name=="spriteParentMecha" || spriteParent.name=="spriteParentTail") spriteParent.localScale = new Vector3(-1,1,1);
+		}
 	}
 	private void NormalScaleSprite()
 	{
-		spriteParent.localScale = new Vector3(1,1,1);
+		//spriteParent.localScale = new Vector3(1,1,1);
+		foreach (Transform spriteParent in spriteParentsTab) {
+			if(spriteParent.name=="spriteParentBody" || spriteParent.name=="spriteParentMecha" || spriteParent.name=="spriteParentTail") spriteParent.localScale = new Vector3(1,1,1);
+		}
 	}
 	IEnumerator WaitAndCallback(float waitTime)
 	{
