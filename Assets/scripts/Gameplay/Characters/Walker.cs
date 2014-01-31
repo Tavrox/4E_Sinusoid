@@ -350,7 +350,7 @@ public class Walker : Enemy {
 
 	private void playFootstep()
 	{
-		WalkSound.playSound();
+		WalkSound.playDistancedSound();
 	}
 
 
