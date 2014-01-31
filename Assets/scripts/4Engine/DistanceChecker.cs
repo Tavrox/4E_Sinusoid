@@ -11,7 +11,7 @@ public class DistanceChecker : MonoBehaviour {
 	public LevelBrick.brickEnum brickType;
 	public bool brickActivated;
 	private bool brickOccupied;
-	public Waypoint[] waypoints;
+	public Transform[] waypoints;
 
 	// Use this for initialization
 	void Start () 
@@ -22,6 +22,10 @@ public class DistanceChecker : MonoBehaviour {
 		if (_brick == null)
 		{
 			Debug.LogError("An object hasn't been found" + "Level/ObjectsImporter/Pool/"+ brickType.ToString() );
+			if (brickType == LevelBrick.brickEnum.WalkerPoints)
+			{
+//				_brick
+			}
 		}
 		InvokeRepeating("checkDistance", 0f, 1f);
 	}
