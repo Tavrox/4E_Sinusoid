@@ -18,7 +18,7 @@ public class FESound : MonoBehaviour {
 	{
 		if (SoundGroup == null)
 		{
-			Debug.LogWarning("the sound group " + gameObject.transform.parent.transform.parent.gameObject.name + "/" +  gameObject.transform.parent.gameObject.name + "/" + gameObject.name + " hasn't been attributed");
+//			Debug.LogWarning("the sound group " + gameObject.transform.parent.transform.parent.gameObject.name + "/" +  gameObject.transform.parent.gameObject.name + "/" + gameObject.name + " hasn't been attributed");
 		}
 	}
 
