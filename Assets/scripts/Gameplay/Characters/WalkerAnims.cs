@@ -43,7 +43,7 @@ public class WalkerAnims : MonoBehaviour
 		animBody = animMecha = animTail = spriteParentsTab[0].GetComponentInChildren<OTAnimatingSprite>();
 		
 		foreach (Transform spriteParent in spriteParentsTab) {
-			if(spriteParent.name=="spriteParentBody") {animBody = spriteParent.GetComponentInChildren<OTAnimatingSprite>();}
+			if(spriteParent.name=="spriteParentBody") animBody = spriteParent.GetComponentInChildren<OTAnimatingSprite>();
 			if(spriteParent.name=="spriteParentMecha") animMecha = spriteParent.GetComponentInChildren<OTAnimatingSprite>();
 			if(spriteParent.name=="spriteParentTail") animTail = spriteParent.GetComponentInChildren<OTAnimatingSprite>();
 		}
@@ -72,6 +72,27 @@ public class WalkerAnims : MonoBehaviour
 //		animBody.gameObject.transform.localScale.Set(5.599997f,3.599998f,0f);
 //		animMecha.gameObject.transform.localScale.Set(5.599997f,3.599998f,0f);
 //		animTail.gameObject.transform.localScale.Set(5.599997f,3.599998f,0f);
+		if(animTail.frameIndex==37) {
+			//_walker.collider.enabled = false;
+			//_walker.collider.bounds.center.Set(0,0,0);
+			//_walker.collider.bounds.size.Set(0,0,0);
+			_walker.setBxTailPosition(1.8f, -0.1f);
+		}
+		else if(animTail.frameIndex==38) {
+			_walker.setBxTailPosition(2.3f, -0.15f);
+		}
+		else if(animTail.frameIndex==45) {
+			_walker.setBxTailPosition(1.65f, 0.3f);
+		}
+		else if(animTail.frameIndex==47) {
+			_walker.setBxTailPosition(1.5f, 1.1f);
+		}
+		else if(animTail.frameIndex==50) {
+			_walker.setBxTailPosition(0f, 0f);
+		}
+		else if(animTail.frameIndex==54) {
+			_walker.setAttacking(false);
+		}
 	}
 	private void Run()
 	{
@@ -152,7 +173,7 @@ public class WalkerAnims : MonoBehaviour
 	{
 		if (_walker.getAttacking() == true && currentAnim != animDef.ShootLeft && _character.facingDir == Character.facing.Left)
 		{
-			animPlaying = true;print("*--**---*-*-*-**");
+			animPlaying = true;
 			currentAnim = animDef.ShootLeft;
 			animBody.Play("attackBody");
 			animMecha.Play("runMecha");

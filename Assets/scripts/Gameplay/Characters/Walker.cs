@@ -42,14 +42,15 @@ public class Walker : Enemy {
 
 	public FESound WalkSound;
 	public FESound AttackSound;
-	
+	public BoxCollider bxTail;
+
 	[HideInInspector] public bool paused = false;
-	
+
 	// Use this for initialization
 	public override void Start () 
 	{
 		base.Start();
-		
+
 		GameEventManager.GameStart += GameStart;
 		GameEventManager.GameOver += GameOver;
 		GameEventManager.GamePause += GamePause;
@@ -81,10 +82,17 @@ public class Walker : Enemy {
 		//enabled = false;
 		runSpeed = 0.5f;
 
+		bxTail = gameObject.AddComponent<BoxCollider>();
+		bxTail.center = new Vector3(0f,0f,0f);
+		bxTail.size = new Vector3(0.5f,0.5f, 30f);
+
 		setTarget(transform); //target
 		patroling = true;
 		waypointDetectionWidth = thisTransform.gameObject.GetComponentInChildren<Transform>().GetComponentInChildren<OTSprite>().transform.localScale.x/4;//transform.localScale.x;
 		StartCoroutine("goToWaypoint",waypointId);
+	}
+	public void setBxTailPosition(float bxX, float bxY, float bxZ=0f) {
+		bxTail.center = new Vector3(bxX,bxY,bxZ);
 	}
 	private void setIniState() {
 		thisTransform.position = spawnPos;
@@ -157,13 +165,13 @@ public class Walker : Enemy {
 		
 //		Debug.DrawRay(thisTransform.position, Vector3.left*3, Color.red);
 //		Debug.DrawRay(thisTransform.position, Vector3.right*3, Color.red);
-		if (Physics.Raycast(detectTargetLeft, out hitInfo, 3) || Physics.Raycast(detectTargetRight, out hitInfo, 3)) {
+		if (!attacking && (Physics.Raycast(detectTargetLeft, out hitInfo, 3) || Physics.Raycast(detectTargetRight, out hitInfo, 3))) {
 			if(hitInfo.collider.name == "Player") {
 				attacking = true;
 			}
-			else attacking = false;
+			//else attacking = false;
 		}
-		else attacking = false;
+		//else attacking = false;
 	}
 	private void detectEndChaseArea() {
 		foreach(Transform chaseAreaLimit in endChaseArea) {

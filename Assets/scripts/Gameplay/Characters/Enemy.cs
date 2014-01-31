@@ -33,4 +33,7 @@ public class Enemy : Character {
 	public bool getAttacking () {
 		return attacking;
 	}
+	public void setAttacking(bool value) {
+		attacking = value;
+	}
 }
