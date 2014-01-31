@@ -11,6 +11,7 @@ public class DistanceChecker : MonoBehaviour {
 	public LevelBrick.brickEnum brickType;
 	public bool brickActivated;
 	private bool brickOccupied;
+	public Waypoint[] waypoints;
 
 	// Use this for initialization
 	void Start () 
