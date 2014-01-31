@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objecttypes>
- <objecttype name="spCheckpoint" color="#fff708"/>
+ <objecttype name="Checkpoint" color="#fff708"/>
  <objecttype name="spWalkerPoints" color="#3c00a4"/>
  <objecttype name="spRusher" color="#be0003"/>
- <objecttype name="spDrop" color="#359dd5"/>
- <objecttype name="spLevelEntry" color="#8ea460"/>
- <objecttype name="spLevelExit" color="#70a472"/>
+ <objecttype name="Drop" color="#359dd5"/>
+ <objecttype name="LevelEntry" color="#8ea460"/>
+ <objecttype name="LevelExit" color="#70a472"/>
  <objecttype name="spTurret" color="#a49d76"/>
 </objecttypes>
