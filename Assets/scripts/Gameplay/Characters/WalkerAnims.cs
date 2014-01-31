@@ -152,7 +152,7 @@ public class WalkerAnims : MonoBehaviour
 	{
 		if (_walker.getAttacking() == true && currentAnim != animDef.ShootLeft && _character.facingDir == Character.facing.Left)
 		{
-			animPlaying = true;
+			animPlaying = true;print("*--**---*-*-*-**");
 			currentAnim = animDef.ShootLeft;
 			animBody.Play("attackBody");
 			animMecha.Play("runMecha");
