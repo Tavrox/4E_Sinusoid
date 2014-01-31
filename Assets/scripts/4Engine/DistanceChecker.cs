@@ -7,7 +7,7 @@ public class DistanceChecker : MonoBehaviour {
 	public float distanceForFadeOut = 15f;
 	private Transform referralDistance;
 	private Transform distToTrack;
-	private LevelBrick _brick;
+	public LevelBrick _brick;
 	public LevelBrick.brickEnum brickType;
 	public bool brickActivated;
 	private bool brickOccupied;
@@ -18,7 +18,7 @@ public class DistanceChecker : MonoBehaviour {
 	{
 		referralDistance = gameObject.transform;
 		distToTrack = GameObject.FindGameObjectWithTag("Player").transform;
-		_brick = GameObject.Find("Level/ObjectsImporter/Pool/"+ brickType.ToString()).GetComponent<LevelBrick>();
+		print (gameObject.name + "VS" + _brick.name);
 		if (_brick == null)
 		{
 			Debug.LogError("An object hasn't been found" + "Level/ObjectsImporter/Pool/"+ brickType.ToString() );
