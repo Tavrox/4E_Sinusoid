@@ -440,7 +440,7 @@ public class Player : Character {
 		aboveEnvironment = hitInfo.collider.GetComponent<Environment>();
 		if(vectorMove.y > 0)
 		{
-			if (aboveEnvironment.typeList !=null && Environment.types.wood !=null && aboveEnvironment.typeList != Environment.types.wood)
+			if (aboveEnvironment != null && aboveEnvironment.typeList != null && Environment.types.wood !=null && aboveEnvironment.typeList != Environment.types.wood)
    			{
 				vectorMove.y = 0f;
 				blockedUp = true;
