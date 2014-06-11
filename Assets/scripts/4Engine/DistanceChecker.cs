@@ -18,7 +18,7 @@ public class DistanceChecker : MonoBehaviour {
 	{
 		referralDistance = gameObject.transform;
 		distToTrack = GameObject.FindGameObjectWithTag("Player").transform;
-		print (gameObject.name + "VS" + _brick.name);
+		print (gameObject.name /*+ "VS" + _brick.name*/);
 		if (_brick == null)
 		{
 			Debug.LogError("An object hasn't been found" + "Level/ObjectsImporter/Pool/"+ brickType.ToString() );

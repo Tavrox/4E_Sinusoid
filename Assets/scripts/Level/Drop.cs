@@ -12,17 +12,18 @@ public class Drop : MonoBehaviour {
 	private WaveCreator soundEmitt1,soundEmitt2;
 	private int cptWave=1;
 	private bool blockCoroutine, first;
+	public int ID;
 
 	public FESound _DropSound;
 
 	// Use this for initialization
 	void Start () {
 		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesDrop")) as GameObject;
-		soundEmitt1 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt1.gameObject.name = "_dropWave1";//footsteps wave 1
+		soundEmitt1 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt1.gameObject.name = "_dropWave1"+ID;//footsteps wave 1
 		soundEmitt1.gameObject.transform.parent = GameObject.Find("Level/Waves/").transform;
 		soundEmitt1.createCircle(transform);soundEmitt1.setParent(transform);
 		GOinstFootWave = Instantiate(Resources.Load("Prefabs/04Gameplay/SoundWavesDrop")) as GameObject;
-		soundEmitt2 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt2.gameObject.name = "_dropWave2";//footsteps wave 2
+		soundEmitt2 = GOinstFootWave.GetComponent<WaveCreator>();soundEmitt2.gameObject.name = "_dropWave2"+ID;//footsteps wave 2
 		soundEmitt2.gameObject.transform.parent = GameObject.Find("Level/Waves/").transform;
 		soundEmitt2.createCircle(transform);soundEmitt2.setParent(transform);
 
